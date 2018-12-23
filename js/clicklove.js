@@ -16,24 +16,27 @@
         }
     }function i(e){
             var a=t.createElement("div");
-            a.className="heart",d.push({el:a,x:e.clientX-5,y:e.clientY-5,scale:1,alpha:1,color:s()}),t.body.appendChild(a)}function c(e){var a=t.createElement("style");a.type="text/css";
-            try{
-                a.appendChild(t.createTextNode(e))
-            }
-            catch(t){
-                a.styleSheet.cssText=e
-            }
-            t.getElementsByTagName("head")[0].appendChild(a)
-        }
-        function s(){
-            return"rgb("+~~(255*Math.random())+","+~~(255*Math.random())+","+~~(255*Math.random())+")"
-        }
-        var d=[];
-        e.requestAnimationFrame=function(){
-            return e.requestAnimationFrame||e.webkitRequestAnimationFrame||e.mozRequestAnimationFrame||e.oRequestAnimationFrame||e.msRequestAnimationFrame||function(e){
-                setTimeout(e,1e3/60)
-            }
-        }(),
-        n()
+            a.className="heart",d.push({el:a,x:e.clientX-5,y:e.clientY-5,scale:1,alpha:1,color:s()}),t.body.appendChild(a)
     }
-    (window,document);
+    function c(e){
+        var a=t.createElement("style");a.type="text/css";
+        try{
+            a.appendChild(t.createTextNode(e))
+        }
+        catch(t){
+            a.styleSheet.cssText=e
+        }
+        t.getElementsByTagName("head")[0].appendChild(a)
+    }
+    function s(){
+        return"rgb("+~~(255*Math.random())+","+~~(255*Math.random())+","+~~(255*Math.random())+")"
+    }
+    var d=[];
+    e.requestAnimationFrame=function(){
+        return e.requestAnimationFrame||e.webkitRequestAnimationFrame||e.mozRequestAnimationFrame||e.oRequestAnimationFrame||e.msRequestAnimationFrame||function(e){
+            setTimeout(e,1e3/60)
+        }
+    }(),
+    n()
+}
+(window,document);
