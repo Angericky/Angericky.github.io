@@ -20,14 +20,13 @@ textarea {
     max-width: 1068px;
     width: 1068px;
   }
-  .is-3-column .container {
-    max-width: 1600px;
-    width: 1600px;
-  }
 }
 @media screen and (min-width: 1472px) {
-  .is-2-column .container,
   .is-3-column .container {
+    max-width: 1600px;
+    width: 1260px;
+  }
+  .is-2-column .container {
     max-width: 1260px;
     width: 1260px;
   }
