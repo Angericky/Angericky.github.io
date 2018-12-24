@@ -14,29 +14,29 @@ select,
 textarea {
   font-family: "Ubuntu", "Roboto", "Open Sans", "Microsoft YaHei", sans-serif;
 }
-@media screen and (min-width: 1280px) {
+@media screen and (min-width: 1480px) {
   .is-1-column .container,
   .is-2-column .container {
     max-width: 1600px;
-    width: 1068px;
+    width: 1268px;
   }
 }
 @media screen and (min-width: 1600px) {
   .is-2-column .container {
     max-width: 1600px;
-    width: 1260px;
+    width: 1460px;
   }
   .is-1-column .container {
     max-width: 1600px;
-    width: 1068px;
+    width: 1268px;
   }
 }
-@media screen and (max-width: 768px) {
+@media screen and (max-width: 968px) {
   .section {
     padding: 0rem 1rem;
   }
 }
-@media screen and (min-width: 769px) {
+@media screen and (min-width: 969px) {
   .column-main.is-sticky,
   .column-left.is-sticky,
   .column-right.is-sticky,
@@ -51,7 +51,7 @@ textarea {
   }
 }
 .container {
-  margin-left: 2rem;
+  margin-left: 0rem;
   margin-right: 2rem;
 }
 .card {
@@ -109,7 +109,7 @@ img.thumbnail {
   color: #3273dc;
   background-color: transparent;
 }
-@media screen and (max-width: 1087px) {
+@media screen and (max-width: 1287px) {
   .navbar-main .navbar-menu {
     justify-content: center;
     box-shadow: none;
@@ -212,7 +212,7 @@ img.thumbnail {
   margin-left: 0.75rem;
   margin-right: 0;
 }
-@media screen and (max-width: 768px) {
+@media screen and (max-width: 968px) {
   #toc {
     display: none;
     position: fixed;
@@ -305,7 +305,7 @@ img.thumbnail {
 .has-link-black-ter {
   color: #242424 !important;
 }
-@media screen and (max-width: 768px) {
+@media screen and (max-width: 968px) {
   .has-text-centered-mobile {
     text-align: center !important;
   }
