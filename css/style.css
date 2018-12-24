@@ -50,6 +50,10 @@ textarea {
     top: 1.5rem;
   }
 }
+.container {
+  margin-left: 2rem;
+  margin-right: 2rem;
+}
 .card {
   overflow: hidden;
   border-radius: 4px;
