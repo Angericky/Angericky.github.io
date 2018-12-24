@@ -339,7 +339,7 @@ img.thumbnail {
 .content h4,
 .content h5,
 .content h6 {
-  font-weight: bold !important;
+  font-weight: 600 !important;
   line-height: 1.7;
 }
 .content h1 {
@@ -360,7 +360,7 @@ img.thumbnail {
 .content code,
 .content pre {
   font-size: 0.85em;
-  font-family: "Microsoft YaHei", "Source Code Pro", monospace;
+  font-family: "Consolas", "Microsoft YaHei", "Source Code Pro", monospace;
 }
 .content code {
   color: #ff3860;
@@ -405,7 +405,7 @@ figure.highlight figcaption {
 }
 figure.highlight figcaption span {
   font-weight: 500;
-  font-family: "Microsoft YaHei", "Source Code Pro", monospace;
+  font-family: "Consolas", "Microsoft YaHei", "Source Code Pro", monospace;
 }
 figure.highlight figcaption a {
   float: right;
