@@ -50,8 +50,9 @@ textarea {
     top: 1.5rem;
   }
 }
-.columns {
+.container {
   margin-left: 0rem;
+  margin-right: 0rem;
 }
 .card {
   overflow: hidden;
