@@ -339,7 +339,7 @@ img.thumbnail {
 .content h4,
 .content h5,
 .content h6 {
-  font-weight: 600 !important;
+  font-weight: bold !important;
   line-height: 1.7;
 }
 .content h1 {
