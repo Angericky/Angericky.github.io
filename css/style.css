@@ -50,7 +50,7 @@ textarea {
     top: 1.5rem;
   }
 }
-.container {
+.section .container {
   margin-left: 2rem;
   margin-right: 2rem;
 }
