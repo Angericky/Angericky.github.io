@@ -12,7 +12,7 @@ button,
 input,
 select,
 textarea {
-  font-family: "Ubuntu", "Roboto", "Open Sans", "Microsoft YaHei", sans-serif;
+  font-family: "Microsoft YaHei", "Ubuntu", "Roboto", "Open Sans", sans-serif;
 }
 @media screen and (min-width: 1280px) {
   .is-1-column .container,
@@ -199,7 +199,8 @@ img.thumbnail {
 }
 .article .content {
   font-size: 1.1rem;
-  letter-spacing: 0.1rem;
+  letter-spacing: 0.05rem;
+  line-height: 1.7;
 }
 .article .content blockquote.pullquote {
   float: right;
@@ -338,7 +339,8 @@ img.thumbnail {
 .content h4,
 .content h5,
 .content h6 {
-  font-weight: 400;
+  font-weight: 600 !important;
+  line-height: 1.7;
 }
 .content h1 {
   font-size: 1.75em;
@@ -358,12 +360,12 @@ img.thumbnail {
 .content code,
 .content pre {
   font-size: 0.85em;
-  font-family: "Source Code Pro", monospace, "Microsoft YaHei";
+  font-family: "Microsoft YaHei", "Source Code Pro", monospace;
 }
 .content code {
   color: #ff3860;
   background: transparent;
-  padding: 0;
+  padding: 1;
 }
 .content blockquote footer strong + cite {
   margin-left: 0.5em;
@@ -403,7 +405,7 @@ figure.highlight figcaption {
 }
 figure.highlight figcaption span {
   font-weight: 500;
-  font-family: "Source Code Pro", monospace, "Microsoft YaHei";
+  font-family: "Microsoft YaHei", "Source Code Pro", monospace;
 }
 figure.highlight figcaption a {
   float: right;
