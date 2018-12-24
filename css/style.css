@@ -188,11 +188,11 @@ img.thumbnail {
   top: calc(0.3rem + 9px);
 }
 .article .article-meta {
-  margin-bottom: 0.2rem !important;
+  margin-bottom: 1.2rem !important;
 }
 .article .content {
   font-size: 1.1rem;
-  letter-spacing: 2px;
+  letter-spacing: 0.12rem;
 }
 .article .content blockquote.pullquote {
   float: right;
