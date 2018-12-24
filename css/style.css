@@ -23,7 +23,7 @@ textarea {
 }
 @media screen and (min-width: 1600px) {
   .is-2-column .container {
-    max-width: 1600px;
+    max-width: 1600px !important;
     width: 1460px;
   }
   .is-1-column .container {
