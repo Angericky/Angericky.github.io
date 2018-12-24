@@ -370,6 +370,9 @@ img.thumbnail {
 .content blockquote footer strong + cite {
   margin-left: 0.5em;
 }
+.content .underline {
+  text-decoration: underline;
+}
 /* ---------------------------------
  *        Fix code highlight
  * --------------------------------- */
