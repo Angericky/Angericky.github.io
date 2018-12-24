@@ -21,7 +21,7 @@ textarea {
     width: 1068px;
   }
 }
-@media screen and (min-width: 1688px) {
+@media screen and (min-width: 1600px) {
   .is-2-column .container {
     max-width: 1600px;
     width: 1260px;
