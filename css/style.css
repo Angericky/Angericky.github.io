@@ -51,8 +51,8 @@ textarea {
   }
 }
 .container {
-  margin-left: 0rem;
-  margin-right: 0rem;
+  margin-left: 2rem;
+  margin-right: 2rem;
 }
 .card {
   overflow: hidden;
@@ -195,8 +195,8 @@ img.thumbnail {
   margin-bottom: 1.2rem !important;
 }
 .article .content {
-  font-size: 1rem;
-  letter-spacing: 0.08rem;
+  font-size: 1.1rem;
+  letter-spacing: 0.1rem;
 }
 .article .content blockquote.pullquote {
   float: right;
