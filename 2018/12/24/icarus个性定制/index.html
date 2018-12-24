@@ -18,7 +18,7 @@
 <meta property="og:site_name" content="Jingjing&#39;s blog">
 <meta property="og:description" content="Icarus个性定制配置修改的一些内容。">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2018-12-24T09:07:18.609Z">
+<meta property="og:updated_time" content="2018-12-24T13:53:41.709Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="hexo及icarus主题个性定制">
 <meta name="twitter:description" content="Icarus个性定制配置修改的一些内容。">
@@ -142,7 +142,7 @@
                 <span class="level-item has-text-grey">
                     
                     
-                    2 分钟 读完 (大约 254 个字)
+                    2 分钟 读完 (大约 302 个字)
                 </span>
                 
             </div>
@@ -158,9 +158,9 @@
 <p><the rest="" of="" contents="" |="" 余下全文=""></the></p>
 <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>此篇不介绍HEXO的搭建，网上教程已经很完善，这里只讲我用ICARUS的个性化配置。</p>
 <h3 id="1-语言切换"><a href="#1-语言切换" class="headerlink" title="1. 语言切换"></a>1. 语言切换</h3><p>Icarus提供多语言切换，默认是英文的。<br>为了改成中文，进入项目目录，修改_config.yml 中的 language:zh-CN</p>
-<h3 id="2-更改文章字间距"><a href="#2-更改文章字间距" class="headerlink" title="2. 更改文章字间距"></a>2. 更改文章字间距</h3><p>在css/style.styl中.article  .content 的属性中加上letter-spacing: 0.1rem;</p>
-<h3 id="2-加宽中心文章的布局"><a href="#2-加宽中心文章的布局" class="headerlink" title="2. 加宽中心文章的布局"></a>2. 加宽中心文章的布局</h3><p>icarus本身的文章区域比较窄，我想改得宽一点，突出文章内容。<br>解决办法：<br>    打开<em>themes/icarus/layout/layout.ejs</em><br>    改变<em>main_column_class()</em>中<em>case 3</em>的返回值<br>    原值为<em>‘is-8-tablet is-8-desktop is-6-widescreen’</em><br>    我改成了<em>‘is-10-tablet is-10-desktop is-8-widescreen’</em></p>
-<p>但是重新部署的时候，会出现整体内容不居中<br>解决办法：</p>
+<h3 id="2-更改文章字间距"><a href="#2-更改文章字间距" class="headerlink" title="2. 更改文章字间距"></a>2. 更改文章字间距</h3><p>在icarus/source/css/style.styl中<br>.article  .content的部分加上<code>letter-spacing: 0.08rem;</code></p>
+<h3 id="2-加宽中心文章的布局"><a href="#2-加宽中心文章的布局" class="headerlink" title="2. 加宽中心文章的布局"></a>2. 加宽中心文章的布局</h3><p>icarus本身的文章区域比较窄，我想改得宽一点，突出文章内容。<br>解决办法：<br>    打开<em>themes/icarus/layout/layout.ejs</em><br>    改变<code>main_column_class()</code>中<code>case 3</code>的返回值<br>    原值为<code>is-8-tablet is-8-desktop is-6-widescreen</code><br>    我改成了<code>is-10-tablet is-10-desktop is-8-widescreen</code></p>
+<p>但是重新部署的时候，会出现整体内容不居中<br>解决办法：<br>通过开发者工具可以看到生成的container.saas文件里，margin-left和margin-right都是auto<br>在icarus/source/css/style.sytl中加上属性<br><figure class="highlight css hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-selector-class">.container</span></span><br><span class="line">    <span class="hljs-selector-tag">margin-left</span>: 2<span class="hljs-selector-tag">rem</span></span><br><span class="line">    <span class="hljs-selector-tag">margin-right</span>: 2<span class="hljs-selector-tag">rem</span></span><br></pre></td></tr></table></figure></p>
 <h3 id="3-改变关注按钮的长宽"><a href="#3-改变关注按钮的长宽" class="headerlink" title="3. 改变关注按钮的长宽"></a>3. 改变关注按钮的长宽</h3><h3 id="4-改变文章文字间距"><a href="#4-改变文章文字间距" class="headerlink" title="4. 改变文章文字间距"></a>4. 改变文章文字间距</h3><h3 id="5-改变双马尾插件的大小"><a href="#5-改变双马尾插件的大小" class="headerlink" title="5. 改变双马尾插件的大小"></a>5. 改变双马尾插件的大小</h3><h3 id="6-优化访问速度"><a href="#6-优化访问速度" class="headerlink" title="6. 优化访问速度"></a>6. 优化访问速度</h3>
         </div>
         
