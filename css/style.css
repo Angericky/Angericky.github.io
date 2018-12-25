@@ -194,8 +194,14 @@ img.thumbnail {
 .timeline .media:first-child:last-child:after {
   top: calc(0.3rem + 9px);
 }
+.article {
+  padding-left: 3rem;
+  padding-right: 3rem;
+  padding-top: 2rem;
+}
 .article .article-meta {
   margin-bottom: 1.2rem !important;
+  padding-top: 0rem;
 }
 .article .content {
   font-size: 1.1rem;
