@@ -388,6 +388,9 @@ img.thumbnail {
   margin: 1.5em 0 0.3em 1.5em;
   padding: 1.2em 1em 0 1em;
   max-width: 28%;
+  overflow-y: auto;
+  overflow-x: hidden;
+  background-color: #fff;
 }
 .toc-title {
   font-size: 120%;
