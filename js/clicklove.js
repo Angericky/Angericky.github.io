@@ -29,7 +29,7 @@
         t.getElementsByTagName("head")[0].appendChild(a)
     }
     function s(){
-        return"rgb("+~~(255*(Math.random()/2)+0.5)+","+~~(255*(Math.random()/2)+0.5)+","+~~(255*(Math.random()/2)+0.5)+")"
+        return"rgb("+~~(255*(Math.random())+","+~~(255*(Math.random())+","+~~(255*(Math.random())+")"
     }
     var d=[];
     e.requestAnimationFrame=function(){
