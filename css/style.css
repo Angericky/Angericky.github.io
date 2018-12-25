@@ -375,7 +375,6 @@ img.thumbnail {
 }
 /*toc*/
 .toc-article {
-  background: #eee;
   border: 1px solid #bbb;
   border-radius: 10px;
   margin: 1.5em 0 0.3em 1.5em;
@@ -386,7 +385,7 @@ img.thumbnail {
   font-size: 120%;
 }
 #toc {
-  line-height: 1em;
+  line-height: 1.5em;
   font-size: 0.9em;
   float: right;
 }
@@ -394,6 +393,13 @@ img.thumbnail {
   padding: 0;
   margin: 1em;
   line-height: 1.8em;
+}
+#toc .toc a {
+  color: #dd6150;
+  font-weight: 500;
+}
+#toc .toc a:hover {
+  color: #303030;
 }
 #toc .toc li {
   list-style-type: none;
