@@ -410,6 +410,7 @@ img.thumbnail {
 }
 #toc .toc a:hover {
   color: #303030;
+  text-decoration: underline;
 }
 #toc .toc li {
   list-style-type: none;
