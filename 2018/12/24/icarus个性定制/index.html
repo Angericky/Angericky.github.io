@@ -18,7 +18,7 @@
 <meta property="og:site_name" content="Jingjing&#39;s blog">
 <meta property="og:description" content="icarus个性定制配置修改的一些内容。">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2018-12-25T08:27:15.863Z">
+<meta property="og:updated_time" content="2018-12-25T10:20:27.027Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="hexo及icarus主题个性定制">
 <meta name="twitter:description" content="icarus个性定制配置修改的一些内容。">
@@ -146,7 +146,7 @@
                 <span class="level-item has-text-grey">
                     
                     
-                    2 分钟 读完 (大约 358 个字)
+                    3 分钟 读完 (大约 462 个字)
                 </span>
                 
             </div>
@@ -161,7 +161,7 @@
             
                 <div id="toc" class="toc-article">
                     <strong class="toc-title">文章目录</strong>
-                    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#前言"><span class="toc-number">1.</span> <span class="toc-text">前言</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#语言切换"><span class="toc-number">1.1.</span> <span class="toc-text">语言切换</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#更改文章字间距"><span class="toc-number">1.2.</span> <span class="toc-text">更改文章字间距</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#加宽中心文章的布局"><span class="toc-number">1.3.</span> <span class="toc-text">加宽中心文章的布局</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#更改友情链接布局"><span class="toc-number">1.4.</span> <span class="toc-text">更改友情链接布局</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#更改关注按钮的长宽"><span class="toc-number">1.5.</span> <span class="toc-text">更改关注按钮的长宽</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#改变双马尾插件live2D的大小"><span class="toc-number">1.6.</span> <span class="toc-text">改变双马尾插件live2D的大小</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#优化访问速度"><span class="toc-number">1.7.</span> <span class="toc-text">优化访问速度</span></a></li></ol></li></ol>
+                    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#前言"><span class="toc-number">1.</span> <span class="toc-text">前言</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#语言切换"><span class="toc-number">1.1.</span> <span class="toc-text">语言切换</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#更改文章字间距"><span class="toc-number">1.2.</span> <span class="toc-text">更改文章字间距</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#加宽中心文章的布局"><span class="toc-number">1.3.</span> <span class="toc-text">加宽中心文章的布局</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#更改友情链接布局"><span class="toc-number">1.4.</span> <span class="toc-text">更改友情链接布局</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#为博客增加分享功能"><span class="toc-number">1.5.</span> <span class="toc-text">为博客增加分享功能</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#更改关注按钮的长宽"><span class="toc-number">1.6.</span> <span class="toc-text">更改关注按钮的长宽</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#改变双马尾插件live2D的大小"><span class="toc-number">1.7.</span> <span class="toc-text">改变双马尾插件live2D的大小</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#优化访问速度"><span class="toc-number">1.8.</span> <span class="toc-text">优化访问速度</span></a></li></ol></li></ol>
                 </div>
              
 
@@ -175,6 +175,15 @@
 <p>但是重新部署的时候，会出现整体内容不居中<br>解决办法：<br>通过开发者工具可以看到生成的container.saas文件里，margin-left和margin-right都是auto<br>在icarus/source/css/style.sytl中加上属性<br><figure class="highlight css hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-selector-class">.container</span> </span><br><span class="line">		<span class="hljs-selector-tag">margin-left</span>: 2<span class="hljs-selector-tag">rem</span>;</span><br><span class="line"> 		<span class="hljs-selector-tag">margin-right</span>: 2<span class="hljs-selector-tag">rem</span>;</span><br></pre></td></tr></table></figure></p>
 <p>同时为了让navbar居中把在同一个文件中@media screen and (mid-width: screen-fullhd)的部分里加上一句<br><figure class="highlight css hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-selector-class">.is-3-column</span> <span class="hljs-selector-class">.container</span></span><br><span class="line">    <span class="hljs-selector-tag">max-width</span>: 1600<span class="hljs-selector-tag">px</span></span><br></pre></td></tr></table></figure></p>
 <h3 id="更改友情链接布局"><a href="#更改友情链接布局" class="headerlink" title="更改友情链接布局"></a>更改友情链接布局</h3><p>更改link.ejs文件里12行开始<br><figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">&lt;a class=&quot;level is-mobile&quot; href=&quot;&lt;%- links[i] %&gt;&quot; target=&quot;_blank&quot;&gt;</span><br><span class="line">    &lt;span class=&quot;level-left&quot; style=&quot;text-decoration: underline&quot;&gt;</span><br><span class="line">        &lt;span class=&quot;level-item&quot;&gt;&lt;%= i %&gt;&lt;/span&gt;</span><br><span class="line">&lt;/a&gt;</span><br></pre></td></tr></table></figure></p>
+<h3 id="为博客增加分享功能"><a href="#为博客增加分享功能" class="headerlink" title="为博客增加分享功能"></a>为博客增加分享功能</h3><p>icarus提供多个分享插件。</p>
+<ul>
+<li>AddThis</li>
+<li>AddToAny</li>
+<li>Baidu Share</li>
+<li>Share.js</li>
+<li>ShareThis</li>
+</ul>
+<p>我选择<a href="https://blog.zhangruipeng.me/hexo-theme-icarus/Plugins/Share/share-js-share-plugin/" target="_blank" rel="noopener">share.js</a>插件，它可以一键分享到微博、QQ空间、QQ好友、微信、腾讯微博、豆瓣、Facebook、Twitter、Linkedin、Google+、点点等社交网站。<br>设置步骤：<br><figure class="highlight yml hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-string">_config.yml</span></span><br><span class="line"><span class="hljs-attr">share:</span></span><br><span class="line"><span class="hljs-attr">    type:</span> <span class="hljs-string">sharejs</span></span><br></pre></td></tr></table></figure></p>
 <h3 id="更改关注按钮的长宽"><a href="#更改关注按钮的长宽" class="headerlink" title="更改关注按钮的长宽"></a>更改关注按钮的长宽</h3><h3 id="改变双马尾插件live2D的大小"><a href="#改变双马尾插件live2D的大小" class="headerlink" title="改变双马尾插件live2D的大小"></a>改变双马尾插件live2D的大小</h3><h3 id="优化访问速度"><a href="#优化访问速度" class="headerlink" title="优化访问速度"></a>优化访问速度</h3></the>
         </div>
         
@@ -188,6 +197,10 @@
         </div>
         
         
+        
+        <div class="social-share"></div>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/social-share.js@1.0.16/dist/css/share.min.css">
+<script src="https://cdn.jsdelivr.net/npm/social-share.js@1.0.16/dist/js/social-share.min.js"></script>
         
     </div>
 </div>
