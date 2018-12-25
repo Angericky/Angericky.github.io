@@ -369,7 +369,7 @@ img.thumbnail {
   font-family: "Consolas", "Microsoft YaHei", "Source Code Pro", monospace;
 }
 .content code {
-  color: dd6150;
+  color: #dd6150;
   background: transparent;
   padding: 1;
 }
