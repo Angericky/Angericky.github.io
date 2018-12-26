@@ -4,22 +4,23 @@
 <html lang="zh">
 <head><meta name="generator" content="Hexo 3.8.0">
     <meta charset="utf-8">
-<title>关于我 - Jingjing&#39;s blog</title>
+<title>O(n)算法查找第k大的数 - Jingjing&#39;s blog</title>
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
 
 
-    <meta name="description" content="你好，这里是一枚非典型工科生，是硬核且甜甜软软的妹子。在NVIDIA实习中，职位是C++ profiling engineer。我喜欢很多领域，设计 / 音乐 / 文学，也欢迎安利呀。 教育经历 硕士   software engineer 华东师范大学研究方向：computer vision2019年入学  本科   computer science 华东师范大学2015年入学   感兴趣的专业">
-<meta property="og:type" content="website">
-<meta property="og:title" content="关于我">
-<meta property="og:url" content="http://yoursite.com/about/index.html">
+    <meta name="description" content="面试中常见算法题，非常经典。     利用快速排序Partion的算法，核心思想是快排的分支算法.">
+<meta name="keywords" content="算法 面试 leetcode">
+<meta property="og:type" content="article">
+<meta property="og:title" content="O(n)算法查找第k大的数">
+<meta property="og:url" content="http://yoursite.com/2018/12/26/O-n-算法查找第k大的数/index.html">
 <meta property="og:site_name" content="Jingjing&#39;s blog">
-<meta property="og:description" content="你好，这里是一枚非典型工科生，是硬核且甜甜软软的妹子。在NVIDIA实习中，职位是C++ profiling engineer。我喜欢很多领域，设计 / 音乐 / 文学，也欢迎安利呀。 教育经历 硕士   software engineer 华东师范大学研究方向：computer vision2019年入学  本科   computer science 华东师范大学2015年入学   感兴趣的专业">
+<meta property="og:description" content="面试中常见算法题，非常经典。     利用快速排序Partion的算法，核心思想是快排的分支算法.">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2018-12-25T21:23:50.797Z">
+<meta property="og:updated_time" content="2018-12-26T14:08:00.338Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="关于我">
-<meta name="twitter:description" content="你好，这里是一枚非典型工科生，是硬核且甜甜软软的妹子。在NVIDIA实习中，职位是C++ profiling engineer。我喜欢很多领域，设计 / 音乐 / 文学，也欢迎安利呀。 教育经历 硕士   software engineer 华东师范大学研究方向：computer vision2019年入学  本科   computer science 华东师范大学2015年入学   感兴趣的专业">
+<meta name="twitter:title" content="O(n)算法查找第k大的数">
+<meta name="twitter:description" content="面试中常见算法题，非常经典。     利用快速排序Partion的算法，核心思想是快排的分支算法.">
 
 
 
@@ -92,7 +93,7 @@
         <div class="navbar-brand is-flex-center">
             <a class="navbar-item navbar-logo" href="/">
             
-                <img src="/images/logo.jpg" alt="关于我" height="28">
+                <img src="/images/logo.jpg" alt="O(n)算法查找第k大的数" height="28">
             
             </a>
         </div>
@@ -108,7 +109,7 @@
                 
                 <a class="navbar-item" href="/tags">标签</a>
                 
-                <a class="navbar-item is-active" href="/about">关于</a>
+                <a class="navbar-item" href="/about">关于</a>
                 
             </div>
             
@@ -141,35 +142,53 @@
     
     <div class="card-content article ">
         
+        <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
+            <div class="level-left">
+                <time class="level-item has-text-grey" datetime="2018-12-26T14:00:26.000Z">2018-12-26</time>
+                
+                
+                <span class="level-item has-text-grey">
+                    
+                    
+                    2 分钟 读完 (大约 318 个字)
+                </span>
+                
+            </div>
+        </div>
+        
         <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
             
-                关于我
+                O(n)算法查找第k大的数
             
         </h1>
         <div class="content">
+            
+                <div id="toc" class="toc-article">
+                    <strong class="toc-title">文章目录</strong>
+                    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#思路"><span class="toc-number">1.</span> <span class="toc-text">思路</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#代码"><span class="toc-number">2.</span> <span class="toc-text">代码</span></a></li></ol>
+                </div>
              
-            <p>你好，这里是一枚非典型工科生，是硬核且甜甜软软的妹子。<br>在NVIDIA实习中，职位是C++ profiling engineer。<br>我喜欢很多领域，设计 / 音乐 / 文学，也欢迎安利呀。</p>
-<h3 id="教育经历"><a href="#教育经历" class="headerlink" title="教育经历"></a>教育经历</h3><ul>
-<li><p><strong>硕士</strong>   software engineer 华东师范大学<br>研究方向：computer vision<br>2019年入学</p>
-</li>
-<li><p><strong>本科</strong>   computer science 华东师范大学<br>2015年入学</p>
-</li>
-</ul>
-<h3 id="感兴趣的专业技能"><a href="#感兴趣的专业技能" class="headerlink" title="感兴趣的专业技能"></a>感兴趣的专业技能</h3><ul>
-<li><strong>机器视觉和图像处理</strong></li>
-<li><strong>Deep Learning</strong></li>
-<li><strong>C++</strong></li>
-<li><strong>Web</strong></li>
-</ul>
-<p>对自己在读研间的期望是能同时当好researcher和engineer的身份～<br>加油！</p>
-<h3 id="联系我"><a href="#联系我" class="headerlink" title="联系我"></a>联系我</h3><ul>
-<li>在blog留言</li>
-<li>QQ: 707767931</li>
-<li>Wechat: Angericky</li>
-<li>Email: <a href="mailto:jingjingbudlet@gmail.com" target="_blank" rel="noopener">jingjingbudlet@gmail.com</a> / <a href="mailto:presente_de_deus@163.com" target="_blank" rel="noopener">presente_de_deus@163.com</a></li>
-</ul>
-<p>涉足无人抵达的远方就能摘取星星上的金子。</p>
-
+            <p>面试中常见算法题，非常经典。</p>
+<p><excerpt in="" index="" |="" 首页摘要=""><br>    利用快速排序Partion的算法，核心思想是快排的分支算法.<br><a id="more"></a></excerpt></p>
+<p><the rest="" of="" contents="" |="" 余下全文=""></the></p>
+<h1 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h1><p>这里讲利用快速排序Partion的算法，核心思想是快排的分支算法，具体思路：</p>
+<ol>
+<li>利用快排的partion函数将数组分成左右两个部分</li>
+<li>如果位置p刚好等于k，则说明p位置的数，就是我们要找的数，如果分出来的边界位置p小于给定的数k，我们知道最小的第k个数，肯定在p的右边，如果p大于给定的k则在p边界的左边</li>
+<li>递归在p的左边或者右边查找</li>
+</ol>
+<p>注：p为数组下标需要加1。</p>
+<p>具体的细节可以查看《算法导论》第九章，下面是简单的实现代码。</p>
+<h1 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h1><figure class="highlight c++ hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Solution</span> &#123;</span></span><br><span class="line"><span class="hljs-keyword">public</span>:</span><br><span class="line">    <span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">partion</span><span class="hljs-params">(<span class="hljs-built_in">vector</span>&lt;<span class="hljs-keyword">int</span>&gt; &amp;nums, <span class="hljs-keyword">int</span> left, <span class="hljs-keyword">int</span> right)</span></span>&#123;</span><br><span class="line">        <span class="hljs-keyword">int</span> temp = nums[left];</span><br><span class="line">        <span class="hljs-keyword">while</span>(left &lt; right)&#123;</span><br><span class="line">            <span class="hljs-keyword">while</span>(nums[right] &lt;= temp &amp;&amp; left &lt; right)</span><br><span class="line">                right --;</span><br><span class="line">            <span class="hljs-keyword">if</span>(left &lt; right)    nums[left] = nums[right];</span><br><span class="line">            <span class="hljs-keyword">while</span>(nums[left] &gt; temp &amp;&amp; left &lt; right)</span><br><span class="line">                left ++;</span><br><span class="line">            <span class="hljs-keyword">if</span>(left &lt; right)    nums[right] = nums[left];</span><br><span class="line">        &#125;</span><br><span class="line">        nums[right] = temp;</span><br><span class="line">        <span class="hljs-keyword">return</span> right;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">findKthLargest</span><span class="hljs-params">(<span class="hljs-built_in">vector</span>&lt;<span class="hljs-keyword">int</span>&gt;&amp; nums, <span class="hljs-keyword">int</span> k)</span> </span>&#123;</span><br><span class="line">        <span class="hljs-keyword">int</span> index = partion(nums, <span class="hljs-number">0</span>, nums.size() - <span class="hljs-number">1</span>) + <span class="hljs-number">1</span>;</span><br><span class="line">        <span class="hljs-keyword">if</span>(index == k)</span><br><span class="line">            <span class="hljs-keyword">return</span> nums[index];</span><br><span class="line">        <span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span>(index &lt; k)</span><br><span class="line">            <span class="hljs-keyword">return</span> partion(nums, <span class="hljs-number">0</span>, index - <span class="hljs-number">2</span>);</span><br><span class="line">        <span class="hljs-keyword">else</span></span><br><span class="line">            <span class="hljs-keyword">return</span> partion(nums, index, nums.size() - <span class="hljs-number">1</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+        </div>
+        
+        <div class="level is-size-7 is-uppercase">
+            <div class="level-start">
+                <div class="level-item">
+                    <span class="is-size-6 has-text-grey has-mr-7">#</span>
+                    <a class="has-link-grey -link" href="/tags/算法-面试-leetcode/">算法 面试 leetcode</a>
+                </div>
+            </div>
         </div>
         
         
@@ -189,6 +208,20 @@
     </div>
 </div>
 
+
+<div class="card card-transparent">
+    <div class="level post-navigation is-flex-wrap is-mobile">
+        
+        
+        <div class="level-end">
+            <a class="level level-item has-link-grey  article-nav-next" href="/2018/12/26/C-开发学习计划/">
+                <span class="level-item">C++开发学习计划</span>
+                <i class="level-item fas fa-chevron-right"></i>
+            </a>
+        </div>
+        
+    </div>
+</div>
 
 
 
@@ -823,7 +856,7 @@
             <div class="level-start has-text-centered-mobile">
                 <a class="footer-logo is-block has-mb-6" href="/">
                 
-                    <img src="/images/logo.jpg" alt="关于我" height="28">
+                    <img src="/images/logo.jpg" alt="O(n)算法查找第k大的数" height="28">
                 
                 </a>
                 <p class="is-size-7" style="padding-bottom: 0.5em">
