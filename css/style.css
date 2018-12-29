@@ -58,7 +58,6 @@ textarea {
   margin-right: 2rem;
 }
 .card {
-  overflow: hidden;
   border-radius: 4px;
   box-shadow: 0 4px 10px rgba(0,0,0,0.05), 0 0 1px rgba(0,0,0,0.1);
 }
@@ -252,8 +251,7 @@ img.thumbnail {
 .donate:hover .qrcode {
   display: block;
 }
-.donate:first-child:not(:last-child),
-.donate .qrcode {
+.donate:first-child:not(:last-child) .qrcode {
   left: -0.75rem;
 }
 .donate:last-child:not(:first-child) .qrcode {
