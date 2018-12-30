@@ -23,7 +23,7 @@ textarea {
 }
 @media screen and (min-width: 1472px) {
   .is-3-column .container {
-    max-width: 1672px;
+    max-width: 1600px;
     margin-left: 2rem;
     margin-right: 2rem;
   }
