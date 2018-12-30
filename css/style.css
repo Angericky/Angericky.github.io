@@ -24,10 +24,14 @@ textarea {
 @media screen and (min-width: 1472px) {
   .is-3-column .container {
     max-width: 1672px;
+    margin-left: 2rem;
+    margin-right: 2rem;
   }
   .is-2-column .container {
     max-width: 1260px;
     width: 1260px;
+    margin-left: auto;
+    margin-right: auto;
   }
   .is-1-column .container {
     max-width: 1068px;
@@ -52,10 +56,6 @@ textarea {
   .column-right-shadow.is-sticky {
     top: 1.5rem;
   }
-}
-.container {
-  margin-left: 2rem;
-  margin-right: 2rem;
 }
 .card {
   border-radius: 4px;
