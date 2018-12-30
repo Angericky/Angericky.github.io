@@ -5,4 +5,4 @@ document.addEventListener('DOMContentLoaded', function () {
         $(this).prepend($(`<button class="button is-borderless is-radiusless is-small copy" data-clipboard-target="#${id} .code" title="Copy"><i class="fas fa-copy"></i></button>`));
     });
     new ClipboardJS('.highlight .copy');
-});
+}); 
