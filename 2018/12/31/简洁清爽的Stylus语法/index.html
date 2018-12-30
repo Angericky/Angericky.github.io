@@ -10,14 +10,14 @@
 
 
     <meta name="description" content="Stylus是一个基于Node.js的CSS的预处理框架。其本质上做的事情与sass/less等类似。Stylus比less更强大。icarus主题中用到了stylus。">
-<meta name="keywords" content="stylus,css,hexo">
+<meta name="keywords" content="hexo,stylus,css">
 <meta property="og:type" content="article">
 <meta property="og:title" content="简洁清爽的Stylus语法">
 <meta property="og:url" content="http://yoursite.com/2018/12/31/简洁清爽的Stylus语法/index.html">
 <meta property="og:site_name" content="Jingjing&#39;s blog">
 <meta property="og:description" content="Stylus是一个基于Node.js的CSS的预处理框架。其本质上做的事情与sass/less等类似。Stylus比less更强大。icarus主题中用到了stylus。">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2018-12-30T21:56:14.075Z">
+<meta property="og:updated_time" content="2018-12-30T22:05:18.651Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="简洁清爽的Stylus语法">
 <meta name="twitter:description" content="Stylus是一个基于Node.js的CSS的预处理框架。其本质上做的事情与sass/less等类似。Stylus比less更强大。icarus主题中用到了stylus。">
@@ -125,6 +125,10 @@
                     
                 
                 
+                <a class="navbar-item is-hidden-tablet catalogue" title="目录" href="javascript:;">
+                    <i class="fas fa-list-ul"></i>
+                </a>
+                
                 
                 <a class="navbar-item search" title="搜索" href="javascript:;">
                     <i class="fas fa-search"></i>
@@ -159,7 +163,7 @@
                 <time class="level-item has-text-grey" datetime="2018-12-30T19:28:11.000Z">2018-12-31</time>
                 
                     <i class="fas fa-calendar-check">&nbsp</i>
-                    <time class="level-item has-text-grey" datetime="2018-12-30T21:56:14.075Z">2018-12-31</time>
+                    <time class="level-item has-text-grey" datetime="2018-12-30T22:05:18.651Z">2018-12-31</time>
                 
                 
                     <i class="fas fa-folder-open">&nbsp</i>
@@ -185,9 +189,8 @@
         </div>
         
         <div class="content">
-             
             
-                <div id="toc" class="toc-article">
+                <div id="toc" class="toc-article" style="max-height: 380px; overflow: auto;">
                     <strong class="toc-title">文章目录</strong>
                     <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#Stylus介绍"><span class="toc-number">1.</span> <span class="toc-text">Stylus介绍</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#安装"><span class="toc-number">2.</span> <span class="toc-text">安装</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#生成CSS"><span class="toc-number">3.</span> <span class="toc-text">生成CSS</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#应用效果"><span class="toc-number">4.</span> <span class="toc-text">应用效果</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Flexible-syntax-灵活的用法"><span class="toc-number">5.</span> <span class="toc-text">Flexible syntax(灵活的用法)</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#Flexible-amp-灵活-amp"><span class="toc-number">5.1.</span> <span class="toc-text">Flexible &amp;(灵活&amp;)</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Functions-方法"><span class="toc-number">5.2.</span> <span class="toc-text">Functions 方法</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#返回值"><span class="toc-number">5.2.1.</span> <span class="toc-text">返回值</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#带参数"><span class="toc-number">5.2.1.1.</span> <span class="toc-text">带参数</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#不带参数"><span class="toc-number">5.2.1.2.</span> <span class="toc-text">不带参数</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#默认参数"><span class="toc-number">5.2.2.</span> <span class="toc-text">默认参数</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#不带参数-1"><span class="toc-number">5.2.2.1.</span> <span class="toc-text">不带参数</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#多个返回值"><span class="toc-number">5.2.3.</span> <span class="toc-text">多个返回值</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Variables-变量"><span class="toc-number">5.2.4.</span> <span class="toc-text">Variables(变量)</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#变量放在属性中"><span class="toc-number">5.2.5.</span> <span class="toc-text">变量放在属性中</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#块属性访问引用"><span class="toc-number">5.3.</span> <span class="toc-text">块属性访问引用</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#属性有条件地定义属性"><span class="toc-number">5.3.1.</span> <span class="toc-text">属性有条件地定义属性</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#向上冒泡"><span class="toc-number">5.3.2.</span> <span class="toc-text">向上冒泡</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Iteration-迭代"><span class="toc-number">5.4.</span> <span class="toc-text">Iteration(迭代)</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Interpolation-插值"><span class="toc-number">5.5.</span> <span class="toc-text">Interpolation(插值)</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Operators-运算符"><span class="toc-number">5.5.1.</span> <span class="toc-text">Operators(运算符)</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#CSS字面量-CSS-Literal"><span class="toc-number">5.5.2.</span> <span class="toc-text">CSS字面量(CSS Literal)</span></a></li></ol></li></ol></li></ol>
                 </div>
@@ -361,7 +364,10 @@
 
 <div class="column is-4-tablet is-4-desktop is-3-widescreen  has-order-1 column-left ">
     
-        
+    
+          
+               
+            
 <div class="card widget">
     <div class="card-content">
         <nav class="level">
@@ -443,110 +449,105 @@
         
     </div>
 </div>
-    
         
-
-<div class="card widget">
-    <div class="card-content">
-        <div class="menu links">
-        <h3 class="menu-label">
-            链接
-        </h3>
-        <ul class="menu-list">
-        
+      
             
-                <li>
-                <a class="level is-mobile" href="http://godweiyang.com" target="_blank">
-                    <span class="level-left" style="text-decoration: underline">
-                        <span class="level-item">厉害的阳神</span>
-                    </span> 
-                </a>      
-                
-        
+      
             
-                <a class="level is-mobile" href="https://qjchen.cn" target="_blank">
-                    <span class="level-right" style="text-decoration: underline">
-                        <span class="level-item">聪明的前嘉</span>
-                    </span>
-                </a>
-                </li>
+      
             
-        
-        </ul>
-        </div>
-    </div>
-</div>
-
-    
-        
-<div class="card widget">
-    <div class="card-content">
-        <div class="menu">
-            <h3 class="menu-label">
-                分类
-            </h3>
-            <ul class="menu-list">
-            <li>
-        <a class="level is-marginless" href="/categories/icarus/">
-            <span class="level-start">
-                <span class="level-item">icarus</span>
-            </span>
-            <span class="level-end">
-                <span class="level-item tag">1</span>
-            </span>
-        </a></li><li>
-        <a class="level is-marginless" href="/categories/markdown/">
-            <span class="level-start">
-                <span class="level-item">markdown</span>
-            </span>
-            <span class="level-end">
-                <span class="level-item tag">1</span>
-            </span>
-        </a></li><li>
-        <a class="level is-marginless" href="/categories/前端/">
-            <span class="level-start">
-                <span class="level-item">前端</span>
-            </span>
-            <span class="level-end">
-                <span class="level-item tag">1</span>
-            </span>
-        </a></li><li>
-        <a class="level is-marginless" href="/categories/学习计划/">
-            <span class="level-start">
-                <span class="level-item">学习计划</span>
-            </span>
-            <span class="level-end">
-                <span class="level-item tag">1</span>
-            </span>
-        </a></li><li>
-        <a class="level is-marginless" href="/categories/算法/">
-            <span class="level-start">
-                <span class="level-item">算法</span>
-            </span>
-            <span class="level-end">
-                <span class="level-item tag">1</span>
-            </span>
-        </a></li>
-            </ul>
-        </div>
-    </div>
-</div>
-    
-        
-<div class="card widget">
-    <div class="card-content">
-        <h3 class="menu-label">
-            标签云
-        </h3>
-        <a href="/tags/css/" style="font-size: 10px;">css</a> <a href="/tags/hexo/" style="font-size: 20px;">hexo</a> <a href="/tags/icarus/" style="font-size: 10px;">icarus</a> <a href="/tags/leetcode/" style="font-size: 10px;">leetcode</a> <a href="/tags/markdown/" style="font-size: 10px;">markdown</a> <a href="/tags/stylus/" style="font-size: 10px;">stylus</a> <a href="/tags/学习计划/" style="font-size: 10px;">学习计划</a> <a href="/tags/算法/" style="font-size: 10px;">算法</a> <a href="/tags/面试/" style="font-size: 10px;">面试</a>
-    </div>
-</div>
-
     
     
         <div class="column-right-shadow  ">
         
             
+<div class="card widget" id="toc" style="max-height: 400px; overflow: auto;">
+    <div class="card-content">
+        <div class="menu">
+            <h3 class="menu-label">
+                目录
+            </h3>
+            <ul class="menu-list"><li>
+        <a class="is-flex" href="#Stylus介绍">
+        <span class="has-mr-6">1</span>
+        <span>Stylus介绍</span>
+        </a></li><li>
+        <a class="is-flex" href="#安装">
+        <span class="has-mr-6">2</span>
+        <span>安装</span>
+        </a></li><li>
+        <a class="is-flex" href="#生成CSS">
+        <span class="has-mr-6">3</span>
+        <span>生成CSS</span>
+        </a></li><li>
+        <a class="is-flex" href="#应用效果">
+        <span class="has-mr-6">4</span>
+        <span>应用效果</span>
+        </a></li><li>
+        <a class="is-flex" href="#Flexible-syntax-灵活的用法">
+        <span class="has-mr-6">5</span>
+        <span>Flexible syntax(灵活的用法)</span>
+        </a><ul class="menu-list"><li>
+        <a class="is-flex" href="#Flexible-amp-灵活-amp">
+        <span class="has-mr-6">5.1</span>
+        <span>Flexible &amp;(灵活&amp;)</span>
+        </a></li><li>
+        <a class="is-flex" href="#Functions-方法">
+        <span class="has-mr-6">5.2</span>
+        <span>Functions 方法</span>
+        </a><ul class="menu-list"><li>
+        <a class="is-flex" href="#返回值">
+        <span class="has-mr-6">5.2.1</span>
+        <span>返回值</span>
+        </a></li><li>
+        <a class="is-flex" href="#默认参数">
+        <span class="has-mr-6">5.2.2</span>
+        <span>默认参数</span>
+        </a></li><li>
+        <a class="is-flex" href="#多个返回值">
+        <span class="has-mr-6">5.2.3</span>
+        <span>多个返回值</span>
+        </a></li><li>
+        <a class="is-flex" href="#Variables-变量">
+        <span class="has-mr-6">5.2.4</span>
+        <span>Variables(变量)</span>
+        </a></li><li>
+        <a class="is-flex" href="#变量放在属性中">
+        <span class="has-mr-6">5.2.5</span>
+        <span>变量放在属性中</span>
+        </a></li></ul></li><li>
+        <a class="is-flex" href="#块属性访问引用">
+        <span class="has-mr-6">5.3</span>
+        <span>块属性访问引用</span>
+        </a><ul class="menu-list"><li>
+        <a class="is-flex" href="#属性有条件地定义属性">
+        <span class="has-mr-6">5.3.1</span>
+        <span>属性有条件地定义属性</span>
+        </a></li><li>
+        <a class="is-flex" href="#向上冒泡">
+        <span class="has-mr-6">5.3.2</span>
+        <span>向上冒泡</span>
+        </a></li></ul></li><li>
+        <a class="is-flex" href="#Iteration-迭代">
+        <span class="has-mr-6">5.4</span>
+        <span>Iteration(迭代)</span>
+        </a></li><li>
+        <a class="is-flex" href="#Interpolation-插值">
+        <span class="has-mr-6">5.5</span>
+        <span>Interpolation(插值)</span>
+        </a><ul class="menu-list"><li>
+        <a class="is-flex" href="#Operators-运算符">
+        <span class="has-mr-6">5.5.1</span>
+        <span>Operators(运算符)</span>
+        </a></li><li>
+        <a class="is-flex" href="#CSS字面量-CSS-Literal">
+        <span class="has-mr-6">5.5.2</span>
+        <span>CSS字面量(CSS Literal)</span>
+        </a></li></ul></li></ul></li></ul>
+        </div>
+    </div>
+</div>
+
         
             
 <div class="card widget">
@@ -772,6 +773,9 @@
 </div>
         
         </div>
+    
+
+
     
 </div>
 

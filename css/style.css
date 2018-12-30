@@ -418,7 +418,7 @@ img.thumbnail {
   text-decoration: underline;
 }
 /*toc*/
-.toc-article {
+.content .toc-article {
   border: 1px solid #bbb;
   border-radius: 10px;
   margin: 1.5em 0 0.3em 1.5em;
@@ -428,30 +428,30 @@ img.thumbnail {
   overflow-x: hidden;
   background-color: #fff;
 }
-.toc-title {
+.content .toc-title {
   font-size: 120%;
 }
-#toc {
+.content #toc {
   line-height: 1.5em;
   font-size: 0.9em;
   float: right;
 }
-#toc .toc {
+.content #toc .toc {
   padding: 0;
   margin: 1em;
 }
-#toc .toc a {
+.content #toc .toc a {
   color: #dd6150;
   font-weight: 500;
 }
-#toc .toc a:hover {
+.content #toc .toc a:hover {
   color: #303030;
   text-decoration: underline;
 }
-#toc .toc li {
+.content #toc .toc li {
   list-style-type: none;
 }
-#toc .toc-child {
+.content #toc .toc-child {
   margin-left: 1em;
 }
 /* ---------------------------------
