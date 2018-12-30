@@ -1,0 +1,937 @@
+<!DOCTYPE html>
+<!-- 页面点击小红心 -->
+<script src="/js/clicklove.js"></script>
+<html lang="zh">
+<head><meta name="generator" content="Hexo 3.8.0">
+    <meta charset="utf-8">
+<title>简洁清爽的Stylus语法 - Jingjing&#39;s blog</title>
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+
+
+    <meta name="description" content="Stylus是一个基于Node.js的CSS的预处理框架。其本质上做的事情与sass/less等类似。Stylus比less更强大。icarus主题中用到了stylus。">
+<meta name="keywords" content="stylus,css,hexo">
+<meta property="og:type" content="article">
+<meta property="og:title" content="简洁清爽的Stylus语法">
+<meta property="og:url" content="http://yoursite.com/2018/12/31/简洁清爽的Stylus语法/index.html">
+<meta property="og:site_name" content="Jingjing&#39;s blog">
+<meta property="og:description" content="Stylus是一个基于Node.js的CSS的预处理框架。其本质上做的事情与sass/less等类似。Stylus比less更强大。icarus主题中用到了stylus。">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:updated_time" content="2018-12-30T21:48:39.610Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="简洁清爽的Stylus语法">
+<meta name="twitter:description" content="Stylus是一个基于Node.js的CSS的预处理框架。其本质上做的事情与sass/less等类似。Stylus比less更强大。icarus主题中用到了stylus。">
+
+
+
+
+
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.7.2/css/bulma.css">
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.4.1/css/all.css">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Ubuntu:400,600|Source+Code+Pro">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@9.12.0/styles/atom-one-dark.css">
+
+
+    
+    
+    
+    <style>body>.footer,body>.navbar,body>.section{opacity:0}</style>
+    
+
+    
+    
+    
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/lightgallery@1.6.8/dist/css/lightgallery.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/justifiedGallery@3.7.0/dist/css/justifiedGallery.min.css">
+    
+
+    
+    
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/outdatedbrowser@1.1.5/outdatedbrowser/outdatedbrowser.min.css">
+
+
+    
+    
+    
+    
+
+<link rel="stylesheet" href="/css/back-to-top.css">
+
+
+    
+    
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-131380423-1"></script>
+<script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+
+    gtag('config', 'UA-131380423-1');
+</script>
+
+
+    
+    
+    
+    
+
+    
+    
+<link rel="stylesheet" href="/css/progressbar.css">
+<script src="https://cdn.jsdelivr.net/npm/pace-js@1.0.2/pace.min.js"></script>
+
+    
+
+
+<link rel="stylesheet" href="/css/style.css">
+</head>
+<body class="is-2-column">
+    <nav class="navbar navbar-main">
+    <div class="container">
+        <div class="navbar-brand is-flex-center">
+            <a class="navbar-item navbar-logo" href="/">
+            
+                <img src="/images/logo.jpg" alt="简洁清爽的Stylus语法" height="28">
+            
+            </a>
+        </div>
+        <div class="navbar-menu">
+            
+            <div class="navbar-start">
+                
+                <a class="navbar-item" href="/">主页</a>
+                
+                <a class="navbar-item" href="/archives">归档</a>
+                
+                <a class="navbar-item" href="/categories">分类</a>
+                
+                <a class="navbar-item" href="/tags">标签</a>
+                
+                <a class="navbar-item" href="/about">关于</a>
+                
+            </div>
+            
+            <div class="navbar-end">
+                
+                    
+                    
+                    <a class="navbar-item" target="_blank" title="Download on GitHub" href="http://github.com/ppoffice/hexo-theme-icarus">
+                        
+                        <i class="fab fa-github"></i>
+                        
+                    </a>
+                    
+                
+                
+                
+                <a class="navbar-item search" title="搜索" href="javascript:;">
+                    <i class="fas fa-search"></i>
+                </a>
+                
+            </div>
+        </div>
+    </div>
+</nav>
+    
+    <section class="section">
+        <div class="container">
+            <div class="columns">
+                <div class="column is-8-tablet is-8-desktop is-8-widescreen has-order-2 column-main"><div class="card">
+    <!--  -->
+    <div class="card-content article ">
+        <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
+            
+                简洁清爽的Stylus语法
+            
+        </h1>
+        
+            <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
+            <div class="level-left">
+                <i class="fas fa-calendar">&nbsp</i>
+                <time class="level-item has-text-grey" datetime="2018-12-30T19:28:11.000Z">2018-12-31</time>
+                
+                    <i class="fas fa-calendar-check">&nbsp</i>
+                    <time class="level-item has-text-grey" datetime="2018-12-30T21:48:39.610Z">2018-12-31</time>
+                
+                
+                    <i class="fas fa-folder-open">&nbsp</i>
+                    <div class="level-item">
+                    <a class="has-link-grey -link" href="/categories/前端/">前端</a>
+                    </div>
+                
+                
+                    <i class="fas fa-tags">&nbsp</i>
+                    <div class="level-item">
+                    <a class="has-link-grey -link" href="/tags/css/">css</a>&nbsp;/&nbsp;<a class="has-link-grey -link" href="/tags/hexo/">hexo</a>&nbsp;/&nbsp;<a class="has-link-grey -link" href="/tags/stylus/">stylus</a>
+                    </div>
+                
+                
+                <i class="fas fa-book">&nbsp</i>
+                <span class="level-item has-text-grey">
+                    
+                    
+                    13 分钟 读完 (大约 1930 个字)
+                </span>
+                
+            </div>
+        </div>
+        
+        <div class="content">
+             
+            
+                <div id="toc" class="toc-article">
+                    <strong class="toc-title">文章目录</strong>
+                    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#"><span class="toc-number">1.</span> <span class="toc-text"></span></a></li></ol><li class="toc-item toc-level-1"><a class="toc-link" href="#Stylus介绍"><span class="toc-number"></span> <span class="toc-text">Stylus介绍</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#安装"><span class="toc-number"></span> <span class="toc-text">安装</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#生成CSS"><span class="toc-number"></span> <span class="toc-text">生成CSS</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#应用效果"><span class="toc-number"></span> <span class="toc-text">应用效果</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Flexible-syntax-灵活的用法"><span class="toc-number"></span> <span class="toc-text">Flexible syntax(灵活的用法)</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#Flexible-amp-灵活-amp"><span class="toc-number">1.</span> <span class="toc-text">Flexible &amp;(灵活&amp;)</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Functions-方法"><span class="toc-number">2.</span> <span class="toc-text">Functions 方法</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#返回值"><span class="toc-number">2.1.</span> <span class="toc-text">返回值</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#带参数"><span class="toc-number">2.1.1.</span> <span class="toc-text">带参数</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#不带参数"><span class="toc-number">2.1.2.</span> <span class="toc-text">不带参数</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#默认参数"><span class="toc-number">2.2.</span> <span class="toc-text">默认参数</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#不带参数-1"><span class="toc-number">2.2.1.</span> <span class="toc-text">不带参数</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#多个返回值"><span class="toc-number">2.3.</span> <span class="toc-text">多个返回值</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Variables-变量"><span class="toc-number">2.4.</span> <span class="toc-text">Variables(变量)</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#变量放在属性中"><span class="toc-number">2.5.</span> <span class="toc-text">变量放在属性中</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#块属性访问引用"><span class="toc-number">3.</span> <span class="toc-text">块属性访问引用</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#属性有条件地定义属性"><span class="toc-number">3.1.</span> <span class="toc-text">属性有条件地定义属性</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#向上冒泡"><span class="toc-number">3.2.</span> <span class="toc-text">向上冒泡</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Iteration-迭代"><span class="toc-number">4.</span> <span class="toc-text">Iteration(迭代)</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Interpolation-插值"><span class="toc-number">5.</span> <span class="toc-text">Interpolation(插值)</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Operators-运算符"><span class="toc-number">5.1.</span> <span class="toc-text">Operators(运算符)</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#CSS字面量-CSS-Literal"><span class="toc-number">5.2.</span> <span class="toc-text">CSS字面量(CSS Literal)</span></a></li></ol></li></ol>
+                </li></div>
+             
+            <p><excerpt in="" index="" |="" 首页摘要=""><br>    <code>Stylus</code>是一个基于<code>Node.js</code>的CSS的预处理框架。其本质上做的事情与sass/less等类似。<code>Stylus</code>比<code>less</code>更强大。icarus主题中用到了<code>stylus</code>。<br><a id="more"></a></excerpt></p>
+<h2 id=""><a href="#" class="headerlink" title=""></a><the rest="" of="" contents="" |="" 余下全文=""></the></h2><h1 id="Stylus介绍"><a href="#Stylus介绍" class="headerlink" title="Stylus介绍"></a>Stylus介绍</h1><p><code>Stylus</code>是一个基于<code>Node.js</code>的CSS的预处理框架。<br>可以说是一种新型语言，其本质上做的事情与sass/less等类似。<br><code>Stylus</code>比less更强大；比sass更符合我们的思路。</p>
+<p>它是一个CSS的预处理框架，2010年产生，来自<code>Node.js</code>社区，主要用来给Node项目进行CSS预处理支持，所以 <code>Stylus</code>是一种新型语言，可以创建健壮的、动态的、富有表现力的CSS。比较年轻，其本质上做的事情与 SASS/LESS 等类似，应该是有很多借鉴，所以近似脚本的方式去写CSS代码。</p>
+<p><code>Stylus</code>默认使用 .styl 的作为文件扩展名，支持多样性的CSS语法。</p>
+<p><code>Stylus</code>功能上更为强壮，和js联系更加紧密。</p>
+<p>对于开发来说，CSS的弱点在于静态化。我们需要一个真正能提高开发效率的工具，LESS， SASS都在这方面做了一些贡献。</p>
+<h1 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h1><p>全局安装，安装之前你需要先安装nodejs。<br><figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ npm install stylus -g</span><br></pre></td></tr></table></figure></p>
+<p>苹果电脑（mac系统）以上命令或许不成功 </p>
+<p>mac系统建议以下方式进行安装<br><figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ sudo npm install stylus -g</span><br></pre></td></tr></table></figure></p>
+<p>这样就算是安装完Stylus了，也可以正常使用Stylus。</p>
+<figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line">Usage: stylus [options] [command] [&lt; in [&gt; out]]</span><br><span class="line">              [file|dir ...]</span><br><span class="line">Commands:</span><br><span class="line">  help &lt;prop&gt;     Opens help info for &lt;prop&gt; in</span><br><span class="line">                  your default browser. (OS X only)</span><br><span class="line">Options:</span><br><span class="line"></span><br><span class="line">  -u, --use &lt;path&gt;        Utilize the stylus plugin at &lt;path&gt;</span><br><span class="line">  -i, --interactive       Start interactive REPL</span><br><span class="line">  -w, --watch             Watch file(s) for changes and re-compile</span><br><span class="line">  -o, --out &lt;dir&gt;         Output to &lt;dir&gt; when passing files</span><br><span class="line">  -C, --css &lt;src&gt; [dest]  Convert CSS input to Stylus</span><br><span class="line">  -I, --include &lt;path&gt;    Add &lt;path&gt; to lookup paths</span><br><span class="line">  -c, --compress          Compress CSS output</span><br><span class="line">  -d, --compare           Display input along with output</span><br><span class="line">  -f, --firebug           Emits debug infos in the generated css that</span><br><span class="line">                          can be used by the FireStylus Firebug plugin</span><br><span class="line">  -l, --line-numbers      Emits comments in the generated CSS</span><br><span class="line">                          indicating the corresponding Stylus line</span><br><span class="line">  -V, --version           Display the version of Stylus</span><br><span class="line">  -h, --help              Display help information</span><br></pre></td></tr></table></figure>
+<h1 id="生成CSS"><a href="#生成CSS" class="headerlink" title="生成CSS"></a>生成CSS</h1><p>命令行中建立一个stylusExample/，再在里面建立 src 目录专门存放 stylus 文件，在里面建立 example.styl 文件。然后在 stylusExample 目录下面执行下面命令<br><figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ stylus --compress src/</span><br></pre></td></tr></table></figure></p>
+<p>输出compiled src/example.css ，这个时候表示你生成成功了，带上–compress参数表示你生成压缩的CSS文件。<br><figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">$ stylus --css css/example.css css/out.styl CSS转换成styl </span><br><span class="line">$ stylus help box-shadow CSS属性的帮助 </span><br><span class="line">$ stylus --css test.css 输出基本名一致的.styl文件</span><br></pre></td></tr></table></figure></p>
+<h1 id="应用效果"><a href="#应用效果" class="headerlink" title="应用效果"></a>应用效果</h1><p>Try Stylus!<br>stylus<br><figure class="highlight stylus hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-selector-tag">body</span>,html</span><br><span class="line">    <span class="hljs-attribute">margin</span>:<span class="hljs-number">0</span></span><br><span class="line">    <span class="hljs-attribute">padding</span>:<span class="hljs-number">0</span></span><br></pre></td></tr></table></figure></p>
+<p>编译成<br><figure class="highlight css hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-selector-tag">body</span>,</span><br><span class="line"><span class="hljs-selector-tag">html</span> &#123;</span><br><span class="line">  <span class="hljs-attribute">margin</span>: <span class="hljs-number">0</span>;</span><br><span class="line">  <span class="hljs-attribute">padding</span>: <span class="hljs-number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>stylus : 强大的功能丰富的语言<br><figure class="highlight stylus hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">-pos(type, args)</span><br><span class="line">  <span class="hljs-selector-tag">i</span> = <span class="hljs-number">0</span></span><br><span class="line">  <span class="hljs-attribute">position</span>: unquote(type)</span><br><span class="line">  &#123;args[i]&#125;: args[i + 1] is a 'unit' ? args[i += 1] : 0</span><br><span class="line">  &#123;args[i += 1]&#125;: args[i + 1] is a 'unit' ? args[i += 1] : 0</span><br><span class="line"></span><br><span class="line"><span class="hljs-function"><span class="hljs-title">absolute</span><span class="hljs-params">()</span></span></span><br><span class="line">  -pos(<span class="hljs-string">'absolute'</span>, arguments)</span><br><span class="line"></span><br><span class="line"><span class="hljs-function"><span class="hljs-title">fixed</span><span class="hljs-params">()</span></span></span><br><span class="line">  -pos(<span class="hljs-string">'fixed'</span>, arguments)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"> #prompt</span><br><span class="line">  absolute: <span class="hljs-attribute">top</span> <span class="hljs-number">150px</span> left <span class="hljs-number">5px</span></span><br><span class="line">  <span class="hljs-attribute">width</span>: <span class="hljs-number">200px</span></span><br><span class="line">  <span class="hljs-attribute">margin-left</span>: -(@width / <span class="hljs-number">2</span>)</span><br><span class="line"></span><br><span class="line"> #logo</span><br><span class="line">  fixed: <span class="hljs-attribute">top</span> left</span><br></pre></td></tr></table></figure></p>
+<p>编译成<br><figure class="highlight css hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-selector-id">#prompt</span> &#123;</span><br><span class="line">  <span class="hljs-attribute">position</span>: absolute;</span><br><span class="line">  <span class="hljs-attribute">top</span>: <span class="hljs-number">150px</span>;</span><br><span class="line">  <span class="hljs-attribute">left</span>: <span class="hljs-number">5px</span>;</span><br><span class="line">  <span class="hljs-attribute">width</span>: <span class="hljs-number">200px</span>;</span><br><span class="line">  <span class="hljs-attribute">margin-left</span>: -<span class="hljs-number">100px</span>;</span><br><span class="line"></span><br><span class="line"> #logo &#123;</span><br><span class="line">  <span class="hljs-selector-tag">position</span>: <span class="hljs-selector-tag">fixed</span>;</span><br><span class="line">  <span class="hljs-selector-tag">top</span>: 0;</span><br><span class="line">  <span class="hljs-selector-tag">left</span>: 0;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>nibStylus插件<br>stylus<br><figure class="highlight stylus hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">@import <span class="hljs-string">'nib'</span></span><br><span class="line">body</span><br><span class="line">  <span class="hljs-attribute">background</span>: linear-gradient(<span class="hljs-number">20px</span> top, white, black)</span><br></pre></td></tr></table></figure></p>
+<p>编译成<br><figure class="highlight css hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-selector-tag">body</span> &#123;</span><br><span class="line">  <span class="hljs-attribute">background</span>: <span class="hljs-built_in">-webkit-linear-gradient</span>(20px top, #fff, #000);</span><br><span class="line">  <span class="hljs-attribute">background</span>: <span class="hljs-built_in">-moz-linear-gradient</span>(20px top, #fff, #000);</span><br><span class="line">  <span class="hljs-attribute">background</span>: <span class="hljs-built_in">-o-linear-gradient</span>(20px top, #fff, #000);</span><br><span class="line">  <span class="hljs-attribute">background</span>: <span class="hljs-built_in">-ms-linear-gradient</span>(20px top, #fff, #000);</span><br><span class="line">  <span class="hljs-attribute">background</span>: <span class="hljs-built_in">linear-gradient</span>(20px top, #fff, #000);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>Nesting(嵌套)<br>stylus<br><figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">header</span><br><span class="line">    #logo</span><br><span class="line">        border:1px solid red</span><br></pre></td></tr></table></figure></p>
+<p>编译成<br><figure class="highlight css hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-selector-tag">header</span> <span class="hljs-selector-id">#logo</span> &#123;</span><br><span class="line">  <span class="hljs-attribute">border</span>: <span class="hljs-number">1px</span> solid <span class="hljs-number">#f00</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<h1 id="Flexible-syntax-灵活的用法"><a href="#Flexible-syntax-灵活的用法" class="headerlink" title="Flexible syntax(灵活的用法)"></a>Flexible syntax(灵活的用法)</h1><p>更多详细示例可参考(stylus中文文档)[<a href="https://www.zhangxinxu.com/jq/stylus/]" target="_blank" rel="noopener">https://www.zhangxinxu.com/jq/stylus/]</a></p>
+<p>stylus<br><figure class="highlight stylus hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">body</span><br><span class="line">    <span class="hljs-attribute">font</span> <span class="hljs-number">14px</span>/<span class="hljs-number">1.5</span> Helvetica, arial, sans-serif</span><br><span class="line">    button</span><br><span class="line">    <span class="hljs-selector-tag">button</span>.button</span><br><span class="line">    <span class="hljs-selector-tag">input</span>[type=<span class="hljs-string">'button'</span>]</span><br><span class="line">    <span class="hljs-selector-tag">input</span>[type=<span class="hljs-string">'submit'</span>]</span><br><span class="line">        <span class="hljs-attribute">border-radius</span> <span class="hljs-number">5px</span></span><br><span class="line"></span><br><span class="line"><span class="hljs-selector-tag">header</span> </span><br><span class="line">    <span class="hljs-selector-id">#logo</span>,div</span><br><span class="line">        <span class="hljs-attribute">font-size</span>:<span class="hljs-number">14px</span></span><br></pre></td></tr></table></figure></p>
+<p>编译成<br><figure class="highlight css hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-selector-tag">body</span> &#123;</span><br><span class="line">  <span class="hljs-attribute">font</span>: <span class="hljs-number">14px</span>/<span class="hljs-number">1.5</span> Helvetica, arial, sans-serif;</span><br><span class="line">&#125;</span><br><span class="line"><span class="hljs-selector-tag">body</span> <span class="hljs-selector-tag">button</span>,</span><br><span class="line"><span class="hljs-selector-tag">body</span> <span class="hljs-selector-tag">button</span><span class="hljs-selector-class">.button</span>,</span><br><span class="line"><span class="hljs-selector-tag">body</span> <span class="hljs-selector-tag">input</span><span class="hljs-selector-attr">[type='button']</span> &#123;</span><br><span class="line">  <span class="hljs-attribute">border-radius</span>: <span class="hljs-number">5px</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="hljs-selector-tag">header</span> <span class="hljs-selector-id">#logo</span>,</span><br><span class="line"><span class="hljs-selector-tag">header</span> <span class="hljs-selector-tag">div</span> &#123;</span><br><span class="line">  <span class="hljs-attribute">font-size</span>: <span class="hljs-number">14px</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<h2 id="Flexible-amp-灵活-amp"><a href="#Flexible-amp-灵活-amp" class="headerlink" title="Flexible &amp;(灵活&amp;)"></a>Flexible &amp;(灵活&amp;)</h2><p>stylus<br><figure class="highlight stylus hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">ul</span><br><span class="line">    <span class="hljs-selector-tag">li</span> a</span><br><span class="line">        <span class="hljs-attribute">display</span>: block</span><br><span class="line">        <span class="hljs-attribute">color</span>: blue</span><br><span class="line">        <span class="hljs-attribute">padding</span>: <span class="hljs-number">5px</span></span><br><span class="line">        <span class="hljs-selector-tag">html</span><span class="hljs-selector-class">.ie</span> &amp;</span><br><span class="line">            <span class="hljs-attribute">padding</span>: <span class="hljs-number">6px</span></span><br><span class="line">        &amp;:hover</span><br><span class="line">            <span class="hljs-attribute">color</span>: red</span><br></pre></td></tr></table></figure></p>
+<p>编译成<br><figure class="highlight css hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-selector-tag">ul</span> <span class="hljs-selector-tag">li</span> <span class="hljs-selector-tag">a</span> &#123;</span><br><span class="line">  <span class="hljs-attribute">display</span>: block;</span><br><span class="line">  <span class="hljs-attribute">color</span>: <span class="hljs-number">#00f</span>;</span><br><span class="line">  <span class="hljs-attribute">padding</span>: <span class="hljs-number">5px</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="hljs-selector-tag">html</span><span class="hljs-selector-class">.ie</span> <span class="hljs-selector-tag">ul</span> <span class="hljs-selector-tag">li</span> <span class="hljs-selector-tag">a</span> &#123;</span><br><span class="line">  <span class="hljs-attribute">padding</span>: <span class="hljs-number">6px</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="hljs-selector-tag">ul</span> <span class="hljs-selector-tag">li</span> <span class="hljs-selector-tag">a</span><span class="hljs-selector-pseudo">:hover</span> &#123;</span><br><span class="line">  <span class="hljs-attribute">color</span>: <span class="hljs-number">#f00</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<h2 id="Functions-方法"><a href="#Functions-方法" class="headerlink" title="Functions 方法"></a>Functions 方法</h2><h3 id="返回值"><a href="#返回值" class="headerlink" title="返回值"></a>返回值</h3><h4 id="带参数"><a href="#带参数" class="headerlink" title="带参数"></a>带参数</h4><p>stylus<br><figure class="highlight stylus hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-function"><span class="hljs-title">border-radius</span><span class="hljs-params">(val)</span></span></span><br><span class="line">    -webkit-<span class="hljs-attribute">border-radius</span>: val</span><br><span class="line">    -moz-<span class="hljs-attribute">border-radius</span>: val</span><br><span class="line">    <span class="hljs-attribute">border-radius</span>: val</span><br><span class="line"></span><br><span class="line"><span class="hljs-selector-tag">button</span> </span><br><span class="line">    <span class="hljs-attribute">border-radius</span>(<span class="hljs-number">5px</span>);</span><br></pre></td></tr></table></figure></p>
+<p>编译成<br><figure class="highlight css hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-selector-tag">button</span> &#123;</span><br><span class="line">  <span class="hljs-attribute">-webkit-border-radius</span>: <span class="hljs-number">5px</span>;</span><br><span class="line">  <span class="hljs-attribute">-moz-border-radius</span>: <span class="hljs-number">5px</span>;</span><br><span class="line">  <span class="hljs-attribute">border-radius</span>: <span class="hljs-number">5px</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="hljs-selector-tag">Transparent</span> <span class="hljs-selector-tag">mixins</span></span><br></pre></td></tr></table></figure></p>
+<h4 id="不带参数"><a href="#不带参数" class="headerlink" title="不带参数"></a>不带参数</h4><p>stylus<br><figure class="highlight stylus hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-function"><span class="hljs-title">border-radius</span><span class="hljs-params">()</span></span></span><br><span class="line">    -webkit-<span class="hljs-attribute">border-radius</span>: arguments</span><br><span class="line">    -moz-<span class="hljs-attribute">border-radius</span>: arguments</span><br><span class="line">    <span class="hljs-attribute">border-radius</span>: arguments</span><br><span class="line"></span><br><span class="line"><span class="hljs-selector-tag">button</span> </span><br><span class="line">    <span class="hljs-attribute">border-radius</span>: <span class="hljs-number">5px</span> <span class="hljs-number">10px</span>;</span><br></pre></td></tr></table></figure></p>
+<p>编译成<br><figure class="highlight css hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-selector-tag">button</span> &#123;</span><br><span class="line">  <span class="hljs-attribute">-webkit-border-radius</span>: <span class="hljs-number">5px</span> <span class="hljs-number">10px</span>;</span><br><span class="line">  <span class="hljs-attribute">-moz-border-radius</span>: <span class="hljs-number">5px</span> <span class="hljs-number">10px</span>;</span><br><span class="line">  <span class="hljs-attribute">border-radius</span>: <span class="hljs-number">5px</span> <span class="hljs-number">10px</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<h3 id="默认参数"><a href="#默认参数" class="headerlink" title="默认参数"></a>默认参数</h3><h4 id="不带参数-1"><a href="#不带参数-1" class="headerlink" title="不带参数"></a>不带参数</h4><figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">stylus</span><br><span class="line"></span><br><span class="line">add(a, b = a)</span><br><span class="line">  a + b</span><br><span class="line"></span><br><span class="line">add(10, 5)</span><br><span class="line">// =&gt; 15</span><br><span class="line"></span><br><span class="line">add(10)</span><br><span class="line">// =&gt; 20</span><br><span class="line">函数体</span><br></pre></td></tr></table></figure>
+<p>通过内置unit()把单位都变成px, 因为赋值在每个参数上，因此，我们可以无视单位换算。<br><figure class="highlight stylus hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-function"><span class="hljs-title">add</span><span class="hljs-params">(a, b = a)</span></span></span><br><span class="line">  <span class="hljs-selector-tag">a</span> = unit(<span class="hljs-selector-tag">a</span>, px)</span><br><span class="line">  <span class="hljs-selector-tag">b</span> = unit(<span class="hljs-selector-tag">b</span>, px)</span><br><span class="line">  <span class="hljs-selector-tag">a</span> + b</span><br><span class="line"></span><br><span class="line"><span class="hljs-function"><span class="hljs-title">add</span><span class="hljs-params">(<span class="hljs-number">15%</span>, <span class="hljs-number">10deg</span>)</span></span></span><br><span class="line"><span class="hljs-comment">// =&gt; 25</span></span><br></pre></td></tr></table></figure></p>
+<h3 id="多个返回值"><a href="#多个返回值" class="headerlink" title="多个返回值"></a>多个返回值</h3><p>通过内置unit()把单位都变成px, 因为赋值在每个参数上，因此，我们可以无视单位换算。<br><figure class="highlight stylus hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-function"><span class="hljs-title">sizes</span><span class="hljs-params">()</span></span></span><br><span class="line"> <span class="hljs-number">15px</span> <span class="hljs-number">10px</span></span><br><span class="line"></span><br><span class="line"><span class="hljs-function"><span class="hljs-title">sizes</span><span class="hljs-params">()</span></span>[<span class="hljs-number">0</span>]</span><br><span class="line"><span class="hljs-comment">// =&gt; 15px</span></span><br></pre></td></tr></table></figure></p>
+<h3 id="Variables-变量"><a href="#Variables-变量" class="headerlink" title="Variables(变量)"></a>Variables(变量)</h3><p>常用方法<br>stylus<br><figure class="highlight stylus hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-attribute">font-size</span> = <span class="hljs-number">14px</span></span><br><span class="line">body</span><br><span class="line">    <span class="hljs-attribute">font</span> font-size Arial, sans-seri</span><br></pre></td></tr></table></figure></p>
+<p>编译成<br><figure class="highlight css hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-selector-tag">body</span> &#123;</span><br><span class="line">  <span class="hljs-attribute">font</span>: <span class="hljs-number">14px</span> Arial, sans-seri;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<h3 id="变量放在属性中"><a href="#变量放在属性中" class="headerlink" title="变量放在属性中"></a>变量放在属性中</h3><p>stylus<br><figure class="highlight stylus hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">#prompt</span><br><span class="line">   <span class="hljs-attribute">position</span>: absolute</span><br><span class="line">   <span class="hljs-attribute">top</span>: <span class="hljs-number">150px</span></span><br><span class="line">   <span class="hljs-attribute">left</span>: <span class="hljs-number">50%</span></span><br><span class="line">   <span class="hljs-attribute">width</span>: w = <span class="hljs-number">200px</span></span><br><span class="line">   <span class="hljs-attribute">margin-left</span>: -(w / <span class="hljs-number">2</span>)</span><br></pre></td></tr></table></figure></p>
+<p>编译成<br><figure class="highlight css hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"> <span class="hljs-selector-id">#prompt</span> &#123;</span><br><span class="line">  <span class="hljs-attribute">position</span>: absolute;</span><br><span class="line">  <span class="hljs-attribute">top</span>: <span class="hljs-number">150px</span>;</span><br><span class="line">  <span class="hljs-attribute">left</span>: <span class="hljs-number">50%</span>;</span><br><span class="line">  <span class="hljs-attribute">width</span>: <span class="hljs-number">200px</span>;</span><br><span class="line">  <span class="hljs-attribute">margin-left</span>: -<span class="hljs-number">100px</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<h2 id="块属性访问引用"><a href="#块属性访问引用" class="headerlink" title="块属性访问引用"></a>块属性访问引用</h2><p>stylus<br><figure class="highlight stylus hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">#prompt</span><br><span class="line">   <span class="hljs-attribute">position</span>: absolute</span><br><span class="line">   <span class="hljs-attribute">width</span>: <span class="hljs-number">200px</span></span><br><span class="line">   <span class="hljs-attribute">margin-left</span>: -(@width / <span class="hljs-number">2</span>)</span><br></pre></td></tr></table></figure></p>
+<p>编译成<br><figure class="highlight css hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"> <span class="hljs-selector-id">#prompt</span> &#123;</span><br><span class="line">  <span class="hljs-attribute">position</span>: absolute;</span><br><span class="line">  <span class="hljs-attribute">width</span>: <span class="hljs-number">200px</span>;</span><br><span class="line">  <span class="hljs-attribute">margin-left</span>: -<span class="hljs-number">100px</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<h3 id="属性有条件地定义属性"><a href="#属性有条件地定义属性" class="headerlink" title="属性有条件地定义属性"></a>属性有条件地定义属性</h3><p>stylus:指定z-index值为1，但是，只有在z-index之前未指定的时候才这样：<br><figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">position()</span><br><span class="line">  position: arguments</span><br><span class="line">  z-index: 1 unless @z-index</span><br><span class="line"> #logo</span><br><span class="line">  z-index: 20</span><br><span class="line">  position: absolute</span><br><span class="line"> #logo2</span><br><span class="line">  position: absolute</span><br></pre></td></tr></table></figure></p>
+<p>编译成<br><figure class="highlight css hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"> <span class="hljs-selector-id">#logo</span> &#123;</span><br><span class="line">  <span class="hljs-attribute">z-index</span>: <span class="hljs-number">20</span>;</span><br><span class="line">  <span class="hljs-attribute">position</span>: absolute;</span><br><span class="line">&#125;</span><br><span class="line"> <span class="hljs-selector-id">#logo2</span> &#123;</span><br><span class="line">  <span class="hljs-attribute">position</span>: absolute;</span><br><span class="line">  <span class="hljs-attribute">z-index</span>: <span class="hljs-number">1</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<h3 id="向上冒泡"><a href="#向上冒泡" class="headerlink" title="向上冒泡"></a>向上冒泡</h3><p>stylus:属性会“向上冒泡”查找堆栈直到被发现，或者返回null（如果属性搞不定）下面这个例子，@color被弄成了blue.<br><figure class="highlight stylus hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">body</span><br><span class="line">  <span class="hljs-attribute">color</span>: red</span><br><span class="line">  ul</span><br><span class="line">    li</span><br><span class="line">      <span class="hljs-attribute">color</span>: blue</span><br><span class="line">      a</span><br><span class="line">        <span class="hljs-attribute">background-color</span>: @color</span><br></pre></td></tr></table></figure></p>
+<p>编译成<br><figure class="highlight css hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-selector-tag">body</span> &#123;</span><br><span class="line">  <span class="hljs-attribute">color</span>: <span class="hljs-number">#f00</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="hljs-selector-tag">body</span> <span class="hljs-selector-tag">ul</span> <span class="hljs-selector-tag">li</span> &#123;</span><br><span class="line">  <span class="hljs-attribute">color</span>: <span class="hljs-number">#00f</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="hljs-selector-tag">body</span> <span class="hljs-selector-tag">ul</span> <span class="hljs-selector-tag">li</span> <span class="hljs-selector-tag">a</span> &#123;</span><br><span class="line">  <span class="hljs-attribute">background-color</span>: <span class="hljs-number">#00f</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<h2 id="Iteration-迭代"><a href="#Iteration-迭代" class="headerlink" title="Iteration(迭代)"></a>Iteration(迭代)</h2><p>stylus<br><figure class="highlight stylus hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">table</span><br><span class="line">    <span class="hljs-keyword">for</span> row <span class="hljs-keyword">in</span> <span class="hljs-number">1</span> <span class="hljs-number">2</span> <span class="hljs-number">3</span> <span class="hljs-number">4</span> <span class="hljs-number">5</span></span><br><span class="line">        <span class="hljs-selector-tag">tr</span>:nth-child(&#123;row&#125;)</span><br><span class="line">            <span class="hljs-attribute">height</span>: <span class="hljs-number">10px</span> * row</span><br></pre></td></tr></table></figure></p>
+<p>编译成<br><figure class="highlight css hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-selector-tag">table</span> <span class="hljs-selector-tag">tr</span><span class="hljs-selector-pseudo">:nth-child(1)</span> &#123;</span><br><span class="line">  <span class="hljs-attribute">height</span>: <span class="hljs-number">10px</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="hljs-selector-tag">table</span> <span class="hljs-selector-tag">tr</span><span class="hljs-selector-pseudo">:nth-child(2)</span> &#123;</span><br><span class="line">  <span class="hljs-attribute">height</span>: <span class="hljs-number">20px</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="hljs-selector-tag">table</span> <span class="hljs-selector-tag">tr</span><span class="hljs-selector-pseudo">:nth-child(3)</span> &#123;</span><br><span class="line">  <span class="hljs-attribute">height</span>: <span class="hljs-number">30px</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="hljs-selector-tag">table</span> <span class="hljs-selector-tag">tr</span><span class="hljs-selector-pseudo">:nth-child(4)</span> &#123;</span><br><span class="line">  <span class="hljs-attribute">height</span>: <span class="hljs-number">40px</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="hljs-selector-tag">table</span> <span class="hljs-selector-tag">tr</span><span class="hljs-selector-pseudo">:nth-child(5)</span> &#123;</span><br><span class="line">  <span class="hljs-attribute">height</span>: <span class="hljs-number">50px</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<h2 id="Interpolation-插值"><a href="#Interpolation-插值" class="headerlink" title="Interpolation(插值)"></a>Interpolation(插值)</h2><p>stylus<br><figure class="highlight stylus hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">vendors = webkit moz o ms official</span><br><span class="line"><span class="hljs-function"><span class="hljs-title">border-radius</span><span class="hljs-params">()</span></span></span><br><span class="line">    <span class="hljs-keyword">for</span> vendor <span class="hljs-keyword">in</span> vendors</span><br><span class="line">        <span class="hljs-keyword">if</span> vendor == official</span><br><span class="line">            <span class="hljs-attribute">border-radius</span>: arguments</span><br><span class="line">        <span class="hljs-keyword">else</span></span><br><span class="line">            -&#123;vendor&#125;-<span class="hljs-attribute">border-radius</span>: arguments</span><br><span class="line">#<span class="hljs-attribute">content</span></span><br><span class="line">    <span class="hljs-attribute">border-radius</span>: <span class="hljs-number">5px</span></span><br></pre></td></tr></table></figure></p>
+<p>编译成<br><figure class="highlight css hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-selector-id">#content</span> &#123;</span><br><span class="line">  <span class="hljs-attribute">-webkit-border-radius</span>: <span class="hljs-number">5px</span>;</span><br><span class="line">  <span class="hljs-attribute">-moz-border-radius</span>: <span class="hljs-number">5px</span>;</span><br><span class="line">  <span class="hljs-attribute">-o-border-radius</span>: <span class="hljs-number">5px</span>;</span><br><span class="line">  <span class="hljs-attribute">-ms-border-radius</span>: <span class="hljs-number">5px</span>;</span><br><span class="line">  <span class="hljs-attribute">border-radius</span>: <span class="hljs-number">5px</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<h3 id="Operators-运算符"><a href="#Operators-运算符" class="headerlink" title="Operators(运算符)"></a>Operators(运算符)</h3><p>运算符优先级：下表运算符优先级，从最高到最低：<br><figure class="highlight stylus hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">.</span><br><span class="line"> []</span><br><span class="line"> ! ~ + -</span><br><span class="line"> is defined</span><br><span class="line"> ** * / %</span><br><span class="line"> + -</span><br><span class="line"> ... ..</span><br><span class="line"> &lt;= &gt;= &lt; &gt;</span><br><span class="line"> <span class="hljs-keyword">in</span></span><br><span class="line"> == is != is not isnt</span><br><span class="line"> is a</span><br><span class="line"> &amp;&amp; and || or</span><br><span class="line"> ?:</span><br><span class="line"> = := ?= += -= *= /= %=</span><br><span class="line"> not</span><br><span class="line"> <span class="hljs-keyword">if</span> unless</span><br><span class="line">@import</span><br><span class="line">@import <span class="hljs-string">"reset.css"</span></span><br></pre></td></tr></table></figure></p>
+<p>当使用@import没有.css扩展，会被认为是Stylus片段（如：@import “mixins/border-radius”）。</p>
+<p>@import工作原理为：遍历目录队列，并检查任意目录中是否有该文件（类似node的require.paths）。该队列默认为单一路径，从filename选项的dirname衍生而来。 因此，如果你的文件名是/tmp/testing/stylus/main.styl，导入将显现为/tmp/testing/stylus/。</p>
+<p>@import也支持索引形式。这意味着当你@import blueprint, 则会理解成blueprint.styl或blueprint/index.styl. 对于库而言，这很有用，既可以展示所有特征与功能，同时又能导入特征子集。</p>
+<p>@font-face<br>stylus<br><figure class="highlight stylus hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">@font-face</span><br><span class="line">  <span class="hljs-attribute">font-family</span> Geo</span><br><span class="line">  <span class="hljs-attribute">font-style</span> normal</span><br><span class="line">  src url(fonts/geo_sans_light/GensansLight.ttf)</span><br><span class="line">.ingeo</span><br><span class="line">  <span class="hljs-attribute">font-family</span> Geo</span><br></pre></td></tr></table></figure></p>
+<p>编译成<br><figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">@font-face &#123; </span><br><span class="line">font-family: Geo; </span><br><span class="line">font-style: normal; </span><br><span class="line">src: url(“fonts/geo_sans_light/GensansLight.ttf”); </span><br><span class="line">&#125; </span><br><span class="line">.ingeo &#123; </span><br><span class="line">font-family: Geo; </span><br><span class="line">&#125; </span><br><span class="line">@media</span><br></pre></td></tr></table></figure></p>
+<p>stylus<br><figure class="highlight stylus hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">@media print </span><br><span class="line"><span class="hljs-selector-id">#header</span> </span><br><span class="line"><span class="hljs-selector-id">#footer</span> </span><br><span class="line"><span class="hljs-attribute">display</span> none</span><br></pre></td></tr></table></figure></p>
+<p>编译成<br><figure class="highlight css hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">@<span class="hljs-keyword">media</span> print &#123; </span><br><span class="line"><span class="hljs-selector-id">#header</span>, </span><br><span class="line"><span class="hljs-selector-id">#footer</span> &#123; </span><br><span class="line"><span class="hljs-attribute">display</span>: none; </span><br><span class="line">&#125; </span><br><span class="line">&#125; </span><br><span class="line">@<span class="hljs-keyword">keyframes</span></span><br></pre></td></tr></table></figure></p>
+<p>stylus<br><figure class="highlight stylus hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">@keyframes pulse</span><br><span class="line">    <span class="hljs-number">0%</span></span><br><span class="line">      <span class="hljs-attribute">background-color</span> red</span><br><span class="line">      <span class="hljs-attribute">transform</span> scale(<span class="hljs-number">1.0</span>) rotate(<span class="hljs-number">0deg</span>)</span><br><span class="line">    <span class="hljs-number">33%</span></span><br><span class="line">      <span class="hljs-attribute">background-color</span> blue</span><br><span class="line">      -webkit-<span class="hljs-attribute">transform</span> scale(<span class="hljs-number">1.1</span>) rotate(-<span class="hljs-number">5deg</span>)</span><br></pre></td></tr></table></figure></p>
+<p>编译成<br><figure class="highlight css hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br></pre></td><td class="code"><pre><span class="line">@-<span class="hljs-keyword">moz</span>-<span class="hljs-keyword">keyframes</span> pulse &#123;</span><br><span class="line">  0% &#123;</span><br><span class="line">    <span class="hljs-attribute">background-color</span>: <span class="hljs-number">#f00</span>;</span><br><span class="line">    <span class="hljs-attribute">transform</span>: <span class="hljs-built_in">scale</span>(1) <span class="hljs-built_in">rotate</span>(0deg);</span><br><span class="line">  &#125;</span><br><span class="line">  33% &#123;</span><br><span class="line">    <span class="hljs-attribute">background-color</span>: <span class="hljs-number">#00f</span>;</span><br><span class="line">    <span class="hljs-attribute">-webkit-transform</span>: <span class="hljs-built_in">scale</span>(1.1) <span class="hljs-built_in">rotate</span>(-5deg);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line">@-<span class="hljs-keyword">webkit</span>-<span class="hljs-keyword">keyframes</span> pulse &#123;</span><br><span class="line">  0% &#123;</span><br><span class="line">    <span class="hljs-attribute">background-color</span>: <span class="hljs-number">#f00</span>;</span><br><span class="line">    <span class="hljs-attribute">transform</span>: <span class="hljs-built_in">scale</span>(1) <span class="hljs-built_in">rotate</span>(0deg);</span><br><span class="line">  &#125;</span><br><span class="line">  33% &#123;</span><br><span class="line">    <span class="hljs-attribute">background-color</span>: <span class="hljs-number">#00f</span>;</span><br><span class="line">    <span class="hljs-attribute">-webkit-transform</span>: <span class="hljs-built_in">scale</span>(1.1) <span class="hljs-built_in">rotate</span>(-5deg);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line">@-<span class="hljs-keyword">o</span>-<span class="hljs-keyword">keyframes</span> pulse &#123;</span><br><span class="line">  0% &#123;</span><br><span class="line">    <span class="hljs-attribute">background-color</span>: <span class="hljs-number">#f00</span>;</span><br><span class="line">    <span class="hljs-attribute">transform</span>: <span class="hljs-built_in">scale</span>(1) <span class="hljs-built_in">rotate</span>(0deg);</span><br><span class="line">  &#125;</span><br><span class="line">  33% &#123;</span><br><span class="line">    <span class="hljs-attribute">background-color</span>: <span class="hljs-number">#00f</span>;</span><br><span class="line">    <span class="hljs-attribute">-webkit-transform</span>: <span class="hljs-built_in">scale</span>(1.1) <span class="hljs-built_in">rotate</span>(-5deg);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line">@<span class="hljs-keyword">keyframes</span> pulse &#123;</span><br><span class="line">  0% &#123;</span><br><span class="line">    <span class="hljs-attribute">background-color</span>: <span class="hljs-number">#f00</span>;</span><br><span class="line">    <span class="hljs-attribute">transform</span>: <span class="hljs-built_in">scale</span>(1) <span class="hljs-built_in">rotate</span>(0deg);</span><br><span class="line">  &#125;</span><br><span class="line">  33% &#123;</span><br><span class="line">    <span class="hljs-attribute">background-color</span>: <span class="hljs-number">#00f</span>;</span><br><span class="line">    <span class="hljs-attribute">-webkit-transform</span>: <span class="hljs-built_in">scale</span>(1.1) <span class="hljs-built_in">rotate</span>(-5deg);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<h3 id="CSS字面量-CSS-Literal"><a href="#CSS字面量-CSS-Literal" class="headerlink" title="CSS字面量(CSS Literal)"></a>CSS字面量(CSS Literal)</h3><p>stylus<br><figure class="highlight stylus hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">@css &#123;</span><br><span class="line">  <span class="hljs-selector-tag">body</span> &#123;</span><br><span class="line">    <span class="hljs-attribute">font</span>: <span class="hljs-number">14px</span>;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>编译成<br><figure class="highlight css hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-selector-tag">body</span> &#123;</span><br><span class="line">  <span class="hljs-attribute">font</span>: <span class="hljs-number">14px</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+
+        </div>
+        
+        <div class="level is-size-7 is-uppercase">
+            <div class="level-start">
+                <div class="level-item">
+                    <span class="is-size-6 has-text-grey has-mr-7">#</span>
+                    <a class="has-link-grey -link" href="/tags/css/">css</a>, <a class="has-link-grey -link" href="/tags/hexo/">hexo</a>, <a class="has-link-grey -link" href="/tags/stylus/">stylus</a>
+                </div>
+            </div>
+        </div>
+        
+        
+        
+            <p style="padding-bottom: 1rem">
+            <span id="busuanzi_container_page_pv">
+               本文总阅读量<span id="busuanzi_value_page_pv"></span>次
+            </span>
+            </p>
+        
+        
+            <div class="social-share"></div>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/social-share.js@1.0.16/dist/css/share.min.css">
+<script src="https://cdn.jsdelivr.net/npm/social-share.js@1.0.16/dist/js/social-share.min.js"></script>
+            <!-- <div class="share-component" data-disabled="google, twitter, facebook, tencent, douban, linkedin, diandian"></div> -->
+        
+    </div>
+</div>
+
+
+
+<div class="card">
+    <div class="card-content">
+        <h3 class="menu-label has-text-centered">喜欢这篇文章？打赏一下作者吧</h3>
+        <div class="buttons is-centered">
+            
+                
+<a class="button is-success donate">
+    <span class="icon is-small">
+        <i class="fab fa-weixin"></i>
+    </span>
+    <span>微信</span>
+    <div class="qrcode"><img src="https://s1.ax1x.com/2018/12/30/FfHzNV.png" alt="微信"></div>
+</a>
+
+                
+                
+<a class="button is-info donate">
+    <span class="icon is-small">
+        <i class="fab fa-alipay"></i>
+    </span>
+    <span>支付宝</span>
+    <div class="qrcode"><img src="https://s1.ax1x.com/2018/12/30/FfbShT.jpg" alt="支付宝"></div>
+</a>
+
+                
+        </div>
+    </div>
+</div>
+
+
+
+<div class="card card-transparent">
+    <div class="level post-navigation is-flex-wrap is-mobile">
+        
+        
+        <div class="level-end">
+            <a class="level level-item has-link-grey  article-nav-next" href="/2018/12/26/O-n-算法查找第k大的数/">
+                <span class="level-item">O(n)算法查找第k大的数</span>
+                <i class="level-item fas fa-chevron-right"></i>
+            </a>
+        </div>
+        
+    </div>
+</div>
+
+
+
+<div class="card">
+    <div class="card-content">
+        <h3 class="title is-5 has-text-weight-normal">评论</h3>
+        
+<div id="valine-thread"></div>
+<script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+<script src="//unpkg.com/valine/dist/Valine.min.js"></script>
+<script>
+    new Valine({
+        el: '#valine-thread' ,
+        notify: false,
+        verify: false,
+        app_id: 'TDJ1Xwg60guxsxnHXWGYVzaR-gzGzoHsz',
+        app_key: 'gqw5MJGTDfaMQA0JRsBllBAG',
+        placeholder: 'ヾﾉ≧∀≦)o来啊，快活啊!'
+    });
+</script>
+
+    </div>
+</div>
+
+</div>
+                
+                    
+
+
+
+
+<div class="column is-4-tablet is-4-desktop is-3-widescreen  has-order-1 column-left ">
+    
+        
+<div class="card widget">
+    <div class="card-content">
+        <nav class="level">
+            <div class="level-item has-text-centered">
+                <div>
+                    <img class="image is-128x128 has-mb-6" src="/images/avatar.jpg" alt="菁菁">
+                    
+                    <p class="is-size-4 is-block">
+                        菁菁
+                    </p>
+                    
+                    
+                    <p class="is-size-6 is-block">
+                        恒者行远，思者常新
+                    </p>
+                    
+                    
+                    <p class="is-size-6 is-flex is-flex-center has-text-grey">
+                        <i class="fas fa-map-marker-alt has-mr-7"></i>
+                        <span>Shanghai, China</span>
+                    </p>
+                    
+                </div>
+            </div>
+        </nav>
+        <nav class="level is-mobile">
+            <div class="level-item has-text-centered is-marginless">
+                <div>
+                    <p class="heading">
+                        文章
+                    </p>
+                    <p class="title has-text-weight-normal">
+                        6
+                    </p>
+                </div>
+            </div>
+            <div class="level-item has-text-centered is-marginless">
+                <div>
+                    <p class="heading">
+                        分类
+                    </p>
+                    <p class="title has-text-weight-normal">
+                        5
+                    </p>
+                </div>
+            </div>
+            <div class="level-item has-text-centered is-marginless">
+                <div>
+                    <p class="heading">
+                        标签
+                    </p>
+                    <p class="title has-text-weight-normal">
+                        9
+                    </p>
+                </div>
+            </div>
+        </nav>
+        <div class="level">
+            <a class="level-item button is-link is-rounded" href="http://github.com/Angericky">
+                关注我</a>
+        </div>
+        
+        
+        <div class="level is-mobile">
+            
+            <a class="level-item button is-white is-marginless" target="_blank" title="Github" href="http://github.com/Angericky">
+                
+                <i class="fab fa-github"></i>
+                
+            </a>
+            
+            <a class="level-item button is-white is-marginless" target="_blank" title="Weibo" href="/‘https:/weibo.com/1995427305/profile?topnav=1&amp;wvr=6’">
+                
+                <i class="fab fa-weibo"></i>
+                
+            </a>
+            
+        </div>
+        
+    </div>
+</div>
+    
+        
+
+<div class="card widget">
+    <div class="card-content">
+        <div class="menu links">
+        <h3 class="menu-label">
+            链接
+        </h3>
+        <ul class="menu-list">
+        
+            
+                <li>
+                <a class="level is-mobile" href="http://godweiyang.com" target="_blank">
+                    <span class="level-left" style="text-decoration: underline">
+                        <span class="level-item">厉害的阳神</span>
+                    </span> 
+                </a>      
+                
+        
+            
+                <a class="level is-mobile" href="https://qjchen.cn" target="_blank">
+                    <span class="level-right" style="text-decoration: underline">
+                        <span class="level-item">聪明的前嘉</span>
+                    </span>
+                </a>
+                </li>
+            
+        
+        </ul>
+        </div>
+    </div>
+</div>
+
+    
+        
+<div class="card widget">
+    <div class="card-content">
+        <div class="menu">
+            <h3 class="menu-label">
+                分类
+            </h3>
+            <ul class="menu-list">
+            <li>
+        <a class="level is-marginless" href="/categories/icarus/">
+            <span class="level-start">
+                <span class="level-item">icarus</span>
+            </span>
+            <span class="level-end">
+                <span class="level-item tag">1</span>
+            </span>
+        </a></li><li>
+        <a class="level is-marginless" href="/categories/markdown/">
+            <span class="level-start">
+                <span class="level-item">markdown</span>
+            </span>
+            <span class="level-end">
+                <span class="level-item tag">1</span>
+            </span>
+        </a></li><li>
+        <a class="level is-marginless" href="/categories/前端/">
+            <span class="level-start">
+                <span class="level-item">前端</span>
+            </span>
+            <span class="level-end">
+                <span class="level-item tag">1</span>
+            </span>
+        </a></li><li>
+        <a class="level is-marginless" href="/categories/学习计划/">
+            <span class="level-start">
+                <span class="level-item">学习计划</span>
+            </span>
+            <span class="level-end">
+                <span class="level-item tag">1</span>
+            </span>
+        </a></li><li>
+        <a class="level is-marginless" href="/categories/算法/">
+            <span class="level-start">
+                <span class="level-item">算法</span>
+            </span>
+            <span class="level-end">
+                <span class="level-item tag">1</span>
+            </span>
+        </a></li>
+            </ul>
+        </div>
+    </div>
+</div>
+    
+        
+<div class="card widget">
+    <div class="card-content">
+        <h3 class="menu-label">
+            标签云
+        </h3>
+        <a href="/tags/css/" style="font-size: 10px;">css</a> <a href="/tags/hexo/" style="font-size: 20px;">hexo</a> <a href="/tags/icarus/" style="font-size: 10px;">icarus</a> <a href="/tags/leetcode/" style="font-size: 10px;">leetcode</a> <a href="/tags/markdown/" style="font-size: 10px;">markdown</a> <a href="/tags/stylus/" style="font-size: 10px;">stylus</a> <a href="/tags/学习计划/" style="font-size: 10px;">学习计划</a> <a href="/tags/算法/" style="font-size: 10px;">算法</a> <a href="/tags/面试/" style="font-size: 10px;">面试</a>
+    </div>
+</div>
+
+    
+    
+        <div class="column-right-shadow  ">
+        
+            
+        
+            
+<div class="card widget">
+    <div class="card-content">
+        <h3 class="menu-label">
+            最新文章
+        </h3>
+        
+        <article class="media">
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2018-12-30T19:28:11.000Z">2018-12-31</time></div>
+                    <a href="/2018/12/31/简洁清爽的Stylus语法/" class="has-link-black-ter is-size-6">简洁清爽的Stylus语法</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/前端/">前端</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
+            <a href="/2018/12/26/O-n-算法查找第k大的数/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="https://i.loli.net/2018/12/30/5c28e19161171.jpg" alt="O(n)算法查找第k大的数">
+                </p>
+            </a> 
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2018-12-26T14:00:26.000Z">2018-12-26</time></div>
+                    <a href="/2018/12/26/O-n-算法查找第k大的数/" class="has-link-black-ter is-size-6">O(n)算法查找第k大的数</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/算法/">算法</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
+            <a href="/2018/12/26/C-开发学习计划/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="https://i.loli.net/2018/12/31/5c28f3178005d.jpg" alt="C++开发学习计划">
+                </p>
+            </a> 
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2018-12-26T12:47:29.000Z">2018-12-26</time></div>
+                    <a href="/2018/12/26/C-开发学习计划/" class="has-link-black-ter is-size-6">C++开发学习计划</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/学习计划/">学习计划</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
+            <a href="/2018/12/24/icarus个性定制/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="https://i.loli.net/2018/12/30/5c28de1d7a908.jpg" alt="hexo及icarus主题个性定制">
+                </p>
+            </a> 
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2018-12-24T08:02:25.000Z">2018-12-24</time></div>
+                    <a href="/2018/12/24/icarus个性定制/" class="has-link-black-ter is-size-6">hexo及icarus主题个性定制</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/icarus/">icarus</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+    </div>
+</div>
+
+        
+            <div class="card widget">
+    <div class="card-content">
+        <div class="menu">
+        <h3 class="menu-label">
+            归档
+        </h3>
+        <ul class="menu-list">
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2018/12/">
+                <span class="level-start">
+                    <span class="level-item">十二月 2018</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">6</span>
+                </span>
+            </a>
+        </li>
+        
+        </ul>
+        </div>
+    </div>
+</div>
+        
+            <div class="card widget">
+    <div class="card-content">
+        <div class="menu">
+            <h3 class="menu-label">
+                标签
+            </h3>
+            <ul class="menu-list">
+                
+                <li>
+                    <a class="level is-marginless" href="/tags/css/">
+                        <span class="level-start">
+                            <span class="level-item">css</span>
+                        </span>
+                        <span class="level-end">
+                            <span class="level-item tag">1</span>
+                        </span>
+                    </a>
+                </li>
+                
+                <li>
+                    <a class="level is-marginless" href="/tags/hexo/">
+                        <span class="level-start">
+                            <span class="level-item">hexo</span>
+                        </span>
+                        <span class="level-end">
+                            <span class="level-item tag">2</span>
+                        </span>
+                    </a>
+                </li>
+                
+                <li>
+                    <a class="level is-marginless" href="/tags/icarus/">
+                        <span class="level-start">
+                            <span class="level-item">icarus</span>
+                        </span>
+                        <span class="level-end">
+                            <span class="level-item tag">1</span>
+                        </span>
+                    </a>
+                </li>
+                
+                <li>
+                    <a class="level is-marginless" href="/tags/leetcode/">
+                        <span class="level-start">
+                            <span class="level-item">leetcode</span>
+                        </span>
+                        <span class="level-end">
+                            <span class="level-item tag">1</span>
+                        </span>
+                    </a>
+                </li>
+                
+                <li>
+                    <a class="level is-marginless" href="/tags/markdown/">
+                        <span class="level-start">
+                            <span class="level-item">markdown</span>
+                        </span>
+                        <span class="level-end">
+                            <span class="level-item tag">1</span>
+                        </span>
+                    </a>
+                </li>
+                
+                <li>
+                    <a class="level is-marginless" href="/tags/stylus/">
+                        <span class="level-start">
+                            <span class="level-item">stylus</span>
+                        </span>
+                        <span class="level-end">
+                            <span class="level-item tag">1</span>
+                        </span>
+                    </a>
+                </li>
+                
+                <li>
+                    <a class="level is-marginless" href="/tags/学习计划/">
+                        <span class="level-start">
+                            <span class="level-item">学习计划</span>
+                        </span>
+                        <span class="level-end">
+                            <span class="level-item tag">1</span>
+                        </span>
+                    </a>
+                </li>
+                
+                <li>
+                    <a class="level is-marginless" href="/tags/算法/">
+                        <span class="level-start">
+                            <span class="level-item">算法</span>
+                        </span>
+                        <span class="level-end">
+                            <span class="level-item tag">1</span>
+                        </span>
+                    </a>
+                </li>
+                
+                <li>
+                    <a class="level is-marginless" href="/tags/面试/">
+                        <span class="level-start">
+                            <span class="level-item">面试</span>
+                        </span>
+                        <span class="level-end">
+                            <span class="level-item tag">1</span>
+                        </span>
+                    </a>
+                </li>
+                
+            </ul>
+        </div>
+    </div>
+</div>
+        
+        </div>
+    
+</div>
+
+                
+            </div>
+        </div>
+    </section>
+    <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js">
+</script>
+
+<footer class="footer">
+    <div class="container">
+        <div class="level">
+            <div class="level-start has-text-centered-mobile">
+                <a class="footer-logo is-block has-mb-6" href="/">
+                
+                    <img src="/images/logo.jpg" alt="简洁清爽的Stylus语法" height="28">
+                
+                </a>
+                <p class="is-size-7" style="padding-bottom: 0.5em">
+                    <span id="busuanzi_container_site_pv">
+                        本站总访问量<span id="busuanzi_value_site_pv"></span>次
+                    </span>
+                    <span id="busuanzi_container_site_uv">
+                      &nbsp;&nbsp;&nbsp;本站访客数<span id="busuanzi_value_site_uv"></span>人次
+                    </span>
+                </p>
+                <p class="is-size-7">
+                &copy; 2018 赵菁菁&nbsp;
+                Powered by <a href="http://hexo.io/" target="_blank">Hexo</a> & <a href="http://github.com/ppoffice/hexo-theme-icarus">Icarus</a>
+                </p>
+            </div>
+            <div class="level-end">
+            
+                <div class="field has-addons is-flex-center-mobile has-mt-5-mobile is-flex-wrap is-flex-middle">
+                
+                
+                <p class="control">
+                    <a class="button is-white is-large" target="_blank" title="Creative Commons" href="https://creativecommons.org/">
+                        
+                        <i class="fab fa-creative-commons"></i>
+                        
+                    </a>
+                </p>
+                
+                <p class="control">
+                    <a class="button is-white is-large" target="_blank" title="Attribution 4.0 International" href="https://creativecommons.org/licenses/by/4.0/">
+                        
+                        <i class="fab fa-creative-commons-by"></i>
+                        
+                    </a>
+                </p>
+                
+                <p class="control">
+                    <a class="button is-white is-large" target="_blank" title="Download on GitHub" href="http://github.com/ppoffice/hexo-theme-icarus">
+                        
+                        <i class="fab fa-github"></i>
+                        
+                    </a>
+                </p>
+                
+                </div>
+            
+            </div>
+        </div>
+    </div>
+</footer>
+    <script src="https://cdn.jsdelivr.net/npm/jquery@3.3.1/dist/jquery.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/moment@2.22.2/min/moment-with-locales.min.js"></script>
+<script>moment.locale("zh-CN");</script>
+
+
+    
+    
+    
+    <script src="/js/animation.js"></script>
+    
+
+    
+    
+    
+    <script src="https://cdn.jsdelivr.net/npm/lightgallery@1.6.8/dist/js/lightgallery.min.js" defer></script>
+    <script src="https://cdn.jsdelivr.net/npm/justifiedGallery@3.7.0/dist/js/jquery.justifiedGallery.min.js" defer></script>
+    <script src="/js/gallery.js" defer></script>
+    
+
+    
+    
+
+<div id="outdated">
+    <h6>Your browser is out-of-date!</h6>
+    <p>Update your browser to view this website correctly. <a id="btnUpdateBrowser" href="http://outdatedbrowser.com/">Update
+            my browser now </a></p>
+    <p class="last"><a href="#" id="btnCloseUpdateBrowser" title="Close">&times;</a></p>
+</div>
+<script src="https://cdn.jsdelivr.net/npm/outdatedbrowser@1.1.5/outdatedbrowser/outdatedbrowser.min.js" defer></script>
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
+        outdatedBrowser({
+            bgColor: '#f25648',
+            color: '#ffffff',
+            lowerThan: 'flex'
+        });
+    });
+</script>
+
+
+    
+    
+<script src="https://cdn.jsdelivr.net/npm/mathjax@2.7.5/unpacked/MathJax.js?config=TeX-MML-AM_CHTML" defer></script>
+<script>
+document.addEventListener('DOMContentLoaded', function () {
+    MathJax.Hub.Config({
+        'HTML-CSS': {matchFontHeight: false},
+        SVG: {matchFontHeight: false},
+        CommonHTML: {matchFontHeight: false}
+    });
+});
+</script>
+
+    
+    
+
+<a id="back-to-top" title="回到顶端" href="javascript:;">
+    <i class="fas fa-chevron-up"></i>
+</a>
+<script src="/js/back-to-top.js" defer></script>
+
+
+    
+    
+
+    
+    
+    
+    
+
+    
+    
+    
+
+
+<script src="/js/main.js" defer></script>
+
+    
+    <div class="searchbox ins-search">
+    <div class="searchbox-container ins-search-container">
+        <div class="searchbox-input-wrapper">
+            <input type="text" class="searchbox-input ins-search-input" placeholder="想要查找什么...">
+            <span class="searchbox-close ins-close ins-selectable"><i class="fa fa-times-circle"></i></span>
+        </div>
+        <div class="searchbox-result-wrapper ins-section-wrapper">
+            <div class="ins-section-container"></div>
+        </div>
+    </div>
+</div>
+<script>
+    (function (window) {
+        var INSIGHT_CONFIG = {
+            TRANSLATION: {
+                POSTS: '文章',
+                PAGES: '页面',
+                CATEGORIES: '分类',
+                TAGS: '标签',
+                UNTITLED: '(无标题)',
+            },
+            CONTENT_URL: '/content.json',
+        };
+        window.INSIGHT_CONFIG = INSIGHT_CONFIG;
+    })(window);
+</script>
+<script src="/js/insight.js" defer></script>
+<link rel="stylesheet" href="/css/search.css">
+<link rel="stylesheet" href="/css/insight.css">
+    
+<script src="/live2dw/lib/L2Dwidget.min.js?0c58a1486de42ac6cc1c59c7d98ae887"></script><script>L2Dwidget.init({"log":false,"pluginJsPath":"lib/","pluginModelPath":"assets/","pluginRootPath":"live2dw/","tagMode":false});</script></body>
+</html>
