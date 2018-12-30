@@ -252,10 +252,10 @@ img.thumbnail {
   display: block;
 }
 .donate:first-child:not(:last-child) .qrcode {
-  left: -0.75rem;
+  left: -7.5rem;
 }
 .donate:last-child:not(:first-child) .qrcode {
-  right: -0.75rem;
+  right: -7.5rem;
 }
 @media screen and (max-width: 768px) {
   #toc {
