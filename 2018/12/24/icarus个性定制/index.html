@@ -17,7 +17,7 @@
 <meta property="og:site_name" content="Jingjing&#39;s blog">
 <meta property="og:description" content="icarus个性定制配置修改的一些内容。">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2019-01-02T10:02:02.531Z">
+<meta property="og:updated_time" content="2019-01-02T10:12:10.527Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="hexo及icarus主题个性定制">
 <meta name="twitter:description" content="icarus个性定制配置修改的一些内容。">
@@ -159,7 +159,7 @@
                 <time class="level-item has-text-grey" datetime="2018-12-24T08:02:25.000Z">2018-12-24</time>
                 
                     <i class="fas fa-calendar-check">&nbsp</i>
-                    <time class="level-item has-text-grey" datetime="2019-01-02T10:02:02.531Z">2019-01-02</time>
+                    <time class="level-item has-text-grey" datetime="2019-01-02T10:12:10.527Z">2019-01-02</time>
                 
                 
                     <i class="fas fa-folder-open">&nbsp</i>
@@ -178,7 +178,7 @@
                 <span class="level-item has-text-grey">
                     
                     
-                    9 分钟 读完 (大约 1415 个字)
+                    9 分钟 读完 (大约 1417 个字)
                 </span>
                 
             </div>
@@ -218,9 +218,9 @@
 <p>3.0.1 版本存在的 bug：<br>存在代码注入 bug，与 hexo-tag-dplayer 插件产生冲突，导致相关脚本无法加载。<br>解决方法：在项目中使用 npm 命令手动卸载 “hexo-tag-dplayer”: “^0.3.1”。<br>参阅<a href="https://github.com/EYHN/hexo-helper-live2d/issues/91" target="_blank" rel="noopener">GitHub issue</a></p>
 <h2 id="给文章日期-分类-标签增加图标"><a href="#给文章日期-分类-标签增加图标" class="headerlink" title="给文章日期/分类/标签增加图标"></a>给文章日期/分类/标签增加图标</h2><p>Icarus主题下的这些没有图标，但我想加图标的话怎么办？<br>hexo里可以使用FontAwesome图标CSS样式加上字体库实现图标的引用。<br>其它网站开发中也可以使用。</p>
 <h3 id="引入"><a href="#引入" class="headerlink" title="引入"></a>引入</h3><p><em>Icarus主题源文件中已经引用了CSS文件，可直接跳过这部分。</em></p>
-<p>使用图标之前需要引入 CSS 文件,这里选用 FontAwesome 4.4.0 版本。<br><figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;link href=&quot;//maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css&quot; rel=&quot;stylesheet&quot;&gt;</span><br></pre></td></tr></table></figure></p>
+<p>使用图标之前需要引入 CSS 文件,这里选用 FontAwesome 4.4.0 版本。<br><figure class="highlight hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;link href="//maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css" rel="stylesheet"&gt;</span><br></pre></td></tr></table></figure></p>
 <p>当然,还可以使用离线包,我们可以去官网下载它。<a href="http://fontawesome.io/" target="_blank" rel="noopener">http://fontawesome.io/</a></p>
-<h3 id="使用"><a href="#使用" class="headerlink" title="使用"></a>使用</h3><figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;i class=&quot;fa fa-home&quot;&gt;&lt;/i&gt;</span><br></pre></td></tr></table></figure>
+<h3 id="使用"><a href="#使用" class="headerlink" title="使用"></a>使用</h3><figure class="highlight hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;i class="fa fa-home"&gt;&lt;/i&gt;</span><br></pre></td></tr></table></figure>
 <p>图标CSS清单可参考<a href="https://vxhly.github.io/2016/09/font-awesome-icons/" target="_blank" rel="noopener">博客</a></p>
 <h2 id="文章做成两格布局"><a href="#文章做成两格布局" class="headerlink" title="文章做成两格布局"></a>文章做成两格布局</h2><h3 id="文件改动"><a href="#文件改动" class="headerlink" title="文件改动"></a>文件改动</h3><p><code>includes/helpers/layout.js</code>中<br><figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">hexo.extend.helper.register(&apos;column_count&apos;, function () &#123;</span><br><span class="line">     let columns = 1;</span><br></pre></td></tr></table></figure></p>
 <p>后添加<br><figure class="highlight js hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-keyword">if</span> (<span class="hljs-keyword">this</span>.page.__post === <span class="hljs-literal">true</span> || <span class="hljs-keyword">this</span>.page.__page === <span class="hljs-literal">true</span>) &#123;</span><br><span class="line">    <span class="hljs-keyword">return</span> <span class="hljs-number">2</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
