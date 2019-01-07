@@ -14,6 +14,9 @@ select,
 textarea {
   font-family: Lato, "PingFang SC", "Microsoft YaHei", sans-serif;
 }
+.has-text-weight-normal {
+  font-weight: 500 !important;
+}
 @media screen and (min-width: 1280px) {
   .is-1-column .container,
   .is-2-column .container {
