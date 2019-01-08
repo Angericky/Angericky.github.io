@@ -372,6 +372,9 @@ img.thumbnail {
 .fas {
   line-height: inherit;
 }
+.fab {
+  font-size: 20px;
+}
 /* ---------------------------------
  *        Fix content elements
  * --------------------------------- */
