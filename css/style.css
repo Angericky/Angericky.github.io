@@ -111,8 +111,11 @@ img.thumbnail {
   padding: 1.25rem 0.75rem;
 }
 .navbar-main .navbar-item.is-active {
-  color: #3273dc;
+  color: #649ab6;
   background-color: transparent;
+}
+.navbar-main .navbar-item:hover {
+  color: #649ab6;
 }
 @media screen and (max-width: 1087px) {
   .navbar-main .navbar-menu {
@@ -131,6 +134,16 @@ img.thumbnail {
 }
 .footer .field .button {
   background: transparent;
+}
+.button.is-link {
+  background-color: #549ab6;
+}
+.button.is-link:hover {
+  background-color: #64aac6;
+}
+.button.is-rounded {
+  margin-left: 3em;
+  margin-right: 3em;
 }
 .widget .media {
   border: none;
@@ -203,6 +216,13 @@ img.thumbnail {
   padding-left: 3rem;
   padding-right: 3rem;
   padding-top: 2rem;
+}
+.article a:hover {
+  color: #649ab6;
+}
+.article .title {
+  border-left: #649ab6 8px solid;
+  padding-left: 10px;
 }
 .article .article-meta {
   margin-bottom: 1rem !important;
@@ -343,7 +363,7 @@ img.thumbnail {
 }
 .has-link-grey:hover,
 .has-link-black-ter:hover {
-  color: #3273dc !important;
+  color: #649ab6 !important;
 }
 .has-link-grey {
   color: #7a7a7a !important;

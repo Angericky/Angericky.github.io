@@ -33,6 +33,8 @@
                     element.style.opacity = '1';
                     element.style.transform = '';
                     element.style.transition = 'opacity 0.3s ease-out, transform 0.3s ease-out';
+                    element.style.borderRadius = '10px';
+                    element.style.boxShadow = '0 0 5px #cacbcb';
                 }, i * 100);
                 i++;
             });
