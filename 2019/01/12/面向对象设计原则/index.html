@@ -17,7 +17,7 @@
 <meta property="og:site_name" content="Jingjing&#39;s blog">
 <meta property="og:description" content="一些基本的面向对象设计原则。">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2019-01-11T18:57:28.002Z">
+<meta property="og:updated_time" content="2019-01-11T19:00:50.983Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="面向对象设计原则">
 <meta name="twitter:description" content="一些基本的面向对象设计原则。">
@@ -155,7 +155,7 @@
                 <time class="level-item has-text-grey" datetime="2019-01-11T16:53:20.000Z">2019-01-12</time>
                 
                     <i class="fas fa-calendar-check">&nbsp</i>
-                    <time class="level-item has-text-grey" datetime="2019-01-11T18:57:28.002Z">2019-01-12</time>
+                    <time class="level-item has-text-grey" datetime="2019-01-11T19:00:50.983Z">2019-01-12</time>
                 
                 
                     <i class="fas fa-folder-open">&nbsp</i>
@@ -184,62 +184,47 @@
             
                 <div id="toc" class="toc-article" style="max-height: 380px; overflow: auto;">
                     <strong class="toc-title">文章目录</strong>
-                    
+                    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#面向对象设计原则"><span class="toc-number">1.</span> <span class="toc-text">面向对象设计原则</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#1-SRP"><span class="toc-number">1.1.</span> <span class="toc-text">1. SRP</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-LSP"><span class="toc-number">1.2.</span> <span class="toc-text">2. LSP</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3-ISP"><span class="toc-number">1.3.</span> <span class="toc-text">3. ISP</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#4-OCP"><span class="toc-number">1.4.</span> <span class="toc-text">4. OCP</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#5-DIP"><span class="toc-number">1.5.</span> <span class="toc-text">5. DIP</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#6-LOD-LKP"><span class="toc-number">1.6.</span> <span class="toc-text">6. LOD | LKP</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#7-CRP"><span class="toc-number">1.7.</span> <span class="toc-text">7. CRP</span></a></li></ol></li></ol>
                 </div>
              
             <p><excerpt in="" index="" |="" 首页摘要=""><br>    一些基本的面向对象设计原则。<br><a id="more"></a></excerpt></p>
 <the rest="" of="" contents="" |="" 余下全文="">
 
-<p>#面向对象设计原则</p>
-<ol>
-<li>SRP<br>所谓<code>SRP</code>原则，即：<code>Single Responsibility Principle</code>，<strong>单一职责原则</strong>。原始定义如下：<blockquote>
+<h1 id="面向对象设计原则"><a href="#面向对象设计原则" class="headerlink" title="面向对象设计原则"></a>面向对象设计原则</h1><h2 id="1-SRP"><a href="#1-SRP" class="headerlink" title="1. SRP"></a>1. SRP</h2><p>所谓<code>SRP</code>原则，即：<code>Single Responsibility Principle</code>，<strong>单一职责原则</strong>。原始定义如下：</p>
+<blockquote>
 <p>There should never be more than one reason for a class to change.(只有一个引起类改变的原因)</p>
 </blockquote>
-</li>
-</ol>
 <p>在面向对象编程领域中，单一职责原则（<code>Single responsibility principle</code>）规定每个类都应该有一个单一的职责或者叫功能，并且该功能应该由这个类完全封装起来。所有它的（这个类的）服务都应该严密的和该功能平行（功能平行，意味着没有依赖）。一个类或者模块应该有且只有一个改变的原因。</p>
 <p>如果一个类承担的职责过多，就等于把这些职责耦合在一起了。一个职责的变化可能会削弱或者抑制这个类完成其他职责的能力。这种耦合会导致脆弱的设计，当发生变化时，设计会遭受到意想不到的破坏。而如果想要避免这种现象的发生，就要尽可能的遵守单一职责原则。此原则的核心就是解耦和增强内聚性。</p>
 <p>单一职责的好处：<br>类的复杂性降低，实现什么职责都有清晰明确的定义;<br>可读性提高，复杂性降低，可维护性提高;<br>变更引起的风险降低。<br>单一职责原则的注意点：<br>单一职责最难划分的是职责。<br>单一职责原则提出标准：用职责和变化原因来衡量接口或类设计的是否优良，但是职责和变化原因都是不可度量的，因项目、环境而异。<br>接口一定要做到单一职责，类的设计尽量做到只有一个原因引起它变化。</p>
-<ol start="2">
-<li>LSP<br>所谓LSP原则，即：Liskov Substitution principle，里氏替换原则。原始定义如下：</li>
-</ol>
+<h2 id="2-LSP"><a href="#2-LSP" class="headerlink" title="2. LSP"></a>2. LSP</h2><p>所谓LSP原则，即：Liskov Substitution principle，里氏替换原则。原始定义如下：</p>
 <p>Functions that use pointers of references to base classes must be able to use objects of derived classes without knowing it.（所有引用基类的地方必须能透明地使用其子类的对象）</p>
 <p>更通俗的定义即为：子类可以扩展父类的功能，但不能改变父类原有的功能。里氏替换原则包含了一下4层含义：</p>
 <p>子类必须完全实现父类的方法。在类中调用其他类是务必要使用父类或接口，如果不能使用父类或接口，则说明类的设计已经违背了LSP原则。<br>子类可以有自己的个性。子类当然可以有自己的行为和外观了，也就是方法和属性。<br>覆盖或实现父类的方法时输入参数可以被放大。即子类可以覆盖父类的方法，但输入参数应比父类方法中的大，这样在子类代替父类的时候，调用的仍然是父类的方法。即以子类中方法的前置条件必须与超类中被覆盖的方法的前置条件相同或者更宽松。<br>覆盖或实现父类的方法时输出结果可以被缩小。<br>优点：<br>提高代码的重用性，子类拥有父类的方法和属性；<br>提高代码的可扩展性，子类可形似于父类，但异于父类，保留自我的特性；<br>缺点：<br>继承是侵入性的，只要继承就必须拥有父类的所有方法和属性，在一定程度上约束了子类，降低了代码的灵活性；<br>增加了耦合，当父类的常量、变量或者方法被修改了，需要考虑子类的修改，所以一旦父类有了变动，很可能会造成非常糟糕的结果，要重构大量的代码。</p>
-<ol start="3">
-<li>ISP<br>所谓ISP原则，即：Interface Segregation Principle，接口隔离原则。原始定义如下：</li>
-</ol>
+<h2 id="3-ISP"><a href="#3-ISP" class="headerlink" title="3. ISP"></a>3. ISP</h2><p>所谓ISP原则，即：Interface Segregation Principle，接口隔离原则。原始定义如下：</p>
 <p>Clients should not be forced to depend upon interfaces that they do not use.(客户端只依赖于它所需要的接口；它需要什么接口就提供什么接口，把不需要的接口剔除掉。)</p>
 <p>The dependency of one class to another one should depend on the smallest possible interface.(类间的依赖关系应建立在最小的接口上。)</p>
 <p>即，接口尽量细化，接口中的方法尽量少。接口隔离原则与单一职责原则的审视角度是不同的，单一职责原则要求的是类和接口职责单一，注重的是职责，这是业务逻辑上的划分，而接口隔离原则要求接口的方法尽量少。根据接口隔离原则拆分接口时，首先必须满足单一职责原则。</p>
 <p>采用接口隔离原则对接口进行约束时，要注意以下几点：</p>
 <p>接口尽量小，但是要有限度。对接口进行细化可以提高程序设计灵活性是不挣的事实，但是如果过小，则会造成接口数量过多，使设计复杂化。所以一定要适度。<br>为依赖接口的类定制服务，只暴露给调用的类它需要的方法，它不需要的方法则隐藏起来。只有专注地为一个模块提供定制服务，才能建立最小的依赖关系。<br>提高内聚，减少对外交互。使接口用最少的方法去完成最多的事情。<br>运用接口隔离原则，一定要适度，接口设计的过大或过小都不好。设计接口的时候，只有多花些时间去思考和筹划，才能准确地实践这一原则。</p>
-<ol start="4">
-<li>OCP<br>所谓OCP原则，即：Open Closed Principle，开闭原则。原始定义如下：</li>
-</ol>
+<h2 id="4-OCP"><a href="#4-OCP" class="headerlink" title="4. OCP"></a>4. OCP</h2><p>所谓OCP原则，即：Open Closed Principle，开闭原则。原始定义如下：</p>
 <p>software entities (classes, modules, functions, etc.) should be open for extension, but closed for modification.(对扩展开放，对修改关闭)</p>
 <p>开闭原则（OCP）是面向对象设计中“可复用设计”的基石，是面向对象设计中最重要的原则之一，其它很多的设计原则和设计模式都是实现开闭原则的一种手段。核心就是：对扩展开放，对修改关闭。其含义是说一个软件应该通过扩展来实现变化，而不是通过修改已有的代码来实现变化的。</p>
 <p>软件系统中包含的各种组件，例如模块（Module）、类（Class）以及功能（Function）等等，应该在不修改现有代码的基础上，引入新功能。开闭原则中“开”，是指对于组件功能的扩展是开放的，是允许对其进行功能扩展的；开闭原则中“闭”，是指对于原有代码的修改是封闭的。</p>
 <p>实现开闭原则的关键就在于“抽象”。把系统的所有可能的行为抽象成一个抽象底层，这个抽象底层规定出所有的具体实现必须提供的方法的特征。作为系统设计的抽象层，要预见所有可能的扩展，从而使得在任何扩展情况下，系统的抽象底层不需修改；同时，由于可以从抽象底层导出一个或多个新的具体实现，可以改变系统的行为，因此系统设计对扩展是开放的。在实际开发过程的设计开始阶段，就要罗列出来系统所有可能的行为，并把这些行为加入到抽象底层，根本就是不可能的，这么去做也是不经济的。因此我们应该现实的接受修改拥抱变化，使我们的代码可以对扩展开放，对修改关闭。</p>
 <p>开闭原则的好处：</p>
 <p>可复用性好;<br>可维护性好。</p>
-<ol start="5">
-<li>DIP<br>所谓DIP原则，即：Dependency Inversion Principle，依赖倒置原则。原始定义如下：</li>
-</ol>
+<h2 id="5-DIP"><a href="#5-DIP" class="headerlink" title="5. DIP"></a>5. DIP</h2><p>所谓DIP原则，即：Dependency Inversion Principle，依赖倒置原则。原始定义如下：</p>
 <p>High-level modules should not depend on low-level modules. Both should depend on abstractions.(高层模块不应该依赖低层模块，两者都应该依赖其抽象)</p>
 <p>Abstractions should not depend on details. Details should depend on abstractions.(抽象不应该依赖细节；细节应该依赖抽象)</p>
 <p>面向过程的开发，上层调用下层，上层依赖于下层，当下层剧烈变动时上层也要跟着变动，这就会导致模块的复用性降低而且大大提高了开发的成本。面向对象的开发很好的解决了这个问题，一般情况下抽象的变化概率很小，让用户程序依赖于抽象，实现的细节也依赖于抽象。即使实现细节不断变动，只要抽象不变，客户程序就不需要变化。这大大降低了客户程序与实现细节的耦合度。</p>
 <p>依赖倒置原则主要有以下三层含义：</p>
 <p>高层模块不应该依赖低层模块，两者都应该依赖其抽象（抽象类或接口）；<br>抽象不应该依赖细节（具体实现）；<br>细节（具体实现）应该依赖抽象。<br>依赖倒置原则基于这样一个事实：相对于细节的多变性，抽象的东西要稳定的多。以抽象为基础搭建起来的架构比以细节为基础搭建起来的架构要稳定的多。在 Java 中，抽象指的是接口或者抽象类，细节就是具体的实现类，使用接口或者抽象类的目的是制定好规范和契约，而不去涉及任何具体的操作，把展现细节的任务交给他们的实现类去完成。依赖倒置原则的核心思想就是面向接口编程。</p>
-<ol start="6">
-<li>LOD | LKP<br>所谓LOD原则，即：Law of Demeter，迪米特法则，又叫最少知识原则（Least Knowledge Principle，简写LKP），就是说一个对象应当对其他对象有尽可能少的了解。通俗的讲，一个类应该对自己需要耦合或调用的类知道得最少，被耦合的类是如何的复杂都和我没关系，即为“不和陌生人说话”。迪米特法则的英文解释如下：</li>
-</ol>
+<h2 id="6-LOD-LKP"><a href="#6-LOD-LKP" class="headerlink" title="6. LOD | LKP"></a>6. LOD | LKP</h2><p>所谓LOD原则，即：Law of Demeter，迪米特法则，又叫最少知识原则（Least Knowledge Principle，简写LKP），就是说一个对象应当对其他对象有尽可能少的了解。通俗的讲，一个类应该对自己需要耦合或调用的类知道得最少，被耦合的类是如何的复杂都和我没关系，即为“不和陌生人说话”。迪米特法则的英文解释如下：</p>
 <p>talk only to your immediate friends.(只与直接的朋友通信)</p>
 <p>迪米特法则的初衷在于降低类之间的耦合。由于每个类尽量减少对其他类的依赖，因此，很容易使得系统的功能模块功能独立，相互之间不存在（或很少有）依赖关系。</p>
 <p>迪米特法则不希望类之间建立直接的联系。如果真的有需要建立联系，也希望能通过它的“朋友”类来转达。因此，应用迪米特法则有可能造成的一个后果就是：系统中存在大量的中介类，这些类之所以存在完全是为了传递类之间的相互调用关系——这在一定程度上增加了系统的复杂度,同时也为系统的维护带来了难度。所以，在采用迪米特法则时需要反复权衡，不遵循不对，严格执行又会“过犹不及”。既要做到让结构清晰，又要做到高内聚低耦合。</p>
-<ol start="7">
-<li>CRP<br>所谓CRP原则，即：Composite Reuse Principle，组合复用原则。</li>
-</ol>
+<h2 id="7-CRP"><a href="#7-CRP" class="headerlink" title="7. CRP"></a>7. CRP</h2><p>所谓CRP原则，即：Composite Reuse Principle，组合复用原则。</p>
 <p>组合复用原则的核心思想是：尽量使用对象组合，而不是继承来达到复用的目的。该原则就是在一个新的对象里面使用一些已有的对象，使之成为新对象的一部分：新的对象通过向这些对象的委派达到复用已有功能的目的。</p>
 <p>继承的缺点主要有以下几点：</p>
 <p>继承复用破坏数据封装性，将基类的实现细节全部暴露给了派生类，基类的内部细节常常对派生类是透明的，白箱复用。虽然简单，但不安全，不能在程序的运行过程中随便改变。<br>基类的实现发生了改变，派生类的实现也不得不改变。<br>从基类继承而来的派生类是静态的，不可能在运行时间内发生改变，因此没有足够的灵活性。<br>由于组合可以将已有的对象纳入到新对象中，使之成为新对象的一部分，因此新对象可以调用已有对象的功能，这样做有下面的好处：</p>
