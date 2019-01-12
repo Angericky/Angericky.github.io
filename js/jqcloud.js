@@ -1,5 +1,5 @@
 (function($){
-    $('#tag-wordcloud').jQCloud(tagWords, {
+    $('#tagjqcloud').jQCloud(tagWords, {
         autoResize: true
     });
 })(jQuery);
