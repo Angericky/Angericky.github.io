@@ -275,6 +275,17 @@ img.thumbnail {
 .donate:last-child:not(:first-child) .qrcode {
   right: -7.5rem;
 }
+/*
+//相册样式
+.gallery-item 
+    min-height: 300px;
+    img
+        min-height: 300px;
+        margin-left: - 300px / 2 !important;
+        width: 300px !important;
+        max-width: 500%;
+        margin-top: -150px !important
+*/
 @media screen and (max-width: 768px) {
   #toc {
     display: none;
