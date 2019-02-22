@@ -226,7 +226,7 @@ img.thumbnail {
   padding-left: 10px;
 }
 .article .article-meta {
-  margin-bottom: 1rem !important;
+  margin-bottom: 1rem;
   padding-top: 0rem;
 }
 .article .content {

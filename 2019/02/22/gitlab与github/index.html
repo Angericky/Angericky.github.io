@@ -4,21 +4,23 @@
 <html lang="zh">
 <head><meta name="generator" content="Hexo 3.8.0">
     <meta charset="utf-8">
-<title>归档: 2018/12 - Jingjing&#39;s blog</title>
+<title>gitlab与github - Jingjing&#39;s blog</title>
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
 
 
-    <meta name="description" content="A record of technical growth and beautiful things in life.">
-<meta property="og:type" content="website">
-<meta property="og:title" content="Jingjing&#39;s blog">
-<meta property="og:url" content="http://Angericky.github.io/archives/2018/12/index.html">
+    <meta name="description" content="两者都是用git实现代码托管的版本仓库，两者很相似，那它们的区别是？">
+<meta name="keywords" content="git">
+<meta property="og:type" content="article">
+<meta property="og:title" content="gitlab与github">
+<meta property="og:url" content="http://Angericky.github.io/2019/02/22/gitlab与github/index.html">
 <meta property="og:site_name" content="Jingjing&#39;s blog">
-<meta property="og:description" content="A record of technical growth and beautiful things in life.">
+<meta property="og:description" content="两者都是用git实现代码托管的版本仓库，两者很相似，那它们的区别是？">
 <meta property="og:locale" content="zh-CN">
+<meta property="og:updated_time" content="2019-02-22T08:38:09.083Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Jingjing&#39;s blog">
-<meta name="twitter:description" content="A record of technical growth and beautiful things in life.">
+<meta name="twitter:title" content="gitlab与github">
+<meta name="twitter:description" content="两者都是用git实现代码托管的版本仓库，两者很相似，那它们的区别是？">
 
 
 
@@ -85,13 +87,13 @@
 
 <link rel="stylesheet" href="/css/style.css">
 </head>
-<body class="is-3-column">
+<body class="is-2-column">
     <nav class="navbar navbar-main">
     <div class="container">
         <div class="navbar-brand is-flex-center">
             <a class="navbar-item navbar-logo" href="/">
             
-                <img src="https://i.loli.net/2019/01/07/5c336be858b4e.jpg" alt="Jingjing&#39;s blog" height="28">
+                <img src="https://i.loli.net/2019/01/07/5c336be858b4e.jpg" alt="gitlab与github" height="28">
             
             </a>
         </div>
@@ -138,159 +140,195 @@
     <section class="section">
         <div class="container">
             <div class="columns">
-                <div class="column is-10-tablet is-10-desktop is-6-widescreen has-order-2 column-main">
+                <div class="column is-8-tablet is-8-desktop is-8-widescreen has-order-2 column-main"><div class="card">
+    <!--  -->
+    <div class="card-content article ">
+        <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
+            
+                gitlab与github
+            
+        </h1>
+        
+            <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto" style="margin-bottom: 0;">
+            <div class="level-left">
+                <i class="fas fa-calendar">&nbsp</i>
+                <time class="level-item has-text-grey" datetime="2019-02-22T08:25:29.000Z">2019-02-22</time>
+                
+                    <i class="fas fa-calendar-check">&nbsp</i>
+                    <time class="level-item has-text-grey" datetime="2019-02-22T08:38:09.083Z">2019-02-22</time>
+                
+                
+                <i class="fas fa-book">&nbsp</i>
+                <span class="level-item has-text-grey">
+                    
+                    
+                    6 分钟 读完 (大约 826 个字)
+                </span>
+                
+            </div>
+        </div>
+        <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
+            <div class="level-left">
+                
+                    <i class="fas fa-folder-open">&nbsp</i>
+                    <div class="level-item">
+                    <a class="has-link-grey -link" href="/categories/git/">git</a>
+                    </div>
+                
+                
+                    <i class="fas fa-tags">&nbsp</i>
+                    <div class="level-item">
+                    <a class="has-link-grey -link" href="/tags/git/">git</a>
+                    </div>
+                
+            </div>
+        </div>
+        
+        <div class="content">
+            
+                <div id="toc" class="toc-article" style="max-height: 380px; overflow: auto;">
+                    <strong class="toc-title">文章目录</strong>
+                    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#简介"><span class="toc-number">1.</span> <span class="toc-text">简介</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#GitLab"><span class="toc-number">1.1.</span> <span class="toc-text">GitLab</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#GitHub"><span class="toc-number">1.2.</span> <span class="toc-text">GitHub</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#两者区别"><span class="toc-number">2.</span> <span class="toc-text">两者区别</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#相同点"><span class="toc-number">2.1.</span> <span class="toc-text">相同点</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#不同点："><span class="toc-number">2.2.</span> <span class="toc-text">不同点：</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#gitlab安装及使用："><span class="toc-number">2.3.</span> <span class="toc-text">gitlab安装及使用：</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#git相关概念："><span class="toc-number">3.</span> <span class="toc-text">git相关概念：</span></a></li></ol>
+                </div>
+             
+            <p><excerpt in="" index="" |="" 首页摘要=""><br>    两者都是用git实现代码托管的版本仓库，两者很相似，那它们的区别是？<br><a id="more"></a></excerpt></p>
+<the rest="" of="" contents="" |="" 余下全文="">
 
-<div class="card widget">
+<h1 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h1><p>相比于GitHub，GitLab更适合企业级使用，为企业搭建GitLab软件版本管理服务器。</p>
+<p>GitLab：<a href="https://about.gitlab.com/" target="_blank" rel="noopener">https://about.gitlab.com/</a><br>GitHub: <a href="https://github.com/" target="_blank" rel="noopener">https://github.com/</a></p>
+<h2 id="GitLab"><a href="#GitLab" class="headerlink" title="GitLab"></a>GitLab</h2><p>利用Ruby on Rail开发的开源应用程序，实现一个自托管的Git项目仓库，可以通过web界面进行访问公开的或者私人项目。<br>Ruby on Rail是一个使你开发、部署、维护web应用程序变得简单的框架。<br>GitLab拥有与GitHub类似的功能，能够浏览源代码，管理缺陷和注释，可以管理团队对仓库的访问，<br>它非常易于浏览提交过的版本并提供一个文件历史库，它提供一个代码片段功能可以轻松实现代码复用，便于日后有需要的时候进行查找。</p>
+<h2 id="GitHub"><a href="#GitHub" class="headerlink" title="GitHub"></a>GitHub</h2><p>是一个面向开源及私有软件项目的托管平台，因为只支持git作为唯一的版本库格式进行托管，故名GitHub。</p>
+<h1 id="两者区别"><a href="#两者区别" class="headerlink" title="两者区别"></a>两者区别</h1><h2 id="相同点"><a href="#相同点" class="headerlink" title="相同点"></a>相同点</h2><p>二者都是基于web的Git仓库，在很大程度上GitLab是仿造GitHub来做的，他们都提供了分享开源项目的平台，<br>为开发团队提供了存储、分享、发布和合作开发项目的中心化云存储的场所。</p>
+<h2 id="不同点："><a href="#不同点：" class="headerlink" title="不同点："></a>不同点：</h2><ol>
+<li>GitHub如果使用私有仓库，是需要付费的，GitLab可以在上面搭建私人的免费仓库</li>
+<li>GitLab让开发团队对他们的代码仓库拥有更多的控制，相对于GitHub，它有不少的特色：<ol>
+<li>允许免费设置仓库权限</li>
+<li>允许用户选择分享一个project的部分代码</li>
+<li>允许用户设置project的获取权限，进一步提升安全性</li>
+<li>可以设置获取到团队整体的改进进度</li>
+<li>通过innersourcing让不在权限范围内的人访问不到该资源</li>
+</ol>
+</li>
+</ol>
+<h2 id="gitlab安装及使用："><a href="#gitlab安装及使用：" class="headerlink" title="gitlab安装及使用："></a>gitlab安装及使用：</h2><ol>
+<li><p>关闭防火墙和selinux，并安装安装依赖的包</p>
+ <figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">systemctl stop firewalld &amp;&amp; sy</span><br><span class="line">stemctl disable firewalld</span><br><span class="line">setenforce 0  并修改/etc/selinux/config </span><br><span class="line">yum -y install openssh-server postfix </span><br><span class="line">yum install -y curl policycoreutils-python openssh-server</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>启动positfix和sshd</p>
+ <figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">systemctl enable postfix &amp;&amp; systemctl start postfix</span><br><span class="line">systemctl enable sshd &amp;&amp; systemctl start sshd</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>下载安装包并安装安装包</p>
+ <figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">curl https://packages.gitlab.com/install/repositories/gitlab/gitlab-ee/script.rpm.sh | sudo bash</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>打开<code>/etc/gitlab/gitlab.rb</code>,将<code>external_url = &#39;http://git.example.com&#39;</code>修改为自己的IP地址：<code>http://xxx.xx.xxx.xx</code>,然后执行下面的命令，对GitLab进行编译。<br> <code>sudo gitlab-ctl reconfigure</code></p>
+</li>
+<li>登录GitLab<br> Username: root<br> Password: 5iveL!fe</li>
+<li>GitLab管理<br> <code>gitlab-ctl start/stop/restart/reconfigure</code></li>
+</ol>
+<h1 id="git相关概念："><a href="#git相关概念：" class="headerlink" title="git相关概念："></a>git相关概念：</h1><ul>
+<li>git     是一种版本控制系统，是一个命令，是一种工具</li>
+<li>gitlib  是基于git功能的开发库</li>
+<li>github 是一个基于git实现在线代码托管的仓库，包含一个网站界面，向互联网开放</li>
+<li>gitlab  是一个基于git实现的在线代码仓库托管软件，一般用于在企业内搭建git私服<br>git-ce是社区版，gitlab-ee是企业版，收费版</li>
+</ul>
+</the>
+        </div>
+        
+        <div class="level is-size-7 is-uppercase">
+            <div class="level-start">
+                <div class="level-item">
+                    <span class="is-size-6 has-text-grey has-mr-7">#</span>
+                    <a class="has-link-grey -link" href="/tags/git/">git</a>
+                </div>
+            </div>
+        </div>
+        
+        
+        
+            <p style="padding-bottom: 1rem">
+            <span id="busuanzi_container_page_pv">
+               本文总阅读量<span id="busuanzi_value_page_pv"></span>次
+            </span>
+            </p>
+        
+        
+            <div class="social-share"></div>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/social-share.js@1.0.16/dist/css/share.min.css">
+<script src="https://cdn.jsdelivr.net/npm/social-share.js@1.0.16/dist/js/social-share.min.js"></script>
+            <!-- <div class="share-component" data-disabled="google, twitter, facebook, tencent, douban, linkedin, diandian"></div> -->
+        
+    </div>
+</div>
+
+
+
+<div class="card">
     <div class="card-content">
-        <h3 class="tag is-link">
-        十二月 2018
-        </h3>
-        <div class="timeline">
-        
-            <article class="media">
+        <h3 class="menu-label has-text-centered">喜欢这篇文章？打赏一下作者吧</h3>
+        <div class="buttons is-centered">
+            
                 
-                <a href="/2018/12/31/简洁清爽的Stylus语法/" class="media-left">
-                    <p class="image is-64x64">
-                        <img class="thumbnail" src="https://i.loli.net/2018/12/31/5c293ea023b9e.jpg" alt="简洁清爽的Stylus语法">
-                    </p>
-                </a>
+<a class="button is-success donate">
+    <span class="icon is-small">
+        <i class="fab fa-weixin"></i>
+    </span>
+    <span>微信</span>
+    <div class="qrcode"><img src="https://s1.ax1x.com/2018/12/30/FfHzNV.png" alt="微信"></div>
+</a>
+
                 
-                <div class="media-content">
-                    <div class="content">
-                        <time class="has-text-grey is-size-7 is-block is-uppercase" datetime="2018-12-30T19:28:11.000Z">2018-12-31</time>
-                        <a href="/2018/12/31/简洁清爽的Stylus语法/" class="has-link-black-ter is-size-6">简洁清爽的Stylus语法</a>
-                        <div class="level article-meta is-mobile">
-                            <div class="level-left">
-                                
-                                <div class="level-item is-size-7 is-uppercase">
-                                <a class="has-link-grey -link" href="/categories/前端/">前端</a>
-                                </div>
-                                
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </article>
-        
-            <article class="media">
                 
-                <a href="/2018/12/26/O-n-算法查找第k大的数/" class="media-left">
-                    <p class="image is-64x64">
-                        <img class="thumbnail" src="https://i.loli.net/2018/12/30/5c28e19161171.jpg" alt="O(n)算法查找第k大的数">
-                    </p>
-                </a>
+<a class="button is-info donate">
+    <span class="icon is-small">
+        <i class="fab fa-alipay"></i>
+    </span>
+    <span>支付宝</span>
+    <div class="qrcode"><img src="https://s1.ax1x.com/2018/12/30/FfbShT.jpg" alt="支付宝"></div>
+</a>
+
                 
-                <div class="media-content">
-                    <div class="content">
-                        <time class="has-text-grey is-size-7 is-block is-uppercase" datetime="2018-12-26T14:00:26.000Z">2018-12-26</time>
-                        <a href="/2018/12/26/O-n-算法查找第k大的数/" class="has-link-black-ter is-size-6">O(n)算法查找第k大的数</a>
-                        <div class="level article-meta is-mobile">
-                            <div class="level-left">
-                                
-                                <div class="level-item is-size-7 is-uppercase">
-                                <a class="has-link-grey -link" href="/categories/算法/">算法</a>
-                                </div>
-                                
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </article>
-        
-            <article class="media">
-                
-                <a href="/2018/12/26/C-开发学习计划/" class="media-left">
-                    <p class="image is-64x64">
-                        <img class="thumbnail" src="https://i.loli.net/2018/12/31/5c28f3178005d.jpg" alt="C++开发学习计划">
-                    </p>
-                </a>
-                
-                <div class="media-content">
-                    <div class="content">
-                        <time class="has-text-grey is-size-7 is-block is-uppercase" datetime="2018-12-26T12:47:29.000Z">2018-12-26</time>
-                        <a href="/2018/12/26/C-开发学习计划/" class="has-link-black-ter is-size-6">C++开发学习计划</a>
-                        <div class="level article-meta is-mobile">
-                            <div class="level-left">
-                                
-                                <div class="level-item is-size-7 is-uppercase">
-                                <a class="has-link-grey -link" href="/categories/学习计划/">学习计划</a>
-                                </div>
-                                
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </article>
-        
-            <article class="media">
-                
-                <a href="/2018/12/24/icarus个性定制/" class="media-left">
-                    <p class="image is-64x64">
-                        <img class="thumbnail" src="https://i.loli.net/2018/12/30/5c28de1d7a908.jpg" alt="hexo及icarus主题个性定制">
-                    </p>
-                </a>
-                
-                <div class="media-content">
-                    <div class="content">
-                        <time class="has-text-grey is-size-7 is-block is-uppercase" datetime="2018-12-24T08:02:25.000Z">2018-12-24</time>
-                        <a href="/2018/12/24/icarus个性定制/" class="has-link-black-ter is-size-6">hexo及icarus主题个性定制</a>
-                        <div class="level article-meta is-mobile">
-                            <div class="level-left">
-                                
-                                <div class="level-item is-size-7 is-uppercase">
-                                <a class="has-link-grey -link" href="/categories/icarus/">icarus</a>
-                                </div>
-                                
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </article>
-        
-            <article class="media">
-                
-                <a href="/2018/12/22/markdown基本语法/" class="media-left">
-                    <p class="image is-64x64">
-                        <img class="thumbnail" src="https://i.loli.net/2018/12/30/5c28debe0c32f.jpg" alt="markdown基本语法">
-                    </p>
-                </a>
-                
-                <div class="media-content">
-                    <div class="content">
-                        <time class="has-text-grey is-size-7 is-block is-uppercase" datetime="2018-12-22T12:28:59.000Z">2018-12-22</time>
-                        <a href="/2018/12/22/markdown基本语法/" class="has-link-black-ter is-size-6">markdown基本语法</a>
-                        <div class="level article-meta is-mobile">
-                            <div class="level-left">
-                                
-                                <div class="level-item is-size-7 is-uppercase">
-                                <a class="has-link-grey -link" href="/categories/markdown/">markdown</a>
-                                </div>
-                                
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </article>
-        
-            <article class="media">
-                
-                <div class="media-content">
-                    <div class="content">
-                        <time class="has-text-grey is-size-7 is-block is-uppercase" datetime="2018-12-22T08:13:20.000Z">2018-12-22</time>
-                        <a href="/2018/12/22/hello-world/" class="has-link-black-ter is-size-6">Hello World</a>
-                        <div class="level article-meta is-mobile">
-                            <div class="level-left">
-                                
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </article>
-        
         </div>
     </div>
 </div>
 
+
+
+<div class="card card-transparent">
+    <div class="level post-navigation is-flex-wrap is-mobile">
+        
+        
+        <div class="level-end">
+            <a class="level level-item has-link-grey  article-nav-next" href="/2019/01/12/EJS里判断一个变量是否可用/">
+                <span class="level-item">EJS里判断一个变量是否可用</span>
+                <i class="level-item fas fa-chevron-right"></i>
+            </a>
+        </div>
+        
+    </div>
+</div>
+
+
+
+<div class="card">
+    <div class="card-content">
+        <h3 class="title is-5 has-text-weight-normal">评论</h3>
+        
+<div id="valine-thread"></div>
+<script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+<script src="//unpkg.com/valine/dist/Valine.min.js"></script>
+<script>
+    new Valine({
+        el: '#valine-thread' ,
+        notify: false,
+        verify: false,
+        app_id: 'TDJ1Xwg60guxsxnHXWGYVzaR-gzGzoHsz',
+        app_key: 'gqw5MJGTDfaMQA0JRsBllBAG',
+        placeholder: 'ヾﾉ≧∀≦)o来啊，快活啊!'
+    });
+</script>
+
+    </div>
+</div>
 
 </div>
                 
@@ -301,8 +339,9 @@
 
 <div class="column is-4-tablet is-4-desktop is-3-widescreen  has-order-1 column-left ">
     
-        
+    
           
+               
             
 <div class="card widget">
     <div class="card-content">
@@ -385,172 +424,20 @@
         
     </div>
 </div>
-          
-            
-
-<div class="card widget">
-    <div class="card-content">
-        <div class="menu links">
-        <h3 class="menu-label">
-            链接
-        </h3>
-        <ul class="menu-list">
         
+      
             
-                <li>
-                <a class="level is-mobile" href="http://godweiyang.com" target="_blank">
-                    <span class="level-left" style="text-decoration: underline">
-                        <span class="level-item">厉害的阳神</span>
-                    </span> 
-                </a>      
+      
+            
+      
+            
+    
+    
+        <div class="column-right-shadow  ">
+            
                 
-        
             
-                <a class="level is-mobile" style="float:right" href="https://qjchen.cn" target="_blank">
-                    <span class="level-right" style="text-decoration: underline">
-                        <span class="level-item">聪明的前嘉</span>
-                    </span>
-                </a>
-                </li>
-            
-        
-            
-                <li>
-                <a class="level is-mobile" href="https://miaosakurai.github.io" target="_blank">
-                    <span class="level-left" style="text-decoration: underline">
-                        <span class="level-item">樱井喵</span>
-                    </span> 
-                </a>      
                 
-        
-            
-                <a class="level is-mobile" style="float:right" href="https://subjectnoi.github.io" target="_blank">
-                    <span class="level-right" style="text-decoration: underline">
-                        <span class="level-item">华师肖奈zhgg</span>
-                    </span>
-                </a>
-                </li>
-            
-        
-        </ul>
-        </div>
-    </div>
-</div>
-
-          
-            
-<div class="card widget">
-    <div class="card-content">
-        <div class="menu">
-            <h3 class="menu-label">
-                分类
-            </h3>
-            <ul class="menu-list">
-            <li>
-        <a class="level is-marginless" href="/categories/ejs/">
-            <span class="level-start">
-                <span class="level-item">ejs</span>
-            </span>
-            <span class="level-end">
-                <span class="level-item tag">1</span>
-            </span>
-        </a></li><li>
-        <a class="level is-marginless" href="/categories/git/">
-            <span class="level-start">
-                <span class="level-item">git</span>
-            </span>
-            <span class="level-end">
-                <span class="level-item tag">2</span>
-            </span>
-        </a></li><li>
-        <a class="level is-marginless" href="/categories/icarus/">
-            <span class="level-start">
-                <span class="level-item">icarus</span>
-            </span>
-            <span class="level-end">
-                <span class="level-item tag">1</span>
-            </span>
-        </a></li><li>
-        <a class="level is-marginless" href="/categories/markdown/">
-            <span class="level-start">
-                <span class="level-item">markdown</span>
-            </span>
-            <span class="level-end">
-                <span class="level-item tag">1</span>
-            </span>
-        </a></li><li>
-        <a class="level is-marginless" href="/categories/前端/">
-            <span class="level-start">
-                <span class="level-item">前端</span>
-            </span>
-            <span class="level-end">
-                <span class="level-item tag">1</span>
-            </span>
-        </a></li><li>
-        <a class="level is-marginless" href="/categories/学习计划/">
-            <span class="level-start">
-                <span class="level-item">学习计划</span>
-            </span>
-            <span class="level-end">
-                <span class="level-item tag">1</span>
-            </span>
-        </a></li><li>
-        <a class="level is-marginless" href="/categories/算法/">
-            <span class="level-start">
-                <span class="level-item">算法</span>
-            </span>
-            <span class="level-end">
-                <span class="level-item tag">1</span>
-            </span>
-        </a></li><li>
-        <a class="level is-marginless" href="/categories/设计模式/">
-            <span class="level-start">
-                <span class="level-item">设计模式</span>
-            </span>
-            <span class="level-end">
-                <span class="level-item tag">1</span>
-            </span>
-        </a></li>
-            </ul>
-        </div>
-    </div>
-</div>
-          
-            
-<div class="card widget">
-    <div class="card-content">
-        <h3 class="menu-label">
-            标签云
-        </h3>
-        <div style="overflow: auto">
-            <svg width="260" height="350"><g transform="translate(140,175)"><a href="/tags/css/"><text text-anchor="middle" fill="#1f77b4" transform="translate(-61,-25)rotate(90)" style="font-size:30px;font-family:Impact">css</text></a><a href="/tags/ejs/"><text text-anchor="middle" fill="#aec7e8" transform="translate(-102,-22)rotate(0)" style="font-size:30px;font-family:Impact">ejs</text></a><a href="/tags/git/"><text text-anchor="middle" fill="#ff7f0e" transform="translate(11,80)rotate(0)" style="font-size:39px;font-family:Impact">git</text></a><a href="/tags/hexo/"><text text-anchor="middle" fill="#ffbb78" transform="translate(51,26)rotate(90)" style="font-size:45px;font-family:Impact">hexo</text></a><a href="/tags/icarus/"><text text-anchor="middle" fill="#2ca02c" transform="translate(-16,-61)rotate(0)" style="font-size:39px;font-family:Impact">icarus</text></a><a href="/tags/leetcode/"><text text-anchor="middle" fill="#98df8a" transform="translate(-66,68)rotate(90)" style="font-size:30px;font-family:Impact">leetcode</text></a><a href="/tags/markdown/"><text text-anchor="middle" fill="#d62728" transform="translate(44,131)rotate(0)" style="font-size:30px;font-family:Impact">markdown</text></a><a href="/tags/nodejs/"><text text-anchor="middle" fill="#ff9896" transform="translate(106,31)rotate(90)" style="font-size:30px;font-family:Impact">nodejs</text></a><a href="/tags/stylus/"><text text-anchor="middle" fill="#9467bd" transform="translate(-103,-119)rotate(90)" style="font-size:30px;font-family:Impact">stylus</text></a><a href="/tags/学习计划/"><text text-anchor="middle" fill="#c5b0d5" transform="translate(50,-104)rotate(0)" style="font-size:30px;font-family:Impact">学习计划</text></a><a href="/tags/算法/"><text text-anchor="middle" fill="#8c564b" transform="translate(6,-3)rotate(90)" style="font-size:30px;font-family:Impact">算法</text></a><a href="/tags/设计模式/"><text text-anchor="middle" fill="#c49c94" transform="translate(-107,82)rotate(90)" style="font-size:30px;font-family:Impact">设计模式</text></a><a href="/tags/面向对象/"><text text-anchor="middle" fill="#e377c2" transform="translate(43,-145)rotate(0)" style="font-size:30px;font-family:Impact">面向对象</text></a><a href="/tags/面试/"><text text-anchor="middle" fill="#f7b6d2" transform="translate(74,-32)rotate(0)" style="font-size:30px;font-family:Impact">面试</text></a></g></svg>
-        </div>
-    </div>
-</div>
-
-        
-    
-    
-</div>
-
-                    
-
-
-
-
-<div class="column is-4-tablet is-4-desktop is-3-widescreen is-hidden-touch is-hidden-desktop-only has-order-3 column-right ">
-    
-        
-            <div class="card widget">
-                <div class="card-content">
-                    <iframe frameborder="no" border="0" marginwidth="0" marginheight="0" style="height:6rem" src="//music.163.com/outchain/player?type=2&id=482988698&auto=1&height=66"></iframe>
-                </div>
-            </div>
-        
-          
-            
-          
-            
 <div class="card widget">
     <div class="card-content">
         <h3 class="menu-label">
@@ -637,8 +524,8 @@
     </div>
 </div>
 
-          
-            <div class="card widget">
+            
+                <div class="card widget">
     <div class="card-content">
         <div class="menu">
         <h3 class="menu-label">
@@ -683,8 +570,8 @@
         </div>
     </div>
 </div>
-          
-            <div class="card widget">
+            
+                <div class="card widget">
     
     <div class="card-content">
         <div class="menu">
@@ -851,7 +738,8 @@
         </div>
     </div>
 </div>
-        
+            
+        </div>
     
     
 </div>
@@ -869,7 +757,7 @@
             <div class="level-start has-text-centered-mobile">
                 <a class="footer-logo is-block has-mb-6" href="/">
                 
-                    <img src="https://i.loli.net/2019/01/07/5c336be858b4e.jpg" alt="Jingjing&#39;s blog" height="28">
+                    <img src="https://i.loli.net/2019/01/07/5c336be858b4e.jpg" alt="gitlab与github" height="28">
                 
                 </a>
                 <p class="is-size-7" style="padding-bottom: 0.5em">
