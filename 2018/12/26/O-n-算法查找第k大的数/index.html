@@ -17,7 +17,7 @@
 <meta property="og:site_name" content="Jingjing&#39;s blog">
 <meta property="og:description" content="面试中常见的经典算法题：O(n)算法查找第k大的数。">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2018-12-30T21:56:14.907Z">
+<meta property="og:updated_time" content="2019-03-03T05:53:13.530Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="O(n)算法查找第k大的数">
 <meta name="twitter:description" content="面试中常见的经典算法题：O(n)算法查找第k大的数。">
@@ -161,7 +161,7 @@
                 <time class="level-item has-text-grey" datetime="2018-12-26T14:00:26.000Z">2018-12-26</time>
                 
                     <i class="fas fa-calendar-check">&nbsp</i>
-                    <time class="level-item has-text-grey" datetime="2018-12-30T21:56:14.907Z">2018-12-31</time>
+                    <time class="level-item has-text-grey" datetime="2019-03-03T05:53:13.530Z">2019-03-03</time>
                 
                 
                 <i class="fas fa-book">&nbsp</i>
@@ -198,7 +198,8 @@
                 </div>
              
             <p><excerpt in="" index="" |="" 首页摘要=""><br>    面试中常见的经典算法题：O(n)算法查找第k大的数。<br><a id="more"></a></excerpt></p>
-<p><the rest="" of="" contents="" |="" 余下全文=""></the></p>
+<the rest="" of="" contents="" |="" 余下全文="">
+
 <h1 id="O-n-算法查找第k大的数"><a href="#O-n-算法查找第k大的数" class="headerlink" title="O(n)算法查找第k大的数"></a>O(n)算法查找第k大的数</h1><h2 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h2><p>这里讲利用快速排序Partion的算法，核心思想是快排的分支算法，具体思路：</p>
 <ol>
 <li>利用快排的partion函数将数组分成左右两个部分</li>
@@ -212,7 +213,7 @@
 <p>但是这里在确定枢纽元的相对位置（在K的左边或者右边）之后不用再对剩下的一半进行处理。<br>也就是说第二次插入的算法复杂度不再是O(N)而是O(N/2)。？<br>接下来的过程是1+1/2+1/4+…….. &lt; 2，换句话说就是一共是O(2N)的算法复杂度也就是O(N)的算法复杂度。</p>
 <h2 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h2><h3 id="递归实现"><a href="#递归实现" class="headerlink" title="递归实现"></a>递归实现</h3><figure class="highlight c++ hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Solution</span> &#123;</span></span><br><span class="line"><span class="hljs-keyword">public</span>:</span><br><span class="line">    <span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">partion</span><span class="hljs-params">(<span class="hljs-built_in">vector</span>&lt;<span class="hljs-keyword">int</span>&gt; &amp;nums,<span class="hljs-keyword">int</span> k,<span class="hljs-keyword">int</span> start, <span class="hljs-keyword">int</span> end)</span></span>&#123;</span><br><span class="line">        <span class="hljs-keyword">int</span> tmp = nums[start], n = nums.size(), left = start, right = end;</span><br><span class="line">        <span class="hljs-keyword">while</span>(left &lt; right)&#123;</span><br><span class="line">            <span class="hljs-keyword">while</span>(right &gt; left &amp;&amp; nums[right] &lt; tmp) right --;</span><br><span class="line">            <span class="hljs-keyword">if</span>(right &gt; left)</span><br><span class="line">                nums[left ++] = nums[right];</span><br><span class="line">            <span class="hljs-keyword">while</span>(left &lt; right &amp;&amp; nums[left] &gt;= tmp) left ++;</span><br><span class="line">            <span class="hljs-keyword">if</span>(left &lt; right) </span><br><span class="line">                nums[right --] = nums[left];</span><br><span class="line">        &#125;</span><br><span class="line">        nums[left] = tmp;</span><br><span class="line">        <span class="hljs-keyword">if</span>(left == k - <span class="hljs-number">1</span>)   <span class="hljs-keyword">return</span> tmp;</span><br><span class="line">        <span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span>(left &gt; k - <span class="hljs-number">1</span>)   <span class="hljs-keyword">return</span> partion(nums, k, start, left - <span class="hljs-number">1</span>);</span><br><span class="line">        <span class="hljs-keyword">else</span> <span class="hljs-keyword">return</span> partion(nums, k, left + <span class="hljs-number">1</span>, end);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">findKthLargest</span><span class="hljs-params">(<span class="hljs-built_in">vector</span>&lt;<span class="hljs-keyword">int</span>&gt;&amp; nums, <span class="hljs-keyword">int</span> k)</span> </span>&#123;</span><br><span class="line">        <span class="hljs-keyword">return</span> partion(nums, k, <span class="hljs-number">0</span>, nums.size() - <span class="hljs-number">1</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
 <h3 id="非递归实现"><a href="#非递归实现" class="headerlink" title="非递归实现"></a>非递归实现</h3><figure class="highlight c++ hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-keyword">static</span> <span class="hljs-keyword">auto</span> sycn_false = []()&#123;</span><br><span class="line">    ios :: sync_with_stdio(<span class="hljs-literal">false</span>);</span><br><span class="line">    <span class="hljs-built_in">cin</span>.tie(<span class="hljs-literal">nullptr</span>);</span><br><span class="line">    <span class="hljs-keyword">return</span> <span class="hljs-literal">nullptr</span>;</span><br><span class="line">&#125;();</span><br><span class="line"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Solution</span> &#123;</span></span><br><span class="line"><span class="hljs-keyword">public</span>:</span><br><span class="line">    <span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">findKthLargest</span><span class="hljs-params">(<span class="hljs-built_in">vector</span>&lt;<span class="hljs-keyword">int</span>&gt;&amp; nums, <span class="hljs-keyword">int</span> k)</span> </span>&#123;</span><br><span class="line">        <span class="hljs-keyword">int</span> start = <span class="hljs-number">0</span>, end = nums.size() - <span class="hljs-number">1</span>;</span><br><span class="line">        <span class="hljs-keyword">while</span>(start &lt;= end)&#123;</span><br><span class="line">            <span class="hljs-keyword">int</span> tmp = nums[start], left = start, right = end;</span><br><span class="line">            <span class="hljs-keyword">while</span>(left &lt; right)&#123;</span><br><span class="line">                <span class="hljs-keyword">while</span>(left &lt; right &amp;&amp; nums[right] &lt; tmp)</span><br><span class="line">                    right --;</span><br><span class="line">                <span class="hljs-keyword">if</span>(left &lt; right)&#123;</span><br><span class="line">                    nums[left ++] = nums[right];</span><br><span class="line">                &#125;</span><br><span class="line">                <span class="hljs-keyword">while</span>(left &lt; right &amp;&amp; nums[left] &gt;= tmp)</span><br><span class="line">                    left ++;</span><br><span class="line">                <span class="hljs-keyword">if</span>(left &lt; right)&#123;</span><br><span class="line">                    nums[right --] = nums[left]; </span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">            nums[left] = tmp;</span><br><span class="line">            <span class="hljs-keyword">if</span>(left == k - <span class="hljs-number">1</span>)   <span class="hljs-keyword">return</span> nums[left];</span><br><span class="line">            <span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span>(left &gt; k - <span class="hljs-number">1</span>)   end = left - <span class="hljs-number">1</span>;</span><br><span class="line">            <span class="hljs-keyword">else</span>    start = left + <span class="hljs-number">1</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="hljs-keyword">return</span> <span class="hljs-number">-1</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
-
+</the>
         </div>
         
         <div class="level is-size-7 is-uppercase">
@@ -363,7 +364,7 @@
                         文章
                     </p>
                     <p class="title has-text-weight-normal">
-                        11
+                        12
                     </p>
                 </div>
             </div>
@@ -373,7 +374,7 @@
                         分类
                     </p>
                     <p class="title has-text-weight-normal">
-                        9
+                        10
                     </p>
                 </div>
             </div>
@@ -383,7 +384,7 @@
                         标签
                     </p>
                     <p class="title has-text-weight-normal">
-                        15
+                        16
                     </p>
                 </div>
             </div>
@@ -431,6 +432,19 @@
         <h3 class="menu-label">
             最新文章
         </h3>
+        
+        <article class="media">
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-03-03T05:51:13.000Z">2019-03-03</time></div>
+                    <a href="/2019/03/03/vue-router传递参数params和query的区别/" class="has-link-black-ter is-size-6">vue-router传递参数params和query的区别</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/vue/">vue</a>
+                    </p>
+                </div>
+            </div>
+        </article>
         
         <article class="media">
             
@@ -508,25 +522,6 @@
             </div>
         </article>
         
-        <article class="media">
-            
-            <a href="/2019/01/02/git修改已提交的备注/" class="media-left">
-                <p class="image is-64x64">
-                    <img class="thumbnail" src="https://i.loli.net/2019/01/02/5c2cde21dd56d.jpg" alt="git修改已提交的备注">
-                </p>
-            </a> 
-            
-            <div class="media-content">
-                <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-01-02T15:04:18.000Z">2019-01-02</time></div>
-                    <a href="/2019/01/02/git修改已提交的备注/" class="has-link-black-ter is-size-6">git修改已提交的备注</a>
-                    <p class="is-size-7 is-uppercase">
-                        <a class="has-link-grey -link" href="/categories/git/">git</a>
-                    </p>
-                </div>
-            </div>
-        </article>
-        
     </div>
 </div>
 
@@ -538,6 +533,17 @@
             归档
         </h3>
         <ul class="menu-list">
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2019/03/">
+                <span class="level-start">
+                    <span class="level-item">三月 2019</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">1</span>
+                </span>
+            </a>
+        </li>
         
         <li>
             <a class="level is-marginless" href="/archives/2019/02/">
@@ -689,6 +695,17 @@
                     <a class="level is-marginless" href="/tags/stylus/">
                         <span class="level-start">
                             <span class="level-item">stylus</span>
+                        </span>
+                        <span class="level-end">
+                            <span class="level-item tag">1</span>
+                        </span>
+                    </a>
+                </li>
+                
+                <li>
+                    <a class="level is-marginless" href="/tags/vue/">
+                        <span class="level-start">
+                            <span class="level-item">vue</span>
                         </span>
                         <span class="level-end">
                             <span class="level-item tag">1</span>
