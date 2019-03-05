@@ -17,7 +17,7 @@
 <meta property="og:site_name" content="Jingjing&#39;s blog">
 <meta property="og:description" content="两者都是用git实现代码托管的版本仓库，两者很相似，那它们的区别是？">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2019-03-05T15:26:53.200Z">
+<meta property="og:updated_time" content="2019-03-05T15:43:36.639Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="网页的跳转页面及参数传递方法">
 <meta name="twitter:description" content="两者都是用git实现代码托管的版本仓库，两者很相似，那它们的区别是？">
@@ -155,7 +155,7 @@
                 <time class="level-item has-text-grey" datetime="2019-03-05T14:42:55.000Z">2019-03-05</time>
                 
                     <i class="fas fa-calendar-check">&nbsp</i>
-                    <time class="level-item has-text-grey" datetime="2019-03-05T15:26:53.200Z">2019-03-05</time>
+                    <time class="level-item has-text-grey" datetime="2019-03-05T15:43:36.639Z">2019-03-05</time>
                 
                 
                 <i class="fas fa-book">&nbsp</i>
@@ -202,26 +202,25 @@
 </li>
 </ol>
 <h1 id="参数传递："><a href="#参数传递：" class="headerlink" title="参数传递："></a>参数传递：</h1><ol>
-<li><p>url传参：<br> 第一个页面(a.html)：</p>
- <figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">var obj = a.value; //传给弹出页面参数</span><br><span class="line">var url = &apos;jxb.html?obj=&apos;+obj;</span><br><span class="line">url = encodeURI(url);</span><br><span class="line">window.open(url, &quot;&quot;, &quot;width=600,height=400&quot;);</span><br></pre></td></tr></table></figure>
+<li><p>url传参：<br>第一个页面(a.html)：</p>
+<figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">var obj = a.value; //传给弹出页面参数</span><br><span class="line">var url = &apos;jxb.html?obj=&apos;+obj;</span><br><span class="line">url = encodeURI(url);</span><br><span class="line">window.open(url, &quot;&quot;, &quot;width=600,height=400&quot;);</span><br></pre></td></tr></table></figure>
 <p> 第二个页面(b.html)：</p>
- <figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">var url = decodeURI(window.location.href);</span><br><span class="line"></span><br><span class="line">var argsIndex = url .split(&quot;?obj=&quot;);</span><br><span class="line">var arg = argsIndex[1];</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">var url = decodeURI(window.location.href);</span><br><span class="line"></span><br><span class="line">var argsIndex = url .split(&quot;?obj=&quot;);</span><br><span class="line">var arg = argsIndex[1];</span><br></pre></td></tr></table></figure>
+<p> 注:中文传输:可以在页面a用encodeURI 编码url  在b页面用decodeURI解码url</p>
 </li>
-</ol>
-<p>注:中文传输:可以在页面a用encodeURI 编码url  在b页面用decodeURI解码url</p>
-<ol start="2">
 <li><p>cookie传参(不能跨域)：</p>
 <figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">function setCookie(cname,cvalue)&#123;</span><br><span class="line">    document.cookie = cname + &quot;=&quot; + cvalue;</span><br><span class="line">&#125;</span><br><span class="line">function getCookie(cname)&#123;</span><br><span class="line">    var name = cname + &quot;=&quot;;</span><br><span class="line">    var ca = document.cookie;</span><br><span class="line">&#125;`</span><br></pre></td></tr></table></figure>
 </li>
 <li><p>localStorage对象传参：</p>
 <figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">a.html：</span><br><span class="line">var div = doucment.getElementById(&apos;要获取字符串的DIV ID名&apos;);</span><br><span class="line">localStorage.string = div.textContent;</span><br><span class="line"></span><br><span class="line">b.html：</span><br><span class="line">var div = doucment.getElementById(&apos;要写入的DIV ID名&apos;);</span><br><span class="line">div.textContent = localStorage.string;</span><br></pre></td></tr></table></figure>
 </li>
-<li><p>window.opener()<br>父页面：</p>
+<li><p>window.opener()<br> 父页面：</p>
 <figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">&lt;input type=&quot;text&quot; name=&quot;textfield&quot; id=&quot;textfield&quot;/&gt;</span><br><span class="line">window.open(&quot;子页面.html&quot;);</span><br></pre></td></tr></table></figure>
+<p> 子页面：</p>
+<figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">window.opener.document.getElementByIdx(&apos;textfield&apos;).value=&apos;123123123&apos;;</span><br></pre></td></tr></table></figure>
+<p> 如果跨域，子页面还要加上document.domain=”父页面url”</p>
 </li>
 </ol>
-<p>子页面：<br><figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">window.opener.document.getElementByIdx(&apos;textfield&apos;).value=&apos;123123123&apos;;</span><br></pre></td></tr></table></figure></p>
-<p>如果跨域，子页面还要加上document.domain=”父页面url”</p>
 </the>
         </div>
         
