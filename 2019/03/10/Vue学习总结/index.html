@@ -9,18 +9,21 @@
 
 
 
-    <meta name="description" content="#生命周期">
+    <meta name="description" content="通过xmind和笔记记录细碎的知识点。">
 <meta name="keywords" content="vue">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Vue学习总结">
 <meta property="og:url" content="http://Angericky.github.io/2019/03/10/Vue学习总结/index.html">
 <meta property="og:site_name" content="Jingjing&#39;s blog">
-<meta property="og:description" content="#生命周期">
+<meta property="og:description" content="通过xmind和笔记记录细碎的知识点。">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2019-03-10T03:01:40.971Z">
+<meta property="og:image" content="https://github.com/Angericky/Angericky.github.io/tree/master/images/Vue.png">
+<meta property="og:image" content="https://github.com/Angericky/Angericky.github.io/tree/master/images/vue-life-cycle.jpg">
+<meta property="og:updated_time" content="2019-03-10T04:30:18.729Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Vue学习总结">
-<meta name="twitter:description" content="#生命周期">
+<meta name="twitter:description" content="通过xmind和笔记记录细碎的知识点。">
+<meta name="twitter:image" content="https://github.com/Angericky/Angericky.github.io/tree/master/images/Vue.png">
 
 
 
@@ -155,14 +158,14 @@
                 <time class="level-item has-text-grey" datetime="2019-03-10T02:59:09.000Z">2019-03-10</time>
                 
                     <i class="fas fa-calendar-check">&nbsp</i>
-                    <time class="level-item has-text-grey" datetime="2019-03-10T03:01:40.971Z">2019-03-10</time>
+                    <time class="level-item has-text-grey" datetime="2019-03-10T04:30:18.729Z">2019-03-10</time>
                 
                 
                 <i class="fas fa-book">&nbsp</i>
                 <span class="level-item has-text-grey">
                     
                     
-                    几秒 读完 (大约 4 个字)
+                    6 分钟 读完 (大约 962 个字)
                 </span>
                 
             </div>
@@ -181,8 +184,54 @@
         
         <div class="content">
              
-            <p>#生命周期</p>
+            <p><excerpt in="" index="" |="" 首页摘要=""><br>    通过xmind和笔记记录细碎的知识点。<br><a id="more"></a></excerpt></p>
+<the rest="" of="" contents="" |="" 余下全文="">
 
+<h1 id="Vue-js是什么"><a href="#Vue-js是什么" class="headerlink" title="Vue.js是什么"></a>Vue.js是什么</h1><p>Vue是一套用于构建用户界面的渐进式框架。<br>与其它大型框架不同的是，Vue 被设计为可以自底向上逐层应用。<br>Vue 的核心库只关注视图层，不仅易于上手，还便于与第三方库或既有项目整合。<br>另一方面，当与现代化的工具链以及各种支持类库结合使用时，Vue 也完全能够为复杂的单页应用（SPA）提供驱动。</p>
+<h1 id="总结知识点"><a href="#总结知识点" class="headerlink" title="总结知识点"></a>总结知识点</h1><p><img src="https://github.com/Angericky/Angericky.github.io/tree/master/images/Vue.png" alt="Vue"></p>
+<h1 id="生命周期"><a href="#生命周期" class="headerlink" title="生命周期"></a>生命周期</h1><h2 id="什么是生命周期"><a href="#什么是生命周期" class="headerlink" title="什么是生命周期"></a>什么是生命周期</h2><blockquote>
+<p>Vue实例有一个完整的生命周期，也就是从开始创建、初始化数据、编译模板、挂载Dom、渲染→更新→渲染、卸载等一系列过程，我们称这是Vue的生命周期。通俗说就是Vue实例从创建到销毁的过程，就是生命周期。</p>
+</blockquote>
+<p>在Vue的整个生命周期中，它提供了一系列的事件，可以让我们在事件触发时注册js方法，可以让我们用自己注册的js方法控制整个大局，在这些事件响应方法中的this直接指向的是Vue的实例。</p>
+<h2 id="官方图及标注"><a href="#官方图及标注" class="headerlink" title="官方图及标注"></a>官方图及标注</h2><p><img src="https://github.com/Angericky/Angericky.github.io/tree/master/images/vue-life-cycle.jpg" alt="生命周期"></p>
+<blockquote>
+<p>特别值得注意的是created钩子函数和mounted钩子函数的区别</p>
+</blockquote>
+<h2 id="生命周期钩子函数"><a href="#生命周期钩子函数" class="headerlink" title="生命周期钩子函数"></a>生命周期钩子函数</h2><p>beforeCreate</p>
+<blockquote>
+<p>在实例初始化后，数据观测(data observer)和 event/watcher 事件配置之前被调用。</p>
+</blockquote>
+<p>created</p>
+<blockquote>
+<p>实例已经创建完成之后被调用。在这一步，实例已完成以下配置：数据观测(data observer)，属性和方法的运算，watch/event 事件回调。然而，挂载阶段还没开始，$el属性目前不可见。</p>
+</blockquote>
+<p>beforeMount</p>
+<blockquote>
+<p>在挂载开始之前被调用：相关的render函数首次被调用。</p>
+</blockquote>
+<p>mounted</p>
+<blockquote>
+<p>el被新创建的vm.$el替换，并挂载到实例上去之后调用该钩子。</p>
+</blockquote>
+<p>beforeUpdate</p>
+<blockquote>
+<p>数据更新时调用，发生在虚拟DOM重新渲染和打补丁之前。你可以在这个钩子中进一步地更改状态，这不会触发附加的重渲染过程。</p>
+</blockquote>
+<p>updated</p>
+<blockquote>
+<p>由于数据更改导致的虚拟DOM重新渲染和打补丁，在这之后会调用该钩子。<br>当这个钩子被调用时，组件 DOM 已经更新，所以你现在可以执行依赖于 DOM 的操作。然而在大多数情况下，你应该避免在此期间更改状态，因为这可能会导致更新无限循环。</p>
+</blockquote>
+<p>该钩子在服务器端渲染期间不被调用。</p>
+<p>beforeDestroy</p>
+<blockquote>
+<p>实例销毁之前调用。在这一步，实例仍然完全可用。</p>
+</blockquote>
+<p>destroyed</p>
+<blockquote>
+<p>Vue实例销毁后调用。调用后，Vue实例指示的所有东西都会解绑定，所有的事件监听器会被移除，所有的子实例也会被销毁。该钩子在服务器端渲染期间不被调用。</p>
+</blockquote>
+<h1 id="Vuex是什么"><a href="#Vuex是什么" class="headerlink" title="Vuex是什么"></a>Vuex是什么</h1><p>Vuex 是一个专为 Vue.js 应用程序开发的状态管理模式。<br>它采用集中式存储管理应用的所有组件的状态，并以相应的规则保证状态以一种可预测的方式发生变化。<br>Vuex 也集成到 Vue 的官方调试工具 devtools extension，提供了诸如零配置的 time-travel 调试、状态快照导入导出等高级调试功能。</p>
+</the>
         </div>
         
         <div class="level is-size-7 is-uppercase">
