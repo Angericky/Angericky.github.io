@@ -17,7 +17,7 @@
 <meta property="og:site_name" content="Jingjing&#39;s blog">
 <meta property="og:description" content="配这篇论文源码的环境的过程实在是太艰难了。也 太 艰 难 了。究竟是什么样的狠人才会用matlab + caffe的环境啊！！">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2019-03-24T10:09:37.139Z">
+<meta property="og:updated_time" content="2019-03-26T15:05:48.715Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="关于我和3DGNN论文及源码的爱恨情仇">
 <meta name="twitter:description" content="配这篇论文源码的环境的过程实在是太艰难了。也 太 艰 难 了。究竟是什么样的狠人才会用matlab + caffe的环境啊！！">
@@ -157,14 +157,14 @@
                 <time class="level-item has-text-grey" datetime="2019-03-23T14:11:05.000Z">2019-03-23</time>
                 
                     <i class="fas fa-calendar-check">&nbsp</i>
-                    <time class="level-item has-text-grey" datetime="2019-03-24T10:09:37.139Z">2019-03-24</time>
+                    <time class="level-item has-text-grey" datetime="2019-03-26T15:05:48.715Z">2019-03-26</time>
                 
                 
                 <i class="fas fa-book">&nbsp</i>
                 <span class="level-item has-text-grey">
                     
                     
-                    5 分钟 读完 (大约 725 个字)
+                    5 分钟 读完 (大约 800 个字)
                 </span>
                 
             </div>
@@ -210,7 +210,7 @@
 <li>方法1<br>在/usr/local/MATLAB/R2014b/sys/os/glnxa64下<br>把 libstdc++.so.6 重命名为 libstdc++.so.6_back<br><code>mv libstdc++.so.6 libstdc++.so.6_back</code><br>这是Matlab找不到libstdc++.so.6之后，会到/usr/lib中找系统用到libstdc++版本</li>
 </ol>
 <ol start="2">
-<li>方法2<br>处理这个问题的另外一个办法是建立一个soft link（为一个lib建立一个重定向，以后要找这个名字的lib，会定向到指定的lib那里） <figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">cd /usr/local/MATLAB/R2016b/sys/os/glnxa64</span><br><span class="line">sudo rm libstdc++.so.6</span><br><span class="line">sudo ln -s /usr/lib/x86_64-linux-gnu/libstdc++.so.6.0.21 libstdc++.so.6</span><br></pre></td></tr></table></figure></li>
+<li>方法2<br>处理这个问题的另外一个办法是建立一个soft link（为一个lib建立一个重定向，以后要找这个名字的lib，会定向到指定的lib那里） <figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">	cd /usr/local/MATLAB/R2016b/sys/os/glnxa64</span><br><span class="line">	sudo rm libstdc++.so.6</span><br><span class="line">	sudo ln -s /usr/lib/x86_64-linux-gnu/libstdc++.so.6.0.21 libstdc++.so.6</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"># 进入matlab</span><br><span class="line">要先addpath(&apos;PATH/TO/MATLAB/IN/CAFFE_CODE&apos;)才能让matlab找到matcaffe，</span><br><span class="line">在nyu_crop_data_mask_msc.m里gpu_id选择你的空闲的gpu(nvidia-smi显示gpu相关信息)，</span><br><span class="line">注意，matcaffe只能用单gpu训练网络，</span><br><span class="line">然后run nyu_crop_data_mask_msc.m，</span><br><span class="line">成功。</span><br></pre></td></tr></table></figure></li>
 </ol>
 
         </div>
