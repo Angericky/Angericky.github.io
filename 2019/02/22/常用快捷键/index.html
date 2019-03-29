@@ -17,7 +17,7 @@
 <meta property="og:site_name" content="Jingjing&#39;s blog">
 <meta property="og:description" content="包括但不限于vim和Linux命令。">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2019-03-27T07:26:31.544Z">
+<meta property="og:updated_time" content="2019-03-29T15:17:14.525Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="常用快捷键和指令">
 <meta name="twitter:description" content="包括但不限于vim和Linux命令。">
@@ -163,14 +163,14 @@
                 <time class="level-item has-text-grey" datetime="2019-02-22T10:04:39.000Z">2019-02-22</time>
                 
                     <i class="fas fa-calendar-check">&nbsp</i>
-                    <time class="level-item has-text-grey" datetime="2019-03-27T07:26:31.544Z">2019-03-27</time>
+                    <time class="level-item has-text-grey" datetime="2019-03-29T15:17:14.525Z">2019-03-29</time>
                 
                 
                 <i class="fas fa-book">&nbsp</i>
                 <span class="level-item has-text-grey">
                     
                     
-                    5 分钟 读完 (大约 730 个字)
+                    5 分钟 读完 (大约 745 个字)
                 </span>
                 
             </div>
@@ -226,6 +226,8 @@
 <li>于显示内存状态<figure class="highlight js hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">free -m</span><br><span class="line">total        used        free      shared  buff/cache   available</span><br><span class="line">Mem:           <span class="hljs-number">1838</span>         <span class="hljs-number">265</span>         <span class="hljs-number">981</span>           <span class="hljs-number">0</span>         <span class="hljs-number">591</span>        <span class="hljs-number">1395</span></span><br><span class="line">Swap:          <span class="hljs-number">2047</span>           <span class="hljs-number">0</span>        <span class="hljs-number">20</span></span><br></pre></td></tr></table></figure>
 </li>
 </ul>
+</li>
+<li><p>查看linux ip地址<br>  ip addr show  | grep inet | awk ‘{ print $2; }’ | sed ‘s/\/.*$//‘</p>
 </li>
 <li><p>find命令查找最近修改过的文件<br>  按时间查找也有参数 -atime 访问时间 -ctime 改变状态的时间 -mtime修改的时间。但要注意，这里的时间是以24小时为单位的。查看man手册后使用，你会很迷惑： -mtime n： File<a1><af>s data was last modified n*24 hours ago. 字面上的理解是最后一次修改发生在n个24小时以前的文件，但实际上</af></a1></p>
   <figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">find ./ -mtime 0：返回最近24小时内修改过的文件。</span><br><span class="line">find ./ -mtime 1 ： 返回的是前48~24小时修改过的文件。而不是48小时以内修改过的文件。</span><br></pre></td></tr></table></figure>
