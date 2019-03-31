@@ -10,14 +10,14 @@
 
 
     <meta name="description" content="配这篇论文源码的环境的过程实在是太艰难了。也 太 艰 难 了。究竟是什么样的狠人才会用matlab + caffe的环境啊！！">
-<meta name="keywords" content="caffe,pytorch">
+<meta name="keywords" content="caffe,matlab,semantic sementation">
 <meta property="og:type" content="article">
 <meta property="og:title" content="关于我和3DGNN论文及源码的爱恨情仇">
 <meta property="og:url" content="http://Angericky.github.io/2019/03/23/关于我和3DGNN论文及源码的爱恨情仇/index.html">
 <meta property="og:site_name" content="Jingjing&#39;s blog">
 <meta property="og:description" content="配这篇论文源码的环境的过程实在是太艰难了。也 太 艰 难 了。究竟是什么样的狠人才会用matlab + caffe的环境啊！！">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2019-03-31T12:57:36.697Z">
+<meta property="og:updated_time" content="2019-03-31T13:44:50.904Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="关于我和3DGNN论文及源码的爱恨情仇">
 <meta name="twitter:description" content="配这篇论文源码的环境的过程实在是太艰难了。也 太 艰 难 了。究竟是什么样的狠人才会用matlab + caffe的环境啊！！">
@@ -143,7 +143,13 @@
         <div class="container">
             <div class="columns">
                 <div class="column is-8-tablet is-8-desktop is-8-widescreen has-order-2 column-main"><div class="card">
-    <!--  -->
+    <!-- 
+    <div class="card-image">
+        <span  class="image is-7by1">
+            <img class="thumbnail" src="https://i.loli.net/2019/03/31/5ca0bf4ce3cac.jpg" alt="关于我和3DGNN论文及源码的爱恨情仇">
+        </span>
+    </div>
+     -->
     <div class="card-content article ">
         <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
             
@@ -157,14 +163,14 @@
                 <time class="level-item has-text-grey" datetime="2019-03-23T14:11:05.000Z">2019-03-23</time>
                 
                     <i class="fas fa-calendar-check">&nbsp</i>
-                    <time class="level-item has-text-grey" datetime="2019-03-31T12:57:36.697Z">2019-03-31</time>
+                    <time class="level-item has-text-grey" datetime="2019-03-31T13:44:50.904Z">2019-03-31</time>
                 
                 
                 <i class="fas fa-book">&nbsp</i>
                 <span class="level-item has-text-grey">
                     
                     
-                    12 分钟 读完 (大约 1736 个字)
+                    13 分钟 读完 (大约 1902 个字)
                 </span>
                 
             </div>
@@ -172,10 +178,15 @@
         <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
             <div class="level-left">
                 
+                    <i class="fas fa-folder-open">&nbsp</i>
+                    <div class="level-item">
+                    <a class="has-link-grey -link" href="/categories/caffe/">caffe</a>&nbsp;/&nbsp;<a class="has-link-grey -link" href="/categories/caffe/semantic-segmentation/">semantic segmentation</a>
+                    </div>
+                
                 
                     <i class="fas fa-tags">&nbsp</i>
                     <div class="level-item">
-                    <a class="has-link-grey -link" href="/tags/caffe/">caffe</a>&nbsp;/&nbsp;<a class="has-link-grey -link" href="/tags/pytorch/">pytorch</a>
+                    <a class="has-link-grey -link" href="/tags/caffe/">caffe</a>&nbsp;/&nbsp;<a class="has-link-grey -link" href="/tags/matlab/">matlab</a>&nbsp;/&nbsp;<a class="has-link-grey -link" href="/tags/semantic-sementation/">semantic sementation</a>
                     </div>
                 
             </div>
@@ -193,7 +204,7 @@ OpenCV: 3.4.3
 显卡: GeForce 1080Ti x2
 </code></pre><h1 id="安装caffe"><a href="#安装caffe" class="headerlink" title="安装caffe"></a>安装caffe</h1><pre><code>make all -j8
 make test -j8
-make run -j8h
+make runtest -j8
 </code></pre><h2 id="错误信息-找不到hdf5"><a href="#错误信息-找不到hdf5" class="headerlink" title="错误信息: 找不到hdf5"></a>错误信息: 找不到hdf5</h2><blockquote>
 <p> fatal error: hdf5.h: No such file or directory</p>
 </blockquote>
@@ -205,7 +216,7 @@ make run -j8h
 <p>LD -o .build_release/lib/libcaffe.so.1.0.0-rc3<br>/usr/bin/ld: cannot find -lhdf5<br>collect2: error: ld returned 1 exit status<br>Makefile:563: recipe for target ‘.build_release/lib/libcaffe.so.1.0.0-rc3’ failed<br>make: *** [.build_release/lib/libcaffe.so.1.0.0-rc3] Error 1</p>
 </blockquote>
 <p>解决办法：<br>改Makefile里<br><code>LIBRARIES += glog gflags protobuf boost_system boost_filesystem m hdf5_serial_hl hdf5_serial</code></p>
-<h2 id="错误信息-关于cudnn"><a href="#错误信息-关于cudnn" class="headerlink" title="错误信息: 关于cudnn"></a>错误信息: 关于cudnn</h2><blockquote>
+<h2 id="错误信息：关于cudnn"><a href="#错误信息：关于cudnn" class="headerlink" title="错误信息：关于cudnn"></a>错误信息：关于cudnn</h2><blockquote>
 <p>In file included from ./include/caffe/util/device_alternate.hpp:40:0,<br>                 from ./include/caffe/common.hpp:19,<br>                 from src/caffe/common.cpp:7:<br>./include/caffe/util/cudnn.hpp: In function ‘void caffe::cudnn::createPoolingDesc(cudnnPoolingStruct<strong>, caffe::PoolingParameter_PoolMethod, cudnnPoolingMode_t<em>, int, int, int, int, int, int)’:<br>./include/caffe/util/cudnn.hpp:127:41: error: too few arguments to function ‘cudnnStatus_t cudnnSetPooling2dDescriptor(cudnnPoolingDescriptor_t, cudnnPoolingMode_t, cudnnNanPropagation_t, int, int, int, int, int, int)’<br>         pad_h, pad_w, stride_h, stride_w));<br>                                         ^<br>./include/caffe/util/cudnn.hpp:15:28: note: in definition of macro ‘CUDNN_CHECK’<br>     cudnnStatus_t status = condition; \<br>                            ^<br>In file included from ./include/caffe/util/cudnn.hpp:5:0,<br>                 from ./include/caffe/util/device_alternate.hpp:40,<br>                 from ./include/caffe/common.hpp:19,<br>                 from src/caffe/common.cpp:7:<br>/usr/local/cuda-7.5//include/cudnn.h:803:27: note: declared here<br> cudnnStatus_t CUDNNWINAPI cudnnSetPooling2dDescriptor(<br>                           ^<br>make: </em></strong> [.build_release/src/caffe/common.o] Error 1</p>
 </blockquote>
 <p>参考链接(<a href="https://blog.csdn.net/u011070171/article/details/52292680)[https://blog.csdn.net/u011070171/article/details/52292680]" target="_blank" rel="noopener">https://blog.csdn.net/u011070171/article/details/52292680)[https://blog.csdn.net/u011070171/article/details/52292680]</a></p>
@@ -234,24 +245,18 @@ make run -j8h
 <p>出现这样的问题是因为caffe没有找到库。</p>
 <p>可能原因：</p>
 <ol>
-<li><p><strong>使用的是opencv3版本</strong></p>
-<p>需要在Makefile.config里把<code>USE_OPENCV_VERSION := 3</code>的注释去掉，</p>
-<p>再注释掉<code>USE_PKG_CONFIG := 1</code>。</p>
+<li><p><strong>使用的是opencv3版本</strong><br>需要在Makefile.config里把<code>USE_OPENCV_VERSION := 3</code>的注释去掉，<br>再注释掉<code>USE_PKG_CONFIG := 1</code>。</p>
 </li>
-<li><p><strong>没找到库路径</strong></p>
-<p>可以使用<code>LDD .build_release/lib/libcaffe.so</code>查看libcaffe.so链接的动态链接库。</p>
-<p>如果出现<code>libxxx.so =&gt; not found</code>，则说明是库没找到，或者是原因3。</p>
-<p>需要先把库路径加在Makefile.config里<code>LIBRARY_DIRS := …</code>后面，</p>
-<p>再添加你需要的库到Makefile里<code>libraries := …..</code>的后面，</p>
-<p>即可。</p>
+<li><p><strong>没找到库路径</strong><br>可以使用<code>LDD .build_release/lib/libcaffe.so</code>查看libcaffe.so链接的动态链接库。<br>如果出现<code>libxxx.so =&gt; not found</code>，则说明是库没找到，或者是原因3。<br>需要先把库路径加在Makefile.config里<code>LIBRARY_DIRS := …</code>后面，<br>再添加你需要的库到Makefile里<code>libraries := …..</code>的后面，<br>即可。</p>
 </li>
-<li><p><strong>找错了库路径</strong></p>
-<p>Makefile找库的时候是按照Makefile.config里<code>LIBRARY_DIRS</code>变量值的顺序找的。    </p>
-<p>如果在前面的库路径下存在你需要的库，就不会再从后面的库路径里找了。</p>
-<p>同样可以使用<code>LDD .build_release/lib/libcaffe.so</code>查看libcaffe.so链接的动态链接库，查看库路径是否正确。</p>
-<p>如果路径错误，可以对Makefile.config里<code>LIBRARY_DIRS</code>的顺序进行调整。</p>
+<li><p><strong>找错了库路径</strong><br>Makefile找库的时候是按照Makefile.config里<code>LIBRARY_DIRS</code>变量值的顺序找的。<br>如果在前面的库路径下存在你需要的库，就不会再从后面的库路径里找了。<br>同样可以使用<code>LDD .build_release/lib/libcaffe.so</code>查看libcaffe.so链接的动态链接库，查看库路径是否正确。<br>如果路径错误，可以对Makefile.config里<code>LIBRARY_DIRS</code>的顺序进行调整。</p>
 </li>
 </ol>
+<h2 id="错误信息：make-runtest-error-in-xxx-test-test-testbin’-free-invalid-pointer"><a href="#错误信息：make-runtest-error-in-xxx-test-test-testbin’-free-invalid-pointer" class="headerlink" title="错误信息：make runtest error in `xxx/test/test.testbin’: free(): invalid pointer"></a>错误信息：make runtest error in `xxx/test/test.testbin’: free(): invalid pointer</h2><p>在使用caffe run test的时候，如果出现如下报错<br><code>*** Error in xxx/test/test.testbin&#39;: free(): invalid pointer: 0x00007fbaf71accb8 ***</code></p>
+<p>很可能是缺少libtcmalloc-minimal4库，首先安装<br><code>sudo apt-get install libtcmalloc-minimal4</code></p>
+<p>然后打开~/.bashrc文件<br><code>vim ~/.bashrc</code></p>
+<p>在文件末尾添加如下代码：<br><code>export LD_PRELOAD=&quot;/usr/lib/libtcmalloc_minimal.so.4&quot;</code></p>
+<p>最后重新载入环境变量即可<br><code>source ~/.bashrc</code></p>
 <h1 id="编译及测试matcaffe接口"><a href="#编译及测试matcaffe接口" class="headerlink" title="编译及测试matcaffe接口"></a>编译及测试matcaffe接口</h1><h2 id="编译matcaffe"><a href="#编译matcaffe" class="headerlink" title="编译matcaffe"></a>编译matcaffe</h2><p>make matcaffe</p>
 <h2 id="测试matcaffe"><a href="#测试matcaffe" class="headerlink" title="测试matcaffe"></a>测试matcaffe</h2><p>在进行make mattest前，要解决几个编译器版本的问题。</p>
 <ol>
@@ -264,33 +269,18 @@ make run -j8h
 </ol>
 <h1 id="进入matlab"><a href="#进入matlab" class="headerlink" title="进入matlab"></a>进入matlab</h1><p>注意：caffe路径下生成的matlab folder里应该有+caffe folder，matcaffe需要用到的相关函数实现和文件都在这里。<br>要先<code>addpath(&#39;/your_caffe_path/matlan&#39;)</code>才能让matlab找到matcaffe，<br>在<code>nyu_crop_data_mask_msc.m</code>里找到<code>gpu_id</code>，选择你的机器上空闲的gpu id。</p>
 <p>Terminal里用<code>nvidia-smi指令</code>显示gpu相关信息。</p>
-<p><code>nvidia-smi</code>后显示的信息如下图：</p>
-<figure class="highlight bash hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"></span><br></pre></td></tr></table></figure>
-<p>+—————————————————————————–+</p>
-<p>| NVIDIA-SMI 384.130                Driver Version: 384.130                   |</p>
-<p>|——————————-+———————-+———————-+</p>
-<p>| GPU  Name        Persistence-M| Bus-Id        Disp.A | Volatile Uncorr. ECC |</p>
-<p>| Fan  Temp  Perf  Pwr:Usage/Cap|         Memory-Usage | GPU-Util  Compute M. |</p>
-<p>|===============================+======================+======================|</p>
-<p>|   0  GeForce GTX 108…  Off  | 00000000:17:00.0 Off |                  N/A |</p>
-<p>| 33%   32C    P0    54W / 250W |      0MiB / 11172MiB |      0%      Default |</p>
-<p>+——————————-+———————-+———————-+</p>
-<p>|   1  GeForce GTX 108…  Off  | 00000000:65:00.0 Off |                  N/A |</p>
-<p>| 33%   35C    P0    50W / 250W |      0MiB / 11170MiB |      1%      Default |</p>
-<p>+——————————-+———————-+———————-+</p>
-<figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<p><code>nvidia-smi</code>后显示的信息如下图：<br><figure class="highlight bash hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line">| NVIDIA-SMI 384.130                Driver Version: 384.130                   |</span><br><span class="line"></span><br><span class="line">|-------------------------------+----------------------+----------------------+</span><br><span class="line"></span><br><span class="line">| GPU  Name        Persistence-M| Bus-Id        Disp.A | Volatile Uncorr. ECC |</span><br><span class="line"></span><br><span class="line">| Fan  Temp  Perf  Pwr:Usage/Cap|         Memory-Usage | GPU-Util  Compute M. |</span><br><span class="line"></span><br><span class="line">|===============================+======================+======================|</span><br><span class="line"></span><br><span class="line">|   0  GeForce GTX 108...  Off  | 00000000:17:00.0 Off |                  N/A |</span><br><span class="line"></span><br><span class="line">| 33%   32C    P0    54W / 250W |      0MiB / 11172MiB |      0%      Default |</span><br><span class="line"></span><br><span class="line">+-------------------------------+----------------------+----------------------+</span><br><span class="line"></span><br><span class="line">|   1  GeForce GTX 108...  Off  | 00000000:65:00.0 Off |                  N/A |</span><br><span class="line"></span><br><span class="line">| 33%   35C    P0    50W / 250W |      0MiB / 11170MiB |      1%      Default |</span><br><span class="line"></span><br><span class="line">+-------------------------------+----------------------+———————————+</span><br></pre></td></tr></table></figure></p>
 <p>我这里的GPU序列有0和1，可以设置成gpu_id = 0或者gpu_id = 1。</p>
 <p>(注意，matcaffe只能用单gpu训练网络)<br>然后<code>run nyu_crop_data_mask_msc.m</code>，<br>成功。</p>
-<h1 id="cmake"><a href="#cmake" class="headerlink" title="cmake"></a>cmake</h1><h2 id="cmake-make-runtest不成功"><a href="#cmake-make-runtest不成功" class="headerlink" title="cmake make runtest不成功"></a>cmake make runtest不成功</h2><blockquote>
+<h1 id="run-matlabscript"><a href="#run-matlabscript" class="headerlink" title="run matlabscript"></a>run matlabscript</h1><h2 id="错误信息：unknown-pooling-method"><a href="#错误信息：unknown-pooling-method" class="headerlink" title="错误信息：unknown pooling method"></a>错误信息：unknown pooling method</h2><figure class="highlight bash hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">I0331 20:04:23.127297 49968 net.cpp:106] Creating Layer x_1_avepool</span><br><span class="line">I0331 20:04:23.127324 49968 net.cpp:454] x_1_avepool &lt;- out_reduce_out_reduce_relu_0_split_0</span><br><span class="line">I0331 20:04:23.127333 49968 net.cpp:454] x_1_avepool &lt;- knn_knn_0_split_0</span><br><span class="line">I0331 20:04:23.127346 49968 net.cpp:411] x_1_avepool -&gt; x_1_avepool</span><br><span class="line">F0331 20:04:23.127763 49968 cudnn.hpp:144] Unknown pooling method.</span><br><span class="line">*** Check failure stack trace: ***</span><br></pre></td></tr></table></figure>
+<p>这是因为源码中并没有用到cudnn。<br>往前看一下输出，可以看到名字是x_1_avepool这层的定义</p>
+<figure class="highlight bash hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">layer &#123;</span><br><span class="line">  name: <span class="hljs-string">"x_1_avepool"</span></span><br><span class="line">  <span class="hljs-built_in">type</span>: <span class="hljs-string">"Pooling"</span></span><br><span class="line">  bottom: <span class="hljs-string">"out_reduce"</span></span><br><span class="line">  bottom: <span class="hljs-string">"knn"</span></span><br><span class="line">  top: <span class="hljs-string">"x_1_avepool"</span></span><br><span class="line">  pooling_param &#123;</span><br><span class="line">​    pool: KNNPOOL</span><br><span class="line">​    kernel_size: 11</span><br><span class="line">​    pad: 5</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>所以在util中的cudnn.h里，没有定义KNNPOOL的pooling method。<br>注释掉Makefile.config里的USE_CUDNN即可</p>
+<h1 id="cmake"><a href="#cmake" class="headerlink" title="cmake"></a>cmake</h1><h2 id="错误信息：cmake的make不成功"><a href="#错误信息：cmake的make不成功" class="headerlink" title="错误信息：cmake的make不成功"></a>错误信息：cmake的make不成功</h2><blockquote>
 <p>src/caffe/test/test_gradient_based_solver.cpp:370: Failure<br>The difference between expected_updated_weight and solver_updated_weight is 1.1920928955078125e-07, which exceeds error_margin, where<br>expected_updated_weight evaluates to 9.6857547760009766e-06,<br>solver_updated_weight evaluates to 9.8049640655517578e-06, and<br>error_margin evaluates to 1.0000000116860974e-07.<br>[  FAILED  ] NesterovSolverTest/2.TestNesterovLeastSquaresUpdateWithEverythingShare, where TypeParam = caffe::GPUDevice<float> (8073 ms)<br>[ RUN      ] NesterovSolverTest/2.TestLeastSquaresUpdateWithEverythingAccumShare<br>[       OK ] NesterovSolverTest/2.TestLeastSquaresUpdateWithEverythingAccumShare (28 ms)<br>[ RUN      ] NesterovSolverTest/2.TestNesterovLeastSquaresUpdateWithEverything<br>src/caffe/test/test_gradient_based_solver.cpp:370: Failure<br>The difference between expected_updated_weight and solver_updated_weight is 1.1920928955078125e-07, which exceeds error_margin, where<br>expected_updated_weight evaluates to 9.6857547760009766e-06,<br>solver_updated_weight evaluates to 9.8049640655517578e-06, and<br>error_margin evaluates to 1.0000000116860974e-07.<br>[  FAILED  ] NesterovSolverTest/2.TestNesterovLeastSquaresUpdateWithEverything, where TypeParam = caffe::GPUDevice<float> (7338 ms)</float></float></p>
 </blockquote>
 <p>在make runtest之前，<code>export CUDA_VISIBLE_DEVICES=0</code></p>
 <p>再make runtest 就成功啦。</p>
-<h2 id="make-runtest-error-in-xxx-test-test-testbin’-free-invalid-pointer"><a href="#make-runtest-error-in-xxx-test-test-testbin’-free-invalid-pointer" class="headerlink" title="make runtest error in `xxx/test/test.testbin’: free(): invalid pointer"></a>make runtest error in `xxx/test/test.testbin’: free(): invalid pointer</h2><p>在使用caffe run test的时候，如果出现如下报错<br><code>*** Error in</code>xxx/test/test.testbin’: free(): invalid pointer: 0x00007fbaf71accb8 ***</p>
-<p>很可能是缺少libtcmalloc-minimal4库，首先安装<br><code>sudo apt-get install libtcmalloc-minimal4</code></p>
-<p>然后打开~/.bashrc文件<br><code>vim ~/.bashrc</code></p>
-<p>在文件末尾添加如下代码：<br><code>export LD_PRELOAD=&quot;/usr/lib/libtcmalloc_minimal.so.4&quot;</code></p>
-<p>最后重新载入环境变量即可<br><code>source ~/.bashrc</code></p>
 
         </div>
         
@@ -298,7 +288,7 @@ make run -j8h
             <div class="level-start">
                 <div class="level-item">
                     <span class="is-size-6 has-text-grey has-mr-7">#</span>
-                    <a class="has-link-grey -link" href="/tags/caffe/">caffe</a>, <a class="has-link-grey -link" href="/tags/pytorch/">pytorch</a>
+                    <a class="has-link-grey -link" href="/tags/caffe/">caffe</a>, <a class="has-link-grey -link" href="/tags/matlab/">matlab</a>, <a class="has-link-grey -link" href="/tags/semantic-sementation/">semantic sementation</a>
                 </div>
             </div>
         </div>
@@ -445,7 +435,7 @@ make run -j8h
                         分类
                     </p>
                     <p class="title has-text-weight-normal">
-                        12
+                        14
                     </p>
                 </div>
             </div>
@@ -506,12 +496,18 @@ make run -j8h
         
         <article class="media">
             
+            <a href="/2019/03/23/关于我和3DGNN论文及源码的爱恨情仇/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="https://i.loli.net/2019/03/31/5ca0bf4ce3cac.jpg" alt="关于我和3DGNN论文及源码的爱恨情仇">
+                </p>
+            </a> 
+            
             <div class="media-content">
                 <div class="content">
                     <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-03-23T14:11:05.000Z">2019-03-23</time></div>
                     <a href="/2019/03/23/关于我和3DGNN论文及源码的爱恨情仇/" class="has-link-black-ter is-size-6">关于我和3DGNN论文及源码的爱恨情仇</a>
                     <p class="is-size-7 is-uppercase">
-                        
+                        <a class="has-link-grey -link" href="/categories/caffe/">caffe</a> / <a class="has-link-grey -link" href="/categories/caffe/semantic-segmentation/">semantic segmentation</a>
                     </p>
                 </div>
             </div>
@@ -675,6 +671,17 @@ make run -j8h
                 </li>
                 
                 <li>
+                    <a class="level is-marginless" href="/tags/algorithm/">
+                        <span class="level-start">
+                            <span class="level-item">algorithm</span>
+                        </span>
+                        <span class="level-end">
+                            <span class="level-item tag">1</span>
+                        </span>
+                    </a>
+                </li>
+                
+                <li>
                     <a class="level is-marginless" href="/tags/caffe/">
                         <span class="level-start">
                             <span class="level-item">caffe</span>
@@ -796,6 +803,17 @@ make run -j8h
                 </li>
                 
                 <li>
+                    <a class="level is-marginless" href="/tags/matlab/">
+                        <span class="level-start">
+                            <span class="level-item">matlab</span>
+                        </span>
+                        <span class="level-end">
+                            <span class="level-item tag">1</span>
+                        </span>
+                    </a>
+                </li>
+                
+                <li>
                     <a class="level is-marginless" href="/tags/nodejs/">
                         <span class="level-start">
                             <span class="level-item">nodejs</span>
@@ -807,9 +825,9 @@ make run -j8h
                 </li>
                 
                 <li>
-                    <a class="level is-marginless" href="/tags/pytorch/">
+                    <a class="level is-marginless" href="/tags/semantic-sementation/">
                         <span class="level-start">
-                            <span class="level-item">pytorch</span>
+                            <span class="level-item">semantic sementation</span>
                         </span>
                         <span class="level-end">
                             <span class="level-item tag">1</span>
@@ -851,17 +869,6 @@ make run -j8h
                 </li>
                 
                 <li>
-                    <a class="level is-marginless" href="/tags/算法/">
-                        <span class="level-start">
-                            <span class="level-item">算法</span>
-                        </span>
-                        <span class="level-end">
-                            <span class="level-item tag">1</span>
-                        </span>
-                    </a>
-                </li>
-                
-                <li>
                     <a class="level is-marginless" href="/tags/设计模式/">
                         <span class="level-start">
                             <span class="level-item">设计模式</span>
@@ -876,17 +883,6 @@ make run -j8h
                     <a class="level is-marginless" href="/tags/面向对象/">
                         <span class="level-start">
                             <span class="level-item">面向对象</span>
-                        </span>
-                        <span class="level-end">
-                            <span class="level-item tag">1</span>
-                        </span>
-                    </a>
-                </li>
-                
-                <li>
-                    <a class="level is-marginless" href="/tags/面试/">
-                        <span class="level-start">
-                            <span class="level-item">面试</span>
                         </span>
                         <span class="level-end">
                             <span class="level-item tag">1</span>

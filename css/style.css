@@ -231,7 +231,8 @@ img.thumbnail {
 }
 .article .content {
   font-size: 1.1rem;
-  line-height: 1.7;
+  line-height: 1.8;
+  color: #111;
 }
 .article .content blockquote.pullquote {
   float: right;
@@ -436,7 +437,7 @@ img.thumbnail {
 }
 .content code,
 .content pre {
-  font-size: 0.85em;
+  font-size: 1em;
   font-family: "Consolas", "Microsoft YaHei", "Source Code Pro", monospace;
 }
 .content code {
