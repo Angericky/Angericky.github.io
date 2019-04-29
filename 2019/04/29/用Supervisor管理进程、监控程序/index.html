@@ -4,26 +4,23 @@
 <html lang="zh">
 <head><meta name="generator" content="Hexo 3.8.0">
     <meta charset="utf-8">
-<title>Vue学习总结 - Jingjing&#39;s blog</title>
+<title>用Supervisor管理进程、监控程序 - Jingjing&#39;s blog</title>
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
 
 
-    <meta name="description" content="xmind + 笔记，整理细碎的知识点。">
-<meta name="keywords" content="vue">
+    <meta name="description" content="简介Supervisor(http://supervisord.org)是一个用Python写的进程管理client/server系统工具，能够让用户检测和控制UNIX型操作系统上进程，支持Linux、Mac OS X，windows上不能使用。 它能够用来方便地监听、重启、启动、关闭一个或者多个进程。当用supervisor管理的一个进程意外被kill，supervisor能够监听到进程杀死，会">
+<meta name="keywords" content="process">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Vue学习总结">
-<meta property="og:url" content="http://Angericky.github.io/2019/03/10/Vue学习总结/index.html">
+<meta property="og:title" content="用Supervisor管理进程、监控程序">
+<meta property="og:url" content="http://Angericky.github.io/2019/04/29/用Supervisor管理进程、监控程序/index.html">
 <meta property="og:site_name" content="Jingjing&#39;s blog">
-<meta property="og:description" content="xmind + 笔记，整理细碎的知识点。">
+<meta property="og:description" content="简介Supervisor(http://supervisord.org)是一个用Python写的进程管理client/server系统工具，能够让用户检测和控制UNIX型操作系统上进程，支持Linux、Mac OS X，windows上不能使用。 它能够用来方便地监听、重启、启动、关闭一个或者多个进程。当用supervisor管理的一个进程意外被kill，supervisor能够监听到进程杀死，会">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:image" content="http://angericky.github.io/images/Vue.png">
-<meta property="og:image" content="http://angericky.github.io/images/vue-life-cycle.jpg">
-<meta property="og:updated_time" content="2019-03-20T01:37:51.577Z">
+<meta property="og:updated_time" content="2019-04-29T13:08:53.167Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Vue学习总结">
-<meta name="twitter:description" content="xmind + 笔记，整理细碎的知识点。">
-<meta name="twitter:image" content="http://angericky.github.io/images/Vue.png">
+<meta name="twitter:title" content="用Supervisor管理进程、监控程序">
+<meta name="twitter:description" content="简介Supervisor(http://supervisord.org)是一个用Python写的进程管理client/server系统工具，能够让用户检测和控制UNIX型操作系统上进程，支持Linux、Mac OS X，windows上不能使用。 它能够用来方便地监听、重启、启动、关闭一个或者多个进程。当用supervisor管理的一个进程意外被kill，supervisor能够监听到进程杀死，会">
 
 
 
@@ -98,7 +95,7 @@
         <div class="navbar-brand is-flex-center">
             <a class="navbar-item navbar-logo" href="/">
             
-                <img src="https://i.loli.net/2019/01/07/5c336be858b4e.jpg" alt="Vue学习总结" height="28">
+                <img src="https://i.loli.net/2019/01/07/5c336be858b4e.jpg" alt="用Supervisor管理进程、监控程序" height="28">
             
             </a>
         </div>
@@ -132,10 +129,6 @@
                     
                 
                 
-                <a class="navbar-item is-hidden-tablet catalogue" title="目录" href="javascript:;">
-                    <i class="fas fa-list-ul"></i>
-                </a>
-                
                 
                 <a class="navbar-item search" title="搜索" href="javascript:;">
                     <i class="fas fa-search"></i>
@@ -150,34 +143,28 @@
         <div class="container">
             <div class="columns">
                 <div class="column is-8-tablet is-8-desktop is-8-widescreen has-order-2 column-main"><div class="card">
-    <!-- 
-    <div class="card-image">
-        <span  class="image is-7by1">
-            <img class="thumbnail" src="/images/vue-logo.png" alt="Vue学习总结">
-        </span>
-    </div>
-     -->
+    <!--  -->
     <div class="card-content article ">
         <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
             
-                Vue学习总结
+                用Supervisor管理进程、监控程序
             
         </h1>
         
             <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto" style="margin-bottom: 0;">
             <div class="level-left">
                 <i class="fas fa-calendar">&nbsp</i>
-                <time class="level-item has-text-grey" datetime="2019-03-10T02:59:09.000Z">2019-03-10</time>
+                <time class="level-item has-text-grey" datetime="2019-04-29T13:04:36.000Z">2019-04-29</time>
                 
                     <i class="fas fa-calendar-check">&nbsp</i>
-                    <time class="level-item has-text-grey" datetime="2019-03-20T01:37:51.577Z">2019-03-20</time>
+                    <time class="level-item has-text-grey" datetime="2019-04-29T13:08:53.167Z">2019-04-29</time>
                 
                 
                 <i class="fas fa-book">&nbsp</i>
                 <span class="level-item has-text-grey">
                     
                     
-                    7 分钟 读完 (大约 1072 个字)
+                    9 分钟 读完 (大约 1317 个字)
                 </span>
                 
             </div>
@@ -187,13 +174,13 @@
                 
                     <i class="fas fa-folder-open">&nbsp</i>
                     <div class="level-item">
-                    <a class="has-link-grey -link" href="/categories/vue/">vue</a>
+                    <a class="has-link-grey -link" href="/categories/process/">process</a>
                     </div>
                 
                 
                     <i class="fas fa-tags">&nbsp</i>
                     <div class="level-item">
-                    <a class="has-link-grey -link" href="/tags/vue/">vue</a>
+                    <a class="has-link-grey -link" href="/tags/process/">process</a>
                     </div>
                 
             </div>
@@ -201,61 +188,40 @@
         
         <div class="content">
              
-            <p><excerpt in="" index="" |="" 首页摘要=""><br>    xmind + 笔记，整理细碎的知识点。<br><a id="more"></a></excerpt></p>
-<the rest="" of="" contents="" |="" 余下全文="">
+            <h1 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h1><p>Supervisor(<a href="http://supervisord.org/" target="_blank" rel="noopener">http://supervisord.org</a>)是一个用Python写的进程管理client/server系统工具，能够让用户检测和控制UNIX型操作系统上进程，支持Linux、Mac OS X，windows上不能使用。</p>
+<p>它能够用来方便地监听、重启、启动、关闭一个或者多个进程。当用supervisor管理的一个进程意外被kill，supervisor能够监听到进程杀死，会自动将它重启，做到自动恢复的功能，不需要自己写shell脚本进行控制。</p>
+<h1 id="安装方式"><a href="#安装方式" class="headerlink" title="安装方式"></a>安装方式</h1><p>Ubuntu上：<code>apt-get install supervisor</code><br>Centos上：<code>yum install supervisor</code><br>用这些基于源的方式安装，supervisor的版本可能会比较老。推荐使用基于python的安装方式：<br><code>easy_install supervisor</code><br>或者是基于pip的安装方式：<br><code>pip install supervisor</code></p>
+<h1 id="配置"><a href="#配置" class="headerlink" title="配置"></a>配置</h1><p>直接输入<code>echo_supervisord_conf</code>命令能够将默认配置项输出到terminal。但一般需要重定向到一个配置文件中：<br><code>echo_supervisord_conf &gt; /etc/supervisord.conf</code><br>如果没有root权限，可以重定向到自定义路径的配置文件：<br><code>echo_supervisord_conf &gt; [directory]/[yourconf]</code></p>
+<h2 id="管理配置文件"><a href="#管理配置文件" class="headerlink" title="管理配置文件"></a>管理配置文件</h2><p>安装完成后，用户通过编写配置文件来满足自己的需求，这些配置都可以写到supervisord.conf里。如果应用程序很多，最好通过include的方式把不同程序（组）写到不同的配置文件里。<br><figure class="highlight bash hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">[include]</span><br><span class="line">files = /etc/supervisor/*.conf</span><br></pre></td></tr></table></figure></p>
+<p>需要改动的配置信息有这些：<br><figure class="highlight bash hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">[program:server]	;写你的程序名字</span><br><span class="line">directory = /home/xxx ; 程序的启动目录</span><br><span class="line"><span class="hljs-built_in">command</span> = sh run.sh ; 启动命令，与命令行启动的命令是一样的</span><br><span class="line">autostart = <span class="hljs-literal">true</span>     ; 在 supervisord 启动的时候也自动启动</span><br><span class="line">startsecs = 5        ; 启动 5 秒后没有异常退出，就当作已经正常启动了</span><br><span class="line">autorestart = <span class="hljs-literal">true</span>   ; 程序异常退出后自动重启</span><br><span class="line">startretries = 3     ; 启动失败自动重试次数，默认是 3</span><br><span class="line">user = xxx          ; 用哪个用户启动</span><br><span class="line">redirect_stderr = <span class="hljs-literal">true</span>  ; 把 stderr 重定向到 stdout，默认 <span class="hljs-literal">false</span></span><br><span class="line">stdout_logfile_maxbytes = 20MB  ; stdout 日志文件大小，默认 50MB</span><br><span class="line">stdout_logfile_backups = 20     ; stdout 日志文件备份数</span><br><span class="line">; stdout 日志文件，需要注意当指定目录不存在时无法正常启动，所以需要手动创建目录（supervisord 会自动创建日志文件）</span><br><span class="line">stdout_logfile = /etc/supervisord.d/<span class="hljs-built_in">log</span>/confd.log  ;日志统一放在<span class="hljs-built_in">log</span>目录下</span><br></pre></td></tr></table></figure></p>
+<h1 id="启动supervisor"><a href="#启动supervisor" class="headerlink" title="启动supervisor"></a>启动supervisor</h1><p>启动进程：<br><code>supervisord -c [directory]/[yourconf]</code>（通过 -c 选项指定配置文件路径，如果不指定会按照以下路径查找配置文件：$CWD/supervisord.conf, $CWD/etc/supervisord.conf, /etc/supervisord.conf）<br>通过命令行查看supervisord是否在运行：<br><code>ps aux | grep supervisord</code><br>设置开机启动以及systemd方式启动<br><figure class="highlight bash hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">sudo chmod +x /etc/rc.d/init.d/supervisord</span><br><span class="line">sudo chkconfig --add supervisord</span><br><span class="line">sudo chkconfig supervisord on</span><br><span class="line">sudo service supervisord start</span><br></pre></td></tr></table></figure></p>
+<h1 id="控制命令"><a href="#控制命令" class="headerlink" title="控制命令"></a>控制命令</h1><p>Supervisord有两个可用的命令行</p>
+<ul>
+<li>supervisord（server端，之前用到了）</li>
+<li>supervisorctl（client端，是supervisord的命令行客户端工具，用来在控制supervisord）</li>
+</ul>
+<h2 id="supervisorctl"><a href="#supervisorctl" class="headerlink" title="supervisorctl"></a>supervisorctl</h2><ul>
+<li><code>supervisorctl stop myprogram</code>，停止某一个进程(myprogram)，myprogram为 [program:xxx] 里配置的进程名称。</li>
+<li><code>supervisorctl start myprogram</code>，启动某个进程。</li>
+<li><code>supervisorctl restart myprogram</code>，重启某个进程。</li>
+<li><code>supervisorctl status</code>，查看进程状态。</li>
+<li><code>supervisorctl stop groupworker</code> ，重启所有属于名为 groupworker 这个分组的进程(start,restart 同理)。</li>
+<li><code>supervisorctl stop all</code>，停止全部进程，注：start、restart、stop 都不会载入最新的配置文件。</li>
+<li><code>supervisorctl reload</code>，载入最新的配置文件，停止原有进程并按新的配置启动、管理所有进程。</li>
+<li><code>supervisorctl update</code>，根据最新的配置文件，启动新配置或有改动的进程，配置没有改动的进程不会受影响而重启。<br>e.g.<figure class="highlight bash hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ supervisorctl status</span><br><span class="line">server                     RUNNING   pid 19985, uptime 0:00:05</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<p>直接输入supervisorctl会进入shell交互界面。<br><figure class="highlight bash hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ supervisorctl</span><br><span class="line">supervisor&gt;</span><br></pre></td></tr></table></figure></p>
+<h2 id="supervisord"><a href="#supervisord" class="headerlink" title="supervisord"></a>supervisord</h2><p>supervisord用来初始启动supervisord，启动、管理配置中设置的进程。<br><figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line">$ supervisord --help</span><br><span class="line">supervisord -- run a set of applications as daemons.</span><br><span class="line"></span><br><span class="line">Usage: /usr/bin/supervisord [options]</span><br><span class="line"></span><br><span class="line">Options:</span><br><span class="line">-c/--configuration FILENAME -- configuration file</span><br><span class="line">-n/--nodaemon -- run in the foreground (same as &apos;nodaemon true&apos; in config file)</span><br><span class="line">-h/--help -- print this usage message and exit</span><br><span class="line">-v/--version -- print supervisord version number and exit</span><br><span class="line">-u/--user USER -- run supervisord as this user (or numeric uid)</span><br><span class="line">-m/--umask UMASK -- use this umask for daemon subprocess (default is 022)</span><br><span class="line">-d/--directory DIRECTORY -- directory to chdir to when daemonized</span><br><span class="line">-l/--logfile FILENAME -- use FILENAME as logfile path</span><br><span class="line">-y/--logfile_maxbytes BYTES -- use BYTES to limit the max size of logfile</span><br><span class="line">-z/--logfile_backups NUM -- number of backups to keep when max bytes reached</span><br><span class="line">-e/--loglevel LEVEL -- use LEVEL as log level (debug,info,warn,error,critical)</span><br><span class="line">-j/--pidfile FILENAME -- write a pid file for the daemon process to FILENAME</span><br><span class="line">-i/--identifier STR -- identifier used for this instance of supervisord</span><br><span class="line">-q/--childlogdir DIRECTORY -- the log directory for child process logs</span><br><span class="line">-k/--nocleanup --  prevent the process from performing cleanup (removal of</span><br><span class="line">                   old automatic child log files) at startup.</span><br><span class="line">-a/--minfds NUM -- the minimum number of file descriptors for start success</span><br><span class="line">-t/--strip_ansi -- strip ansi escape codes from process output</span><br><span class="line">--minprocs NUM  -- the minimum number of processes available for start success</span><br><span class="line">--profile_options OPTIONS -- run supervisord under profiler and output</span><br><span class="line">                             results based on OPTIONS, which  is a comma-sep&apos;d</span><br><span class="line">                             list of &apos;cumulative&apos;, &apos;calls&apos;, and/or &apos;callers&apos;,</span><br><span class="line">                             e.g. &apos;cumulative,callers&apos;)</span><br></pre></td></tr></table></figure></p>
+<p>Supervisorctl 是 supervisord 的一个命令行客户端工具，启动时需要指定与 supervisord 使用同一份配置文件，否则与 supervisord 一样按照顺序查找配置文件。<br><figure class="highlight bash hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">supervisorctl -c /etc/supervisord.conf</span><br></pre></td></tr></table></figure></p>
 
-<h1 id="Vue-js是什么"><a href="#Vue-js是什么" class="headerlink" title="Vue.js是什么"></a>Vue.js是什么</h1><p>Vue是一套用于构建用户界面的渐进式框架。<br>与其它大型框架不同的是，Vue 被设计为可以自底向上逐层应用。<br>Vue 的核心库只关注视图层，不仅易于上手，还便于与第三方库或既有项目整合。<br>另一方面，当与现代化的工具链以及各种支持类库结合使用时，Vue 也完全能够为复杂的单页应用（SPA）提供驱动。<br>需要理解的是，Vue的一个核心思想是数据驱动，组件与组件之间只有数据交换。对于视图的修改，不会直接操作DOM，而是通过修改数据。交互复杂时，只关心数据修改会让代码逻辑变得很清晰，不用碰触DOM，这样的代码非常利于维护。</p>
-<h1 id="Vue知识体系"><a href="#Vue知识体系" class="headerlink" title="Vue知识体系"></a>Vue知识体系</h1><p>这是我自己根据官方文档在思维导图上构建的知识体系。<br><img src="/images/Vue.png" alt="Vue"></p>
-<h1 id="生命周期"><a href="#生命周期" class="headerlink" title="生命周期"></a>生命周期</h1><h2 id="什么是生命周期"><a href="#什么是生命周期" class="headerlink" title="什么是生命周期"></a>什么是生命周期</h2><blockquote>
-<p>Vue实例有一个完整的生命周期，也就是从开始创建、初始化数据、编译模板、挂载Dom、渲染→更新→渲染、卸载等一系列过程，我们称这是Vue的生命周期。通俗说就是Vue实例从创建到销毁的过程，就是生命周期。</p>
-</blockquote>
-<p>在Vue的整个生命周期中，它提供了一系列的事件，可以让我们在事件触发时注册js方法，可以让我们用自己注册的js方法控制整个大局，在这些事件响应方法中的this直接指向的是Vue的实例。</p>
-<h2 id="生命周期图及标注"><a href="#生命周期图及标注" class="headerlink" title="生命周期图及标注"></a>生命周期图及标注</h2><p><img src="/images/vue-life-cycle.jpg" alt="生命周期"></p>
-<blockquote>
-<p>特别值得注意的是created钩子函数和mounted钩子函数的区别</p>
-</blockquote>
-<h2 id="生命周期钩子函数"><a href="#生命周期钩子函数" class="headerlink" title="生命周期钩子函数"></a>生命周期钩子函数</h2><p>beforeCreate</p>
-<blockquote>
-<p>在实例初始化后，数据观测(data observer)和 event/watcher 事件配置之前被调用。</p>
-</blockquote>
-<p>created</p>
-<blockquote>
-<p>实例已经创建完成之后被调用。在这一步，实例已完成以下配置：数据观测(data observer)，属性和方法的运算，watch/event 事件回调。然而，挂载阶段还没开始，$el属性目前不可见。</p>
-</blockquote>
-<p>beforeMount</p>
-<blockquote>
-<p>在挂载开始之前被调用：相关的render函数首次被调用。</p>
-</blockquote>
-<p>mounted</p>
-<blockquote>
-<p>el被新创建的vm.$el替换，并挂载到实例上去之后调用该钩子。</p>
-</blockquote>
-<p>beforeUpdate</p>
-<blockquote>
-<p>数据更新时调用，发生在虚拟DOM重新渲染和打补丁之前。你可以在这个钩子中进一步地更改状态，这不会触发附加的重渲染过程。</p>
-</blockquote>
-<p>updated</p>
-<blockquote>
-<p>由于数据更改导致的虚拟DOM重新渲染和打补丁，在这之后会调用该钩子。<br>当这个钩子被调用时，组件 DOM 已经更新，所以你现在可以执行依赖于 DOM 的操作。然而在大多数情况下，你应该避免在此期间更改状态，因为这可能会导致更新无限循环。</p>
-</blockquote>
-<p>该钩子在服务器端渲染期间不被调用。</p>
-<p>beforeDestroy</p>
-<blockquote>
-<p>实例销毁之前调用。在这一步，实例仍然完全可用。</p>
-</blockquote>
-<p>destroyed</p>
-<blockquote>
-<p>Vue实例销毁后调用。调用后，Vue实例指示的所有东西都会解绑定，所有的事件监听器会被移除，所有的子实例也会被销毁。该钩子在服务器端渲染期间不被调用。</p>
-</blockquote>
-<h1 id="Vuex是什么"><a href="#Vuex是什么" class="headerlink" title="Vuex是什么"></a>Vuex是什么</h1><p>Vuex 是一个专为 Vue.js 应用程序开发的状态管理模式。<br>它采用集中式存储管理应用的所有组件的状态，并以相应的规则保证状态以一种可预测的方式发生变化。<br>Vuex 也集成到 Vue 的官方调试工具 devtools extension，提供了诸如零配置的 time-travel 调试、状态快照导入导出等高级调试功能。</p>
-</the>
         </div>
         
         <div class="level is-size-7 is-uppercase">
             <div class="level-start">
                 <div class="level-item">
                     <span class="is-size-6 has-text-grey has-mr-7">#</span>
-                    <a class="has-link-grey -link" href="/tags/vue/">vue</a>
+                    <a class="has-link-grey -link" href="/tags/process/">process</a>
                 </div>
             </div>
         </div>
@@ -313,17 +279,10 @@
 <div class="card card-transparent">
     <div class="level post-navigation is-flex-wrap is-mobile">
         
-        <div class="level-start">
-            <a class="level level-item has-link-grey  article-nav-prev" href="/2019/03/18/google-girl-hackthon-2019赛后感/">
-                <i class="level-item fas fa-chevron-left"></i>
-                <span class="level-item">Google Girl Hackathon 2019赛后感</span>
-            </a>
-        </div>
-        
         
         <div class="level-end">
-            <a class="level level-item has-link-grey  article-nav-next" href="/2019/03/05/html跳转页面的参数传递/">
-                <span class="level-item">网页的跳转页面及参数传递方法</span>
+            <a class="level level-item has-link-grey  article-nav-next" href="/2019/04/24/《Dynamic-Graph-CNN-for-Learning-on-Point-Clouds》源码阅读/">
+                <span class="level-item">《Dynamic Graph CNN for Learning on Point Clouds》源码阅读</span>
                 <i class="level-item fas fa-chevron-right"></i>
             </a>
         </div>
@@ -460,45 +419,6 @@
         <div class="column-right-shadow  ">
             
                 
-<div class="card widget" id="toc" style="max-height: 400px; overflow: auto;">
-    <div class="card-content">
-        <div class="menu">
-            <h3 class="menu-label">
-                目录
-            </h3>
-            <ul class="menu-list"><li>
-        <a class="is-flex" href="#Vue-js是什么">
-        <span class="has-mr-6">1</span>
-        <span>Vue.js是什么</span>
-        </a></li><li>
-        <a class="is-flex" href="#Vue知识体系">
-        <span class="has-mr-6">2</span>
-        <span>Vue知识体系</span>
-        </a></li><li>
-        <a class="is-flex" href="#生命周期">
-        <span class="has-mr-6">3</span>
-        <span>生命周期</span>
-        </a><ul class="menu-list"><li>
-        <a class="is-flex" href="#什么是生命周期">
-        <span class="has-mr-6">3.1</span>
-        <span>什么是生命周期</span>
-        </a></li><li>
-        <a class="is-flex" href="#生命周期图及标注">
-        <span class="has-mr-6">3.2</span>
-        <span>生命周期图及标注</span>
-        </a></li><li>
-        <a class="is-flex" href="#生命周期钩子函数">
-        <span class="has-mr-6">3.3</span>
-        <span>生命周期钩子函数</span>
-        </a></li></ul></li><li>
-        <a class="is-flex" href="#Vuex是什么">
-        <span class="has-mr-6">4</span>
-        <span>Vuex是什么</span>
-        </a></li></ul>
-        </div>
-    </div>
-</div>
-
             
                 
 <div class="card widget">
@@ -930,7 +850,7 @@
             <div class="level-start has-text-centered-mobile">
                 <a class="footer-logo is-block has-mb-6" href="/">
                 
-                    <img src="https://i.loli.net/2019/01/07/5c336be858b4e.jpg" alt="Vue学习总结" height="28">
+                    <img src="https://i.loli.net/2019/01/07/5c336be858b4e.jpg" alt="用Supervisor管理进程、监控程序" height="28">
                 
                 </a>
                 <p class="is-size-7" style="padding-bottom: 0.5em">
