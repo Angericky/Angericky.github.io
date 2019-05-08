@@ -4,22 +4,23 @@
 <html lang="zh">
 <head><meta name="generator" content="Hexo 3.8.0">
     <meta charset="utf-8">
-<title>标签 - Jingjing&#39;s blog</title>
+<title>扔鸡蛋问题 - Jingjing&#39;s blog</title>
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
 
 
-    <meta name="description" content="A record of technical growth and beautiful things in life.">
-<meta name="keywords" content="学习计划,ejs,nodejs,hexo,icarus,vue,git,algorithm,leetcode,hackathon,google,Front-end,dp,presentation,keyboard accelerators,process,markdown,caffe,matlab,stylus,css,面向对象,设计模式">
-<meta property="og:type" content="website">
-<meta property="og:title" content="Jingjing&#39;s blog">
-<meta property="og:url" content="http://Angericky.github.io/tags/index.html">
+    <meta name="description" content="Leetcode 887 Super Egg Drop. DP问题">
+<meta name="keywords" content="algorithm,dp">
+<meta property="og:type" content="article">
+<meta property="og:title" content="扔鸡蛋问题">
+<meta property="og:url" content="http://Angericky.github.io/2019/05/08/扔鸡蛋问题/index.html">
 <meta property="og:site_name" content="Jingjing&#39;s blog">
-<meta property="og:description" content="A record of technical growth and beautiful things in life.">
+<meta property="og:description" content="Leetcode 887 Super Egg Drop. DP问题">
 <meta property="og:locale" content="zh-CN">
+<meta property="og:updated_time" content="2019-05-08T14:51:32.993Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Jingjing&#39;s blog">
-<meta name="twitter:description" content="A record of technical growth and beautiful things in life.">
+<meta name="twitter:title" content="扔鸡蛋问题">
+<meta name="twitter:description" content="Leetcode 887 Super Egg Drop. DP问题">
 
 
 
@@ -88,13 +89,13 @@
 
 <link rel="stylesheet" href="/css/style.css">
 </head>
-<body class="is-3-column">
+<body class="is-2-column">
     <nav class="navbar navbar-main">
     <div class="container">
         <div class="navbar-brand is-flex-center">
             <a class="navbar-item navbar-logo" href="/">
             
-                <img src="https://i.loli.net/2019/01/07/5c336be858b4e.jpg" alt="Jingjing&#39;s blog" height="28">
+                <img src="https://i.loli.net/2019/01/07/5c336be858b4e.jpg" alt="扔鸡蛋问题" height="28">
             
             </a>
         </div>
@@ -108,7 +109,7 @@
                 
                 <a class="navbar-item" href="/categories">分类</a>
                 
-                <a class="navbar-item is-active" href="/tags">标签</a>
+                <a class="navbar-item" href="/tags">标签</a>
                 
                 <a class="navbar-item" href="/collection">设计集</a>
                 
@@ -141,292 +142,201 @@
     <section class="section">
         <div class="container">
             <div class="columns">
-                <div class="column is-10-tablet is-10-desktop is-6-widescreen has-order-2 column-main"><div class="card widget">
-    
+                <div class="column is-8-tablet is-8-desktop is-8-widescreen has-order-2 column-main"><div class="card">
+    <!--  -->
+    <div class="card-content article ">
+        <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
+            
+                扔鸡蛋问题
+            
+        </h1>
         
-<link rel="stylesheet" href="/css/jqcloud.css">
-<style type="text/css">
-    #tagjqcloud {
-        width: 100%;
-        height: 300px;
-    }
-</style>
+            <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto" style="margin-bottom: 0;">
+            <div class="level-left">
+                <i class="fas fa-calendar">&nbsp</i>
+                <time class="level-item has-text-grey" datetime="2019-05-08T14:09:21.000Z">2019-05-08</time>
+                
+                    <i class="fas fa-calendar-check">&nbsp</i>
+                    <time class="level-item has-text-grey" datetime="2019-05-08T14:51:32.993Z">2019-05-08</time>
+                
+                
+                <i class="fas fa-book">&nbsp</i>
+                <span class="level-item has-text-grey">
+                    
+                    
+                    6 分钟 读完 (大约 958 个字)
+                </span>
+                
+            </div>
+        </div>
+        <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
+            <div class="level-left">
+                
+                    <i class="fas fa-folder-open">&nbsp</i>
+                    <div class="level-item">
+                    <a class="has-link-grey -link" href="/categories/algorithm/">algorithm</a>
+                    </div>
+                
+                
+                    <i class="fas fa-tags">&nbsp</i>
+                    <div class="level-item">
+                    <a class="has-link-grey -link" href="/tags/algorithm/">algorithm</a>&nbsp;/&nbsp;<a class="has-link-grey -link" href="/tags/dp/">dp</a>
+                    </div>
+                
+            </div>
+        </div>
+        
+        <div class="content">
+             
+            <p><excerpt in="" index="" |="" 首页摘要=""><br>    Leetcode 887 Super Egg Drop. DP问题<br><a id="more"></a></excerpt></p>
+<the rest="" of="" contents="" |="" 余下全文="">
 
-<div id="tagjqcloud" class="card-content"></div>
+<h1 id="题目描述："><a href="#题目描述：" class="headerlink" title="题目描述："></a>题目描述：</h1><p>你将获得 K 个鸡蛋，并可以使用一栋从 1 到 N  共有 N 层楼的建筑。<br>每个蛋的功能都是一样的，如果一个蛋碎了，你就不能再把它掉下去。<br>你知道存在楼层 F ，满足 0 &lt;= F &lt;= N 任何从高于 F 的楼层落下的鸡蛋都会碎，从 F 楼层或比它低的楼层落下的鸡蛋都不会破。<br>每次移动，你可以取一个鸡蛋（如果你有完整的鸡蛋）并把它从任一楼层 X 扔下（满足 1 &lt;= X &lt;= N）。<br>你的目标是确切地知道 F 的值是多少。<br>无论 F 的初始值如何，你确定 F 的值的最小移动次数是多少？</p>
+<p>示例1:</p>
+<blockquote>
+<p>输入：K = 1, N = 2<br>输出：2<br>解释：<br>鸡蛋从 1 楼掉落。如果它碎了，我们肯定知道 F = 0 。<br>否则，鸡蛋从 2 楼掉落。如果它碎了，我们肯定知道 F = 1 。<br>如果它没碎，那么我们肯定知道 F = 2 。<br>因此，在最坏的情况下我们需要移动 2 次以确定 F 是多少。</p>
+</blockquote>
+<p>示例2:</p>
+<blockquote>
+<p>输入：K = 2, N = 6<br>输出：3</p>
+</blockquote>
+<p>示例3:</p>
+<blockquote>
+<p>输入：K = 3, N = 14<br>输出：4</p>
+</blockquote>
+<p>提示:</p>
+<blockquote>
+<ol>
+<li>1 &lt;= K &lt;= 100</li>
+<li>1 &lt;= N &lt;= 10000</li>
+</ol>
+</blockquote>
+<h1 id="解决思路："><a href="#解决思路：" class="headerlink" title="解决思路："></a>解决思路：</h1><p>这个题目乍一看能暴力解决，然而仔细想想就会发现是需要用dp才能求出最优解的。</p>
+<p>问题f(N)，表示1～N层。假设有两个鸡蛋，从F层往下扔，会出现两种情况：</p>
+<ol>
+<li>碎了，F - 1次，</li>
+<li>没碎，还有N - F层，可以试两个鸡蛋，转化为子问题f(N - F)</li>
+</ol>
+<p>推广之后，用f(K, N), K表示鸡蛋的个数，N表示楼层有N层。</p>
+<p>当第一个鸡蛋从第F层扔下的时候，会得到两种结果：</p>
+<ol>
+<li>如果碎了，还剩K - 1个鸡蛋，有F - 1层楼层需要扔，问题转化成f(K - 1, F - 1)</li>
+<li>如果没碎，还剩K个鸡蛋，有N - F个楼层需要扔， 问题转化成f(K , N - F)</li>
+</ol>
+<p>可得状态转移方程f(K, N) = min( 1 + max( f(K - 1, F - 1), f(K, N - F) ) )</p>
+<p>推出代码：<br><figure class="highlight c++ hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-keyword">const</span> <span class="hljs-keyword">int</span> MAXK = <span class="hljs-number">100</span>, MAXN = <span class="hljs-number">100</span>;</span><br><span class="line"></span><br><span class="line"><span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">max</span><span class="hljs-params">(<span class="hljs-keyword">int</span> a, <span class="hljs-keyword">int</span> b)</span> </span>&#123;<span class="hljs-keyword">return</span> a &gt; b ? a : b;&#125;</span><br><span class="line"><span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">min</span><span class="hljs-params">(<span class="hljs-keyword">int</span> a, <span class="hljs-keyword">int</span> b)</span> </span>&#123;<span class="hljs-keyword">return</span> a &lt; b ? a : b;&#125;</span><br><span class="line"></span><br><span class="line"><span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">superEggDrop</span><span class="hljs-params">(<span class="hljs-keyword">int</span> K, <span class="hljs-keyword">int</span> N)</span> </span>&#123;</span><br><span class="line">    <span class="hljs-keyword">int</span> dp[MAXN+<span class="hljs-number">2</span>][MAXK+<span class="hljs-number">2</span>];</span><br><span class="line">    <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> i = <span class="hljs-number">0</span>; i &lt;= MAXN; i++) &#123;</span><br><span class="line">        dp[i][<span class="hljs-number">0</span>] = <span class="hljs-number">0</span>;</span><br><span class="line">        dp[i][<span class="hljs-number">1</span>] = i;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> j = <span class="hljs-number">2</span>; j &lt;= MAXK; j++) &#123;</span><br><span class="line">        <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> i = <span class="hljs-number">1</span>; i &lt;= MAXN; i++) &#123;</span><br><span class="line">            dp[i][j] = i;</span><br><span class="line">            <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> k = <span class="hljs-number">1</span>; k &lt; i; k++) &#123;</span><br><span class="line">                dp[i][j] = min(dp[i][j], max(dp[k<span class="hljs-number">-1</span>][j<span class="hljs-number">-1</span>], dp[i-k][j]) + <span class="hljs-number">1</span>);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="hljs-keyword">return</span> dp[N][K];</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>用这个办法做出来TLE，怎么办呢？<br>我们可以改变一下求解的思路，求k个鸡蛋在m步内可以测出多少层。</p>
+<p>f(K, M)，表示K个鸡蛋在M步内，最坏条件下能测出的层数。<br>假设一共有K个鸡蛋，最多能扔N层。从F层扔下鸡蛋，会出现两种情况：</p>
+<ol>
+<li>碎了，剩下K - 1个鸡蛋和M - 1步，f(K - 1, M - 1)</li>
+<li>没碎，剩下K个鸡蛋和M - 1步，f(K, M - 1)<br>因此f(K, M) = f(K - 1, M - 1)(摔碎时能确定的层数) + f(K, M - 1)（没摔碎时能确定的层数） + 1（本层）<br>考虑边界情况：</li>
+</ol>
+<ul>
+<li>没有鸡蛋，一层都测不出来。可得f(K, 0) = 0</li>
+<li>只有一个鸡蛋，那必须从第1层开始扔，最坏情况要扔到M层才能测出来，一共扔M次。可得f(1, M) = M</li>
+</ul>
+<p>推出代码：<br><figure class="highlight c++ hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Solution</span> &#123;</span></span><br><span class="line"><span class="hljs-keyword">public</span>:</span><br><span class="line">    <span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">superEggDrop</span><span class="hljs-params">(<span class="hljs-keyword">int</span> K, <span class="hljs-keyword">int</span> N)</span> </span>&#123;</span><br><span class="line">        <span class="hljs-keyword">if</span>(K == <span class="hljs-number">1</span>)</span><br><span class="line">            <span class="hljs-keyword">return</span> N;</span><br><span class="line">        <span class="hljs-keyword">int</span> dp[<span class="hljs-number">10001</span>][<span class="hljs-number">101</span>] = &#123;<span class="hljs-number">0</span>&#125;;</span><br><span class="line">        <span class="hljs-keyword">for</span>(<span class="hljs-keyword">int</span> m = <span class="hljs-number">1</span>; m &lt;= N; m ++)&#123;</span><br><span class="line">            <span class="hljs-keyword">for</span>(<span class="hljs-keyword">int</span> k = <span class="hljs-number">1</span>; k &lt;= K; k ++)&#123;</span><br><span class="line">                dp[m][k] = dp[m - <span class="hljs-number">1</span>][k] + dp[m - <span class="hljs-number">1</span>][k - <span class="hljs-number">1</span>] + <span class="hljs-number">1</span>;</span><br><span class="line">                <span class="hljs-keyword">if</span>(dp[m][k] &gt;= N)</span><br><span class="line">                    <span class="hljs-keyword">return</span> m;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="hljs-keyword">return</span> N;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure></p>
+</the>
+        </div>
+        
+        <div class="level is-size-7 is-uppercase">
+            <div class="level-start">
+                <div class="level-item">
+                    <span class="is-size-6 has-text-grey has-mr-7">#</span>
+                    <a class="has-link-grey -link" href="/tags/algorithm/">algorithm</a>, <a class="has-link-grey -link" href="/tags/dp/">dp</a>
+                </div>
+            </div>
+        </div>
+        
+        
+        
+            <p style="padding-bottom: 1rem">
+            <span id="busuanzi_container_page_pv">
+               本文总阅读量<span id="busuanzi_value_page_pv"></span>次
+            </span>
+            </p>
+        
+        
+            <div class="social-share"></div>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/social-share.js@1.0.16/dist/css/share.min.css">
+<script src="https://cdn.jsdelivr.net/npm/social-share.js@1.0.16/dist/js/social-share.min.js"></script>
+            <!-- <div class="share-component" data-disabled="google, twitter, facebook, tencent, douban, linkedin, diandian"></div> -->
+        
+    </div>
+</div>
 
 
-<script src="/js/jqcloud-1.0.4.js" defer></script>
-<script src="/js/jqcloud.js" defer></script>
-<script type="text/javascript">
-    
-    var tagWords = [{"text":"学习计划","weight":1,"link":"http://Angericky.github.io/tags/学习计划/"},{"text":"ejs","weight":1,"link":"http://Angericky.github.io/tags/ejs/"},{"text":"nodejs","weight":1,"link":"http://Angericky.github.io/tags/nodejs/"},{"text":"hexo","weight":3,"link":"http://Angericky.github.io/tags/hexo/"},{"text":"icarus","weight":2,"link":"http://Angericky.github.io/tags/icarus/"},{"text":"vue","weight":2,"link":"http://Angericky.github.io/tags/vue/"},{"text":"git","weight":2,"link":"http://Angericky.github.io/tags/git/"},{"text":"algorithm","weight":2,"link":"http://Angericky.github.io/tags/algorithm/"},{"text":"leetcode","weight":1,"link":"http://Angericky.github.io/tags/leetcode/"},{"text":"hackathon","weight":1,"link":"http://Angericky.github.io/tags/hackathon/"},{"text":"google","weight":1,"link":"http://Angericky.github.io/tags/google/"},{"text":"Front-end","weight":1,"link":"http://Angericky.github.io/tags/Front-end/"},{"text":"dp","weight":1,"link":"http://Angericky.github.io/tags/dp/"},{"text":"presentation","weight":1,"link":"http://Angericky.github.io/tags/presentation/"},{"text":"keyboard accelerators","weight":1,"link":"http://Angericky.github.io/tags/keyboard-accelerators/"},{"text":"process","weight":1,"link":"http://Angericky.github.io/tags/process/"},{"text":"markdown","weight":1,"link":"http://Angericky.github.io/tags/markdown/"},{"text":"caffe","weight":1,"link":"http://Angericky.github.io/tags/caffe/"},{"text":"matlab","weight":1,"link":"http://Angericky.github.io/tags/matlab/"},{"text":"stylus","weight":1,"link":"http://Angericky.github.io/tags/stylus/"},{"text":"css","weight":1,"link":"http://Angericky.github.io/tags/css/"},{"text":"面向对象","weight":1,"link":"http://Angericky.github.io/tags/面向对象/"},{"text":"设计模式","weight":1,"link":"http://Angericky.github.io/tags/设计模式/"}];
-</script>
-    
+
+<div class="card">
     <div class="card-content">
-        <div class="menu">
-            <h3 class="menu-label">
-                标签
-            </h3>
-            <ul class="menu-list">
+        <h3 class="menu-label has-text-centered">Could you buy me a coffee?</h3>
+        <div class="buttons is-centered">
+            
                 
-                <li>
-                    <a class="level is-marginless" href="/tags/Front-end/">
-                        <span class="level-start">
-                            <span class="level-item">Front-end</span>
-                        </span>
-                        <span class="level-end">
-                            <span class="level-item tag">1</span>
-                        </span>
-                    </a>
-                </li>
+<a class="button is-success donate">
+    <span class="icon is-small">
+        <i class="fab fa-weixin"></i>
+    </span>
+    <span>微信</span>
+    <div class="qrcode"><img src="https://s1.ax1x.com/2018/12/30/FfHzNV.png" alt="微信"></div>
+</a>
+
                 
-                <li>
-                    <a class="level is-marginless" href="/tags/algorithm/">
-                        <span class="level-start">
-                            <span class="level-item">algorithm</span>
-                        </span>
-                        <span class="level-end">
-                            <span class="level-item tag">2</span>
-                        </span>
-                    </a>
-                </li>
                 
-                <li>
-                    <a class="level is-marginless" href="/tags/caffe/">
-                        <span class="level-start">
-                            <span class="level-item">caffe</span>
-                        </span>
-                        <span class="level-end">
-                            <span class="level-item tag">1</span>
-                        </span>
-                    </a>
-                </li>
+<a class="button is-info donate">
+    <span class="icon is-small">
+        <i class="fab fa-alipay"></i>
+    </span>
+    <span>支付宝</span>
+    <div class="qrcode"><img src="https://s1.ax1x.com/2018/12/30/FfbShT.jpg" alt="支付宝"></div>
+</a>
+
                 
-                <li>
-                    <a class="level is-marginless" href="/tags/css/">
-                        <span class="level-start">
-                            <span class="level-item">css</span>
-                        </span>
-                        <span class="level-end">
-                            <span class="level-item tag">1</span>
-                        </span>
-                    </a>
-                </li>
-                
-                <li>
-                    <a class="level is-marginless" href="/tags/dp/">
-                        <span class="level-start">
-                            <span class="level-item">dp</span>
-                        </span>
-                        <span class="level-end">
-                            <span class="level-item tag">1</span>
-                        </span>
-                    </a>
-                </li>
-                
-                <li>
-                    <a class="level is-marginless" href="/tags/ejs/">
-                        <span class="level-start">
-                            <span class="level-item">ejs</span>
-                        </span>
-                        <span class="level-end">
-                            <span class="level-item tag">1</span>
-                        </span>
-                    </a>
-                </li>
-                
-                <li>
-                    <a class="level is-marginless" href="/tags/git/">
-                        <span class="level-start">
-                            <span class="level-item">git</span>
-                        </span>
-                        <span class="level-end">
-                            <span class="level-item tag">2</span>
-                        </span>
-                    </a>
-                </li>
-                
-                <li>
-                    <a class="level is-marginless" href="/tags/google/">
-                        <span class="level-start">
-                            <span class="level-item">google</span>
-                        </span>
-                        <span class="level-end">
-                            <span class="level-item tag">1</span>
-                        </span>
-                    </a>
-                </li>
-                
-                <li>
-                    <a class="level is-marginless" href="/tags/hackathon/">
-                        <span class="level-start">
-                            <span class="level-item">hackathon</span>
-                        </span>
-                        <span class="level-end">
-                            <span class="level-item tag">1</span>
-                        </span>
-                    </a>
-                </li>
-                
-                <li>
-                    <a class="level is-marginless" href="/tags/hexo/">
-                        <span class="level-start">
-                            <span class="level-item">hexo</span>
-                        </span>
-                        <span class="level-end">
-                            <span class="level-item tag">3</span>
-                        </span>
-                    </a>
-                </li>
-                
-                <li>
-                    <a class="level is-marginless" href="/tags/icarus/">
-                        <span class="level-start">
-                            <span class="level-item">icarus</span>
-                        </span>
-                        <span class="level-end">
-                            <span class="level-item tag">2</span>
-                        </span>
-                    </a>
-                </li>
-                
-                <li>
-                    <a class="level is-marginless" href="/tags/keyboard-accelerators/">
-                        <span class="level-start">
-                            <span class="level-item">keyboard accelerators</span>
-                        </span>
-                        <span class="level-end">
-                            <span class="level-item tag">1</span>
-                        </span>
-                    </a>
-                </li>
-                
-                <li>
-                    <a class="level is-marginless" href="/tags/leetcode/">
-                        <span class="level-start">
-                            <span class="level-item">leetcode</span>
-                        </span>
-                        <span class="level-end">
-                            <span class="level-item tag">1</span>
-                        </span>
-                    </a>
-                </li>
-                
-                <li>
-                    <a class="level is-marginless" href="/tags/markdown/">
-                        <span class="level-start">
-                            <span class="level-item">markdown</span>
-                        </span>
-                        <span class="level-end">
-                            <span class="level-item tag">1</span>
-                        </span>
-                    </a>
-                </li>
-                
-                <li>
-                    <a class="level is-marginless" href="/tags/matlab/">
-                        <span class="level-start">
-                            <span class="level-item">matlab</span>
-                        </span>
-                        <span class="level-end">
-                            <span class="level-item tag">1</span>
-                        </span>
-                    </a>
-                </li>
-                
-                <li>
-                    <a class="level is-marginless" href="/tags/nodejs/">
-                        <span class="level-start">
-                            <span class="level-item">nodejs</span>
-                        </span>
-                        <span class="level-end">
-                            <span class="level-item tag">1</span>
-                        </span>
-                    </a>
-                </li>
-                
-                <li>
-                    <a class="level is-marginless" href="/tags/presentation/">
-                        <span class="level-start">
-                            <span class="level-item">presentation</span>
-                        </span>
-                        <span class="level-end">
-                            <span class="level-item tag">1</span>
-                        </span>
-                    </a>
-                </li>
-                
-                <li>
-                    <a class="level is-marginless" href="/tags/process/">
-                        <span class="level-start">
-                            <span class="level-item">process</span>
-                        </span>
-                        <span class="level-end">
-                            <span class="level-item tag">1</span>
-                        </span>
-                    </a>
-                </li>
-                
-                <li>
-                    <a class="level is-marginless" href="/tags/stylus/">
-                        <span class="level-start">
-                            <span class="level-item">stylus</span>
-                        </span>
-                        <span class="level-end">
-                            <span class="level-item tag">1</span>
-                        </span>
-                    </a>
-                </li>
-                
-                <li>
-                    <a class="level is-marginless" href="/tags/vue/">
-                        <span class="level-start">
-                            <span class="level-item">vue</span>
-                        </span>
-                        <span class="level-end">
-                            <span class="level-item tag">2</span>
-                        </span>
-                    </a>
-                </li>
-                
-                <li>
-                    <a class="level is-marginless" href="/tags/学习计划/">
-                        <span class="level-start">
-                            <span class="level-item">学习计划</span>
-                        </span>
-                        <span class="level-end">
-                            <span class="level-item tag">1</span>
-                        </span>
-                    </a>
-                </li>
-                
-                <li>
-                    <a class="level is-marginless" href="/tags/设计模式/">
-                        <span class="level-start">
-                            <span class="level-item">设计模式</span>
-                        </span>
-                        <span class="level-end">
-                            <span class="level-item tag">1</span>
-                        </span>
-                    </a>
-                </li>
-                
-                <li>
-                    <a class="level is-marginless" href="/tags/面向对象/">
-                        <span class="level-start">
-                            <span class="level-item">面向对象</span>
-                        </span>
-                        <span class="level-end">
-                            <span class="level-item tag">1</span>
-                        </span>
-                    </a>
-                </li>
-                
-            </ul>
         </div>
     </div>
-</div></div>
-                
+</div>
+
+
+
+<div class="card card-transparent">
+    <div class="level post-navigation is-flex-wrap is-mobile">
+        
+        
+        <div class="level-end">
+            <a class="level level-item has-link-grey  article-nav-next" href="/2019/04/29/用Supervisor管理进程、监控程序/">
+                <span class="level-item">用Supervisor管理进程、监控程序</span>
+                <i class="level-item fas fa-chevron-right"></i>
+            </a>
+        </div>
+        
+    </div>
+</div>
+
+
+
+<div class="card">
+    <div class="card-content">
+        <h3 class="title is-5 has-text-weight-normal">评论</h3>
+        
+<div id="valine-thread"></div>
+<script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+<script src="//unpkg.com/valine/dist/Valine.min.js"></script>
+<script>
+    new Valine({
+        el: '#valine-thread' ,
+        notify: false,
+        verify: false,
+        app_id: 'TDJ1Xwg60guxsxnHXWGYVzaR-gzGzoHsz',
+        app_key: 'gqw5MJGTDfaMQA0JRsBllBAG',
+        placeholder: 'ヾﾉ≧∀≦)o来啊，快活啊!'
+    });
+</script>
+
+    </div>
+</div>
+
+</div>
+                 
                     
 
 
@@ -434,8 +344,9 @@
 
 <div class="column is-4-tablet is-4-desktop is-3-widescreen  has-order-1 column-left ">
     
+    <!-- 
         
-        
+            
             
 <div class="card widget">
     <div class="card-content">
@@ -519,245 +430,19 @@
     </div>
 </div>
         
-            
-
-<div class="card widget">
-    <div class="card-content">
-        <div class="menu links">
-        <h3 class="menu-label">
-            链接
-        </h3>
-        <ul class="menu-list">
-        
-            
-                <li>
-                <a class="level is-mobile" href="http://godweiyang.com" target="_blank">
-                    <span class="level-left" style="text-decoration: underline">
-                        <span class="level-item">厉害的阳神</span>
-                    </span> 
-                </a>      
-                
-        
-            
-                <a class="level is-mobile" style="float:right" href="https://qjchen.cn" target="_blank">
-                    <span class="level-right" style="text-decoration: underline">
-                        <span class="level-item">聪明的前嘉</span>
-                    </span>
-                </a>
-                </li>
-            
-        
-            
-                <li>
-                <a class="level is-mobile" href="https://miaosakurai.github.io" target="_blank">
-                    <span class="level-left" style="text-decoration: underline">
-                        <span class="level-item">樱井喵</span>
-                    </span> 
-                </a>      
-                
-        
-            
-                <a class="level is-mobile" style="float:right" href="https://subjectnoi.github.io" target="_blank">
-                    <span class="level-right" style="text-decoration: underline">
-                        <span class="level-item">Altair Liu</span>
-                    </span>
-                </a>
-                </li>
-            
-        
-            
-                <li>
-                <a class="level is-mobile" href="http://t.cn/EMpLq2K" target="_blank">
-                    <span class="level-left" style="text-decoration: underline">
-                        <span class="level-item">babyQ</span>
-                    </span> 
-                </a>      
-                
-        
-            
-                <a class="level is-mobile" style="float:right" href="https://muyuuuu.github.io/" target="_blank">
-                    <span class="level-right" style="text-decoration: underline">
-                        <span class="level-item">Lan Ling</span>
-                    </span>
-                </a>
-                </li>
-            
-        
-        </ul>
-        </div>
-    </div>
-</div>
-
-        
-            <!-- 
-<div class="card widget">
-    <div class="card-content">
-        <div class="menu">
-            <h3 class="menu-label">
-                分类
-            </h3>
-            <ul class="menu-list">
-            <li>
-        <a class="level is-marginless" href="/categories/Front-end/">
-            <span class="level-start">
-                <span class="level-item">Front-end</span>
-            </span>
-            <span class="level-end">
-                <span class="level-item tag">1</span>
-            </span>
-        </a></li><li>
-        <a class="level is-marginless" href="/categories/algorithm/">
-            <span class="level-start">
-                <span class="level-item">algorithm</span>
-            </span>
-            <span class="level-end">
-                <span class="level-item tag">2</span>
-            </span>
-        </a></li><li>
-        <a class="level is-marginless" href="/categories/caffe/">
-            <span class="level-start">
-                <span class="level-item">caffe</span>
-            </span>
-            <span class="level-end">
-                <span class="level-item tag">1</span>
-            </span>
-        </a></li><li>
-        <a class="level is-marginless" href="/categories/ejs/">
-            <span class="level-start">
-                <span class="level-item">ejs</span>
-            </span>
-            <span class="level-end">
-                <span class="level-item tag">1</span>
-            </span>
-        </a></li><li>
-        <a class="level is-marginless" href="/categories/git/">
-            <span class="level-start">
-                <span class="level-item">git</span>
-            </span>
-            <span class="level-end">
-                <span class="level-item tag">2</span>
-            </span>
-        </a></li><li>
-        <a class="level is-marginless" href="/categories/hachathon/">
-            <span class="level-start">
-                <span class="level-item">hachathon</span>
-            </span>
-            <span class="level-end">
-                <span class="level-item tag">1</span>
-            </span>
-        </a></li><li>
-        <a class="level is-marginless" href="/categories/icarus/">
-            <span class="level-start">
-                <span class="level-item">icarus</span>
-            </span>
-            <span class="level-end">
-                <span class="level-item tag">1</span>
-            </span>
-        </a></li><li>
-        <a class="level is-marginless" href="/categories/keyboard-accelerators/">
-            <span class="level-start">
-                <span class="level-item">keyboard accelerators</span>
-            </span>
-            <span class="level-end">
-                <span class="level-item tag">1</span>
-            </span>
-        </a></li><li>
-        <a class="level is-marginless" href="/categories/markdown/">
-            <span class="level-start">
-                <span class="level-item">markdown</span>
-            </span>
-            <span class="level-end">
-                <span class="level-item tag">1</span>
-            </span>
-        </a></li><li>
-        <a class="level is-marginless" href="/categories/presentation/">
-            <span class="level-start">
-                <span class="level-item">presentation</span>
-            </span>
-            <span class="level-end">
-                <span class="level-item tag">1</span>
-            </span>
-        </a></li><li>
-        <a class="level is-marginless" href="/categories/process/">
-            <span class="level-start">
-                <span class="level-item">process</span>
-            </span>
-            <span class="level-end">
-                <span class="level-item tag">1</span>
-            </span>
-        </a></li><li>
-        <a class="level is-marginless" href="/categories/vue/">
-            <span class="level-start">
-                <span class="level-item">vue</span>
-            </span>
-            <span class="level-end">
-                <span class="level-item tag">2</span>
-            </span>
-        </a></li><li>
-        <a class="level is-marginless" href="/categories/前端/">
-            <span class="level-start">
-                <span class="level-item">前端</span>
-            </span>
-            <span class="level-end">
-                <span class="level-item tag">1</span>
-            </span>
-        </a></li><li>
-        <a class="level is-marginless" href="/categories/学习计划/">
-            <span class="level-start">
-                <span class="level-item">学习计划</span>
-            </span>
-            <span class="level-end">
-                <span class="level-item tag">1</span>
-            </span>
-        </a></li><li>
-        <a class="level is-marginless" href="/categories/设计模式/">
-            <span class="level-start">
-                <span class="level-item">设计模式</span>
-            </span>
-            <span class="level-end">
-                <span class="level-item tag">1</span>
-            </span>
-        </a></li>
-            </ul>
-        </div>
-    </div>
-</div> -->
-        
-            
-<div class="card widget">
-    <div class="card-content">
-        <h3 class="menu-label">
-            标签云
-        </h3>
-        <div style="overflow: auto">
-            <svg width="260" height="350"><g transform="translate(140,175)"><a href="/tags/Front-end/"><text text-anchor="middle" fill="#1f77b4" transform="translate(104,-109)rotate(90)" style="font-size:30px;font-family:Impact">Front-end</text></a><a href="/tags/algorithm/"><text text-anchor="middle" fill="#aec7e8" transform="translate(52,-73)rotate(90)" style="font-size:39px;font-family:Impact">algorithm</text></a><a href="/tags/caffe/"><text text-anchor="middle" fill="#ff7f0e" transform="translate(9,-24)rotate(90)" style="font-size:30px;font-family:Impact">caffe</text></a><a href="/tags/css/"><text text-anchor="middle" fill="#ffbb78" transform="translate(-84,-85)rotate(90)" style="font-size:30px;font-family:Impact">css</text></a><a href="/tags/dp/"><text text-anchor="middle" fill="#2ca02c" transform="translate(-91,-139)rotate(0)" style="font-size:30px;font-family:Impact">dp</text></a><a href="/tags/ejs/"><text text-anchor="middle" fill="#98df8a" transform="translate(99,-10)rotate(90)" style="font-size:30px;font-family:Impact">ejs</text></a><a href="/tags/git/"><text text-anchor="middle" fill="#d62728" transform="translate(-71,31)rotate(0)" style="font-size:39px;font-family:Impact">git</text></a><a href="/tags/google/"><text text-anchor="middle" fill="#ff9896" transform="translate(-13,-123)rotate(0)" style="font-size:30px;font-family:Impact">google</text></a><a href="/tags/hackathon/"><text text-anchor="middle" fill="#9467bd" transform="translate(51,107)rotate(0)" style="font-size:30px;font-family:Impact">hackathon</text></a><a href="/tags/hexo/"><text text-anchor="middle" fill="#c5b0d5" transform="translate(-47,-59)rotate(90)" style="font-size:45px;font-family:Impact">hexo</text></a><a href="/tags/icarus/"><text text-anchor="middle" fill="#8c564b" transform="translate(35,56)rotate(0)" style="font-size:39px;font-family:Impact">icarus</text></a><a href="/tags/keyboard accelerators/"><text text-anchor="middle" fill="#c49c94" transform="translate(623,-234)rotate(0)" style="font-size:30px;font-family:Impact">keyboard accelerators</text></a><a href="/tags/leetcode/"><text text-anchor="middle" fill="#e377c2" transform="translate(-335,-300)rotate(0)" style="font-size:30px;font-family:Impact">leetcode</text></a><a href="/tags/markdown/"><text text-anchor="middle" fill="#f7b6d2" transform="translate(-402,-251)rotate(90)" style="font-size:30px;font-family:Impact">markdown</text></a><a href="/tags/matlab/"><text text-anchor="middle" fill="#7f7f7f" transform="translate(-321,-169)rotate(90)" style="font-size:30px;font-family:Impact">matlab</text></a><a href="/tags/nodejs/"><text text-anchor="middle" fill="#c7c7c7" transform="translate(584,-212)rotate(0)" style="font-size:30px;font-family:Impact">nodejs</text></a><a href="/tags/presentation/"><text text-anchor="middle" fill="#bcbd22" transform="translate(680,-292)rotate(0)" style="font-size:30px;font-family:Impact">presentation</text></a><a href="/tags/process/"><text text-anchor="middle" fill="#dbdb8d" transform="translate(-312,-211)rotate(90)" style="font-size:30px;font-family:Impact">process</text></a><a href="/tags/stylus/"><text text-anchor="middle" fill="#17becf" transform="translate(-26,146)rotate(0)" style="font-size:30px;font-family:Impact">stylus</text></a><a href="/tags/vue/"><text text-anchor="middle" fill="#9edae5" transform="translate(-61,81)rotate(0)" style="font-size:39px;font-family:Impact">vue</text></a><a href="/tags/学习计划/"><text text-anchor="middle" fill="#1f77b4" transform="translate(683,-269)rotate(90)" style="font-size:30px;font-family:Impact">学习计划</text></a><a href="/tags/设计模式/"><text text-anchor="middle" fill="#aec7e8" transform="translate(-391,-198)rotate(0)" style="font-size:30px;font-family:Impact">设计模式</text></a><a href="/tags/面向对象/"><text text-anchor="middle" fill="#ff7f0e" transform="translate(692,-245)rotate(0)" style="font-size:30px;font-family:Impact">面向对象</text></a></g></svg>
-        </div>
-    </div>
-</div>
-
-        
     
-    <!-- 
-</div>
---></div>
-                    
-
-
-
-
-<div class="column is-4-tablet is-4-desktop is-3-widescreen is-hidden-touch is-hidden-desktop-only has-order-3 column-right ">
+            
     
-        
-            <div class="card widget">
-                <div class="card-content">
-                    <iframe frameborder="no" border="0" marginwidth="0" marginheight="0" style="height: 6rem; width: 20em;" src="//music.163.com/outchain/player?type=2&id=1336343124&auto=1&height=66"></iframe>
-                </div>
-            </div>
-        
-        
             
-        
+    
             
+     -->
+    
+        <div class="column-right-shadow  ">
+            
+                
+            
+                
 <div class="card widget">
     <div class="card-content">
         <h3 class="menu-label">
@@ -838,8 +523,8 @@
     </div>
 </div>
 
-        
-            <div class="card widget">
+            
+                <div class="card widget">
     <div class="card-content">
         <div class="menu">
         <h3 class="menu-label">
@@ -917,8 +602,8 @@
         </div>
     </div>
 </div>
-        
-            <!-- <div class="card widget">
+            
+                <!-- <div class="card widget">
     
     <div class="card-content">
         <div class="menu">
@@ -1184,11 +869,12 @@
         </div>
     </div>
 </div> -->
-        
+            
+        </div>
     
-    <!-- 
+    
 </div>
---></div>
+
                 
             </div>
         </div>
@@ -1202,7 +888,7 @@
             <div class="level-start has-text-centered-mobile">
                 <a class="footer-logo is-block has-mb-6" href="/">
                 
-                    <img src="https://i.loli.net/2019/01/07/5c336be858b4e.jpg" alt="Jingjing&#39;s blog" height="28">
+                    <img src="https://i.loli.net/2019/01/07/5c336be858b4e.jpg" alt="扔鸡蛋问题" height="28">
                 
                 </a>
                 <p class="is-size-7" style="padding-bottom: 0.5em">
