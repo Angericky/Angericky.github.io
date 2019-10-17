@@ -12,7 +12,7 @@ button,
 input,
 select,
 textarea {
-  font-family: Lato, "PingFang SC", "Microsoft YaHei", sans-serif;
+  font-family: Lato, "Microsoft YaHei", sans-serif;
 }
 .has-text-weight-normal {
   font-weight: 500 !important;
@@ -231,7 +231,7 @@ img.thumbnail {
 }
 .article .content {
   font-size: 1.1rem;
-  line-height: 1.8;
+  line-height: 2;
   color: #111;
 }
 .article .content blockquote.pullquote {
