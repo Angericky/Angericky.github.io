@@ -26,7 +26,7 @@
 <meta property="og:image" content="http://angericky.github.io/images/pointnet_7.png">
 <meta property="og:image" content="http://angericky.github.io/images/pointnet_8.png">
 <meta property="og:image" content="http://angericky.github.io/images/pointnet_9.png">
-<meta property="og:updated_time" content="2019-10-24T05:35:47.460Z">
+<meta property="og:updated_time" content="2019-10-27T15:45:41.484Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="PoinetNet家族论文笔记">
 <meta name="twitter:description" content="PointNet和PointNet++的论文笔记。">
@@ -167,14 +167,14 @@
                 <time class="level-item has-text-grey" datetime="2019-10-22T15:09:46.000Z">2019-10-22</time>
                 
                     <i class="fas fa-calendar-check">&nbsp</i>
-                    <time class="level-item has-text-grey" datetime="2019-10-24T05:35:47.460Z">2019-10-24</time>
+                    <time class="level-item has-text-grey" datetime="2019-10-27T15:45:41.484Z">2019-10-27</time>
                 
                 
                 <i class="fas fa-book">&nbsp</i>
                 <span class="level-item has-text-grey">
                     
                     
-                    19 分钟 读完 (大约 2865 个字)
+                    19 分钟 读完 (大约 2883 个字)
                 </span>
                 
             </div>
@@ -209,11 +209,11 @@
 <li>共享多层感知机(Shared MLP) + max pool（置换不变性），逐级映射到高层表示</li>
 <li>刚体变换（包括平移、旋转、反转）: 增加T-net(transform net)， 将输入的三维点云进行变形，得到规范的数据，能够映射到高维</li>
 </ol>
-<h3 id="解决问题"><a href="#解决问题" class="headerlink" title="解决问题"></a>解决问题</h3><p>第一次直接在三维点云数据上建立深度学习模型。</p>
-<h3 id="思想"><a href="#思想" class="headerlink" title="思想"></a>思想</h3><p>学习每个点的空间编码，然后把所有单独的点特征聚集成一个全局点云标记特征。<br>网络有两个亮点</p>
+<h3 id="解决问题"><a href="#解决问题" class="headerlink" title="解决问题"></a>解决问题</h3><p>第一次直接在三维点云数据上建立深度学习模型，处理point cloud的数据无序性？。</p>
+<h3 id="思想"><a href="#思想" class="headerlink" title="思想"></a>思想</h3><p>学习每个点的空间编码，然后利用对称函数把所有单独的点特征聚集成一个全局点云标记特征。<br>网络有两个亮点：</p>
 <ol>
-<li>空间变换网络解决旋转问题：<br>三维的STN可以通过学习点云本身的位姿信息学习到一个最有利于网络进行分类或分割的DxD旋转矩阵（D代表特征维度，pointnet中D采用3和64）。至于其中的原理，我的理解是，通过控制最后的loss来对变换矩阵进行调整，pointnet并不关心最后真正做了什么变换，只要有利于最后的结果都可以。pointnet采用了两次STN，第一次input transform是对空间中点云进行调整，直观上理解是旋转出一个更有利于分类或分割的角度，比如把物体转到正面；第二次feature transform是对提取出的64维特征进行对齐，即在特征层面对点云进行变换。</li>
-<li>maxpooling解决无序性问题：<br>网络对每个点进行了一定程度的特征提取之后，maxpooling可以对点云的整体提取出global feature。</li>
+<li><strong>空间变换网络解决旋转问题</strong><br>三维的STN可以通过学习点云本身的位置信息学习到一个最有利于网络进行分类或分割的DxD旋转矩阵（D代表特征维度，pointnet中D采用3和64）。至于其中的原理，我的理解是，通过控制最后的loss来对变换矩阵进行调整，pointnet并不关心最后真正做了什么变换，只要有利于最后的结果都可以。pointnet采用了两次STN，第一次input transform是对空间中点云进行调整，直观上理解是旋转出一个更有利于分类或分割的角度，比如把物体转到正面；第二次feature transform是对提取出的64维特征进行对齐，即在特征层面对点云进行变换。</li>
+<li><strong>maxpooling解决无序性问题</strong><br>网络对每个点进行了一定程度的特征提取之后，max pooling可以对点云的整体提取出global feature。</li>
 </ol>
 <h3 id="网络设计"><a href="#网络设计" class="headerlink" title="网络设计"></a>网络设计</h3><p>对称设计：<br><img src="/images/pointnet_1.jpg" alt="pointnet对称函数"><br>通过一个多层感知机网络近似h函数，再用g对称函数。<br>该网络通过使用MaxPooling作为对称函数设计来处理点云模型的无序性的，也就是说无论输入的顺序是怎样的，maxpooling都会输出相同的结果。对称函数就是类似自然数加法那样的操作，调换输入顺序输出不变。</p>
 <p><img src="/images/pointnet_2.jpg" alt="pointnet网络结构"><br>上图中蓝色部分是分类网络，黄色部分是分割网络。分割网络需要cancat global features和local features。（但实际上local features并没有充分地提取局部特征，例如密度表征等，所以后来才提出了其改进版PointNet++，但速度更慢）<br>其中，mlp是通过共享权重的卷积实现的，第一层卷积核大小是1x3（因为每个点的维度是xyz），之后的每一层卷积核大小都是1x1。即特征提取层只是把每个点连接起来而已。经过两个空间变换网络和两个mlp之后，对每一个点提取1024维特征，经过maxpool变成1x1024的全局特征。再经过一个mlp（代码中运用全连接）得到k个score。分类网络最后接的loss是softmax。<br>网络结构中，两处用到了STN网络。stn生成仿射矩阵后对每个points都施加相同的仿射变换，不同sample的仿射矩阵不一样，都需要用stn网络计算出来。</p>
@@ -318,6 +318,13 @@
 <div class="card card-transparent">
     <div class="level post-navigation is-flex-wrap is-mobile">
         
+        <div class="level-start">
+            <a class="level level-item has-link-grey  article-nav-prev" href="/2019/10/27/Clouds》论文笔记/">
+                <i class="level-item fas fa-chevron-left"></i>
+                <span class="level-item">《A-CNN：Annularly Convolutional Neural Networks on Point Clouds》论文笔记</span>
+            </a>
+        </div>
+        
         
         <div class="level-end">
             <a class="level level-item has-link-grey  article-nav-next" href="/2019/10/18/All-this-I-did-without-you/">
@@ -397,7 +404,7 @@
                         文章
                     </p>
                     <p class="title has-text-weight-normal">
-                        23
+                        25
                     </p>
                 </div>
             </div>
@@ -470,6 +477,32 @@
             
             <div class="media-content">
                 <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-10-27T15:49:53.000Z">2019-10-27</time></div>
+                    <a href="/2019/10/27/A-CNN论文笔记/" class="has-link-black-ter is-size-6">《A-CNN：Annularly Convolutional Neural Networks on Point Clouds》论文笔记</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/point-cloud/">point cloud</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-10-27T15:49:53.000Z">2019-10-27</time></div>
+                    <a href="/2019/10/27/Clouds》论文笔记/" class="has-link-black-ter is-size-6">《A-CNN：Annularly Convolutional Neural Networks on Point Clouds》论文笔记</a>
+                    <p class="is-size-7 is-uppercase">
+                        
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
+            <div class="media-content">
+                <div class="content">
                     <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-10-22T15:09:46.000Z">2019-10-22</time></div>
                     <a href="/2019/10/22/PoinetNet家族论文笔记/" class="has-link-black-ter is-size-6">PoinetNet家族论文笔记</a>
                     <p class="is-size-7 is-uppercase">
@@ -511,44 +544,6 @@
             </div>
         </article>
         
-        <article class="media">
-            
-            <a href="/2019/05/26/给最近计算机科学毕业生的职业生涯建议/" class="media-left">
-                <p class="image is-64x64">
-                    <img class="thumbnail" src="/images/graduation.jpeg" alt="给计算机科学毕业生的职业生涯建议">
-                </p>
-            </a> 
-            
-            <div class="media-content">
-                <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-05-26T15:24:46.000Z">2019-05-26</time></div>
-                    <a href="/2019/05/26/给最近计算机科学毕业生的职业生涯建议/" class="has-link-black-ter is-size-6">给计算机科学毕业生的职业生涯建议</a>
-                    <p class="is-size-7 is-uppercase">
-                        <a class="has-link-grey -link" href="/categories/talk/">talk</a>
-                    </p>
-                </div>
-            </div>
-        </article>
-        
-        <article class="media">
-            
-            <a href="/2019/05/08/扔鸡蛋问题/" class="media-left">
-                <p class="image is-64x64">
-                    <img class="thumbnail" src="/images/egg.jpeg" alt="扔鸡蛋问题">
-                </p>
-            </a> 
-            
-            <div class="media-content">
-                <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-05-08T14:09:21.000Z">2019-05-08</time></div>
-                    <a href="/2019/05/08/扔鸡蛋问题/" class="has-link-black-ter is-size-6">扔鸡蛋问题</a>
-                    <p class="is-size-7 is-uppercase">
-                        <a class="has-link-grey -link" href="/categories/algorithm/">algorithm</a>
-                    </p>
-                </div>
-            </div>
-        </article>
-        
     </div>
 </div>
 
@@ -567,7 +562,7 @@
                     <span class="level-item">十月 2019</span>
                 </span>
                 <span class="level-end">
-                    <span class="level-item tag">2</span>
+                    <span class="level-item tag">4</span>
                 </span>
             </a>
         </li>
@@ -856,7 +851,7 @@
                             <span class="level-item">point cloud</span>
                         </span>
                         <span class="level-end">
-                            <span class="level-item tag">2</span>
+                            <span class="level-item tag">3</span>
                         </span>
                     </a>
                 </li>
@@ -867,7 +862,7 @@
                             <span class="level-item">pointnet</span>
                         </span>
                         <span class="level-end">
-                            <span class="level-item tag">1</span>
+                            <span class="level-item tag">2</span>
                         </span>
                     </a>
                 </li>
