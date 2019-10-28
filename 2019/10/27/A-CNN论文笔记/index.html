@@ -17,17 +17,18 @@
 <meta property="og:site_name" content="Jingjing&#39;s blog">
 <meta property="og:description" content="针对点云的ACNN环状卷积神经网络的论文笔记。">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:image" content="evernotecid://608601E7-A5EF-4DBA-89B1-6F682033831E/appyinxiangcom/11727228/ENResource/p1017">
-<meta property="og:image" content="evernotecid://608601E7-A5EF-4DBA-89B1-6F682033831E/appyinxiangcom/11727228/ENResource/p1042">
-<meta property="og:image" content="evernotecid://608601E7-A5EF-4DBA-89B1-6F682033831E/appyinxiangcom/11727228/ENResource/p1018">
-<meta property="og:image" content="evernotecid://608601E7-A5EF-4DBA-89B1-6F682033831E/appyinxiangcom/11727228/ENResource/p1014">
-<meta property="og:image" content="evernotecid://608601E7-A5EF-4DBA-89B1-6F682033831E/appyinxiangcom/11727228/ENResource/p1015">
-<meta property="og:image" content="evernotecid://608601E7-A5EF-4DBA-89B1-6F682033831E/appyinxiangcom/11727228/ENResource/p1016">
-<meta property="og:updated_time" content="2019-10-27T15:55:47.394Z">
+<meta property="og:image" content="http://angericky.github.io/images/ACNN_1.png">
+<meta property="og:image" content="http://angericky.github.io/images/ACNN_2.png">
+<meta property="og:image" content="http://angericky.github.io/images/ACNN_3.png">
+<meta property="og:image" content="http://angericky.github.io/images/ACNN_7.png">
+<meta property="og:image" content="http://angericky.github.io/images/ACNN_4.png">
+<meta property="og:image" content="http://angericky.github.io/images/ACNN_5.png">
+<meta property="og:image" content="http://angericky.github.io/images/ACNN_6.png">
+<meta property="og:updated_time" content="2019-10-28T16:03:08.624Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="《A-CNN：Annularly Convolutional Neural Networks on Point Clouds》论文笔记">
 <meta name="twitter:description" content="针对点云的ACNN环状卷积神经网络的论文笔记。">
-<meta name="twitter:image" content="evernotecid://608601E7-A5EF-4DBA-89B1-6F682033831E/appyinxiangcom/11727228/ENResource/p1017">
+<meta name="twitter:image" content="http://angericky.github.io/images/ACNN_1.png">
 
 
 
@@ -164,14 +165,14 @@
                 <time class="level-item has-text-grey" datetime="2019-10-27T15:49:53.000Z">2019-10-27</time>
                 
                     <i class="fas fa-calendar-check">&nbsp</i>
-                    <time class="level-item has-text-grey" datetime="2019-10-27T15:55:47.394Z">2019-10-27</time>
+                    <time class="level-item has-text-grey" datetime="2019-10-28T16:03:08.624Z">2019-10-29</time>
                 
                 
                 <i class="fas fa-book">&nbsp</i>
                 <span class="level-item has-text-grey">
                     
                     
-                    8 分钟 读完 (大约 1218 个字)
+                    8 分钟 读完 (大约 1245 个字)
                 </span>
                 
             </div>
@@ -201,31 +202,31 @@
 <h2 id="ACNN"><a href="#ACNN" class="headerlink" title="ACNN"></a>ACNN</h2><blockquote>
 <p>《A-CNN：Annularly Convolutional Neural Networks on Point Clouds》 CVPR 2019<br>Artem Komarichev et. al Wayne State University<br>paper地址：<a href="http://www.cs.wayne.edu/zzhong/papers/A-CNN_CVPR2019.pdf" target="_blank" rel="noopener">http://www.cs.wayne.edu/zzhong/papers/A-CNN_CVPR2019.pdf</a></p>
 </blockquote>
-<p>这篇直接在pointnet++基础上做的工作，改的代码不多，但论文写得太好了，值得参考。</p>
 <h3 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h3><p>提出了用regular和dilated两种环形卷积，应用到已有的层级神经网络。能够在信号处理级别适应几何多样性和可扩展性。应用到了object classification，part segmentation，和semantic segmentation的大规模场景，并在一系列标准benchmark数据集上得到了SOTA（部分SOTA）。</p>
-<h3 id="贡献点"><a href="#贡献点" class="headerlink" title="贡献点"></a>贡献点</h3><p>提出了点云数据上的环卷积(annular convolution)，能够在每个局部环形区域定义任意kernel size，能帮助捕获3D形状更好的几何表达。并且对扩张环(dilated rings)提出了新的多级层次方法，有利于closed-loop卷积和pooling。</p>
+<h3 id="解决问题"><a href="#解决问题" class="headerlink" title="解决问题"></a>解决问题</h3><p>PointNet++中用了MSG方法做grouping分组，利用不同尺度的球去采样点云，这样的采样有重叠的。再对提出的采样方式进行卷积，变成全局特征，Pointnet的特征提取层不能很好地编码点云结构。</p>
+<h3 id="贡献点"><a href="#贡献点" class="headerlink" title="贡献点"></a>贡献点</h3><p>提出了点云数据上的环卷积(annular convolution)，能够在每个局部环形区域定义任意kernel size，能帮助捕获3D形状更好的几何表达。并且对扩张环(dilated rings)提出了新的多级层次方法，有利于闭环卷积和pooling。</p>
 <h3 id="思想"><a href="#思想" class="headerlink" title="思想"></a>思想</h3><p>PointNet++的多尺度区域可能会有交叠（同样的邻域点可能会被重复包括在不同规模的区域里），导致计算结构的性能下降（<em>为什么这样会导致性能下降？</em>重叠点的信息被包括在不同尺度，造成信息冗余，限制网络学习更重要的特征）。而本文工作更明智地提取了多尺度的邻域点特征，环结构在查询点的邻域没有交叠区域。</p>
-<h4 id="常规和扩张环"><a href="#常规和扩张环" class="headerlink" title="常规和扩张环"></a>常规和扩张环</h4><p><img src="evernotecid://608601E7-A5EF-4DBA-89B1-6F682033831E/appyinxiangcom/11727228/ENResource/p1017" alt="0a0bb62b0c9eb10d25d56348f7f8b283.png"><br>regular ring和dilated ring<br>扩张环在环和环之间有空隙，空隙r。常规环可以看成是空隙为0的扩张环。<br>优点：</p>
+<h4 id="常规和扩张环"><a href="#常规和扩张环" class="headerlink" title="常规和扩张环"></a>常规和扩张环</h4><p><img src="/images/ACNN_1.png" alt="regular ring和dilated ring structure"><br>Regular ring是密集的不同尺寸的圆环，而Dilate ring在环与环之间有一定的空隙，隔一个环、空一圈地去采样。常规环可以看成是空隙为0的扩张环。<br>优点：</p>
 <pre><code>1. kNN查找可以限制搜索区域保证没有交叠
 2. 同样的kernel size，环卷积有更大的感受野，而卷积参数量不变。
 3. 用最大池化之后，环结构能集合更多重要的特征。
 </code></pre><p>（2维的Dilated Convolution的最大价值是可以不做pooling损失信息，也不改变feature map的大小而增大感受野。而之前的FCN使用pooling下采样来增大感受野，但随后又不得不通过Deconvolution或者upsampling来增大feature map大小，这样的一小一大总会损失很多信息。）</p>
 <h4 id="有限制的KNN查找"><a href="#有限制的KNN查找" class="headerlink" title="有限制的KNN查找"></a>有限制的KNN查找</h4><p>PointNet++的ball query算法找的是中心点周围一个半径为R的查询球里的前K个邻居，不能保证最近的点都被找到了（<em>为什么</em>）。用Rinner和Router能保证搜索范围里找到的是最近的独一无二的点集。</p>
-<h4 id="邻域排序"><a href="#邻域排序" class="headerlink" title="邻域排序"></a>邻域排序</h4><p><img src="evernotecid://608601E7-A5EF-4DBA-89B1-6F682033831E/appyinxiangcom/11727228/ENResource/p1042" alt="790f804c267f899bf1fb2fd5eb2b5028.png"><br>分为<strong>投影</strong>和<strong>排序</strong>两个步骤。<br>投影：投影点集到查询点qi的法向平面上。用投影是因为点乘对于排序点有限制。<br>排序：利用点乘和叉乘把邻域点按照顺时针或者逆时针方向排序。</p>
+<h4 id="邻域排序"><a href="#邻域排序" class="headerlink" title="邻域排序"></a>邻域排序</h4><p><img src="/images/ACNN_2.png" alt="neighbour sorting"><br>分为<strong>投影</strong>和<strong>排序</strong>两个步骤。<br>投影：投影点集到查询点qi的法向平面上。用投影是因为点乘对于排序点有限制。<br>排序：利用点乘和叉乘把邻域点按照顺时针或者逆时针方向排序。</p>
 <h4 id="环卷积和池化"><a href="#环卷积和池化" class="headerlink" title="环卷积和池化"></a>环卷积和池化</h4><p>环卷积的优势：</p>
 <ol>
 <li>环形卷积对局部区域有置换不变性。</li>
 <li>无论顺时针逆时针排序，得到的结果都一样，避免了大规模场景数据集的点云法线方向翻转问题</li>
 <li>能够用任意的kernel size，而不只是1x1的kernel</li>
 </ol>
-<h3 id="网络结构"><a href="#网络结构" class="headerlink" title="网络结构"></a>网络结构</h3><p><img src="evernotecid://608601E7-A5EF-4DBA-89B1-6F682033831E/appyinxiangcom/11727228/ENResource/p1018" alt="75edf06a66b53127b76d7c6092c4d6ab.png"><br>encoder结构中的第一层环卷积用regular ring，第二层环卷积用dilated ring。对询问点的环进行并行处理。</p>
+<h3 id="网络结构"><a href="#网络结构" class="headerlink" title="网络结构"></a>网络结构</h3><p><img src="/images/ACNN_3.png" alt="network structure"><br>encoder结构中的第一层环卷积用regular ring，第二层环卷积用dilated ring。对同一个询问点的不同环进行并行处理。<br>网络的参数如下：<br><img src="/images/ACNN_7.png" alt="网络参数"><br>Classification中，用了[[0.0, 0.1],[0.1, 0.2]]的regular ring和[[0.1, 0.2], [0.3, 0.4]]的dilated ring。<br>Segmentation中，用了[[0.0, 0.1],[0.1, 0.2]]的regular ring和[[0.1, 0.2], [0.3, 0.4]]和[[0.2，0.4],[0.6, 0.8]]的dilated ring。</p>
 <h4 id="数据集"><a href="#数据集" class="headerlink" title="数据集"></a>数据集</h4><p><strong>standard benchmark dataset:</strong>： ModelNet10, ModelNet40, ShapeNet-part, S3DIS, ScanNet</p>
-<h3 id="结果"><a href="#结果" class="headerlink" title="结果"></a>结果</h3><h4 id="1-Classification"><a href="#1-Classification" class="headerlink" title="1. Classification"></a>1. Classification</h4><p><img src="evernotecid://608601E7-A5EF-4DBA-89B1-6F682033831E/appyinxiangcom/11727228/ENResource/p1014" alt="1a8bca4d878784626744883e4d89026c.png"><br>在ModelNet40数据集上比Point2Sequence差一点点。<br>(VRN Ensemble网络结构的性能最好)</p>
-<h4 id="2-Segmentation"><a href="#2-Segmentation" class="headerlink" title="2. Segmentation"></a>2. Segmentation</h4><p><img src="evernotecid://608601E7-A5EF-4DBA-89B1-6F682033831E/appyinxiangcom/11727228/ENResource/p1015" alt="b4fbd8d5082ed4b9fff36f9e2be7602a.png"></p>
+<h3 id="结果"><a href="#结果" class="headerlink" title="结果"></a>结果</h3><h4 id="1-Classification"><a href="#1-Classification" class="headerlink" title="1. Classification"></a>1. Classification</h4><p><img src="/images/ACNN_4.png" alt="classification result"><br>在ModelNet40数据集上比Point2Sequence差一点点。<br>(VRN Ensemble网络结构的性能最好)</p>
+<h4 id="2-Segmentation"><a href="#2-Segmentation" class="headerlink" title="2. Segmentation"></a>2. Segmentation</h4><p><img src="/images/ACNN_5.png" alt="segmentation result"></p>
 <p>ShapeNet-part数据集上，evaluation用了两种不同的输入：没有normals作为附加特征和有normals作为附加特征的。前者性能比Point Grid（volumetric方法）和Point CNN差一点，后者达到了SOTA（但是比without normals的PointGrid差）。</p>
 <p>S3DIS数据集上用了六折交叉验证。比Point CNN效果稍微差一点，PointCNN用了有padding的non-overlapping block采样策略。</p>
 <p>在ScanNet数据集上达到了最好的分割效果。</p>
-<h4 id="3-Ablation-experiment结果"><a href="#3-Ablation-experiment结果" class="headerlink" title="3. Ablation experiment结果"></a>3. Ablation experiment结果</h4><p><img src="evernotecid://608601E7-A5EF-4DBA-89B1-6F682033831E/appyinxiangcom/11727228/ENResource/p1016" alt="6abd4802dabe1b35467f0e071da74639.png"></p>
+<h4 id="3-Ablation-experiment结果"><a href="#3-Ablation-experiment结果" class="headerlink" title="3. Ablation experiment结果"></a>3. Ablation experiment结果</h4><p><img src="/images/ACNN_6.png" alt="Ablation result"></p>
 </the>
         </div>
         
@@ -293,8 +294,8 @@
         
         
         <div class="level-end">
-            <a class="level level-item has-link-grey  article-nav-next" href="/2019/10/27/Clouds》论文笔记/">
-                <span class="level-item">《A-CNN：Annularly Convolutional Neural Networks on Point Clouds》论文笔记</span>
+            <a class="level level-item has-link-grey  article-nav-next" href="/2019/10/22/PoinetNet家族论文笔记/">
+                <span class="level-item">PoinetNet家族论文笔记</span>
                 <i class="level-item fas fa-chevron-right"></i>
             </a>
         </div>
@@ -370,7 +371,7 @@
                         文章
                     </p>
                     <p class="title has-text-weight-normal">
-                        25
+                        24
                     </p>
                 </div>
             </div>
@@ -456,19 +457,6 @@
             
             <div class="media-content">
                 <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-10-27T15:49:53.000Z">2019-10-27</time></div>
-                    <a href="/2019/10/27/Clouds》论文笔记/" class="has-link-black-ter is-size-6">《A-CNN：Annularly Convolutional Neural Networks on Point Clouds》论文笔记</a>
-                    <p class="is-size-7 is-uppercase">
-                        
-                    </p>
-                </div>
-            </div>
-        </article>
-        
-        <article class="media">
-            
-            <div class="media-content">
-                <div class="content">
                     <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-10-22T15:09:46.000Z">2019-10-22</time></div>
                     <a href="/2019/10/22/PoinetNet家族论文笔记/" class="has-link-black-ter is-size-6">PoinetNet家族论文笔记</a>
                     <p class="is-size-7 is-uppercase">
@@ -510,6 +498,25 @@
             </div>
         </article>
         
+        <article class="media">
+            
+            <a href="/2019/05/26/给最近计算机科学毕业生的职业生涯建议/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="/images/graduation.jpeg" alt="给计算机科学毕业生的职业生涯建议">
+                </p>
+            </a> 
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-05-26T15:24:46.000Z">2019-05-26</time></div>
+                    <a href="/2019/05/26/给最近计算机科学毕业生的职业生涯建议/" class="has-link-black-ter is-size-6">给计算机科学毕业生的职业生涯建议</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/talk/">talk</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
     </div>
 </div>
 
@@ -528,7 +535,7 @@
                     <span class="level-item">十月 2019</span>
                 </span>
                 <span class="level-end">
-                    <span class="level-item tag">4</span>
+                    <span class="level-item tag">3</span>
                 </span>
             </a>
         </li>
