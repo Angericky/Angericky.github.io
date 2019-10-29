@@ -4,23 +4,33 @@
 <html lang="zh">
 <head><meta name="generator" content="Hexo 3.8.0">
     <meta charset="utf-8">
-<title>A letter from Gerald Durrell 《All this I did without you》 - Jingjing&#39;s blog</title>
+<title>PointNet家族论文笔记 - Jingjing&#39;s blog</title>
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
 
 
-    <meta name="description" content="突然翻到了很久以前很喜欢的一封情书。">
-<meta name="keywords" content="life">
+    <meta name="description" content="PointNet和PointNet++的论文笔记。">
+<meta name="keywords" content="point cloud,pointnet">
 <meta property="og:type" content="article">
-<meta property="og:title" content="A letter from Gerald Durrell 《All this I did without you》">
-<meta property="og:url" content="http://Angericky.github.io/2019/10/18/All-this-I-did-without-you/index.html">
+<meta property="og:title" content="PointNet家族论文笔记">
+<meta property="og:url" content="http://Angericky.github.io/2019/10/22/PointNet家族论文笔记/index.html">
 <meta property="og:site_name" content="Jingjing&#39;s blog">
-<meta property="og:description" content="突然翻到了很久以前很喜欢的一封情书。">
+<meta property="og:description" content="PointNet和PointNet++的论文笔记。">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2019-10-17T16:58:58.820Z">
+<meta property="og:image" content="http://angericky.github.io/images/pointnet_1.jpg">
+<meta property="og:image" content="http://angericky.github.io/images/pointnet_2.jpg">
+<meta property="og:image" content="http://angericky.github.io/images/pointnet_3.jpg">
+<meta property="og:image" content="http://angericky.github.io/images/pointnet_4.jpg">
+<meta property="og:image" content="http://angericky.github.io/images/pointnet_5.jpg">
+<meta property="og:image" content="http://angericky.github.io/images/pointnet_6.jpg">
+<meta property="og:image" content="http://angericky.github.io/images/pointnet_7.png">
+<meta property="og:image" content="http://angericky.github.io/images/pointnet_8.png">
+<meta property="og:image" content="http://angericky.github.io/images/pointnet_9.png">
+<meta property="og:updated_time" content="2019-10-29T15:14:37.979Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="A letter from Gerald Durrell 《All this I did without you》">
-<meta name="twitter:description" content="突然翻到了很久以前很喜欢的一封情书。">
+<meta name="twitter:title" content="PointNet家族论文笔记">
+<meta name="twitter:description" content="PointNet和PointNet++的论文笔记。">
+<meta name="twitter:image" content="http://angericky.github.io/images/pointnet_1.jpg">
 
 
 
@@ -95,7 +105,7 @@
         <div class="navbar-brand is-flex-center">
             <a class="navbar-item navbar-logo" href="/">
             
-                <img src="https://i.loli.net/2019/01/07/5c336be858b4e.jpg" alt="A letter from Gerald Durrell 《All this I did without you》" height="28">
+                <img src="https://i.loli.net/2019/01/07/5c336be858b4e.jpg" alt="PointNet家族论文笔记" height="28">
             
             </a>
         </div>
@@ -143,34 +153,28 @@
         <div class="container">
             <div class="columns">
                 <div class="column is-8-tablet is-8-desktop is-8-widescreen has-order-2 column-main"><div class="card">
-    <!-- 
-    <div class="card-image">
-        <span  class="image is-7by1">
-            <img class="thumbnail" src="/images/sunset.jpg" alt="A letter from Gerald Durrell 《All this I did without you》">
-        </span>
-    </div>
-     -->
+    <!--  -->
     <div class="card-content article ">
         <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
             
-                A letter from Gerald Durrell 《All this I did without you》
+                PointNet家族论文笔记
             
         </h1>
         
             <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto" style="margin-bottom: 0;">
             <div class="level-left">
                 <i class="fas fa-calendar">&nbsp</i>
-                <time class="level-item has-text-grey" datetime="2019-10-17T16:33:53.000Z">2019-10-18</time>
+                <time class="level-item has-text-grey" datetime="2019-10-22T15:09:46.000Z">2019-10-22</time>
                 
                     <i class="fas fa-calendar-check">&nbsp</i>
-                    <time class="level-item has-text-grey" datetime="2019-10-17T16:58:58.820Z">2019-10-18</time>
+                    <time class="level-item has-text-grey" datetime="2019-10-29T15:14:37.979Z">2019-10-29</time>
                 
                 
                 <i class="fas fa-book">&nbsp</i>
                 <span class="level-item has-text-grey">
                     
                     
-                    14 分钟 读完 (大约 2111 个字)
+                    19 分钟 读完 (大约 2883 个字)
                 </span>
                 
             </div>
@@ -180,13 +184,13 @@
                 
                     <i class="fas fa-folder-open">&nbsp</i>
                     <div class="level-item">
-                    <a class="has-link-grey -link" href="/categories/life/">life</a>
+                    <a class="has-link-grey -link" href="/categories/point-cloud/">point cloud</a>
                     </div>
                 
                 
                     <i class="fas fa-tags">&nbsp</i>
                     <div class="level-item">
-                    <a class="has-link-grey -link" href="/tags/life/">life</a>
+                    <a class="has-link-grey -link" href="/tags/point-cloud/">point cloud</a>&nbsp;/&nbsp;<a class="has-link-grey -link" href="/tags/pointnet/">pointnet</a>
                     </div>
                 
             </div>
@@ -194,43 +198,61 @@
         
         <div class="content">
              
-            <p><excerpt in="" index="" |="" 首页摘要=""><br>    突然翻到了很久以前很喜欢的一封情书。<br><a id="more"></a></excerpt></p>
+            <p><excerpt in="" index="" |="" 首页摘要=""><br>    PointNet和PointNet++的论文笔记。<br><a id="more"></a></excerpt></p>
 <the rest="" of="" contents="" |="" 余下全文="">
 
-<h2 id="原文"><a href="#原文" class="headerlink" title="原文"></a>原文</h2><p><strong>摘自 Gerald Durrell: An Authorized Biography by Douglas Botting -1999)</strong></p>
-<p>My darling McGeorge,<br>&nbsp;&nbsp;You said that things seemed clearer when they were written down. Well, here with a very boring letter in which I will try and put everything down so that you may read and re-read it in horror at your folly in getting involved with me. Deep breath.</p>
-<p>&nbsp;&nbsp;To begin with I love you with a depth and passion that I have felt for no one else in this life and if it astonishes you it astonishes me as well. Not, I hasten to say, because you are not worth loving. Far from it. It’s just that, first of all, I swore I would not get involved with another woman. Secondly, I have never had such a feeling before and it is almost frightening. Thirdly, I would never have thought it possible that another human being could occupy my waking (and sleeping) thoughts to the exclusion of almost everything else. Fourthly, I never thought that – even if one was in love – one could get so completely besotted with another person, so that a minute away from them felt like a thousand years. Fifthly, I never hoped, aspired, dreamed that one could find everything one wanted in one person. I was not such an idiot as to believe this was possible. Yet in you I have found everything I want: you are beautiful, gay, giving, gentle, idiotically and deliciously feminine, sexy, wonderfully intelligent and wonderfully silly as well. I want nothing else in this life than to be with you, to listen and watch you (your beautiful voice, your beauty), to argue with you, to laugh with you, to show you things and share things with you, to explore your magnificent mind, to explore your wonderful body, to help you, protect you, serve you, and bash you on the head when I think you are wrong … Not to put too fine a point on it I consider that I am the only man outside mythology to have found the crock of gold at the rainbow’s end.</p>
-<p>&nbsp;&nbsp;But – having said all that – let us consider things in detail. Don’t let this become public but … well, I have one or two faults. Minor ones, I hasten to say. For example, I am inclined to be overbearing. I do it for the best possible motives (all tyrants say that) but I do tend (without thinking) to tread people underfoot. You must tell me when I am doing it to you, my sweet, because it can be a very bad thing in a marriage.</p>
-<p>&nbsp;&nbsp;Right. Second blemish. This, actually, is not so much a blemish of character as a blemish of circumstance. Darling I want you to be you in your own right and I will do everything I can to help you in this. But you must take into consideration that I am also me in my own right and that I have a headstart on you … What I am trying to say is that you must not feel offended if you are sometimes treated simply as my wife. Always remember that what you lose on the swings you gain on the roundabouts. But I am an established ‘creature’ in the world, and so – on occasions – you will have to live in my shadow. Nothing gives me less pleasure than this but it is a fact of life that has to be faced.</p>
-<p>&nbsp;&nbsp;Third (and very important and nasty) blemish: jealousy. I don’t think you know what jealousy is (thank God) in the real sense of the word. I know that you have felt jealousy over Lincoln’s wife and child, but this is what I call normal jealousy, and this – to my regret – is not what I’ve got. What I have got is a black monster that can pervert my good sense, my good humour and any goodness that I have in my make-up. It is really a Jekyll and Hyde situation … my Hyde is stronger than my good sense and defeats me, hard though I try. As I told you, I have always known that this lurks within me, but I could control it, and my monster slumbered and nothing happened to awake it. Then I met you and I felt my monster stir and become half awake when you told me of Lincoln and others you have known, and with your letter my monster came out of its lair, black, irrational, bigoted, stupid, evil, malevolent. You will never know how terribly corrosive jealousy is; it is a physical pain as though you had swallowed acid or red hot coals. It is the most terrible of feelings. But you can’t help it – at least I can’t, and God knows I’ve tried. I don’t want any ex-boyfriends sitting in church when I marry you. On our wedding day I want nothing but happiness, both for you and me, and I know I won’t be happy if there is a church full of your ex-conquests. When I marry you I will have no past, only a future: I don’t want to drag my past into our future and I don’t want you to do it, either. Remember I am jealous of you because I love you. You are never jealous of something you don’t care about. O.K. enough about jealousy.</p>
-<p>&nbsp;&nbsp;Now let me tell you something:</p>
-<p>&nbsp;&nbsp;I have seen a thousand sunsets and sunrises, on land where it floods forest and mountains with honey coloured light, at sea where it rises and sets like a blood orange in a multicoloured nest of cloud, slipping in and out of the vast ocean. I have seen a thousand moons: harvest moons like gold coins, winter moons as white as ice chips, new moons like baby swans’ feathers.</p>
-<p>&nbsp;&nbsp;I have seen seas as smooth as if painted, coloured like shot silk or blue as a kingfisher or transparent as glass or black and crumpled with foam, moving ponderously and murderously.</p>
-<p>&nbsp;&nbsp;I have felt winds straight from the South Pole, bleak and wailing like a lost child; winds as tender and warm as a lover’s breath; winds that carried the astringent smell of salt and the death of seaweeds; winds that carried the moist rich smell of a forest floor, the smell of a million flowers. Fierce winds that churned and moved the sea like yeast, or winds that made the waters lap at the shore like a kitten.</p>
-<p>&nbsp;&nbsp;I have known silence: the cold, earthy silence at the bottom of a newly dug well; the implacable stony silence of a deep cave; the hot, drugged midday silence when everything is hypnotised and stilled into silence by the eye of the sun; the silence when great music ends.</p>
-<p>&nbsp;&nbsp;I have heard summer cicadas cry so that the sound seems stitched into your bones. I have heard tree frogs in an orchestration as complicated as Bach singing in a forest lit by a million emerald fireflies. I have heard the Keas calling over grey glaciers that groaned to themselves like old people as they inched their way to the sea.</p>
-<p>&nbsp;&nbsp;I have heard the hoarse street vendor cries of the mating Fur seals as they sang to their sleek golden wives, the crisp staccato admonishment of the Rattlesnake, the cobweb squeak of the Bat and the belling roar of the Red deer knee-deep in purple heather. I have heard Wolves baying at a winter’s moon, Red howlers making the forest vibrate with their roaring cries. I have heard the squeak, purr and grunt of a hundred multi-coloured reef fishes.</p>
-<p>&nbsp;&nbsp;I have seen hummingbirds flashing like opals round a tree of scarlet blooms, humming like a top. I have seen flying fish, skittering like quicksilver across the blue waves, drawing silver lines on the surface with their tails. I have seen Spoonbills flying home to roost like a scarlet banner across the sky. I have seen Whales, black as tar, cushioned on a cornflower blue sea, creating a Versailles of fountain with their breath. I have watched butterflies emerge and sit, trembling, while the sun irons their wings smooth. I have watched Tigers, like flames, mating in the long grass. I have been dive-bombed by an angry Raven, black and glossy as the Devil’s hoof. I have lain in water warm as milk, soft as silk, while around me played a host of Dolphins. I have met a thousand animals and seen a thousand wonderful things … but –</p>
-<p>&nbsp;&nbsp;All this I did without you. This was my loss.</p>
-<p>&nbsp;&nbsp;All this I want to do with you. This will be my gain.</p>
-<p>&nbsp;&nbsp;All this I would gladly have forgone for the sake of one minute of your company, for your laugh, your voice, your eyes, hair, lips, body, and above all for your sweet, ever surprising mind which is an enchanting quarry in which it is my privilege to delve.</p>
-<p>Letter to his fiancée Lee, (31 July 1978), published in Gerald Durrell: An Authorized Biography by Douglas Botting (1999)</p>
-<h2 id="中文翻译"><a href="#中文翻译" class="headerlink" title="中文翻译"></a>中文翻译</h2><p>&nbsp;&nbsp;我见过千种日出日落，在大地上森林与高山都被笼罩在蜜色光泽之中，在海里为一团五彩云朵平添上一道殷红，在广阔的大洋之中潮汐潮落。</p>
-<p>&nbsp;&nbsp;我见过千般的月亮，满月如金币，寒月苍白如冰屑，新月宛如雏天鹅的绒毛。</p>
-<p>&nbsp;&nbsp;我见过的海平静如止，颜色如缎，蓝如翠鸟或者通透如玻璃，亦或乌黑褶皱地泛起泡沫，沉重又危险地翻动着。</p>
-<p>&nbsp;&nbsp;我感受过来自南极的烈风，寒冷呼啸着像一个走失的儿童；感受过如爱人呼吸般的柔风。</p>
-<p>&nbsp;&nbsp;我听过夏日蝉鸣如芒在骨。</p>
-<p>&nbsp;&nbsp;我听过树蛙在无数萤火虫点亮的森林中，演奏着如巴赫管弦乐般美妙复杂的旋律。</p>
-<p>&nbsp;&nbsp;我听过狼群在冬夜对月长嚎。</p>
-<p>&nbsp;&nbsp;我听过珊瑚群中异彩斑斓的鱼群发出的呢喃。</p>
-<p>&nbsp;&nbsp;我见过蜂鸟如同宝石一般围绕着开红花的树在闪烁，如陀螺一般哼鸣作响。</p>
-<p>&nbsp;&nbsp;我见过飞鱼如水银一般穿越蓝色海浪，用他们的尾翼在海面上划下银色痕迹。</p>
-<p>&nbsp;&nbsp;我曾置身于温润如奶，柔顺如丝的水中，周围有海豚做我的客人。</p>
-<p>&nbsp;&nbsp;我遇到过千种不同的动物，目睹过千般绝妙的事物……然而——</p>
-<p>&nbsp;&nbsp;没有你，我做了什么都是失落。</p>
-<p>&nbsp;&nbsp;有了你，我做什么都是收获。</p>
-<p>&nbsp;&nbsp;为了有你一分钟的相伴，我愿把这一切都放弃，为你的笑语，你的声音，你的眼睛……</p>
-<p>—作者：［英］杰拉尔德·达雷尔</p>
+<h2 id="PointNet"><a href="#PointNet" class="headerlink" title="PointNet"></a>PointNet</h2><blockquote>
+<p>CVPR2017《PointNet: Deep Learning on Point Sets for 3D Classification and Segmentation》<br>在线介绍：<a href="http://stanford.edu/~rqi/pointnet/" target="_blank" rel="noopener">http://stanford.edu/~rqi/pointnet/</a><br>paper下载：<a href="http://openaccess.thecvf.com/content_cvpr_2017/html/Qi_PointNet_Deep_Learning_CVPR_2017_paper.html" target="_blank" rel="noopener">点击这里</a></p>
+</blockquote>
+<h3 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h3><p>提出了一种新型的处理点云数据的深度学习模型-PointNet，并验证了它能够用于点云数据的多种认知任务，如分类、语义分割和目标识别。</p>
+<ol>
+<li>共享多层感知机(Shared MLP) + max pool（置换不变性），逐级映射到高层表示</li>
+<li>刚体变换（包括平移、旋转、反转）: 增加T-net(transform net)， 将输入的三维点云进行变形，得到规范的数据，能够映射到高维</li>
+</ol>
+<h3 id="解决问题"><a href="#解决问题" class="headerlink" title="解决问题"></a>解决问题</h3><p>第一次直接在三维点云数据上建立深度学习模型，处理point cloud的数据无序性？。</p>
+<h3 id="思想"><a href="#思想" class="headerlink" title="思想"></a>思想</h3><p>学习每个点的空间编码，然后利用对称函数把所有单独的点特征聚集成一个全局点云标记特征。<br>网络有两个亮点：</p>
+<ol>
+<li><strong>空间变换网络解决旋转问题</strong><br>三维的STN可以通过学习点云本身的位置信息学习到一个最有利于网络进行分类或分割的DxD旋转矩阵（D代表特征维度，pointnet中D采用3和64）。至于其中的原理，我的理解是，通过控制最后的loss来对变换矩阵进行调整，pointnet并不关心最后真正做了什么变换，只要有利于最后的结果都可以。pointnet采用了两次STN，第一次input transform是对空间中点云进行调整，直观上理解是旋转出一个更有利于分类或分割的角度，比如把物体转到正面；第二次feature transform是对提取出的64维特征进行对齐，即在特征层面对点云进行变换。</li>
+<li><strong>maxpooling解决无序性问题</strong><br>网络对每个点进行了一定程度的特征提取之后，max pooling可以对点云的整体提取出global feature。</li>
+</ol>
+<h3 id="网络设计"><a href="#网络设计" class="headerlink" title="网络设计"></a>网络设计</h3><p>对称设计：<br><img src="/images/pointnet_1.jpg" alt="pointnet对称函数"><br>通过一个多层感知机网络近似h函数，再用g对称函数。<br>该网络通过使用MaxPooling作为对称函数设计来处理点云模型的无序性的，也就是说无论输入的顺序是怎样的，maxpooling都会输出相同的结果。对称函数就是类似自然数加法那样的操作，调换输入顺序输出不变。</p>
+<p><img src="/images/pointnet_2.jpg" alt="pointnet网络结构"><br>上图中蓝色部分是分类网络，黄色部分是分割网络。分割网络需要cancat global features和local features。（但实际上local features并没有充分地提取局部特征，例如密度表征等，所以后来才提出了其改进版PointNet++，但速度更慢）<br>其中，mlp是通过共享权重的卷积实现的，第一层卷积核大小是1x3（因为每个点的维度是xyz），之后的每一层卷积核大小都是1x1。即特征提取层只是把每个点连接起来而已。经过两个空间变换网络和两个mlp之后，对每一个点提取1024维特征，经过maxpool变成1x1024的全局特征。再经过一个mlp（代码中运用全连接）得到k个score。分类网络最后接的loss是softmax。<br>网络结构中，两处用到了STN网络。stn生成仿射矩阵后对每个points都施加相同的仿射变换，不同sample的仿射矩阵不一样，都需要用stn网络计算出来。</p>
+<p><em>为什么用64x64和64x128x1024的感知机?</em></p>
+<h3 id="实验结果"><a href="#实验结果" class="headerlink" title="实验结果"></a>实验结果</h3><p><img src="/images/pointnet_3.jpg" alt="part segmentation result"><br><img src="/images/pointnet_4.jpg" alt="semantic segmentation result"><br>不足：很容易想到的一点就是Pointnet的大部分或说几乎全部的处理都是针对单个采样点的，无论提多么精细的feature都是针对某一个采样点的，而整合所有采样点特征的网络只有那个maxpooling，没错，甚至连可训练的变量都没有，只有一个maxpool。因此，网络对模型局部信息的提取能力远不如卷积神经网络来的那么solid。</p>
+<h3 id="Note"><a href="#Note" class="headerlink" title="Note"></a>Note</h3><p>Q: T-Net在网络结构中起的本质作用是什么？需要预训练吗？<br>A: T-Net 是一个预测特征空间变换矩阵的子网络，它从输入数据中学习出与特征空间维度一致的变换矩阵，然后用这个变换矩阵与原始数据向乘，实现对输入特征空间的变换操作，使得后续的每一个点都与输入数据中的每一个点都有关系。通过这样的数据融合，实现对原始点云数据包含特征的逐级抽象</p>
+<h2 id="PointNet-1"><a href="#PointNet-1" class="headerlink" title="PointNet++"></a>PointNet++</h2><blockquote>
+<p>NIPS2017 《PointNet++: Deep Hierarchical Feature Learning on Point Sets in a Metric Space》<br>project page: <a href="http://stanford/edu/~rqi/pointnet2/" target="_blank" rel="noopener">http://stanford/edu/~rqi/pointnet2/</a><br>paper source: <a href="http://papers.nips.cc/paper/7095-pointnet-deep-hierarchical-feature-learning-on-point-sets-in-a-metric-space" target="_blank" rel="noopener">http://papers.nips.cc/paper/7095-pointnet-deep-hierarchical-feature-learning-on-point-sets-in-a-metric-space</a></p>
+</blockquote>
+<h3 id="简介-1"><a href="#简介-1" class="headerlink" title="简介"></a>简介</h3><p>在PointNet的基础上，模仿CNN卷积的特点（在较低水平，神经元有较小的感受野，而在较高水平，具有较大的感受野），通过分层特征提取来利用local structure。<br>通过利用度量空间距离，本文的网络能够学习到更大的上下文规模的局部特征（local features）。<br>采样的点云集合通常有不同的密度，作者提出了新的集合学习层去自适应地结合多尺度特征。</p>
+<h4 id="结果"><a href="#结果" class="headerlink" title="结果"></a>结果</h4><p>特征表达更加高效、稳健，但是计算代价高且慢（<em>FPS和MSG部分慢？</em>）。</p>
+<h3 id="问题"><a href="#问题" class="headerlink" title="问题"></a>问题</h3><ol>
+<li>How to generate the partitioning of the point set(如何划分点集)<br>定义每个分区为一个有质心和规模的邻域球，质心由FPS(Farthest Point Sampling)进行选择，</li>
+<li>How to abstract sets of points or local features through feature learner(如何通过feature learner抽象出点集和local features)<br>局部邻域球（local neighborhood ball）进行了多尺度的邻域特征提取，在训练期间辅助随机输入丢失，网络自适应地加权在不同尺度下检测的模式并组合多尺度特征。</li>
+</ol>
+<p><strong>思考？: CNN中确定局部子集规模(local partition scale)的是kernel size的大小，用越小的kernel，CNN的效果会更好(《Rethinking the Inception Architecture for Computer Vision》中提出，可以用2个连续的3x3卷积层代替单个5x5卷积层，保持感受野范围的同时又减少了参数量)。但是点集上的实验给了反证，因为太少的点采样效果不好。<br>TODO：能否将划分子集的网络层加深呢？</strong></p>
+<h3 id="思想-1"><a href="#思想-1" class="headerlink" title="思想"></a>思想</h3><ol>
+<li><p>采用了分层结构来处理局部特征(fine-grained patterns)<br>在原PointNet中，对于part segmentation以及scene semantic sparsing，即需要得到每个点的得分时，处理办法是直接将点特征与全局特征结合到一块进行处理，忽略了局部特征这一中间步骤，<em>例如在一个场景中，我们先识别出椅子是椅子，桌子是桌子等这些局部特征。</em><br>是否在最终对每个点进行分类时，是否会更加准确呢？<br>所以PointNet++采用了分层结构用于处理局部特征，可以更好地处理fine-grained patterns：</p>
+<ol>
+<li><strong>根据小的邻域提取捕捉几何结构的local features</strong></li>
+<li><strong>将local features分组到更大的单元去进行处理，去产生high level features。</strong></li>
+</ol>
+</li>
+<li><p>在网络结构中加入密度适应（density）使得分割更加准确合理<br>点云数据的一个特征是数据密度不同，体现出近多远少等问题，而在密度不同的情况下，使用统一的模板处理这些数据显然是不对的，针对稀疏点云训练的模型可能无法识别细粒度的局部结构。因此PointNet++的作者提出了密度适应的网络结构。</p>
+</li>
+</ol>
+<h3 id="网络设计-1"><a href="#网络设计-1" class="headerlink" title="网络设计"></a>网络设计</h3><p><img src="/images/pointnet_5.jpg" alt="model structure"><br>层次点集特征学习可以同时用来做分割和分类工作，上图可视化了单尺度集群方法。</p>
+<h4 id="1-局部特征提取："><a href="#1-局部特征提取：" class="headerlink" title="1. 局部特征提取："></a>1. 局部特征提取：</h4><p>PointNet++由一些连续的set abstraction部分分层抽取特征，每个set abstraction部分分为三部分：<strong>采样层Sampling layer</strong>, <strong>分组层Grouping layer</strong>和<strong>特征提取层PointNet layer</strong>。</p>
+<p><strong>采样层</strong>用递归式的FPS，从输入的点云中选取局部特征球中心点的点集。</p>
+<p><strong>分组层</strong>根据这些中心点寻找邻域来构建局部区域点集。<br>有两种确定邻域的方法：Ball Query查找中心点半径内的所有点，kNN查找固定数量的邻域。Ball Query保证了固定的区域比例，因此对于类似语义点标记的局部模式识别任务更好。</p>
+<p><strong>特征提取层</strong>通过小型pointnet网络进行卷积和pooling，得到的特征作为中心点的特征，将这些局部特征编码成特征向量。<br>这样层数加深后，得到的中心点个数越来越少，但每个中心点包含的信息越来越多。<br><em>（problem：计算出的特征只赋给中心点吗？邻域里其他的点要不要也加权计算后的特征呢？）</em></p>
+<h4 id="2-密度适应："><a href="#2-密度适应：" class="headerlink" title="2. 密度适应："></a>2. 密度适应：</h4><p>提出了两种密度适应层来分组局部特征并且组合这些特征。</p>
+<ol>
+<li><strong>多尺度分组 MSG（multi-scale grouping）</strong><br>是直观且简单的方法，用ramdom input dropout对输入点云进行抛弃，得到不同尺度的采样，并经过set abstraction后将这些采样层的的多尺度特征联合。</li>
+<li><strong>多分辨率分组 MRG（multi-resolution grouping）</strong><br>MSG由于要对每个中心点跑大规模邻域的特征提取，计算开销很高。尤其是在low level上中心点的个数很多，时间成本很高。<br>因此提出多分辨率分组的方法。如图所示，新特征通过两部分连接起来，左边是通过一个set abstraction得到的特征向量，右边是用一个PointNet直接处理所有局部区域点得到的特征向量。点云密度不均时，可以通过判断当前局部区域的密度给左右两个特征向量不同权重。</li>
+</ol>
+<p><img src="/images/pointnet_6.jpg" alt="MSG and MRG structure"></p>
+<h3 id="数据集"><a href="#数据集" class="headerlink" title="数据集"></a>数据集</h3><p>MNIST（2D物体）<br>ModelNet40（3D刚性物体）<br>SHREC15（3D非刚性物体）<br>ScanNet（真实3D室内场景）</p>
+<h3 id="结果-1"><a href="#结果-1" class="headerlink" title="结果"></a>结果</h3><p><img src="/images/pointnet_7.png" alt="result on ModelNet classification"><br><img src="/images/pointnet_8.png" alt="result on segmentation"><br>MRG没有MSG效果好，但是MSG计算复杂度很高<br><img src="/images/pointnet_9.png" alt="result on SHREC15"></p>
 </the>
         </div>
         
@@ -238,7 +260,7 @@
             <div class="level-start">
                 <div class="level-item">
                     <span class="is-size-6 has-text-grey has-mr-7">#</span>
-                    <a class="has-link-grey -link" href="/tags/life/">life</a>
+                    <a class="has-link-grey -link" href="/tags/point-cloud/">point cloud</a>, <a class="has-link-grey -link" href="/tags/pointnet/">pointnet</a>
                 </div>
             </div>
         </div>
@@ -297,16 +319,16 @@
     <div class="level post-navigation is-flex-wrap is-mobile">
         
         <div class="level-start">
-            <a class="level level-item has-link-grey  article-nav-prev" href="/2019/10/22/PointNet家族论文笔记/">
+            <a class="level level-item has-link-grey  article-nav-prev" href="/2019/10/27/A-CNN论文笔记/">
                 <i class="level-item fas fa-chevron-left"></i>
-                <span class="level-item">PointNet家族论文笔记</span>
+                <span class="level-item">《A-CNN：Annularly Convolutional Neural Networks on Point Clouds》论文笔记</span>
             </a>
         </div>
         
         
         <div class="level-end">
-            <a class="level level-item has-link-grey  article-nav-next" href="/2019/09/17/【笔记】深度学习在3D点云处理中的探索/">
-                <span class="level-item">深度学习在3D点云处理中的探索【笔记】</span>
+            <a class="level level-item has-link-grey  article-nav-next" href="/2019/10/18/All-this-I-did-without-you/">
+                <span class="level-item">A letter from Gerald Durrell 《All this I did without you》</span>
                 <i class="level-item fas fa-chevron-right"></i>
             </a>
         </div>
@@ -962,7 +984,7 @@
             <div class="level-start has-text-centered-mobile">
                 <a class="footer-logo is-block has-mb-6" href="/">
                 
-                    <img src="https://i.loli.net/2019/01/07/5c336be858b4e.jpg" alt="A letter from Gerald Durrell 《All this I did without you》" height="28">
+                    <img src="https://i.loli.net/2019/01/07/5c336be858b4e.jpg" alt="PointNet家族论文笔记" height="28">
                 
                 </a>
                 <p class="is-size-7" style="padding-bottom: 0.5em">
