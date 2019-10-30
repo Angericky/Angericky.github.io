@@ -24,7 +24,7 @@
 <meta property="og:image" content="http://angericky.github.io/images/ACNN_4.png">
 <meta property="og:image" content="http://angericky.github.io/images/ACNN_5.png">
 <meta property="og:image" content="http://angericky.github.io/images/ACNN_6.png">
-<meta property="og:updated_time" content="2019-10-28T16:03:08.624Z">
+<meta property="og:updated_time" content="2019-10-30T15:58:08.487Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="《A-CNN：Annularly Convolutional Neural Networks on Point Clouds》论文笔记">
 <meta name="twitter:description" content="针对点云的ACNN环状卷积神经网络的论文笔记。">
@@ -165,14 +165,14 @@
                 <time class="level-item has-text-grey" datetime="2019-10-27T15:49:53.000Z">2019-10-27</time>
                 
                     <i class="fas fa-calendar-check">&nbsp</i>
-                    <time class="level-item has-text-grey" datetime="2019-10-28T16:03:08.624Z">2019-10-29</time>
+                    <time class="level-item has-text-grey" datetime="2019-10-30T15:58:08.487Z">2019-10-30</time>
                 
                 
                 <i class="fas fa-book">&nbsp</i>
                 <span class="level-item has-text-grey">
                     
                     
-                    8 分钟 读完 (大约 1245 个字)
+                    9 分钟 读完 (大约 1358 个字)
                 </span>
                 
             </div>
@@ -219,7 +219,7 @@
 <li>无论顺时针逆时针排序，得到的结果都一样，避免了大规模场景数据集的点云法线方向翻转问题</li>
 <li>能够用任意的kernel size，而不只是1x1的kernel</li>
 </ol>
-<h3 id="网络结构"><a href="#网络结构" class="headerlink" title="网络结构"></a>网络结构</h3><p><img src="/images/ACNN_3.png" alt="network structure"><br>encoder结构中的第一层环卷积用regular ring，第二层环卷积用dilated ring。对同一个询问点的不同环进行并行处理。<br>网络的参数如下：<br><img src="/images/ACNN_7.png" alt="网络参数"><br>Classification中，用了[[0.0, 0.1],[0.1, 0.2]]的regular ring和[[0.1, 0.2], [0.3, 0.4]]的dilated ring。<br>Segmentation中，用了[[0.0, 0.1],[0.1, 0.2]]的regular ring和[[0.1, 0.2], [0.3, 0.4]]和[[0.2，0.4],[0.6, 0.8]]的dilated ring。</p>
+<h3 id="网络结构"><a href="#网络结构" class="headerlink" title="网络结构"></a>网络结构</h3><p><img src="/images/ACNN_3.png" alt="network structure"><br>模型的具体结构如上图，下采样部分基本上就是一直使用Annular Convolution去编码局部点云，最终变成一个全局的特征。encoder结构中的第一层环卷积用regular ring，第二层环卷积用dilated ring。对同一个询问点的不同环进行并行处理。<br>在解码器部分，该网络并没有模仿PointNet++的FP结构，而是借鉴了<strong>PU-Net</strong>中的decoder结构，即将不同尺度的点云插值到原始尺度，然后拼接后通过MLP得到分割结果。<br>网络的参数如下：<br><img src="/images/ACNN_7.png" alt="网络参数"><br>Classification中，用了[[0.0, 0.1],[0.1, 0.2]]的regular ring和[[0.1, 0.2], [0.3, 0.4]]的dilated ring。<br>Segmentation中，用了[[0.0, 0.1],[0.1, 0.2]]的regular ring和[[0.1, 0.2], [0.3, 0.4]]和[[0.2，0.4],[0.6, 0.8]]的dilated ring。</p>
 <h4 id="数据集"><a href="#数据集" class="headerlink" title="数据集"></a>数据集</h4><p><strong>standard benchmark dataset:</strong>： ModelNet10, ModelNet40, ShapeNet-part, S3DIS, ScanNet</p>
 <h3 id="结果"><a href="#结果" class="headerlink" title="结果"></a>结果</h3><h4 id="1-Classification"><a href="#1-Classification" class="headerlink" title="1. Classification"></a>1. Classification</h4><p><img src="/images/ACNN_4.png" alt="classification result"><br>在ModelNet40数据集上比Point2Sequence差一点点。<br>(VRN Ensemble网络结构的性能最好)</p>
 <h4 id="2-Segmentation"><a href="#2-Segmentation" class="headerlink" title="2. Segmentation"></a>2. Segmentation</h4><p><img src="/images/ACNN_5.png" alt="segmentation result"></p>
