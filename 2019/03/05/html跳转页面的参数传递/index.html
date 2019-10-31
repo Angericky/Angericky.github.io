@@ -9,18 +9,18 @@
 
 
 
-    <meta name="description" content="两者都是用git实现代码托管的版本仓库，两者很相似，那它们的区别是？">
+    <meta name="description" content="&amp;lt;Excerpt in index | 首页摘要&amp;gt;    两者都是用git实现代码托管的版本仓库，两者很相似，那它们的区别是？">
 <meta name="keywords" content="Front-end">
 <meta property="og:type" content="article">
 <meta property="og:title" content="网页的跳转页面及参数传递方法">
 <meta property="og:url" content="http://Angericky.github.io/2019/03/05/html跳转页面的参数传递/index.html">
 <meta property="og:site_name" content="Jingjing&#39;s blog">
-<meta property="og:description" content="两者都是用git实现代码托管的版本仓库，两者很相似，那它们的区别是？">
+<meta property="og:description" content="&amp;lt;Excerpt in index | 首页摘要&amp;gt;    两者都是用git实现代码托管的版本仓库，两者很相似，那它们的区别是？">
 <meta property="og:locale" content="zh-CN">
 <meta property="og:updated_time" content="2019-03-10T12:18:44.302Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="网页的跳转页面及参数传递方法">
-<meta name="twitter:description" content="两者都是用git实现代码托管的版本仓库，两者很相似，那它们的区别是？">
+<meta name="twitter:description" content="&amp;lt;Excerpt in index | 首页摘要&amp;gt;    两者都是用git实现代码托管的版本仓库，两者很相似，那它们的区别是？">
 
 
 
@@ -199,21 +199,24 @@
                     <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#跳转页面"><span class="toc-number">1.</span> <span class="toc-text">跳转页面</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#参数传递："><span class="toc-number">2.</span> <span class="toc-text">参数传递：</span></a></li></ol>
                 </div>
              
-            <p><excerpt in="" index="" |="" 首页摘要=""><br>    两者都是用git实现代码托管的版本仓库，两者很相似，那它们的区别是？<br><a id="more"></a></excerpt></p>
-<the rest="" of="" contents="" |="" 余下全文="">
-
+            <p>&lt;Excerpt in index | 首页摘要&gt;<br>    两者都是用git实现代码托管的版本仓库，两者很相似，那它们的区别是？</p>
+<a id="more"></a>
+<p>&lt;The rest of contents | 余下全文&gt;</p>
 <h1 id="跳转页面"><a href="#跳转页面" class="headerlink" title="跳转页面"></a>跳转页面</h1><ol>
 <li><p>直接在跳转的内容外部加上<a href="yourURL" target="_blank/_self"></a></p>
 </li>
 <li><p>html加参数onclick=”function()”<br>function里写<br><code>window.open(&quot;url&quot;, _self/__blank(default);</code><br>或者</p>
 <figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">window.location.href=&quot;url&quot;;</span><br><span class="line">window.history.back(-1);</span><br></pre></td></tr></table></figure>
+
 </li>
 </ol>
 <h1 id="参数传递："><a href="#参数传递：" class="headerlink" title="参数传递："></a>参数传递：</h1><ol>
 <li><p>url传参：<br>第一个页面(a.html)：</p>
 <figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">var obj = a.value; //传给弹出页面参数</span><br><span class="line">var url = &apos;jxb.html?obj=&apos;+obj;</span><br><span class="line">url = encodeURI(url);</span><br><span class="line">window.open(url, &quot;&quot;, &quot;width=600,height=400&quot;);</span><br></pre></td></tr></table></figure>
+
 <p> 第二个页面(b.html)：</p>
 <figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">var url = decodeURI(window.location.href);</span><br><span class="line"></span><br><span class="line">var argsIndex = url .split(&quot;?obj=&quot;);</span><br><span class="line">var arg = argsIndex[1];</span><br></pre></td></tr></table></figure>
+
 <p> 注:中文传输:可以在页面a用encodeURI 编码url  在b页面用decodeURI解码url</p>
 </li>
 <li><p>cookie传参(不能跨域)：</p>
@@ -224,12 +227,14 @@
 </li>
 <li><p>window.opener()<br> 父页面：</p>
 <figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">&lt;input type=&quot;text&quot; name=&quot;textfield&quot; id=&quot;textfield&quot;/&gt;</span><br><span class="line">window.open(&quot;子页面.html&quot;);</span><br></pre></td></tr></table></figure>
+
 <p> 子页面：</p>
 <figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">window.opener.document.getElementByIdx(&apos;textfield&apos;).value=&apos;123123123&apos;;</span><br></pre></td></tr></table></figure>
+
 <p> 如果跨域，子页面还要加上document.domain=”父页面url”</p>
 </li>
 </ol>
-</the>
+
         </div>
         
         <div class="level is-size-7 is-uppercase">
@@ -380,7 +385,7 @@
                         文章
                     </p>
                     <p class="title has-text-weight-normal">
-                        25
+                        24
                     </p>
                 </div>
             </div>
@@ -390,7 +395,7 @@
                         分类
                     </p>
                     <p class="title has-text-weight-normal">
-                        18
+                        17
                     </p>
                 </div>
             </div>
@@ -400,7 +405,7 @@
                         标签
                     </p>
                     <p class="title has-text-weight-normal">
-                        28
+                        27
                     </p>
                 </div>
             </div>
@@ -508,25 +513,6 @@
         
         <article class="media">
             
-            <a href="/2019/10/18/All-this-I-did-without-you/" class="media-left">
-                <p class="image is-64x64">
-                    <img class="thumbnail" src="/images/sunset.jpg" alt="A letter from Gerald Durrell 《All this I did without you》">
-                </p>
-            </a> 
-            
-            <div class="media-content">
-                <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-10-17T16:33:53.000Z">2019-10-18</time></div>
-                    <a href="/2019/10/18/All-this-I-did-without-you/" class="has-link-black-ter is-size-6">A letter from Gerald Durrell 《All this I did without you》</a>
-                    <p class="is-size-7 is-uppercase">
-                        <a class="has-link-grey -link" href="/categories/life/">life</a>
-                    </p>
-                </div>
-            </div>
-        </article>
-        
-        <article class="media">
-            
             <a href="/2019/09/17/【笔记】深度学习在3D点云处理中的探索/" class="media-left">
                 <p class="image is-64x64">
                     <img class="thumbnail" src="/images/rabbit.png" alt="深度学习在3D点云处理中的探索【笔记】">
@@ -539,6 +525,25 @@
                     <a href="/2019/09/17/【笔记】深度学习在3D点云处理中的探索/" class="has-link-black-ter is-size-6">深度学习在3D点云处理中的探索【笔记】</a>
                     <p class="is-size-7 is-uppercase">
                         <a class="has-link-grey -link" href="/categories/point-cloud/">point cloud</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
+            <a href="/2019/05/26/给最近计算机科学毕业生的职业生涯建议/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="/images/graduation.jpeg" alt="给计算机科学毕业生的职业生涯建议">
+                </p>
+            </a> 
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-05-26T15:24:46.000Z">2019-05-26</time></div>
+                    <a href="/2019/05/26/给最近计算机科学毕业生的职业生涯建议/" class="has-link-black-ter is-size-6">给计算机科学毕业生的职业生涯建议</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/talk/">talk</a>
                     </p>
                 </div>
             </div>
@@ -562,7 +567,7 @@
                     <span class="level-item">十月 2019</span>
                 </span>
                 <span class="level-end">
-                    <span class="level-item tag">4</span>
+                    <span class="level-item tag">3</span>
                 </span>
             </a>
         </li>
@@ -794,17 +799,6 @@
                     <a class="level is-marginless" href="/tags/leetcode/">
                         <span class="level-start">
                             <span class="level-item">leetcode</span>
-                        </span>
-                        <span class="level-end">
-                            <span class="level-item tag">1</span>
-                        </span>
-                    </a>
-                </li>
-                
-                <li>
-                    <a class="level is-marginless" href="/tags/life/">
-                        <span class="level-start">
-                            <span class="level-item">life</span>
                         </span>
                         <span class="level-end">
                             <span class="level-item tag">1</span>

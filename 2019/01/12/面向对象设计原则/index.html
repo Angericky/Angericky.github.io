@@ -9,18 +9,18 @@
 
 
 
-    <meta name="description" content="一些基本的面向对象设计原则。">
+    <meta name="description" content="&amp;lt;Excerpt in index | 首页摘要&amp;gt;    一些基本的面向对象设计原则。">
 <meta name="keywords" content="面向对象,设计模式">
 <meta property="og:type" content="article">
 <meta property="og:title" content="面向对象设计原则">
 <meta property="og:url" content="http://Angericky.github.io/2019/01/12/面向对象设计原则/index.html">
 <meta property="og:site_name" content="Jingjing&#39;s blog">
-<meta property="og:description" content="一些基本的面向对象设计原则。">
+<meta property="og:description" content="&amp;lt;Excerpt in index | 首页摘要&amp;gt;    一些基本的面向对象设计原则。">
 <meta property="og:locale" content="zh-CN">
 <meta property="og:updated_time" content="2019-02-22T10:36:34.558Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="面向对象设计原则">
-<meta name="twitter:description" content="一些基本的面向对象设计原则。">
+<meta name="twitter:description" content="&amp;lt;Excerpt in index | 首页摘要&amp;gt;    一些基本的面向对象设计原则。">
 
 
 
@@ -199,9 +199,9 @@
                     <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#面向对象设计原则"><span class="toc-number">1.</span> <span class="toc-text">面向对象设计原则</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#1-SRP"><span class="toc-number">1.1.</span> <span class="toc-text">1. SRP</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#单一职责的好处："><span class="toc-number">1.1.1.</span> <span class="toc-text">单一职责的好处：</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#单一职责原则的注意点："><span class="toc-number">1.1.2.</span> <span class="toc-text">单一职责原则的注意点：</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-LSP"><span class="toc-number">1.2.</span> <span class="toc-text">2. LSP</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#优点："><span class="toc-number">1.2.1.</span> <span class="toc-text">优点：</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#缺点："><span class="toc-number">1.2.2.</span> <span class="toc-text">缺点：</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3-ISP"><span class="toc-number">1.3.</span> <span class="toc-text">3. ISP</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#4-OCP"><span class="toc-number">1.4.</span> <span class="toc-text">4. OCP</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#5-DIP"><span class="toc-number">1.5.</span> <span class="toc-text">5. DIP</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#6-LOD-LKP"><span class="toc-number">1.6.</span> <span class="toc-text">6. LOD | LKP</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#7-CRP"><span class="toc-number">1.7.</span> <span class="toc-text">7. CRP</span></a></li></ol></li></ol>
                 </div>
              
-            <p><excerpt in="" index="" |="" 首页摘要=""><br>    一些基本的面向对象设计原则。<br><a id="more"></a></excerpt></p>
-<the rest="" of="" contents="" |="" 余下全文="">
-
+            <p>&lt;Excerpt in index | 首页摘要&gt;<br>    一些基本的面向对象设计原则。</p>
+<a id="more"></a>
+<p>&lt;The rest of contents | 余下全文&gt;</p>
 <h1 id="面向对象设计原则"><a href="#面向对象设计原则" class="headerlink" title="面向对象设计原则"></a>面向对象设计原则</h1><h2 id="1-SRP"><a href="#1-SRP" class="headerlink" title="1. SRP"></a>1. SRP</h2><p>所谓<code>SRP</code>原则，即：<code>Single Responsibility Principle</code>，<strong>单一职责原则</strong>。原始定义如下：</p>
 <blockquote>
 <p>There should never be more than one reason for a class to change.(只有一个引起类改变的原因)</p>
@@ -285,21 +285,28 @@
 <p>组合复用原则的核心思想是：<strong>尽量使用对象组合，而不是继承来达到复用的目的</strong>。该原则就是在一个新的对象里面使用一些已有的对象，使之成为新对象的一部分：新的对象通过向这些对象的委派达到复用已有功能的目的。</p>
 <p>继承的缺点主要有以下几点：</p>
 <ul>
-<li>继承复用破坏数据封装性，将基类的实现细节全部暴露给了派生类，基类的内部细节常常对派生类是透明的，白箱复用。虽然简单，但不安全，不能在程序的运行过程中随便改变。</li>
-<li>基类的实现发生了改变，派生类的实现也不得不改变。</li>
+<li><p>继承复用破坏数据封装性，将基类的实现细节全部暴露给了派生类，基类的内部细节常常对派生类是透明的，白箱复用。虽然简单，但不安全，不能在程序的运行过程中随便改变。</p>
+</li>
+<li><p>基类的实现发生了改变，派生类的实现也不得不改变。</p>
+</li>
 <li><p>从基类继承而来的派生类是静态的，不可能在运行时间内发生改变，因此没有足够的灵活性。<br>由于组合可以将已有的对象纳入到新对象中，使之成为新对象的一部分，因此新对象可以调用已有对象的功能，这样做有下面的好处：</p>
 </li>
 <li><p>新对象存取<code>组成对象</code>的唯一方法是通过<code>组成对象</code>的<code>getter/setter</code>方法。</p>
 </li>
-<li>组合复用是黑箱复用，因为组成对象的内部细节是新对象所看不见的。</li>
-<li>组合复用所需要的依赖较少。</li>
-<li>每一个新的类可以将焦点集中到一个任务上。</li>
-<li>组合复用可以在运行时间动态进行，新对象可以动态的引用与成分对象类型相同的对象。</li>
-<li>组合复用的缺点：就是用组合复用建造的系统会有较多的对象需要管理。</li>
+<li><p>组合复用是黑箱复用，因为组成对象的内部细节是新对象所看不见的。</p>
+</li>
+<li><p>组合复用所需要的依赖较少。</p>
+</li>
+<li><p>每一个新的类可以将焦点集中到一个任务上。</p>
+</li>
+<li><p>组合复用可以在运行时间动态进行，新对象可以动态的引用与成分对象类型相同的对象。</p>
+</li>
+<li><p>组合复用的缺点：就是用组合复用建造的系统会有较多的对象需要管理。</p>
+</li>
 </ul>
 <p>组合复用原则可以使系统更加灵活，类与类之间的耦合度降低，一个类的变化对其他类造成的影响相对较少，因此一般首选使用组合来实现复用；其次才考虑继承。在使用继承时，需要严格遵循里氏代换原则，有效使用继承会有助于对问题的理解，降低复杂度，而滥用继承反而会增加系统构建和维护的难度以及系统的复杂度，因此需要慎重使用继承复用。</p>
 <p>使用继承时必须满足<code>Is-A</code>的关系是才能使用继承，而组合却是一种<code>Has-A</code>的关系。导致错误的使用继承而不是使用组合的一个重要原因可能就是错误的把<code>Has-A</code>当成了<code>Is-A</code>。</p>
-</the>
+
         </div>
         
         <div class="level is-size-7 is-uppercase">
@@ -450,7 +457,7 @@
                         文章
                     </p>
                     <p class="title has-text-weight-normal">
-                        25
+                        24
                     </p>
                 </div>
             </div>
@@ -460,7 +467,7 @@
                         分类
                     </p>
                     <p class="title has-text-weight-normal">
-                        18
+                        17
                     </p>
                 </div>
             </div>
@@ -470,7 +477,7 @@
                         标签
                     </p>
                     <p class="title has-text-weight-normal">
-                        28
+                        27
                     </p>
                 </div>
             </div>
@@ -578,25 +585,6 @@
         
         <article class="media">
             
-            <a href="/2019/10/18/All-this-I-did-without-you/" class="media-left">
-                <p class="image is-64x64">
-                    <img class="thumbnail" src="/images/sunset.jpg" alt="A letter from Gerald Durrell 《All this I did without you》">
-                </p>
-            </a> 
-            
-            <div class="media-content">
-                <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-10-17T16:33:53.000Z">2019-10-18</time></div>
-                    <a href="/2019/10/18/All-this-I-did-without-you/" class="has-link-black-ter is-size-6">A letter from Gerald Durrell 《All this I did without you》</a>
-                    <p class="is-size-7 is-uppercase">
-                        <a class="has-link-grey -link" href="/categories/life/">life</a>
-                    </p>
-                </div>
-            </div>
-        </article>
-        
-        <article class="media">
-            
             <a href="/2019/09/17/【笔记】深度学习在3D点云处理中的探索/" class="media-left">
                 <p class="image is-64x64">
                     <img class="thumbnail" src="/images/rabbit.png" alt="深度学习在3D点云处理中的探索【笔记】">
@@ -609,6 +597,25 @@
                     <a href="/2019/09/17/【笔记】深度学习在3D点云处理中的探索/" class="has-link-black-ter is-size-6">深度学习在3D点云处理中的探索【笔记】</a>
                     <p class="is-size-7 is-uppercase">
                         <a class="has-link-grey -link" href="/categories/point-cloud/">point cloud</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
+            <a href="/2019/05/26/给最近计算机科学毕业生的职业生涯建议/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="/images/graduation.jpeg" alt="给计算机科学毕业生的职业生涯建议">
+                </p>
+            </a> 
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-05-26T15:24:46.000Z">2019-05-26</time></div>
+                    <a href="/2019/05/26/给最近计算机科学毕业生的职业生涯建议/" class="has-link-black-ter is-size-6">给计算机科学毕业生的职业生涯建议</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/talk/">talk</a>
                     </p>
                 </div>
             </div>
@@ -632,7 +639,7 @@
                     <span class="level-item">十月 2019</span>
                 </span>
                 <span class="level-end">
-                    <span class="level-item tag">4</span>
+                    <span class="level-item tag">3</span>
                 </span>
             </a>
         </li>
@@ -864,17 +871,6 @@
                     <a class="level is-marginless" href="/tags/leetcode/">
                         <span class="level-start">
                             <span class="level-item">leetcode</span>
-                        </span>
-                        <span class="level-end">
-                            <span class="level-item tag">1</span>
-                        </span>
-                    </a>
-                </li>
-                
-                <li>
-                    <a class="level is-marginless" href="/tags/life/">
-                        <span class="level-start">
-                            <span class="level-item">life</span>
                         </span>
                         <span class="level-end">
                             <span class="level-item tag">1</span>

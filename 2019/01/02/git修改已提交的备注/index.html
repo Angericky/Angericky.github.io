@@ -9,18 +9,18 @@
 
 
 
-    <meta name="description" content="用rebase修改github上历史修改的备注。">
+    <meta name="description" content="&amp;lt;Excerpt in index | 首页摘要&amp;gt;    用rebase修改github上历史修改的备注。">
 <meta name="keywords" content="git">
 <meta property="og:type" content="article">
 <meta property="og:title" content="git修改已提交的备注">
 <meta property="og:url" content="http://Angericky.github.io/2019/01/02/git修改已提交的备注/index.html">
 <meta property="og:site_name" content="Jingjing&#39;s blog">
-<meta property="og:description" content="用rebase修改github上历史修改的备注。">
+<meta property="og:description" content="&amp;lt;Excerpt in index | 首页摘要&amp;gt;    用rebase修改github上历史修改的备注。">
 <meta property="og:locale" content="zh-CN">
 <meta property="og:updated_time" content="2019-01-02T15:52:29.170Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="git修改已提交的备注">
-<meta name="twitter:description" content="用rebase修改github上历史修改的备注。">
+<meta name="twitter:description" content="&amp;lt;Excerpt in index | 首页摘要&amp;gt;    用rebase修改github上历史修改的备注。">
 
 
 
@@ -199,19 +199,37 @@
                     <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#最后一次提交的注释"><span class="toc-number">1.</span> <span class="toc-text">最后一次提交的注释</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#更早之前的历史修改"><span class="toc-number">2.</span> <span class="toc-text">更早之前的历史修改</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#压缩掉不需要的版本"><span class="toc-number">3.</span> <span class="toc-text">压缩掉不需要的版本</span></a></li></ol>
                 </div>
              
-            <p><excerpt in="" index="" |="" 首页摘要=""><br>    用rebase修改github上历史修改的备注。<br><a id="more"></a></excerpt></p>
-<p><the rest="" of="" contents="" |="" 余下全文=""></the></p>
+            <p>&lt;Excerpt in index | 首页摘要&gt;<br>    用rebase修改github上历史修改的备注。</p>
+<a id="more"></a>
+<p>&lt;The rest of contents | 余下全文&gt;</p>
 <h1 id="最后一次提交的注释"><a href="#最后一次提交的注释" class="headerlink" title="最后一次提交的注释"></a>最后一次提交的注释</h1><figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git commit --amend</span><br></pre></td></tr></table></figure>
+
 <p>然后在出来的编辑界面，直接编辑注释的信息,保存退出。</p>
-<h1 id="更早之前的历史修改"><a href="#更早之前的历史修改" class="headerlink" title="更早之前的历史修改"></a>更早之前的历史修改</h1><p>假设要修改当前版本往前三次版本的状态,四次就把<code>HEAD~3</code>改成<code>HEAD~4</code>,以此类推/<br><figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git rebase -i HEAD~3</span><br></pre></td></tr></table></figure></p>
-<p>假设要从第一个版本开始修改，<br><figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git rebase -i --root</span><br></pre></td></tr></table></figure></p>
-<p>然后会看到，<br><figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">pick sha1 X</span><br><span class="line">pick sha1 Y</span><br><span class="line">pick sha1 Z</span><br></pre></td></tr></table></figure></p>
-<p>要修改哪个,就把那行的pick改成edit，<br><figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">pick sha1 X</span><br><span class="line">edit sha1 Y</span><br><span class="line">pick sha1 Z</span><br></pre></td></tr></table></figure></p>
-<p><code>:wq</code>保存并退出。<br>通过git log查看历史，可以发现git的最后一次提交已经变成刚才选的那个了<br>然后就和修改最后一次提交一样了<br><figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git commit -amend</span><br></pre></td></tr></table></figure></p>
-<p>修改完了之后,这样返回<br><figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git rebase --continue</span><br></pre></td></tr></table></figure></p>
+<h1 id="更早之前的历史修改"><a href="#更早之前的历史修改" class="headerlink" title="更早之前的历史修改"></a>更早之前的历史修改</h1><p>假设要修改当前版本往前三次版本的状态,四次就把<code>HEAD~3</code>改成<code>HEAD~4</code>,以此类推/</p>
+<figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git rebase -i HEAD~3</span><br></pre></td></tr></table></figure>
+
+<p>假设要从第一个版本开始修改，</p>
+<figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git rebase -i --root</span><br></pre></td></tr></table></figure>
+
+<p>然后会看到，</p>
+<figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">pick sha1 X</span><br><span class="line">pick sha1 Y</span><br><span class="line">pick sha1 Z</span><br></pre></td></tr></table></figure>
+
+<p>要修改哪个,就把那行的pick改成edit，</p>
+<figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">pick sha1 X</span><br><span class="line">edit sha1 Y</span><br><span class="line">pick sha1 Z</span><br></pre></td></tr></table></figure>
+
+<p><code>:wq</code>保存并退出。<br>通过git log查看历史，可以发现git的最后一次提交已经变成刚才选的那个了<br>然后就和修改最后一次提交一样了</p>
+<figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git commit -amend</span><br></pre></td></tr></table></figure>
+
+<p>修改完了之后,这样返回</p>
+<figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git rebase --continue</span><br></pre></td></tr></table></figure>
+
 <p>这时候就又回到正常状态了</p>
-<h1 id="压缩掉不需要的版本"><a href="#压缩掉不需要的版本" class="headerlink" title="压缩掉不需要的版本"></a>压缩掉不需要的版本</h1><p>和上面一个修改历史差不多，也是使用<code>git rebase</code><br>同样会看到<br><figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">pick sha1 X</span><br><span class="line">pick sha1 Y</span><br><span class="line">pick sha1 Z</span><br></pre></td></tr></table></figure></p>
-<p>不同的是要压缩掉哪个版本,就把那个版本pick改成squash<br><figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">pick sha1 X</span><br><span class="line">squash sha1 Y</span><br><span class="line">pick sha1 Z</span><br></pre></td></tr></table></figure></p>
+<h1 id="压缩掉不需要的版本"><a href="#压缩掉不需要的版本" class="headerlink" title="压缩掉不需要的版本"></a>压缩掉不需要的版本</h1><p>和上面一个修改历史差不多，也是使用<code>git rebase</code><br>同样会看到</p>
+<figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">pick sha1 X</span><br><span class="line">pick sha1 Y</span><br><span class="line">pick sha1 Z</span><br></pre></td></tr></table></figure>
+
+<p>不同的是要压缩掉哪个版本,就把那个版本pick改成squash</p>
+<figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">pick sha1 X</span><br><span class="line">squash sha1 Y</span><br><span class="line">pick sha1 Z</span><br></pre></td></tr></table></figure>
+
 <p>保存退出,会出现备注,再次保存退出。<br>用git log查看那个备注为Y的版本已经没了。</p>
 
         </div>
@@ -364,7 +382,7 @@
                         文章
                     </p>
                     <p class="title has-text-weight-normal">
-                        25
+                        24
                     </p>
                 </div>
             </div>
@@ -374,7 +392,7 @@
                         分类
                     </p>
                     <p class="title has-text-weight-normal">
-                        18
+                        17
                     </p>
                 </div>
             </div>
@@ -384,7 +402,7 @@
                         标签
                     </p>
                     <p class="title has-text-weight-normal">
-                        28
+                        27
                     </p>
                 </div>
             </div>
@@ -492,25 +510,6 @@
         
         <article class="media">
             
-            <a href="/2019/10/18/All-this-I-did-without-you/" class="media-left">
-                <p class="image is-64x64">
-                    <img class="thumbnail" src="/images/sunset.jpg" alt="A letter from Gerald Durrell 《All this I did without you》">
-                </p>
-            </a> 
-            
-            <div class="media-content">
-                <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-10-17T16:33:53.000Z">2019-10-18</time></div>
-                    <a href="/2019/10/18/All-this-I-did-without-you/" class="has-link-black-ter is-size-6">A letter from Gerald Durrell 《All this I did without you》</a>
-                    <p class="is-size-7 is-uppercase">
-                        <a class="has-link-grey -link" href="/categories/life/">life</a>
-                    </p>
-                </div>
-            </div>
-        </article>
-        
-        <article class="media">
-            
             <a href="/2019/09/17/【笔记】深度学习在3D点云处理中的探索/" class="media-left">
                 <p class="image is-64x64">
                     <img class="thumbnail" src="/images/rabbit.png" alt="深度学习在3D点云处理中的探索【笔记】">
@@ -523,6 +522,25 @@
                     <a href="/2019/09/17/【笔记】深度学习在3D点云处理中的探索/" class="has-link-black-ter is-size-6">深度学习在3D点云处理中的探索【笔记】</a>
                     <p class="is-size-7 is-uppercase">
                         <a class="has-link-grey -link" href="/categories/point-cloud/">point cloud</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
+            <a href="/2019/05/26/给最近计算机科学毕业生的职业生涯建议/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="/images/graduation.jpeg" alt="给计算机科学毕业生的职业生涯建议">
+                </p>
+            </a> 
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-05-26T15:24:46.000Z">2019-05-26</time></div>
+                    <a href="/2019/05/26/给最近计算机科学毕业生的职业生涯建议/" class="has-link-black-ter is-size-6">给计算机科学毕业生的职业生涯建议</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/talk/">talk</a>
                     </p>
                 </div>
             </div>
@@ -546,7 +564,7 @@
                     <span class="level-item">十月 2019</span>
                 </span>
                 <span class="level-end">
-                    <span class="level-item tag">4</span>
+                    <span class="level-item tag">3</span>
                 </span>
             </a>
         </li>
@@ -778,17 +796,6 @@
                     <a class="level is-marginless" href="/tags/leetcode/">
                         <span class="level-start">
                             <span class="level-item">leetcode</span>
-                        </span>
-                        <span class="level-end">
-                            <span class="level-item tag">1</span>
-                        </span>
-                    </a>
-                </li>
-                
-                <li>
-                    <a class="level is-marginless" href="/tags/life/">
-                        <span class="level-start">
-                            <span class="level-item">life</span>
                         </span>
                         <span class="level-end">
                             <span class="level-item tag">1</span>

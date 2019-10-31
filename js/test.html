@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head><meta name="generator" content="Hexo 3.8.0">
-    <title>jQCloud Example</title>
+    <!-- hexo-inject:begin --><!-- hexo-inject:end --><title>jQCloud Example</title>
     <link rel="stylesheet" type="text/css" href="jqcloud.css">
     <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.4.4/jquery.min.js"></script>
     <script type="text/javascript" src="jqcloud-1.0.4.js"></script>
@@ -22,10 +22,27 @@
         // When DOM is ready, select the container element and call the jQCloud method, passing the array of words as the first argument.
         $("#example").jQCloud(word_array);
       });
-    </script>
+    </script><!-- hexo-inject:begin --><!-- hexo-inject:end -->
   </head>
   <body>
-    <!-- You should explicitly specify the dimensions of the container element -->
+    <!-- hexo-inject:begin --><!-- hexo-inject:end --><!-- You should explicitly specify the dimensions of the container element -->
     <div id="example" style="width: 550px; height: 350px;"></div>
-  <script src="/live2dw/lib/L2Dwidget.min.js?0c58a1486de42ac6cc1c59c7d98ae887"></script><script>L2Dwidget.init({"log":false,"pluginJsPath":"lib/","pluginModelPath":"assets/","pluginRootPath":"live2dw/","tagMode":false});</script></body>
+  <script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"log":false,"pluginJsPath":"lib/","pluginModelPath":"assets/","pluginRootPath":"live2dw/","tagMode":false});</script><!-- hexo-inject:begin --><!-- Begin: Injected MathJax -->
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({"tex2jax":{"inlineMath":[["$","$"],["\\(","\\)"]],"skipTags":["script","noscript","style","textarea","pre","code"],"processEscapes":true},"TeX":{"equationNumbers":{"autoNumber":"AMS"}}});
+</script>
+
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax(), i;
+    for(i=0; i < all.length; i += 1) {
+      all[i].SourceElement().parentNode.className += ' has-jax';
+    }
+  });
+</script>
+
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js">
+</script>
+<!-- End: Injected MathJax -->
+<!-- hexo-inject:end --></body>
 </html>

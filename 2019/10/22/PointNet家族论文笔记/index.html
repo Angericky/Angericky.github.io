@@ -26,7 +26,7 @@
 <meta property="og:image" content="http://angericky.github.io/images/pointnet_7.png">
 <meta property="og:image" content="http://angericky.github.io/images/pointnet_8.png">
 <meta property="og:image" content="http://angericky.github.io/images/pointnet_9.png">
-<meta property="og:updated_time" content="2019-10-31T14:06:34.028Z">
+<meta property="og:updated_time" content="2019-10-31T14:51:38.544Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="PointNet家族论文笔记">
 <meta name="twitter:description" content="PointNet和PointNet++的论文笔记。">
@@ -173,7 +173,7 @@
                 <time class="level-item has-text-grey" datetime="2019-10-22T15:09:46.000Z">2019-10-22</time>
                 
                     <i class="fas fa-calendar-check">&nbsp</i>
-                    <time class="level-item has-text-grey" datetime="2019-10-31T14:06:34.028Z">2019-10-31</time>
+                    <time class="level-item has-text-grey" datetime="2019-10-31T14:51:38.544Z">2019-10-31</time>
                 
                 
                 <i class="fas fa-book">&nbsp</i>
@@ -204,8 +204,8 @@
         
         <div class="content">
              
-            <p><excerpt in="" index="" |="" 首页摘要=""><br>    PointNet和PointNet++的论文笔记。<br><a id="more"></a></excerpt></p>
-<the rest="" of="" contents="" |="" 余下全文="">
+            <p>PointNet和PointNet++的论文笔记。</p>
+<a id="more"></a>
 
 <h2 id="PointNet"><a href="#PointNet" class="headerlink" title="PointNet"></a>PointNet</h2><blockquote>
 <p>CVPR2017《PointNet: Deep Learning on Point Sets for 3D Classification and Segmentation》<br>在线介绍：<a href="http://stanford.edu/~rqi/pointnet/" target="_blank" rel="noopener">http://stanford.edu/~rqi/pointnet/</a><br>paper下载：<a href="http://openaccess.thecvf.com/content_cvpr_2017/html/Qi_PointNet_Deep_Learning_CVPR_2017_paper.html" target="_blank" rel="noopener">点击这里</a></p>
@@ -261,7 +261,7 @@
 <p>最简单的是广播复制Broadcasting，即将每个点的附近的点的特征都变成和这个点一样，但是这样的方法会使得没有办法处理一些范围相冲突的点，或者范围没有覆盖到的点。<br>因此在论文中作者采用的是<strong>线性插值</strong>的方法，距离越远的点权重越小。</p>
 <h3 id="数据集"><a href="#数据集" class="headerlink" title="数据集"></a>数据集</h3><p>MNIST（2D物体）<br>ModelNet40（3D刚性物体）<br>SHREC15（3D非刚性物体）<br>ScanNet（真实3D室内场景）</p>
 <h3 id="结果-1"><a href="#结果-1" class="headerlink" title="结果"></a>结果</h3><p><img src="/images/pointnet_7.png" alt="result on ModelNet classification"><br><img src="/images/pointnet_8.png" alt="result on segmentation"><br>MRG没有MSG效果好，但是MSG计算复杂度很高<br><img src="/images/pointnet_9.png" alt="result on SHREC15"></p>
-</the>
+
         </div>
         
         <div class="level is-size-7 is-uppercase">
@@ -335,8 +335,8 @@
         
         
         <div class="level-end">
-            <a class="level level-item has-link-grey  article-nav-next" href="/2019/10/18/All-this-I-did-without-you/">
-                <span class="level-item">A letter from Gerald Durrell 《All this I did without you》</span>
+            <a class="level level-item has-link-grey  article-nav-next" href="/2019/09/17/【笔记】深度学习在3D点云处理中的探索/">
+                <span class="level-item">深度学习在3D点云处理中的探索【笔记】</span>
                 <i class="level-item fas fa-chevron-right"></i>
             </a>
         </div>
@@ -412,7 +412,7 @@
                         文章
                     </p>
                     <p class="title has-text-weight-normal">
-                        25
+                        24
                     </p>
                 </div>
             </div>
@@ -422,7 +422,7 @@
                         分类
                     </p>
                     <p class="title has-text-weight-normal">
-                        18
+                        17
                     </p>
                 </div>
             </div>
@@ -432,7 +432,7 @@
                         标签
                     </p>
                     <p class="title has-text-weight-normal">
-                        28
+                        27
                     </p>
                 </div>
             </div>
@@ -540,25 +540,6 @@
         
         <article class="media">
             
-            <a href="/2019/10/18/All-this-I-did-without-you/" class="media-left">
-                <p class="image is-64x64">
-                    <img class="thumbnail" src="/images/sunset.jpg" alt="A letter from Gerald Durrell 《All this I did without you》">
-                </p>
-            </a> 
-            
-            <div class="media-content">
-                <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-10-17T16:33:53.000Z">2019-10-18</time></div>
-                    <a href="/2019/10/18/All-this-I-did-without-you/" class="has-link-black-ter is-size-6">A letter from Gerald Durrell 《All this I did without you》</a>
-                    <p class="is-size-7 is-uppercase">
-                        <a class="has-link-grey -link" href="/categories/life/">life</a>
-                    </p>
-                </div>
-            </div>
-        </article>
-        
-        <article class="media">
-            
             <a href="/2019/09/17/【笔记】深度学习在3D点云处理中的探索/" class="media-left">
                 <p class="image is-64x64">
                     <img class="thumbnail" src="/images/rabbit.png" alt="深度学习在3D点云处理中的探索【笔记】">
@@ -571,6 +552,25 @@
                     <a href="/2019/09/17/【笔记】深度学习在3D点云处理中的探索/" class="has-link-black-ter is-size-6">深度学习在3D点云处理中的探索【笔记】</a>
                     <p class="is-size-7 is-uppercase">
                         <a class="has-link-grey -link" href="/categories/point-cloud/">point cloud</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
+            <a href="/2019/05/26/给最近计算机科学毕业生的职业生涯建议/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="/images/graduation.jpeg" alt="给计算机科学毕业生的职业生涯建议">
+                </p>
+            </a> 
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-05-26T15:24:46.000Z">2019-05-26</time></div>
+                    <a href="/2019/05/26/给最近计算机科学毕业生的职业生涯建议/" class="has-link-black-ter is-size-6">给计算机科学毕业生的职业生涯建议</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/talk/">talk</a>
                     </p>
                 </div>
             </div>
@@ -594,7 +594,7 @@
                     <span class="level-item">十月 2019</span>
                 </span>
                 <span class="level-end">
-                    <span class="level-item tag">4</span>
+                    <span class="level-item tag">3</span>
                 </span>
             </a>
         </li>
@@ -826,17 +826,6 @@
                     <a class="level is-marginless" href="/tags/leetcode/">
                         <span class="level-start">
                             <span class="level-item">leetcode</span>
-                        </span>
-                        <span class="level-end">
-                            <span class="level-item tag">1</span>
-                        </span>
-                    </a>
-                </li>
-                
-                <li>
-                    <a class="level is-marginless" href="/tags/life/">
-                        <span class="level-start">
-                            <span class="level-item">life</span>
                         </span>
                         <span class="level-end">
                             <span class="level-item tag">1</span>

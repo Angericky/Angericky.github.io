@@ -17,7 +17,7 @@
 <meta property="og:site_name" content="Jingjing&#39;s blog">
 <meta property="og:description" content="Leetcode 887 Super Egg Drop. DP问题">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2019-06-19T08:48:31.258Z">
+<meta property="og:updated_time" content="2019-10-31T14:50:48.954Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="扔鸡蛋问题">
 <meta name="twitter:description" content="Leetcode 887 Super Egg Drop. DP问题">
@@ -163,7 +163,7 @@
                 <time class="level-item has-text-grey" datetime="2019-05-08T14:09:21.000Z">2019-05-08</time>
                 
                     <i class="fas fa-calendar-check">&nbsp</i>
-                    <time class="level-item has-text-grey" datetime="2019-06-19T08:48:31.258Z">2019-06-19</time>
+                    <time class="level-item has-text-grey" datetime="2019-10-31T14:50:48.954Z">2019-10-31</time>
                 
                 
                 <i class="fas fa-book">&nbsp</i>
@@ -194,8 +194,8 @@
         
         <div class="content">
              
-            <p><excerpt in="" index="" |="" 首页摘要=""><br>    Leetcode 887 Super Egg Drop. DP问题<br><a id="more"></a></excerpt></p>
-<the rest="" of="" contents="" |="" 余下全文="">
+            <p>Leetcode 887 Super Egg Drop. DP问题</p>
+<a id="more"></a>
 
 <h1 id="题目描述："><a href="#题目描述：" class="headerlink" title="题目描述："></a>题目描述：</h1><p>你将获得 K 个鸡蛋，并可以使用一栋从 1 到 N  共有 N 层楼的建筑。<br>每个蛋的功能都是一样的，如果一个蛋碎了，你就不能再把它掉下去。<br>你知道存在楼层 F ，满足 0 &lt;= F &lt;= N 任何从高于 F 的楼层落下的鸡蛋都会碎，从 F 楼层或比它低的楼层落下的鸡蛋都不会破。<br>每次移动，你可以取一个鸡蛋（如果你有完整的鸡蛋）并把它从任一楼层 X 扔下（满足 1 &lt;= X &lt;= N）。<br>你的目标是确切地知道 F 的值是多少。<br>无论 F 的初始值如何，你确定 F 的值的最小移动次数是多少？</p>
 <p>示例1:</p>
@@ -230,7 +230,9 @@
 <li>如果没碎，还剩K个鸡蛋，有N - F个楼层需要扔， 问题转化成f(K , N - F)</li>
 </ol>
 <p>可得状态转移方程f(K, N) = min( 1 + max( f(K - 1, F - 1), f(K, N - F) ) )</p>
-<p>推出代码：<br><figure class="highlight c++ hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-keyword">const</span> <span class="hljs-keyword">int</span> MAXK = <span class="hljs-number">100</span>, MAXN = <span class="hljs-number">100</span>;</span><br><span class="line"></span><br><span class="line"><span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">max</span><span class="hljs-params">(<span class="hljs-keyword">int</span> a, <span class="hljs-keyword">int</span> b)</span> </span>&#123;<span class="hljs-keyword">return</span> a &gt; b ? a : b;&#125;</span><br><span class="line"><span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">min</span><span class="hljs-params">(<span class="hljs-keyword">int</span> a, <span class="hljs-keyword">int</span> b)</span> </span>&#123;<span class="hljs-keyword">return</span> a &lt; b ? a : b;&#125;</span><br><span class="line"></span><br><span class="line"><span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">superEggDrop</span><span class="hljs-params">(<span class="hljs-keyword">int</span> K, <span class="hljs-keyword">int</span> N)</span> </span>&#123;</span><br><span class="line">    <span class="hljs-keyword">int</span> dp[MAXN+<span class="hljs-number">2</span>][MAXK+<span class="hljs-number">2</span>];</span><br><span class="line">    <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> i = <span class="hljs-number">0</span>; i &lt;= MAXN; i++) &#123;</span><br><span class="line">        dp[i][<span class="hljs-number">0</span>] = <span class="hljs-number">0</span>;</span><br><span class="line">        dp[i][<span class="hljs-number">1</span>] = i;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> j = <span class="hljs-number">2</span>; j &lt;= MAXK; j++) &#123;</span><br><span class="line">        <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> i = <span class="hljs-number">1</span>; i &lt;= MAXN; i++) &#123;</span><br><span class="line">            dp[i][j] = i;</span><br><span class="line">            <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> k = <span class="hljs-number">1</span>; k &lt; i; k++) &#123;</span><br><span class="line">                dp[i][j] = min(dp[i][j], max(dp[k<span class="hljs-number">-1</span>][j<span class="hljs-number">-1</span>], dp[i-k][j]) + <span class="hljs-number">1</span>);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="hljs-keyword">return</span> dp[N][K];</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>推出代码：</p>
+<figure class="highlight c++ hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-keyword">const</span> <span class="hljs-keyword">int</span> MAXK = <span class="hljs-number">100</span>, MAXN = <span class="hljs-number">100</span>;</span><br><span class="line"></span><br><span class="line"><span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">max</span><span class="hljs-params">(<span class="hljs-keyword">int</span> a, <span class="hljs-keyword">int</span> b)</span> </span>&#123;<span class="hljs-keyword">return</span> a &gt; b ? a : b;&#125;</span><br><span class="line"><span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">min</span><span class="hljs-params">(<span class="hljs-keyword">int</span> a, <span class="hljs-keyword">int</span> b)</span> </span>&#123;<span class="hljs-keyword">return</span> a &lt; b ? a : b;&#125;</span><br><span class="line"></span><br><span class="line"><span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">superEggDrop</span><span class="hljs-params">(<span class="hljs-keyword">int</span> K, <span class="hljs-keyword">int</span> N)</span> </span>&#123;</span><br><span class="line">    <span class="hljs-keyword">int</span> dp[MAXN+<span class="hljs-number">2</span>][MAXK+<span class="hljs-number">2</span>];</span><br><span class="line">    <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> i = <span class="hljs-number">0</span>; i &lt;= MAXN; i++) &#123;</span><br><span class="line">        dp[i][<span class="hljs-number">0</span>] = <span class="hljs-number">0</span>;</span><br><span class="line">        dp[i][<span class="hljs-number">1</span>] = i;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> j = <span class="hljs-number">2</span>; j &lt;= MAXK; j++) &#123;</span><br><span class="line">        <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> i = <span class="hljs-number">1</span>; i &lt;= MAXN; i++) &#123;</span><br><span class="line">            dp[i][j] = i;</span><br><span class="line">            <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> k = <span class="hljs-number">1</span>; k &lt; i; k++) &#123;</span><br><span class="line">                dp[i][j] = min(dp[i][j], max(dp[k<span class="hljs-number">-1</span>][j<span class="hljs-number">-1</span>], dp[i-k][j]) + <span class="hljs-number">1</span>);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="hljs-keyword">return</span> dp[N][K];</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
 <p>用这个办法做出来TLE，怎么办呢？<br>我们可以改变一下求解的思路，求k个鸡蛋在m步内可以测出多少层。</p>
 <p>f(K, M)，表示K个鸡蛋在M步内，最坏条件下能测出的层数。<br>假设一共有K个鸡蛋，最多能扔N层。从F层扔下鸡蛋，会出现两种情况：</p>
 <ol>
@@ -241,8 +243,8 @@
 <li>没有鸡蛋，一层都测不出来。可得f(K, 0) = 0</li>
 <li>只有一个鸡蛋，那必须从第1层开始扔，最坏情况要扔到M层才能测出来，一共扔M次。可得f(1, M) = M</li>
 </ul>
-<p>推出代码：<br><figure class="highlight c++ hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Solution</span> &#123;</span></span><br><span class="line"><span class="hljs-keyword">public</span>:</span><br><span class="line">    <span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">superEggDrop</span><span class="hljs-params">(<span class="hljs-keyword">int</span> K, <span class="hljs-keyword">int</span> N)</span> </span>&#123;</span><br><span class="line">        <span class="hljs-keyword">if</span>(K == <span class="hljs-number">1</span>)</span><br><span class="line">            <span class="hljs-keyword">return</span> N;</span><br><span class="line">        <span class="hljs-keyword">int</span> dp[<span class="hljs-number">10001</span>][<span class="hljs-number">101</span>] = &#123;<span class="hljs-number">0</span>&#125;;</span><br><span class="line">        <span class="hljs-keyword">for</span>(<span class="hljs-keyword">int</span> m = <span class="hljs-number">1</span>; m &lt;= N; m ++)&#123;</span><br><span class="line">            <span class="hljs-keyword">for</span>(<span class="hljs-keyword">int</span> k = <span class="hljs-number">1</span>; k &lt;= K; k ++)&#123;</span><br><span class="line">                dp[m][k] = dp[m - <span class="hljs-number">1</span>][k] + dp[m - <span class="hljs-number">1</span>][k - <span class="hljs-number">1</span>] + <span class="hljs-number">1</span>;</span><br><span class="line">                <span class="hljs-keyword">if</span>(dp[m][k] &gt;= N)</span><br><span class="line">                    <span class="hljs-keyword">return</span> m;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="hljs-keyword">return</span> N;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure></p>
-</the>
+<p>推出代码：</p>
+<figure class="highlight c++ hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Solution</span> &#123;</span></span><br><span class="line"><span class="hljs-keyword">public</span>:</span><br><span class="line">    <span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">superEggDrop</span><span class="hljs-params">(<span class="hljs-keyword">int</span> K, <span class="hljs-keyword">int</span> N)</span> </span>&#123;</span><br><span class="line">        <span class="hljs-keyword">if</span>(K == <span class="hljs-number">1</span>)</span><br><span class="line">            <span class="hljs-keyword">return</span> N;</span><br><span class="line">        <span class="hljs-keyword">int</span> dp[<span class="hljs-number">10001</span>][<span class="hljs-number">101</span>] = &#123;<span class="hljs-number">0</span>&#125;;</span><br><span class="line">        <span class="hljs-keyword">for</span>(<span class="hljs-keyword">int</span> m = <span class="hljs-number">1</span>; m &lt;= N; m ++)&#123;</span><br><span class="line">            <span class="hljs-keyword">for</span>(<span class="hljs-keyword">int</span> k = <span class="hljs-number">1</span>; k &lt;= K; k ++)&#123;</span><br><span class="line">                dp[m][k] = dp[m - <span class="hljs-number">1</span>][k] + dp[m - <span class="hljs-number">1</span>][k - <span class="hljs-number">1</span>] + <span class="hljs-number">1</span>;</span><br><span class="line">                <span class="hljs-keyword">if</span>(dp[m][k] &gt;= N)</span><br><span class="line">                    <span class="hljs-keyword">return</span> m;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="hljs-keyword">return</span> N;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
         </div>
         
         <div class="level is-size-7 is-uppercase">
@@ -393,7 +395,7 @@
                         文章
                     </p>
                     <p class="title has-text-weight-normal">
-                        25
+                        24
                     </p>
                 </div>
             </div>
@@ -403,7 +405,7 @@
                         分类
                     </p>
                     <p class="title has-text-weight-normal">
-                        18
+                        17
                     </p>
                 </div>
             </div>
@@ -413,7 +415,7 @@
                         标签
                     </p>
                     <p class="title has-text-weight-normal">
-                        28
+                        27
                     </p>
                 </div>
             </div>
@@ -521,25 +523,6 @@
         
         <article class="media">
             
-            <a href="/2019/10/18/All-this-I-did-without-you/" class="media-left">
-                <p class="image is-64x64">
-                    <img class="thumbnail" src="/images/sunset.jpg" alt="A letter from Gerald Durrell 《All this I did without you》">
-                </p>
-            </a> 
-            
-            <div class="media-content">
-                <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-10-17T16:33:53.000Z">2019-10-18</time></div>
-                    <a href="/2019/10/18/All-this-I-did-without-you/" class="has-link-black-ter is-size-6">A letter from Gerald Durrell 《All this I did without you》</a>
-                    <p class="is-size-7 is-uppercase">
-                        <a class="has-link-grey -link" href="/categories/life/">life</a>
-                    </p>
-                </div>
-            </div>
-        </article>
-        
-        <article class="media">
-            
             <a href="/2019/09/17/【笔记】深度学习在3D点云处理中的探索/" class="media-left">
                 <p class="image is-64x64">
                     <img class="thumbnail" src="/images/rabbit.png" alt="深度学习在3D点云处理中的探索【笔记】">
@@ -552,6 +535,25 @@
                     <a href="/2019/09/17/【笔记】深度学习在3D点云处理中的探索/" class="has-link-black-ter is-size-6">深度学习在3D点云处理中的探索【笔记】</a>
                     <p class="is-size-7 is-uppercase">
                         <a class="has-link-grey -link" href="/categories/point-cloud/">point cloud</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
+            <a href="/2019/05/26/给最近计算机科学毕业生的职业生涯建议/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="/images/graduation.jpeg" alt="给计算机科学毕业生的职业生涯建议">
+                </p>
+            </a> 
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-05-26T15:24:46.000Z">2019-05-26</time></div>
+                    <a href="/2019/05/26/给最近计算机科学毕业生的职业生涯建议/" class="has-link-black-ter is-size-6">给计算机科学毕业生的职业生涯建议</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/talk/">talk</a>
                     </p>
                 </div>
             </div>
@@ -575,7 +577,7 @@
                     <span class="level-item">十月 2019</span>
                 </span>
                 <span class="level-end">
-                    <span class="level-item tag">4</span>
+                    <span class="level-item tag">3</span>
                 </span>
             </a>
         </li>
@@ -807,17 +809,6 @@
                     <a class="level is-marginless" href="/tags/leetcode/">
                         <span class="level-start">
                             <span class="level-item">leetcode</span>
-                        </span>
-                        <span class="level-end">
-                            <span class="level-item tag">1</span>
-                        </span>
-                    </a>
-                </li>
-                
-                <li>
-                    <a class="level is-marginless" href="/tags/life/">
-                        <span class="level-start">
-                            <span class="level-item">life</span>
                         </span>
                         <span class="level-end">
                             <span class="level-item tag">1</span>
