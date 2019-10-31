@@ -26,7 +26,7 @@
 <meta property="og:image" content="http://angericky.github.io/images/pointnet_7.png">
 <meta property="og:image" content="http://angericky.github.io/images/pointnet_8.png">
 <meta property="og:image" content="http://angericky.github.io/images/pointnet_9.png">
-<meta property="og:updated_time" content="2019-10-29T15:14:37.979Z">
+<meta property="og:updated_time" content="2019-10-31T06:12:12.967Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="PointNet家族论文笔记">
 <meta name="twitter:description" content="PointNet和PointNet++的论文笔记。">
@@ -153,7 +153,13 @@
         <div class="container">
             <div class="columns">
                 <div class="column is-8-tablet is-8-desktop is-8-widescreen has-order-2 column-main"><div class="card">
-    <!--  -->
+    <!-- 
+    <div class="card-image">
+        <span  class="image is-7by1">
+            <img class="thumbnail" src="/images/autumn_cat.jpg" alt="PointNet家族论文笔记">
+        </span>
+    </div>
+     -->
     <div class="card-content article ">
         <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
             
@@ -167,14 +173,14 @@
                 <time class="level-item has-text-grey" datetime="2019-10-22T15:09:46.000Z">2019-10-22</time>
                 
                     <i class="fas fa-calendar-check">&nbsp</i>
-                    <time class="level-item has-text-grey" datetime="2019-10-29T15:14:37.979Z">2019-10-29</time>
+                    <time class="level-item has-text-grey" datetime="2019-10-31T06:12:12.967Z">2019-10-31</time>
                 
                 
                 <i class="fas fa-book">&nbsp</i>
                 <span class="level-item has-text-grey">
                     
                     
-                    19 分钟 读完 (大约 2883 个字)
+                    20 分钟 读完 (大约 3029 个字)
                 </span>
                 
             </div>
@@ -251,6 +257,8 @@
 <li><strong>多分辨率分组 MRG（multi-resolution grouping）</strong><br>MSG由于要对每个中心点跑大规模邻域的特征提取，计算开销很高。尤其是在low level上中心点的个数很多，时间成本很高。<br>因此提出多分辨率分组的方法。如图所示，新特征通过两部分连接起来，左边是通过一个set abstraction得到的特征向量，右边是用一个PointNet直接处理所有局部区域点得到的特征向量。点云密度不均时，可以通过判断当前局部区域的密度给左右两个特征向量不同权重。</li>
 </ol>
 <p><img src="/images/pointnet_6.jpg" alt="MSG and MRG structure"></p>
+<h4 id="分割网络"><a href="#分割网络" class="headerlink" title="分割网络"></a>分割网络</h4><p>分割网络的实现思想是将点云提取一个全局的特征之后，再通过全局的特征逐步上采样。</p>
+<p>最简单的是广播复制Broadcasting，即将每个点的附近的点的特征都变成和这个点一样，但是这样的方法会使得没有办法处理一些范围相冲突的点，或者范围没有覆盖到的点。<br>因此在论文中作者采用的是<strong>线性插值</strong>的方法，距离越远的点权重越小。</p>
 <h3 id="数据集"><a href="#数据集" class="headerlink" title="数据集"></a>数据集</h3><p>MNIST（2D物体）<br>ModelNet40（3D刚性物体）<br>SHREC15（3D非刚性物体）<br>ScanNet（真实3D室内场景）</p>
 <h3 id="结果-1"><a href="#结果-1" class="headerlink" title="结果"></a>结果</h3><p><img src="/images/pointnet_7.png" alt="result on ModelNet classification"><br><img src="/images/pointnet_8.png" alt="result on segmentation"><br>MRG没有MSG效果好，但是MSG计算复杂度很高<br><img src="/images/pointnet_9.png" alt="result on SHREC15"></p>
 </the>
@@ -321,7 +329,7 @@
         <div class="level-start">
             <a class="level level-item has-link-grey  article-nav-prev" href="/2019/10/27/A-CNN论文笔记/">
                 <i class="level-item fas fa-chevron-left"></i>
-                <span class="level-item">《A-CNN：Annularly Convolutional Neural Networks on Point Clouds》论文笔记</span>
+                <span class="level-item">A-CNN点云的环形卷积神经网络论文笔记</span>
             </a>
         </div>
         
@@ -475,10 +483,16 @@
         
         <article class="media">
             
+            <a href="/2019/10/27/A-CNN论文笔记/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="/images/halloween.jpg" alt="A-CNN点云的环形卷积神经网络论文笔记">
+                </p>
+            </a> 
+            
             <div class="media-content">
                 <div class="content">
                     <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-10-27T15:49:53.000Z">2019-10-27</time></div>
-                    <a href="/2019/10/27/A-CNN论文笔记/" class="has-link-black-ter is-size-6">《A-CNN：Annularly Convolutional Neural Networks on Point Clouds》论文笔记</a>
+                    <a href="/2019/10/27/A-CNN论文笔记/" class="has-link-black-ter is-size-6">A-CNN点云的环形卷积神经网络论文笔记</a>
                     <p class="is-size-7 is-uppercase">
                         <a class="has-link-grey -link" href="/categories/point-cloud/">point cloud</a>
                     </p>
@@ -487,6 +501,12 @@
         </article>
         
         <article class="media">
+            
+            <a href="/2019/10/22/PointNet家族论文笔记/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="/images/autumn_cat.jpg" alt="PointNet家族论文笔记">
+                </p>
+            </a> 
             
             <div class="media-content">
                 <div class="content">
@@ -519,6 +539,12 @@
         </article>
         
         <article class="media">
+            
+            <a href="/2019/09/17/【笔记】深度学习在3D点云处理中的探索/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="/images/rabbit.png" alt="深度学习在3D点云处理中的探索【笔记】">
+                </p>
+            </a> 
             
             <div class="media-content">
                 <div class="content">
