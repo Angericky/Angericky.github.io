@@ -9,18 +9,18 @@
 
 
 
-    <meta name="description" content="&amp;lt;Excerpt in index | 首页摘要&amp;gt;    Stylus是一个基于Node.js的CSS的预处理框架。其本质上做的事情与sass/less等类似。Stylus比less更强大。icarus主题中用到了stylus。">
+    <meta name="description" content="Stylus是一个基于Node.js的CSS的预处理框架。其本质上做的事情与sass/less等类似。Stylus比less更强大。icarus主题中用到了stylus。">
 <meta name="keywords" content="hexo,stylus,css">
 <meta property="og:type" content="article">
 <meta property="og:title" content="简洁清爽的Stylus语法">
 <meta property="og:url" content="http://Angericky.github.io/2018/12/31/简洁清爽的Stylus语法/index.html">
 <meta property="og:site_name" content="Jingjing&#39;s blog">
-<meta property="og:description" content="&amp;lt;Excerpt in index | 首页摘要&amp;gt;    Stylus是一个基于Node.js的CSS的预处理框架。其本质上做的事情与sass/less等类似。Stylus比less更强大。icarus主题中用到了stylus。">
+<meta property="og:description" content="Stylus是一个基于Node.js的CSS的预处理框架。其本质上做的事情与sass/less等类似。Stylus比less更强大。icarus主题中用到了stylus。">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2019-01-11T15:06:11.574Z">
+<meta property="og:updated_time" content="2019-10-31T16:40:51.995Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="简洁清爽的Stylus语法">
-<meta name="twitter:description" content="&amp;lt;Excerpt in index | 首页摘要&amp;gt;    Stylus是一个基于Node.js的CSS的预处理框架。其本质上做的事情与sass/less等类似。Stylus比less更强大。icarus主题中用到了stylus。">
+<meta name="twitter:description" content="Stylus是一个基于Node.js的CSS的预处理框架。其本质上做的事情与sass/less等类似。Stylus比less更强大。icarus主题中用到了stylus。">
 
 
 
@@ -167,7 +167,7 @@
                 <time class="level-item has-text-grey" datetime="2018-12-30T19:28:11.000Z">2018-12-31</time>
                 
                     <i class="fas fa-calendar-check">&nbsp</i>
-                    <time class="level-item has-text-grey" datetime="2019-01-11T15:06:11.574Z">2019-01-11</time>
+                    <time class="level-item has-text-grey" datetime="2019-10-31T16:40:51.995Z">2019-11-01</time>
                 
                 
                 <i class="fas fa-book">&nbsp</i>
@@ -203,9 +203,9 @@
                     <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#Stylus介绍"><span class="toc-number">1.</span> <span class="toc-text">Stylus介绍</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#安装"><span class="toc-number">2.</span> <span class="toc-text">安装</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#生成CSS"><span class="toc-number">3.</span> <span class="toc-text">生成CSS</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#应用效果"><span class="toc-number">4.</span> <span class="toc-text">应用效果</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Flexible-syntax-灵活的用法"><span class="toc-number">5.</span> <span class="toc-text">Flexible syntax(灵活的用法)</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#Flexible-amp-灵活-amp"><span class="toc-number">5.1.</span> <span class="toc-text">Flexible &amp;(灵活&amp;)</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Functions-方法"><span class="toc-number">5.2.</span> <span class="toc-text">Functions 方法</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#返回值"><span class="toc-number">5.2.1.</span> <span class="toc-text">返回值</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#带参数"><span class="toc-number">5.2.1.1.</span> <span class="toc-text">带参数</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#不带参数"><span class="toc-number">5.2.1.2.</span> <span class="toc-text">不带参数</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#默认参数"><span class="toc-number">5.2.2.</span> <span class="toc-text">默认参数</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#不带参数-1"><span class="toc-number">5.2.2.1.</span> <span class="toc-text">不带参数</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#多个返回值"><span class="toc-number">5.2.3.</span> <span class="toc-text">多个返回值</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Variables-变量"><span class="toc-number">5.2.4.</span> <span class="toc-text">Variables(变量)</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#变量放在属性中"><span class="toc-number">5.2.5.</span> <span class="toc-text">变量放在属性中</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#块属性访问引用"><span class="toc-number">5.3.</span> <span class="toc-text">块属性访问引用</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#属性有条件地定义属性"><span class="toc-number">5.3.1.</span> <span class="toc-text">属性有条件地定义属性</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#向上冒泡"><span class="toc-number">5.3.2.</span> <span class="toc-text">向上冒泡</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Iteration-迭代"><span class="toc-number">5.4.</span> <span class="toc-text">Iteration(迭代)</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Interpolation-插值"><span class="toc-number">5.5.</span> <span class="toc-text">Interpolation(插值)</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Operators-运算符"><span class="toc-number">5.5.1.</span> <span class="toc-text">Operators(运算符)</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#CSS字面量-CSS-Literal"><span class="toc-number">5.5.2.</span> <span class="toc-text">CSS字面量(CSS Literal)</span></a></li></ol></li></ol></li></ol>
                 </div>
              
-            <p>&lt;Excerpt in index | 首页摘要&gt;<br>    <code>Stylus</code>是一个基于<code>Node.js</code>的CSS的预处理框架。其本质上做的事情与sass/less等类似。<code>Stylus</code>比<code>less</code>更强大。icarus主题中用到了<code>stylus</code>。</p>
+            <p><code>Stylus</code>是一个基于<code>Node.js</code>的CSS的预处理框架。其本质上做的事情与sass/less等类似。<code>Stylus</code>比<code>less</code>更强大。icarus主题中用到了<code>stylus</code>。</p>
 <a id="more"></a>
-<p>&lt;The rest of contents | 余下全文&gt;</p>
+
 <h1 id="Stylus介绍"><a href="#Stylus介绍" class="headerlink" title="Stylus介绍"></a>Stylus介绍</h1><p><code>Stylus</code>是一个基于<code>Node.js</code>的CSS的预处理框架。<br>可以说是一种新型语言，其本质上做的事情与sass/less等类似。<br><code>Stylus</code>比less更强大；比sass更符合我们的思路。</p>
 <p>它是一个CSS的预处理框架，2010年产生，来自<code>Node.js</code>社区，主要用来给Node项目进行CSS预处理支持，所以 <code>Stylus</code>是一种新型语言，可以创建健壮的、动态的、富有表现力的CSS。比较年轻，其本质上做的事情与 SASS/LESS 等类似，应该是有很多借鉴，所以近似脚本的方式去写CSS代码。</p>
 <p><code>Stylus</code>默认使用 .styl 的作为文件扩展名，支持多样性的CSS语法。</p>
@@ -1367,24 +1367,7 @@ document.addEventListener('DOMContentLoaded', function () {
 </script>
 <script src="/js/insight.js" defer></script>
 <link rel="stylesheet" href="/css/search.css">
-<link rel="stylesheet" href="/css/insight.css">
+<link rel="stylesheet" href="/css/insight.css"><!-- hexo-inject:begin --><!-- hexo-inject:end -->
     
-<script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"log":false,"pluginJsPath":"lib/","pluginModelPath":"assets/","pluginRootPath":"live2dw/","tagMode":false});</script><!-- hexo-inject:begin --><!-- Begin: Injected MathJax -->
-<script type="text/x-mathjax-config">
-  MathJax.Hub.Config({"tex2jax":{"inlineMath":[["$","$"],["\\(","\\)"]],"skipTags":["script","noscript","style","textarea","pre","code"],"processEscapes":true},"TeX":{"equationNumbers":{"autoNumber":"AMS"}}});
-</script>
-
-<script type="text/x-mathjax-config">
-  MathJax.Hub.Queue(function() {
-    var all = MathJax.Hub.getAllJax(), i;
-    for(i=0; i < all.length; i += 1) {
-      all[i].SourceElement().parentNode.className += ' has-jax';
-    }
-  });
-</script>
-
-<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js">
-</script>
-<!-- End: Injected MathJax -->
-<!-- hexo-inject:end --></body>
+<script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"log":false,"pluginJsPath":"lib/","pluginModelPath":"assets/","pluginRootPath":"live2dw/","tagMode":false});</script></body>
 </html>
