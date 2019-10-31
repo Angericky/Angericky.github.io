@@ -1,0 +1,1187 @@
+<!DOCTYPE html>
+<!-- 页面点击小红心 -->
+<script src="/js/clicklove.js"></script>
+<html lang="zh">
+<head><meta name="generator" content="Hexo 3.8.0">
+    <!-- hexo-inject:begin --><!-- hexo-inject:end --><meta charset="utf-8">
+<title>PU-Net点云上采样网络论文笔记 - Jingjing&#39;s blog</title>
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+
+
+    <meta name="description" content="&amp;lt;Excerpt in index | 首页摘要&amp;gt;    《PU-Net: Point Cloud Upsampling Network》的论文笔记。">
+<meta name="keywords" content="point cloud,note">
+<meta property="og:type" content="article">
+<meta property="og:title" content="PU-Net点云上采样网络论文笔记">
+<meta property="og:url" content="http://Angericky.github.io/2019/10/31/PU-Net点云上采样网络论文笔记/index.html">
+<meta property="og:site_name" content="Jingjing&#39;s blog">
+<meta property="og:description" content="&amp;lt;Excerpt in index | 首页摘要&amp;gt;    《PU-Net: Point Cloud Upsampling Network》的论文笔记。">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:image" content="http://angericky.github.io/images/PUNet_1.png">
+<meta property="og:image" content="http://angericky.github.io/images/PUNet_4.png">
+<meta property="og:image" content="http://angericky.github.io/images/PUNet_5.png">
+<meta property="og:image" content="http://angericky.github.io/images/PUNet_2.png">
+<meta property="og:image" content="http://angericky.github.io/images/PUNet_3.png">
+<meta property="og:updated_time" content="2019-10-31T14:41:06.893Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="PU-Net点云上采样网络论文笔记">
+<meta name="twitter:description" content="&amp;lt;Excerpt in index | 首页摘要&amp;gt;    《PU-Net: Point Cloud Upsampling Network》的论文笔记。">
+<meta name="twitter:image" content="http://angericky.github.io/images/PUNet_1.png">
+
+
+
+
+
+<link rel="icon" href="https://i.loli.net/2019/01/07/5c336be858b4e.jpg">
+
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.7.2/css/bulma.css">
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.4.1/css/all.css">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Ubuntu:400,600|Source+Code+Pro">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@9.12.0/styles/atom-one-dark.css">
+
+
+    
+    
+    
+    <style>body>.footer,body>.navbar,body>.section{opacity:0}</style>
+    
+
+    
+    
+    
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/lightgallery@1.6.8/dist/css/lightgallery.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/justifiedGallery@3.7.0/dist/css/justifiedGallery.min.css">
+    
+
+    
+    
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/outdatedbrowser@1.1.5/outdatedbrowser/outdatedbrowser.min.css">
+
+
+    
+    
+    
+    
+
+<link rel="stylesheet" href="/css/back-to-top.css">
+
+
+    
+    
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-131380423-1"></script>
+<script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+
+    gtag('config', 'UA-131380423-1');
+</script>
+
+
+    
+    
+    
+    
+
+    
+    
+<link rel="stylesheet" href="/css/progressbar.css">
+<script src="https://cdn.jsdelivr.net/npm/pace-js@1.0.2/pace.min.js"></script>
+
+    
+
+
+<link rel="stylesheet" href="/css/style.css"><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+</head>
+<body class="is-2-column">
+    <!-- hexo-inject:begin --><!-- hexo-inject:end --><nav class="navbar navbar-main">
+    <div class="container">
+        <div class="navbar-brand is-flex-center">
+            <a class="navbar-item navbar-logo" href="/">
+            
+                <img src="https://i.loli.net/2019/01/07/5c336be858b4e.jpg" alt="PU-Net点云上采样网络论文笔记" height="28">
+            
+            </a>
+        </div>
+        <div class="navbar-menu">
+            
+            <div class="navbar-start">
+                
+                <a class="navbar-item" href="/">主页</a>
+                
+                <a class="navbar-item" href="/archives">归档</a>
+                
+                <a class="navbar-item" href="/categories">分类</a>
+                
+                <a class="navbar-item" href="/tags">标签</a>
+                
+                <a class="navbar-item" href="/collection">设计集</a>
+                
+                <a class="navbar-item" href="/about">关于</a>
+                
+            </div>
+            
+            <div class="navbar-end">
+                
+                    
+                    
+                    <a class="navbar-item" target="_blank" title="Download on GitHub" href="http://github.com/ppoffice/hexo-theme-icarus">
+                        
+                        <i class="fab fa-github"></i>
+                        
+                    </a>
+                    
+                
+                
+                
+                <a class="navbar-item search" title="搜索" href="javascript:;">
+                    <i class="fas fa-search"></i>
+                </a>
+                
+            </div>
+        </div>
+    </div>
+</nav>
+    
+    <section class="section">
+        <div class="container">
+            <div class="columns">
+                <div class="column is-8-tablet is-8-desktop is-8-widescreen has-order-2 column-main"><div class="card">
+    <!-- 
+    <div class="card-image">
+        <span  class="image is-7by1">
+            <img class="thumbnail" src="/images/penguin.jpeg" alt="PU-Net点云上采样网络论文笔记">
+        </span>
+    </div>
+     -->
+    <div class="card-content article ">
+        <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
+            
+                PU-Net点云上采样网络论文笔记
+            
+        </h1>
+        
+            <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto" style="margin-bottom: 0;">
+            <div class="level-left">
+                <i class="fas fa-calendar">&nbsp</i>
+                <time class="level-item has-text-grey" datetime="2019-10-31T14:04:48.000Z">2019-10-31</time>
+                
+                    <i class="fas fa-calendar-check">&nbsp</i>
+                    <time class="level-item has-text-grey" datetime="2019-10-31T14:41:06.893Z">2019-10-31</time>
+                
+                
+                <i class="fas fa-book">&nbsp</i>
+                <span class="level-item has-text-grey">
+                    
+                    
+                    15 分钟 读完 (大约 2288 个字)
+                </span>
+                
+            </div>
+        </div>
+        <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
+            <div class="level-left">
+                
+                    <i class="fas fa-folder-open">&nbsp</i>
+                    <div class="level-item">
+                    <a class="has-link-grey -link" href="/categories/point-cloud/">point cloud</a>
+                    </div>
+                
+                
+                    <i class="fas fa-tags">&nbsp</i>
+                    <div class="level-item">
+                    <a class="has-link-grey -link" href="/tags/note/">note</a>&nbsp;/&nbsp;<a class="has-link-grey -link" href="/tags/point-cloud/">point cloud</a>
+                    </div>
+                
+            </div>
+        </div>
+        
+        <div class="content">
+             
+            <p>&lt;Excerpt in index | 首页摘要&gt;<br>    《PU-Net: Point Cloud Upsampling Network》的论文笔记。</p>
+<a id="more"></a>
+<p>&lt;The rest of contents | 余下全文&gt;</p>
+<h2 id="PU-Net"><a href="#PU-Net" class="headerlink" title="PU-Net"></a>PU-Net</h2><blockquote>
+<p>《PU-Net: Point Cloud Upsampling Network》 CVPR 2018<br><a href="https://arxiv.org/pdf/1801.06761.pdf" target="_blank" rel="noopener">点击论文地址</a><br>开源代码：<a href="https://github.com/yulequan/PU-Net" target="_blank" rel="noopener">https://github.com/yulequan/PU-Net</a></p>
+</blockquote>
+<h3 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h3><p>根据PointNet++和PointSetGeneration衍生而来。<br>通过多分支卷积单元去学习逐点的多级特征和扩大点集，在patch-level通过共同损失函数，在潜在的曲层表面均匀分布地上采样点。<br>采样更均匀，位置离底层表面更近。</p>
+<h3 id="解决问题"><a href="#解决问题" class="headerlink" title="解决问题"></a>解决问题</h3><p>如何上采样到能<strong>更完整地表达潜在曲面的密集点云</strong>，类似于二维中的图像超分辨率问题。<br>而在点云数据的挑战是：1. 点云没有空间顺序和规则结构 2. 生成的点云应该位于目标物体的表面来表示几何目标对象 3. 生成的点应当有信息量，而不是杂乱无章<br>生成的点云数据分布应当更加均匀，因此简单的插值方法并不适用。</p>
+<h3 id="贡献点"><a href="#贡献点" class="headerlink" title="贡献点"></a>贡献点</h3><p>提出了一个深度点云上采样网络，目标是从一组稀疏的点中生成一组<strong>更密集、更均匀</strong>的点。该网络在小块级别使用多级特征聚合方式进行训练，从而捕获局部和全局信息。<br>网络设计通过对包含非局部几何图形的单个特征进行操作来允许上下文感知的上采样，从而绕过了对点之间指定顺序的需求。<br>根据<strong>分布均匀</strong>和<strong>距离偏差</strong>建立了衡量指标，实验证明了方法的有效性。</p>
+<p>该方法作为第一次对上采样使用深度网络的尝试，仍然有许多局限性，不能填补大的漏洞和缺失的部分。此外，该网络无法为采样严重不足的微小结构添加有意义的点。</p>
+<h3 id="核心思想"><a href="#核心思想" class="headerlink" title="核心思想"></a>核心思想</h3><p>学习每个点的多粒度（局部和全局）特征，再在特征空间种扩大点集，左后将扩大的点集映射回三维。</p>
+<h3 id="网络设计"><a href="#网络设计" class="headerlink" title="网络设计"></a>网络设计</h3><p><img src="/images/PUNet_1.png" alt="PU-Net网络结构"></p>
+<p>网络结构分为四块：<strong>小块提取Patch Extraction</strong>、<strong>点特征嵌入Point Feature Embedding</strong>、<strong>特征扩展Feature Expansion</strong>和<strong>坐标重建Coordinate Reconstruction</strong>。<br>首先，从给定的一组先前的3D模型种提取不同规模和分布的点补丁。<br>然后，点特征嵌入通过层次特征学习和多级特征聚集，将原始3D坐标映射到特征空间。<br>之后扩展特征的个数，并且通过一系列全连接层重建输出点云的3D坐标。</p>
+<h4 id="Patch-Extraction"><a href="#Patch-Extraction" class="headerlink" title="Patch Extraction"></a>Patch Extraction</h4><p>为了让网络从对象中学习局部几何图形，本工作用<strong>基于小块（patch）的方法</strong>训练网络和学习几何语义。<br>因此我们先收集一组有各种各样形状的3D对象作为<strong>先验信息</strong>，随机选择这些物体表面的M个点，然后指定一个测地距d，将每个中心点的d范围内的所有点作为一个patch，然后用泊松分布在每个中心点上随机采样N_hat个点，将采样点作为ground truth。用不同大小的d形成不同尺度、不同密度的patch。</p>
+<h4 id="Point-Feature-Embedding"><a href="#Point-Feature-Embedding" class="headerlink" title="Point Feature Embedding"></a>Point Feature Embedding</h4><p>同时采用了层次特征学习<strong>Hierarchical feature learning</strong>和多级特征聚合<strong>Multi-level feature aggregation</strong>两种特征学习策略。<br>如图所示，先用<a href="https://angericky.github.io/2019/10/22/PointNet%E5%AE%B6%E6%97%8F%E8%AE%BA%E6%96%87%E7%AC%94%E8%AE%B0/">PointNet++</a>里的Hierarchical feature learning方法捕捉到不同尺度的特征，但是这里为了保留更多局部细节特征，采取比较小的grouping分组半径。<br>然后用Multi-level feature aggregation集合特征。一些先前工作用了skip-connections的结构去做多级特征聚合，而本文发现该结构对于自顶向下的广播不是很高效。在根据网络中的低层更能反映小规模局部特征，本文提出了<strong>让网络学习不同层次的特征重要性，以此结合为最终特征</strong>的方法。<br>第$l$层的插值点$x$的特征为：</p>
+<blockquote>
+<p>$f^(l)(x) =\frac{ \sum_{i=1}^3 w_i(x) f^(l)<br>(x_i)}{\sum_{i=1}^3w_i(x)}$</p>
+</blockquote>
+<p>其中，$w_i(x)=\frac{1}{d(x, x_i)}$，是距离的倒数。$x_1$,$x_2$,$x_3$是$x$在$l$层上最近的3个邻居。<br>然后用1x1卷积将不同级别的插值减少到相同的维度，再将各层次的特征连接到一起，作为该点的点嵌入特征$f$。</p>
+<h4 id="Feature-Expansion"><a href="#Feature-Expansion" class="headerlink" title="Feature Expansion"></a>Feature Expansion</h4><p>我们需要扩展特征空间中特征的个数，这可以看作是扩展点的数量，因为点和特征是可以互换的。图像相关任务中的特征上采样通常用<strong>反卷积</strong>或者<strong>插值</strong>的方法，但用在无序不规则的点云数据上并不合适。<br>因此本文提出了一种<strong>基于子像素卷积层的特征扩展</strong>方法：</p>
+<blockquote>
+<p>$f’ = RS([C_1^2(C_1^1(f)), …, C_r^2(C_r^1(f))])$</p>
+</blockquote>
+<p>其中，$C_i^1(·)$和$C_i^2(·)$是两个1x1卷积的集合，$RS(·)$是一个reshape操作。<br>$N$为输入点的数量，$\tilde{C}$为特征的维度，目标得到$rN$个特征，$r$为上采样率。将$N\times \tilde{C}$扩展到$rN \times \tilde{C}$，然后通过两个各点独立的$1 \times 1$的卷积核，得到$rN \times \tilde{C_2}$的张量。</p>
+<p>由于$C_i^1(·)$生成的点集之间相关性可能太高，会导致重建的点之间太近，我们对每个特征集合增加一个卷积层，训练网络去学习这r个不同的卷积。当然也可以用其他更加高效的组卷积方式实现（如AlexNet，ResNeXt，Shufflenet等）。</p>
+<h4 id="Coordinate-Reconstruction"><a href="#Coordinate-Reconstruction" class="headerlink" title="Coordinate Reconstruction"></a>Coordinate Reconstruction</h4><p>通过一系列全连接层将每个点扩展特征$rN \times C_2$重建成的点坐标$rN \times 3$。</p>
+<h3 id="联合损失函数"><a href="#联合损失函数" class="headerlink" title="联合损失函数"></a>联合损失函数</h3><p>结合<strong>重建损失Reconstruction loss</strong>和<strong>排斥损失Repulsion loss</strong>建立了联合损失函数。</p>
+<h4 id="Reconstruction-loss"><a href="#Reconstruction-loss" class="headerlink" title="Reconstruction loss"></a>Reconstruction loss</h4><p>为了将点放在潜在的物体表面上，我们建议使用<strong>Earth Mover’s distance( EMD)</strong> 作为我们的重建损失，来评估预测点云$S_{pred} ⊆R^3$和实际点云$S_{groundtruth} ⊆R^3$之间的相似性:<br><img src="/images/PUNet_4.png" alt=""><br>其中$f$为映射$S_{pred}\rightarrow S_{groundtruth}$。</p>
+<p>实际上，<strong>Chamfer Distance(CD)</strong> 是评估两个点集之间相似性的另一个候选。然而，与CD相比，EMD可以更好地捕捉形状，以鼓励输出点靠近底层物体表面。因此，我们选择在重建损失中使用EMD。</p>
+<h4 id="Repulsion-loss"><a href="#Repulsion-loss" class="headerlink" title="Repulsion loss"></a>Repulsion loss</h4><p>虽然具有重建损失的训练可以在底层物体表面上生成点，但是<strong>生成的点往往位于原始点附近</strong>。为了更均匀地分布生成的点，我们设计了排斥损失Repulsion loss，表示为:<br><img src="/images/PUNet_5.png" alt=""><br>其中$\tilde N = rN$是上采样完了以后的输出点个数，$K(i)$是点$x_i$的K近邻点，$||\bullet ||$代表二范数$\eta(r)=-r$被称为排斥项，它是一个递减的函数，如果$x_i$距离他的K近邻$K(i)$过于接近。<br>为了使$x_i$只有过于接近他的K近邻点的时候才收到惩罚，我们增加了两条约束：<br>i)只考虑点$x_{i&#x27;}$为$x_{i}$的K近邻时的情况；<br>(ii)将快速衰减的权重函$w(r)=e^{-r^2/h^2}$加入排斥损失中。</p>
+<h4 id="Joint-Loss-Function"><a href="#Joint-Loss-Function" class="headerlink" title="Joint Loss Function"></a>Joint Loss Function</h4><p>联合损失函数具有如下的形式：<br>$L(\theta) = L_{rec}+\alpha L_{rep} + \beta ||\theta||^2$<br>其中$\theta$代表整个网络的参数，$\beta ||\theta||^2$为正则化惩罚项。</p>
+<h3 id="模型比较"><a href="#模型比较" class="headerlink" title="模型比较"></a>模型比较</h3><p>为了定量评估输出点集的质量，我们制定了两个度量来测量输出点和ground truth之间的偏差，以及输出点的分布均匀性。</p>
+<ul>
+<li><strong>偏差度量</strong>：为每个预测点$x_i$找到网格上最近的点$\hat x_i$，并计算它们之间的距离。然后，我们计算所有点的平均值和标准偏差。</li>
+<li><strong>均匀性度量</strong>：将D个大小相等的disk随机放在物体表面上，并计算disk内部点数的标准偏差。进一步标准化每个对象的密度，然后计算测试数据集中所有对象上点集的整体均匀性。<br><img src="/images/PUNet_2.png" alt="度量公式"><br>因此，将<strong>标准化均匀系数normalized uniformity coefficient(NUC)</strong>与disk面积百分比$p$定义为:<br><img src="/images/PUNet_3.png" alt="实验结果"><br>NUC数值越小，表示点分布越均匀。</li>
+</ul>
+
+        </div>
+        
+        <div class="level is-size-7 is-uppercase">
+            <div class="level-start">
+                <div class="level-item">
+                    <span class="is-size-6 has-text-grey has-mr-7">#</span>
+                    <a class="has-link-grey -link" href="/tags/note/">note</a>, <a class="has-link-grey -link" href="/tags/point-cloud/">point cloud</a>
+                </div>
+            </div>
+        </div>
+        
+        
+        
+            <p style="padding-bottom: 1rem">
+            <span id="busuanzi_container_page_pv">
+               本文总阅读量<span id="busuanzi_value_page_pv"></span>次
+            </span>
+            </p>
+        
+        
+            <div class="social-share"></div>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/social-share.js@1.0.16/dist/css/share.min.css">
+<script src="https://cdn.jsdelivr.net/npm/social-share.js@1.0.16/dist/js/social-share.min.js"></script>
+            <!-- <div class="share-component" data-disabled="google, twitter, facebook, tencent, douban, linkedin"></div> -->
+        
+    </div>
+</div>
+
+
+
+<div class="card">
+    <div class="card-content">
+        <h3 class="menu-label has-text-centered">Could you buy me a coffee?</h3>
+        <div class="buttons is-centered">
+            
+                
+<a class="button is-success donate">
+    <span class="icon is-small">
+        <i class="fab fa-weixin"></i>
+    </span>
+    <span>微信</span>
+    <div class="qrcode"><img src="https://s1.ax1x.com/2018/12/30/FfHzNV.png" alt="微信"></div>
+</a>
+
+                
+                
+<a class="button is-info donate">
+    <span class="icon is-small">
+        <i class="fab fa-alipay"></i>
+    </span>
+    <span>支付宝</span>
+    <div class="qrcode"><img src="https://s1.ax1x.com/2018/12/30/FfbShT.jpg" alt="支付宝"></div>
+</a>
+
+                
+        </div>
+    </div>
+</div>
+
+
+
+<div class="card card-transparent">
+    <div class="level post-navigation is-flex-wrap is-mobile">
+        
+        
+        <div class="level-end">
+            <a class="level level-item has-link-grey  article-nav-next" href="/2019/10/27/A-CNN论文笔记/">
+                <span class="level-item">A-CNN点云的环形卷积神经网络论文笔记</span>
+                <i class="level-item fas fa-chevron-right"></i>
+            </a>
+        </div>
+        
+    </div>
+</div>
+
+
+
+<div class="card">
+    <div class="card-content">
+        <h3 class="title is-5 has-text-weight-normal">评论</h3>
+        
+<div id="valine-thread"></div>
+<script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+<script src="//unpkg.com/valine/dist/Valine.min.js"></script>
+<script>
+    new Valine({
+        el: '#valine-thread' ,
+        notify: false,
+        verify: false,
+        app_id: 'TDJ1Xwg60guxsxnHXWGYVzaR-gzGzoHsz',
+        app_key: 'gqw5MJGTDfaMQA0JRsBllBAG',
+        placeholder: 'ヾﾉ≧∀≦)o来啊，快活啊!'
+    });
+</script>
+
+    </div>
+</div>
+
+</div>
+                 
+                    
+
+
+
+
+<div class="column is-4-tablet is-4-desktop is-3-widescreen  has-order-1 column-left ">
+    
+    <!-- 
+        
+            
+            
+<div class="card widget">
+    <div class="card-content">
+        <nav class="level">
+            <div class="level-item has-text-centered">
+                <div>
+                    <img class="image is-128x128 has-mb-6" src="https://i.loli.net/2019/01/07/5c336be8ba185.jpg" alt="菁菁">
+                    
+                    <p class="is-size-4 is-block">
+                        菁菁
+                    </p>
+                    
+                    
+                    <p class="is-size-6 is-block">
+                        做什么都是因为喜欢
+                    </p>
+                    
+                    
+                    <p class="is-size-6 is-flex is-flex-center has-text-grey">
+                        <i class="fas fa-map-marker-alt has-mr-7"></i>
+                        <span>Shanghai, China</span>
+                    </p>
+                    
+                </div>
+            </div>
+        </nav>
+        <nav class="level is-mobile">
+            <div class="level-item has-text-centered is-marginless">
+                <div>
+                    <p class="heading">
+                        文章
+                    </p>
+                    <p class="title has-text-weight-normal">
+                        25
+                    </p>
+                </div>
+            </div>
+            <div class="level-item has-text-centered is-marginless">
+                <div>
+                    <p class="heading">
+                        分类
+                    </p>
+                    <p class="title has-text-weight-normal">
+                        18
+                    </p>
+                </div>
+            </div>
+            <div class="level-item has-text-centered is-marginless">
+                <div>
+                    <p class="heading">
+                        标签
+                    </p>
+                    <p class="title has-text-weight-normal">
+                        28
+                    </p>
+                </div>
+            </div>
+        </nav>
+        <div class="level">
+            <a class="level-item button is-link is-rounded" href="http://github.com/Angericky">
+                关注我</a>
+        </div>
+        
+        
+        <div class="level is-mobile">
+            
+            <a class="level-item button is-white is-marginless" target="_blank" title="Github" href="http://github.com/Angericky">
+                
+                <i class="fab fa-github"></i>
+                
+            </a>
+            
+            <a class="level-item button is-white is-marginless" target="_blank" title="Weibo" href="https://weibo.com/1995427305/profile?topnav=1&amp;wvr=6">
+                
+                <i class="fab fa-weibo"></i>
+                
+            </a>
+            
+        </div>
+        
+    </div>
+</div>
+        
+    
+            
+    
+            
+    
+            
+     -->
+    
+        <div class="column-right-shadow  ">
+            
+                
+            
+                
+<div class="card widget">
+    <div class="card-content">
+        <h3 class="menu-label">
+            最新文章
+        </h3>
+        
+        <article class="media">
+            
+            <a href="/2019/10/31/PU-Net点云上采样网络论文笔记/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="/images/penguin.jpeg" alt="PU-Net点云上采样网络论文笔记">
+                </p>
+            </a> 
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-10-31T14:04:48.000Z">2019-10-31</time></div>
+                    <a href="/2019/10/31/PU-Net点云上采样网络论文笔记/" class="has-link-black-ter is-size-6">PU-Net点云上采样网络论文笔记</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/point-cloud/">point cloud</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
+            <a href="/2019/10/27/A-CNN论文笔记/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="/images/halloween.jpg" alt="A-CNN点云的环形卷积神经网络论文笔记">
+                </p>
+            </a> 
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-10-27T15:49:53.000Z">2019-10-27</time></div>
+                    <a href="/2019/10/27/A-CNN论文笔记/" class="has-link-black-ter is-size-6">A-CNN点云的环形卷积神经网络论文笔记</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/point-cloud/">point cloud</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
+            <a href="/2019/10/22/PointNet家族论文笔记/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="/images/autumn_cat.jpg" alt="PointNet家族论文笔记">
+                </p>
+            </a> 
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-10-22T15:09:46.000Z">2019-10-22</time></div>
+                    <a href="/2019/10/22/PointNet家族论文笔记/" class="has-link-black-ter is-size-6">PointNet家族论文笔记</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/point-cloud/">point cloud</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
+            <a href="/2019/10/18/All-this-I-did-without-you/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="/images/sunset.jpg" alt="A letter from Gerald Durrell 《All this I did without you》">
+                </p>
+            </a> 
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-10-17T16:33:53.000Z">2019-10-18</time></div>
+                    <a href="/2019/10/18/All-this-I-did-without-you/" class="has-link-black-ter is-size-6">A letter from Gerald Durrell 《All this I did without you》</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/life/">life</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
+            <a href="/2019/09/17/【笔记】深度学习在3D点云处理中的探索/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="/images/rabbit.png" alt="深度学习在3D点云处理中的探索【笔记】">
+                </p>
+            </a> 
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-09-17T15:21:56.000Z">2019-09-17</time></div>
+                    <a href="/2019/09/17/【笔记】深度学习在3D点云处理中的探索/" class="has-link-black-ter is-size-6">深度学习在3D点云处理中的探索【笔记】</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/point-cloud/">point cloud</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+    </div>
+</div>
+
+            
+                <div class="card widget">
+    <div class="card-content">
+        <div class="menu">
+        <h3 class="menu-label">
+            归档
+        </h3>
+        <ul class="menu-list">
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2019/10/">
+                <span class="level-start">
+                    <span class="level-item">十月 2019</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">4</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2019/09/">
+                <span class="level-start">
+                    <span class="level-item">九月 2019</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">1</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2019/05/">
+                <span class="level-start">
+                    <span class="level-item">五月 2019</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">2</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2019/04/">
+                <span class="level-start">
+                    <span class="level-item">四月 2019</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">2</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2019/03/">
+                <span class="level-start">
+                    <span class="level-item">三月 2019</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">5</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2019/02/">
+                <span class="level-start">
+                    <span class="level-item">二月 2019</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">2</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2019/01/">
+                <span class="level-start">
+                    <span class="level-item">一月 2019</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">3</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2018/12/">
+                <span class="level-start">
+                    <span class="level-item">十二月 2018</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">6</span>
+                </span>
+            </a>
+        </li>
+        
+        </ul>
+        </div>
+    </div>
+</div>
+            
+                <!-- <div class="card widget">
+    
+    <div class="card-content">
+        <div class="menu">
+            <h3 class="menu-label">
+                标签
+            </h3>
+            <ul class="menu-list">
+                
+                <li>
+                    <a class="level is-marginless" href="/tags/Front-end/">
+                        <span class="level-start">
+                            <span class="level-item">Front-end</span>
+                        </span>
+                        <span class="level-end">
+                            <span class="level-item tag">1</span>
+                        </span>
+                    </a>
+                </li>
+                
+                <li>
+                    <a class="level is-marginless" href="/tags/algorithm/">
+                        <span class="level-start">
+                            <span class="level-item">algorithm</span>
+                        </span>
+                        <span class="level-end">
+                            <span class="level-item tag">2</span>
+                        </span>
+                    </a>
+                </li>
+                
+                <li>
+                    <a class="level is-marginless" href="/tags/caffe/">
+                        <span class="level-start">
+                            <span class="level-item">caffe</span>
+                        </span>
+                        <span class="level-end">
+                            <span class="level-item tag">1</span>
+                        </span>
+                    </a>
+                </li>
+                
+                <li>
+                    <a class="level is-marginless" href="/tags/css/">
+                        <span class="level-start">
+                            <span class="level-item">css</span>
+                        </span>
+                        <span class="level-end">
+                            <span class="level-item tag">1</span>
+                        </span>
+                    </a>
+                </li>
+                
+                <li>
+                    <a class="level is-marginless" href="/tags/dp/">
+                        <span class="level-start">
+                            <span class="level-item">dp</span>
+                        </span>
+                        <span class="level-end">
+                            <span class="level-item tag">1</span>
+                        </span>
+                    </a>
+                </li>
+                
+                <li>
+                    <a class="level is-marginless" href="/tags/ejs/">
+                        <span class="level-start">
+                            <span class="level-item">ejs</span>
+                        </span>
+                        <span class="level-end">
+                            <span class="level-item tag">1</span>
+                        </span>
+                    </a>
+                </li>
+                
+                <li>
+                    <a class="level is-marginless" href="/tags/git/">
+                        <span class="level-start">
+                            <span class="level-item">git</span>
+                        </span>
+                        <span class="level-end">
+                            <span class="level-item tag">2</span>
+                        </span>
+                    </a>
+                </li>
+                
+                <li>
+                    <a class="level is-marginless" href="/tags/google/">
+                        <span class="level-start">
+                            <span class="level-item">google</span>
+                        </span>
+                        <span class="level-end">
+                            <span class="level-item tag">1</span>
+                        </span>
+                    </a>
+                </li>
+                
+                <li>
+                    <a class="level is-marginless" href="/tags/hackathon/">
+                        <span class="level-start">
+                            <span class="level-item">hackathon</span>
+                        </span>
+                        <span class="level-end">
+                            <span class="level-item tag">1</span>
+                        </span>
+                    </a>
+                </li>
+                
+                <li>
+                    <a class="level is-marginless" href="/tags/hexo/">
+                        <span class="level-start">
+                            <span class="level-item">hexo</span>
+                        </span>
+                        <span class="level-end">
+                            <span class="level-item tag">3</span>
+                        </span>
+                    </a>
+                </li>
+                
+                <li>
+                    <a class="level is-marginless" href="/tags/icarus/">
+                        <span class="level-start">
+                            <span class="level-item">icarus</span>
+                        </span>
+                        <span class="level-end">
+                            <span class="level-item tag">2</span>
+                        </span>
+                    </a>
+                </li>
+                
+                <li>
+                    <a class="level is-marginless" href="/tags/keyboard-accelerators/">
+                        <span class="level-start">
+                            <span class="level-item">keyboard accelerators</span>
+                        </span>
+                        <span class="level-end">
+                            <span class="level-item tag">1</span>
+                        </span>
+                    </a>
+                </li>
+                
+                <li>
+                    <a class="level is-marginless" href="/tags/leetcode/">
+                        <span class="level-start">
+                            <span class="level-item">leetcode</span>
+                        </span>
+                        <span class="level-end">
+                            <span class="level-item tag">1</span>
+                        </span>
+                    </a>
+                </li>
+                
+                <li>
+                    <a class="level is-marginless" href="/tags/life/">
+                        <span class="level-start">
+                            <span class="level-item">life</span>
+                        </span>
+                        <span class="level-end">
+                            <span class="level-item tag">1</span>
+                        </span>
+                    </a>
+                </li>
+                
+                <li>
+                    <a class="level is-marginless" href="/tags/markdown/">
+                        <span class="level-start">
+                            <span class="level-item">markdown</span>
+                        </span>
+                        <span class="level-end">
+                            <span class="level-item tag">1</span>
+                        </span>
+                    </a>
+                </li>
+                
+                <li>
+                    <a class="level is-marginless" href="/tags/matlab/">
+                        <span class="level-start">
+                            <span class="level-item">matlab</span>
+                        </span>
+                        <span class="level-end">
+                            <span class="level-item tag">1</span>
+                        </span>
+                    </a>
+                </li>
+                
+                <li>
+                    <a class="level is-marginless" href="/tags/nodejs/">
+                        <span class="level-start">
+                            <span class="level-item">nodejs</span>
+                        </span>
+                        <span class="level-end">
+                            <span class="level-item tag">1</span>
+                        </span>
+                    </a>
+                </li>
+                
+                <li>
+                    <a class="level is-marginless" href="/tags/note/">
+                        <span class="level-start">
+                            <span class="level-item">note</span>
+                        </span>
+                        <span class="level-end">
+                            <span class="level-item tag">4</span>
+                        </span>
+                    </a>
+                </li>
+                
+                <li>
+                    <a class="level is-marginless" href="/tags/point-cloud/">
+                        <span class="level-start">
+                            <span class="level-item">point cloud</span>
+                        </span>
+                        <span class="level-end">
+                            <span class="level-item tag">4</span>
+                        </span>
+                    </a>
+                </li>
+                
+                <li>
+                    <a class="level is-marginless" href="/tags/pointnet/">
+                        <span class="level-start">
+                            <span class="level-item">pointnet</span>
+                        </span>
+                        <span class="level-end">
+                            <span class="level-item tag">2</span>
+                        </span>
+                    </a>
+                </li>
+                
+                <li>
+                    <a class="level is-marginless" href="/tags/presentation/">
+                        <span class="level-start">
+                            <span class="level-item">presentation</span>
+                        </span>
+                        <span class="level-end">
+                            <span class="level-item tag">1</span>
+                        </span>
+                    </a>
+                </li>
+                
+                <li>
+                    <a class="level is-marginless" href="/tags/process/">
+                        <span class="level-start">
+                            <span class="level-item">process</span>
+                        </span>
+                        <span class="level-end">
+                            <span class="level-item tag">1</span>
+                        </span>
+                    </a>
+                </li>
+                
+                <li>
+                    <a class="level is-marginless" href="/tags/stylus/">
+                        <span class="level-start">
+                            <span class="level-item">stylus</span>
+                        </span>
+                        <span class="level-end">
+                            <span class="level-item tag">1</span>
+                        </span>
+                    </a>
+                </li>
+                
+                <li>
+                    <a class="level is-marginless" href="/tags/talk/">
+                        <span class="level-start">
+                            <span class="level-item">talk</span>
+                        </span>
+                        <span class="level-end">
+                            <span class="level-item tag">1</span>
+                        </span>
+                    </a>
+                </li>
+                
+                <li>
+                    <a class="level is-marginless" href="/tags/vue/">
+                        <span class="level-start">
+                            <span class="level-item">vue</span>
+                        </span>
+                        <span class="level-end">
+                            <span class="level-item tag">2</span>
+                        </span>
+                    </a>
+                </li>
+                
+                <li>
+                    <a class="level is-marginless" href="/tags/学习计划/">
+                        <span class="level-start">
+                            <span class="level-item">学习计划</span>
+                        </span>
+                        <span class="level-end">
+                            <span class="level-item tag">1</span>
+                        </span>
+                    </a>
+                </li>
+                
+                <li>
+                    <a class="level is-marginless" href="/tags/设计模式/">
+                        <span class="level-start">
+                            <span class="level-item">设计模式</span>
+                        </span>
+                        <span class="level-end">
+                            <span class="level-item tag">1</span>
+                        </span>
+                    </a>
+                </li>
+                
+                <li>
+                    <a class="level is-marginless" href="/tags/面向对象/">
+                        <span class="level-start">
+                            <span class="level-item">面向对象</span>
+                        </span>
+                        <span class="level-end">
+                            <span class="level-item tag">1</span>
+                        </span>
+                    </a>
+                </li>
+                
+            </ul>
+        </div>
+    </div>
+</div> -->
+            
+        </div>
+    
+    
+</div>
+
+                
+            </div>
+        </div>
+    </section>
+    <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js">
+</script>
+
+<footer class="footer">
+    <div class="container">
+        <div class="level">
+            <div class="level-start has-text-centered-mobile">
+                <a class="footer-logo is-block has-mb-6" href="/">
+                
+                    <img src="https://i.loli.net/2019/01/07/5c336be858b4e.jpg" alt="PU-Net点云上采样网络论文笔记" height="28">
+                
+                </a>
+                <p class="is-size-7" style="padding-bottom: 0.5em">
+                    <span id="busuanzi_container_site_pv">
+                        本站总访问量<span id="busuanzi_value_site_pv"></span>次
+                    </span>
+                    <span id="busuanzi_container_site_uv">
+                      &nbsp;&nbsp;&nbsp;本站访客数<span id="busuanzi_value_site_uv"></span>人次
+                    </span>
+                    <span id="timeDate" class="is-size-7">&nbsp;&nbsp;&nbsp;载入天数...</span>
+                    <span id="times" class="is-size-7">&nbsp;&nbsp;&nbsp;载入时分秒...</span>
+                </p>
+                <p class="is-size-7">
+                &copy; 2019 赵菁菁&nbsp;
+                Powered by <a href="http://hexo.io/" target="_blank">Hexo</a> & <a href="http://github.com/ppoffice/hexo-theme-icarus">Icarus</a>
+                </p>
+                <script>
+                    var now = new Date(); 
+                    function createtime() { 
+                        var grt= new Date("12/22/2018 16:49:00");//此处修改你的建站时间或者网站上线时间 
+                        now.setTime(now.getTime()+250); 
+                        days = (now - grt ) / 1000 / 60 / 60 / 24; dnum = Math.floor(days); 
+                        hours = (now - grt ) / 1000 / 60 / 60 - (24 * dnum); hnum = Math.floor(hours); 
+                        if(String(hnum).length ==1 ){hnum = "0" + hnum;} minutes = (now - grt ) / 1000 /60 - (24 * 60 * dnum) - (60 * hnum); 
+                        mnum = Math.floor(minutes); if(String(mnum).length ==1 ){mnum = "0" + mnum;} 
+                        seconds = (now - grt ) / 1000 - (24 * 60 * 60 * dnum) - (60 * 60 * hnum) - (60 * mnum); 
+                        snum = Math.round(seconds); if(String(snum).length ==1 ){snum = "0" + snum;} 
+                        document.getElementById("timeDate").innerHTML = "&nbsp;&nbsp;&nbsp;"+"本站已安全运行 "+dnum+" 天 "; 
+                        document.getElementById("times").innerHTML = hnum + " 小时 " + mnum + " 分 " + snum + " 秒"; 
+                    } 
+                setInterval("createtime()",250);
+                </script>
+            </div>
+            <div class="level-end">
+            
+                <div class="field has-addons is-flex-center-mobile has-mt-5-mobile is-flex-wrap is-flex-middle">
+                
+                
+                <p class="control">
+                    <a class="button is-white is-large" target="_blank" title="Creative Commons" href="https://creativecommons.org/">
+                        
+                        <i class="fab fa-creative-commons"></i>
+                        
+                    </a>
+                </p>
+                
+                <p class="control">
+                    <a class="button is-white is-large" target="_blank" title="Attribution 4.0 International" href="https://creativecommons.org/licenses/by/4.0/">
+                        
+                        <i class="fab fa-creative-commons-by"></i>
+                        
+                    </a>
+                </p>
+                
+                <p class="control">
+                    <a class="button is-white is-large" target="_blank" title="Download on GitHub" href="http://github.com/ppoffice/hexo-theme-icarus">
+                        
+                        <i class="fab fa-github"></i>
+                        
+                    </a>
+                </p>
+                
+                </div>
+            
+            </div>
+        </div>
+    </div>
+</footer>
+    <script src="https://cdn.jsdelivr.net/npm/jquery@3.3.1/dist/jquery.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/moment@2.22.2/min/moment-with-locales.min.js"></script>
+<script>moment.locale("zh-CN");</script>
+
+
+    
+    
+    
+    <script src="/js/animation.js"></script>
+    
+
+    
+    
+    
+    <script src="https://cdn.jsdelivr.net/npm/lightgallery@1.6.8/dist/js/lightgallery.min.js" defer></script>
+    <script src="https://cdn.jsdelivr.net/npm/justifiedGallery@3.7.0/dist/js/jquery.justifiedGallery.min.js" defer></script>
+    <script src="/js/gallery.js" defer></script>
+    
+
+    
+    
+
+<div id="outdated">
+    <h6>Your browser is out-of-date!</h6>
+    <p>Update your browser to view this website correctly. <a id="btnUpdateBrowser" href="http://outdatedbrowser.com/">Update
+            my browser now </a></p>
+    <p class="last"><a href="#" id="btnCloseUpdateBrowser" title="Close">&times;</a></p>
+</div>
+<script src="https://cdn.jsdelivr.net/npm/outdatedbrowser@1.1.5/outdatedbrowser/outdatedbrowser.min.js" defer></script>
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
+        outdatedBrowser({
+            bgColor: '#f25648',
+            color: '#ffffff',
+            lowerThan: 'flex'
+        });
+    });
+</script>
+
+
+    
+    
+<script src="https://cdn.jsdelivr.net/npm/mathjax@2.7.5/unpacked/MathJax.js?config=TeX-MML-AM_CHTML" defer></script>
+<script>
+document.addEventListener('DOMContentLoaded', function () {
+    MathJax.Hub.Config({
+        'HTML-CSS': {matchFontHeight: false},
+        SVG: {matchFontHeight: false},
+        CommonHTML: {matchFontHeight: false}
+    });
+});
+</script>
+
+    
+    
+
+<a id="back-to-top" title="回到顶端" href="javascript:;">
+    <i class="fas fa-chevron-up"></i>
+</a>
+<script src="/js/back-to-top.js" defer></script>
+
+
+    
+    
+
+    
+    
+    
+    
+
+    
+    
+    
+
+
+<script src="/js/main.js" defer></script>
+
+    
+    <div class="searchbox ins-search">
+    <div class="searchbox-container ins-search-container">
+        <div class="searchbox-input-wrapper">
+            <input type="text" class="searchbox-input ins-search-input" placeholder="想要查找什么...">
+            <span class="searchbox-close ins-close ins-selectable"><i class="fa fa-times-circle"></i></span>
+        </div>
+        <div class="searchbox-result-wrapper ins-section-wrapper">
+            <div class="ins-section-container"></div>
+        </div>
+    </div>
+</div>
+<script>
+    (function (window) {
+        var INSIGHT_CONFIG = {
+            TRANSLATION: {
+                POSTS: '文章',
+                PAGES: '页面',
+                CATEGORIES: '分类',
+                TAGS: '标签',
+                UNTITLED: '(无标题)',
+            },
+            CONTENT_URL: '/content.json',
+        };
+        window.INSIGHT_CONFIG = INSIGHT_CONFIG;
+    })(window);
+</script>
+<script src="/js/insight.js" defer></script>
+<link rel="stylesheet" href="/css/search.css">
+<link rel="stylesheet" href="/css/insight.css">
+    
+<script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"log":false,"pluginJsPath":"lib/","pluginModelPath":"assets/","pluginRootPath":"live2dw/","tagMode":false});</script><!-- hexo-inject:begin --><!-- Begin: Injected MathJax -->
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({"tex2jax":{"inlineMath":[["$","$"],["\\(","\\)"]],"skipTags":["script","noscript","style","textarea","pre","code"],"processEscapes":true},"TeX":{"equationNumbers":{"autoNumber":"AMS"}}});
+</script>
+
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax(), i;
+    for(i=0; i < all.length; i += 1) {
+      all[i].SourceElement().parentNode.className += ' has-jax';
+    }
+  });
+</script>
+
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js">
+</script>
+<!-- End: Injected MathJax -->
+<!-- hexo-inject:end --></body>
+</html>
