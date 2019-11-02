@@ -18,11 +18,9 @@
 <meta property="og:description" content="《PU-Net: Point Cloud Upsampling Network》的论文笔记。">
 <meta property="og:locale" content="zh-CN">
 <meta property="og:image" content="http://angericky.github.io/images/PUNet_1.png">
-<meta property="og:image" content="http://angericky.github.io/images/PUNet_4.png">
-<meta property="og:image" content="http://angericky.github.io/images/PUNet_5.png">
 <meta property="og:image" content="http://angericky.github.io/images/PUNet_2.png">
 <meta property="og:image" content="http://angericky.github.io/images/PUNet_3.png">
-<meta property="og:updated_time" content="2019-11-02T15:33:39.950Z">
+<meta property="og:updated_time" content="2019-11-02T16:30:10.069Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="PU-Net点云上采样网络论文笔记">
 <meta name="twitter:description" content="《PU-Net: Point Cloud Upsampling Network》的论文笔记。">
@@ -169,7 +167,7 @@
                 <time class="level-item has-text-grey" datetime="2019-10-31T14:04:48.000Z">2019-10-31</time>
                 
                     <i class="fas fa-calendar-check">&nbsp</i>
-                    <time class="level-item has-text-grey" datetime="2019-11-02T15:33:39.950Z">2019-11-02</time>
+                    <time class="level-item has-text-grey" datetime="2019-11-02T16:30:10.069Z">2019-11-03</time>
                 
                 
                 <i class="fas fa-book">&nbsp</i>
@@ -212,23 +210,42 @@
 <h3 id="网络设计"><a href="#网络设计" class="headerlink" title="网络设计"></a>网络设计</h3><p><img src="/images/PUNet_1.png" alt="PU-Net网络结构"></p>
 <p>网络结构分为四块：<strong>小块提取Patch Extraction</strong>、<strong>点特征嵌入Point Feature Embedding</strong>、<strong>特征扩展Feature Expansion</strong>和<strong>坐标重建Coordinate Reconstruction</strong>。<br>首先，从给定的一组先前的3D模型种提取不同规模和分布的点补丁。<br>然后，点特征嵌入通过层次特征学习和多级特征聚集，将原始3D坐标映射到特征空间。<br>之后扩展特征的个数，并且通过一系列全连接层重建输出点云的3D坐标。</p>
 <h4 id="Patch-Extraction"><a href="#Patch-Extraction" class="headerlink" title="Patch Extraction"></a>Patch Extraction</h4><p>为了让网络从对象中学习局部几何图形，本工作用<strong>基于小块（patch）的方法</strong>训练网络和学习几何语义。<br>因此我们先收集一组有各种各样形状的3D对象作为<strong>先验信息</strong>，随机选择这些物体表面的M个点，然后指定一个测地距d，将每个中心点的d范围内的所有点作为一个patch，然后用泊松分布在每个中心点上随机采样N_hat个点，将采样点作为ground truth。用不同大小的d形成不同尺度、不同密度的patch。</p>
-<h4 id="Point-Feature-Embedding"><a href="#Point-Feature-Embedding" class="headerlink" title="Point Feature Embedding"></a>Point Feature Embedding</h4><p>同时采用了层次特征学习<strong>Hierarchical feature learning</strong>和多级特征聚合<strong>Multi-level feature aggregation</strong>两种特征学习策略。<br>如图所示，先用<a href="https://angericky.github.io/2019/10/22/PointNet%E5%AE%B6%E6%97%8F%E8%AE%BA%E6%96%87%E7%AC%94%E8%AE%B0/">PointNet++</a>里的Hierarchical feature learning方法捕捉到不同尺度的特征，但是这里为了保留更多局部细节特征，采取比较小的grouping分组半径。<br>然后用Multi-level feature aggregation集合特征。一些先前工作用了skip-connections的结构去做多级特征聚合，而本文发现该结构对于自顶向下的广播不是很高效。在根据网络中的低层更能反映小规模局部特征，本文提出了<strong>让网络学习不同层次的特征重要性，以此结合为最终特征</strong>的方法。<br>第$l$层的插值点$x$的特征为：</p>
+<h4 id="Point-Feature-Embedding"><a href="#Point-Feature-Embedding" class="headerlink" title="Point Feature Embedding"></a>Point Feature Embedding</h4><p>同时采用了层次特征学习<strong>Hierarchical feature learning</strong>和多级特征聚合<strong>Multi-level feature aggregation</strong>两种特征学习策略。<br>如图所示，先用<a href="https://angericky.github.io/2019/10/22/PointNet%E5%AE%B6%E6%97%8F%E8%AE%BA%E6%96%87%E7%AC%94%E8%AE%B0/">PointNet++</a>里的Hierarchical feature learning方法捕捉到不同尺度的特征，但是这里为了保留更多局部细节特征，采取比较小的grouping分组半径。<br>然后用Multi-level feature aggregation集合特征。一些先前工作用了skip-connections的结构去做多级特征聚合，而本文发现该结构对于自顶向下的广播不是很高效。在根据网络中的低层更能反映小规模局部特征，本文提出了<strong>让网络学习不同层次的特征重要性，以此结合为最终特征</strong>的方法。<br>第<script type="math/tex">l</script>层的插值点<script type="math/tex">x</script>的特征为：</p>
 <script type="math/tex; mode=display">f^(l)(x) =\frac{ \sum_{i=1}^3 w_i(x) f^(l)
-(x_i)}{\sum_{i=1}^3w_i(x)}</script><p>其中，<script type="math/tex">w_i(x)=\frac{1}{d(x, x_i)}</script>，是距离的倒数。<script type="math/tex">x_1</script>,<script type="math/tex">x_2</script>,<script type="math/tex">x_3</script>是<script type="math/tex">x</script>在<script type="math/tex">l</script>层上最近的3个邻居。<br>然后用1x1卷积将不同级别的插值减少到相同的维度，再将各层次的特征连接到一起，作为该点的点嵌入特征$f$。</p>
+(x_i)}{\sum_{i=1}^3w_i(x)}</script><p>其中，<script type="math/tex">w_i(x)=\frac{1}{d(x, x_i)}</script>，是距离的倒数。<script type="math/tex">x_1</script>,<script type="math/tex">x_2</script>,<script type="math/tex">x_3</script>是<script type="math/tex">x</script>在<script type="math/tex">l</script>层上最近的3个邻居。<br>然后用1x1卷积将不同级别的插值减少到相同的维度，再将各层次的特征连接到一起，作为该点的点嵌入特征<script type="math/tex">f</script>。</p>
 <h4 id="Feature-Expansion"><a href="#Feature-Expansion" class="headerlink" title="Feature Expansion"></a>Feature Expansion</h4><p>我们需要扩展特征空间中特征的个数，这可以看作是扩展点的数量，因为点和特征是可以互换的。图像相关任务中的特征上采样通常用<strong>反卷积</strong>或者<strong>插值</strong>的方法，但用在无序不规则的点云数据上并不合适。<br>因此本文提出了一种<strong>基于子像素卷积层的特征扩展</strong>方法：</p>
-<script type="math/tex; mode=display">f' = RS([C_1^2(C_1^1(f)), ..., C_r^2(C_r^1(f))])</script><p>其中，<script type="math/tex">C_i^1(·)</script>和<script type="math/tex">C_i^2(·)</script>是两个1x1卷积的集合，<script type="math/tex">RS(·)</script>是一个reshape操作。<script type="math/tex">N</script>为输入点的数量，<script type="math/tex">\tilde{C}</script>为特征的维度，目标得到<script type="math/tex">rN</script>个特征，<script type="math/tex">r</script>为上采样率。将<script type="math/tex">N\times \tilde{C}</script>扩展到<script type="math/tex">rN \times \tilde{C}</script>，然后通过两个各点独立的<script type="math/tex">1 \times 1</script>的卷积核，得到<script type="math/tex">rN \times \tilde{C_2}</script>的张量。</p>
-<p>由于<script type="math/tex">C_i^1(·)</script>生成的点集之间相关性可能太高，会导致重建的点之间太近，我们对每个特征集合增加一个卷积层，训练网络去学习这r个不同的卷积。当然也可以用其他更加高效的组卷积方式实现（如AlexNet，ResNeXt，Shufflenet等）。</p>
-<h4 id="Coordinate-Reconstruction"><a href="#Coordinate-Reconstruction" class="headerlink" title="Coordinate Reconstruction"></a>Coordinate Reconstruction</h4><p>通过一系列全连接层将每个点扩展特征<script type="math/tex">rN \times C_2</script>重建成的点坐标<script type="math/tex">rN \times 3</script>。</p>
-<h3 id="联合损失函数"><a href="#联合损失函数" class="headerlink" title="联合损失函数"></a>联合损失函数</h3><p>结合<strong>重建损失Reconstruction loss</strong>和<strong>排斥损失Repulsion loss</strong>建立了联合损失函数。</p>
-<h4 id="Reconstruction-loss"><a href="#Reconstruction-loss" class="headerlink" title="Reconstruction loss"></a>Reconstruction loss</h4><p>为了将点放在潜在的物体表面上，我们建议使用<strong>Earth Mover’s distance( EMD)</strong> 作为我们的重建损失，来评估预测点云<script type="math/tex">S_{pred} ⊆R^3</script>和实际点云<script type="math/tex">S_{groundtruth} ⊆R^3</script>之间的相似性:<br><img src="/images/PUNet_4.png" alt=""><br>其中<script type="math/tex">f</script>为映射<script type="math/tex">S_{pred}\rightarrow S_{groundtruth}</script>。</p>
-<p>实际上，<strong>Chamfer Distance(CD)</strong> 是评估两个点集之间相似性的另一个候选。然而，与CD相比，EMD可以更好地捕捉形状，以鼓励输出点靠近底层物体表面。因此，我们选择在重建损失中使用EMD。</p>
-<h4 id="Repulsion-loss"><a href="#Repulsion-loss" class="headerlink" title="Repulsion loss"></a>Repulsion loss</h4><p>虽然具有重建损失的训练可以在底层物体表面上生成点，但是<strong>生成的点往往位于原始点附近</strong>。为了更均匀地分布生成的点，我们设计了排斥损失Repulsion loss，表示为:<br><img src="/images/PUNet_5.png" alt=""><br>其中<script type="math/tex">\tilde N = rN</script>是上采样完了以后的输出点个数，<script type="math/tex">K(i)</script>是点<script type="math/tex">x_i</script>的K近邻点，<script type="math/tex">||\bullet ||</script>代表二范数<script type="math/tex">\eta(r)=-r</script>被称为排斥项，它是一个递减的函数，如果<script type="math/tex">x_i</script>距离他的K近邻<script type="math/tex">K(i)</script>过于接近。<br>inline为了使<script type="math/tex">x_i</script>只有过于接近他的K近邻点的时候才收到惩罚，我们增加了两条约束：<br>i)只考虑点<script type="math/tex">x_{i&#x27;}</script>为<script type="math/tex">x_{i}</script>的K近邻时的情况；<br>(ii)将快速衰减的权重函<script type="math/tex">w(r)=e^{-r^2/h^2}</script>加入排斥损失中。</p>
-<h4 id="Joint-Loss-Function"><a href="#Joint-Loss-Function" class="headerlink" title="Joint Loss Function"></a>Joint Loss Function</h4><p>联合损失函数具有如下的形式：</p>
-<script type="math/tex; mode=display">L(\theta) = L_{rec}+\alpha L_{rep} + \beta ||\theta||^2</script><p>其中<script type="math/tex">\theta</script>代表整个网络的参数，<script type="math/tex">\beta ||\theta||^2</script>为正则化惩罚项。</p>
+<script type="math/tex; mode=display">f' = RS([C_1^2(C_1^1(f)), ..., C_r^2(C_r^1(f))])</script><p>其中，<script type="math/tex">C_i^1(·)</script>和<script type="math/tex">C_i^2(·)</script>是两个1x1卷积的集合，<script type="math/tex">RS(·)</script>是一个reshape操作。</p>
+<script type="math/tex; mode=display">N$$为输入点的数量，$$\tilde{C}$$为特征的维度，目标得到$$rN$$个特征，$$r$$为上采样率。将$$N\times \tilde{C}$$扩展到$$rN \times \tilde{C}$$，然后通过两个各点独立的$$1 \times 1$$的卷积核，得到$$rN \times \tilde{C_2}$$的张量。
+
+由于$$C_i^1(·)$$生成的点集之间相关性可能太高，会导致重建的点之间太近，我们对每个特征集合增加一个卷积层，训练网络去学习这r个不同的卷积。当然也可以用其他更加高效的组卷积方式实现（如AlexNet，ResNeXt，Shufflenet等）。
+
+#### Coordinate Reconstruction
+通过一系列全连接层将每个点扩展特征$$rN \times C_2$$重建成的点坐标$$rN \times 3$$。
+
+### 联合损失函数
+结合**重建损失Reconstruction loss**和**排斥损失Repulsion loss**建立了联合损失函数。
+#### Reconstruction loss
+为了将点放在潜在的物体表面上，我们建议使用**Earth Mover’s distance( EMD)** 作为我们的重建损失，来评估预测点云$$S_{pred} ⊆R^3$$和实际点云$$S_{groundtruth} ⊆R^3$$之间的相似性:
+![](/images/PUNet_4.png)
+其中$$f$$为映射$$S_{pred}\rightarrow S_{groundtruth}$$。
+
+实际上，**Chamfer Distance(CD)** 是评估两个点集之间相似性的另一个候选。然而，与CD相比，EMD可以更好地捕捉形状，以鼓励输出点靠近底层物体表面。因此，我们选择在重建损失中使用EMD。
+
+#### Repulsion loss
+虽然具有重建损失的训练可以在底层物体表面上生成点，但是**生成的点往往位于原始点附近**。为了更均匀地分布生成的点，我们设计了排斥损失Repulsion loss，表示为:
+![](/images/PUNet_5.png)
+其中$$\tilde N = rN$$是上采样完了以后的输出点个数，$$K(i)$$是点$$x_i$$的K近邻点，$$||\bullet ||$$代表二范数$$\eta(r)=-r$$被称为排斥项，它是一个递减的函数，如果$$x_i$$距离他的K近邻$$K(i)$$过于接近。
+inline为了使$$x_i$$只有过于接近他的K近邻点的时候才收到惩罚，我们增加了两条约束：
+i)只考虑点$$x_{i&#x27;}$$为$$x_{i}$$的K近邻时的情况；
+(ii)将快速衰减的权重函$$w(r)=e^{-r^2/h^2}$$加入排斥损失中。
+
+#### Joint Loss Function
+联合损失函数具有如下的形式：
+$$L(\theta) = L_{rec}+\alpha L_{rep} + \beta ||\theta||^2</script><p>其中<script type="math/tex">\theta</script>代表整个网络的参数，<script type="math/tex">\beta ||\theta||^2</script>为正则化惩罚项。</p>
 <h3 id="模型比较"><a href="#模型比较" class="headerlink" title="模型比较"></a>模型比较</h3><p>为了定量评估输出点集的质量，我们制定了两个度量来测量输出点和ground truth之间的偏差，以及输出点的分布均匀性。</p>
 <ul>
 <li><strong>偏差度量</strong>：为每个预测点<script type="math/tex">x_i</script>找到网格上最近的点<script type="math/tex">\hat x_i</script>，并计算它们之间的距离。然后，我们计算所有点的平均值和标准偏差。</li>
-<li><strong>均匀性度量</strong>：将D个大小相等的disk随机放在物体表面上，并计算disk内部点数的标准偏差。进一步标准化每个对象的密度，然后计算测试数据集中所有对象上点集的整体均匀性。<br><img src="/images/PUNet_2.png" alt="度量公式"><br>因此，将<strong>标准化均匀系数normalized uniformity coefficient(NUC)</strong>与disk面积百分比$p$定义为:<br><img src="/images/PUNet_3.png" alt="实验结果"><br>NUC数值越小，表示点分布越均匀。</li>
+<li><strong>均匀性度量</strong>：将D个大小相等的disk随机放在物体表面上，并计算disk内部点数的标准偏差。进一步标准化每个对象的密度，然后计算测试数据集中所有对象上点集的整体均匀性。<br><img src="/images/PUNet_2.png" alt="度量公式"><br>因此，将<strong>标准化均匀系数normalized uniformity coefficient(NUC)</strong>与disk面积百分比<script type="math/tex">p</script>定义为:<br><img src="/images/PUNet_3.png" alt="实验结果"><br>NUC数值越小，表示点分布越均匀。</li>
 </ul>
 
         </div>
@@ -1149,21 +1166,5 @@ document.addEventListener('DOMContentLoaded', function () {
 <link rel="stylesheet" href="/css/search.css">
 <link rel="stylesheet" href="/css/insight.css">
     
-<script type="text/x-mathjax-config">
-    MathJax.Hub.Config({
-        tex2jax: {
-            inlineMath: [ ["$","$"], ["\\(","\\)"] ],
-            skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code'],
-            processEscapes: true
-        }
-    });
-    MathJax.Hub.Queue(function() {
-        var all = MathJax.Hub.getAllJax();
-        for (var i = 0; i < all.length; ++i)
-            all[i].SourceElement().parentNode.className += ' has-jax';
-    });
-</script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-MML-AM_CHTML"></script>
-<!--<script src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>-->
 <script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"log":false,"pluginJsPath":"lib/","pluginModelPath":"assets/","pluginRootPath":"live2dw/","tagMode":false});</script><!-- hexo-inject:begin --><!-- hexo-inject:end --></body>
 </html>
