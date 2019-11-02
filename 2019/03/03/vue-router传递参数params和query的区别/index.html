@@ -9,18 +9,18 @@
 
 
 
-    <meta name="description" content="&amp;lt;Excerpt in index | 首页摘要&amp;gt;    如题。">
+    <meta name="description" content="如题。">
 <meta name="keywords" content="vue">
 <meta property="og:type" content="article">
 <meta property="og:title" content="vue-router传递参数params和query的区别">
 <meta property="og:url" content="http://Angericky.github.io/2019/03/03/vue-router传递参数params和query的区别/index.html">
 <meta property="og:site_name" content="Jingjing&#39;s blog">
-<meta property="og:description" content="&amp;lt;Excerpt in index | 首页摘要&amp;gt;    如题。">
+<meta property="og:description" content="如题。">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2019-03-10T12:08:32.303Z">
+<meta property="og:updated_time" content="2019-11-02T13:54:03.909Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="vue-router传递参数params和query的区别">
-<meta name="twitter:description" content="&amp;lt;Excerpt in index | 首页摘要&amp;gt;    如题。">
+<meta name="twitter:description" content="如题。">
 
 
 
@@ -163,7 +163,7 @@
                 <time class="level-item has-text-grey" datetime="2019-03-03T05:51:13.000Z">2019-03-03</time>
                 
                     <i class="fas fa-calendar-check">&nbsp</i>
-                    <time class="level-item has-text-grey" datetime="2019-03-10T12:08:32.303Z">2019-03-10</time>
+                    <time class="level-item has-text-grey" datetime="2019-11-02T13:54:03.909Z">2019-11-02</time>
                 
                 
                 <i class="fas fa-book">&nbsp</i>
@@ -194,12 +194,9 @@
         
         <div class="content">
              
-            <p>&lt;Excerpt in index | 首页摘要&gt;<br>    如题。</p>
-<a id="more"></a>
-<p>&lt;The rest of contents | 余下全文&gt;</p>
+            <p><excerpt in="" index="" |="" 首页摘要=""><br>    如题。<br><a id="more"></a></excerpt></p>
 <h1 id="比较用法"><a href="#比较用法" class="headerlink" title="比较用法"></a>比较用法</h1><h2 id="1-用法"><a href="#1-用法" class="headerlink" title="1. 用法"></a>1. 用法</h2><p>query要用path来引入，params要用name来引入(<strong>当你使用params方法传参的时候，要在路由后面加参数名</strong>)，接收参数都是类似的，分别是this.$route.query.name和this.$route.params.name。<br>如果传参时未定义name，则获取不到params。</p>
 <h3 id="路由界面"><a href="#路由界面" class="headerlink" title="路由界面"></a>路由界面</h3><figure class="highlight html hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-tag">&lt;<span class="hljs-name">router-link</span> </span></span><br><span class="line"><span class="hljs-tag">  <span class="hljs-attr">:to</span>=<span class="hljs-string">"&#123;</span></span></span><br><span class="line"><span class="hljs-tag"><span class="hljs-string">    name: 'router1',</span></span></span><br><span class="line"><span class="hljs-tag"><span class="hljs-string">    path: 'Hello',</span></span></span><br><span class="line"><span class="hljs-tag"><span class="hljs-string">    params: &#123; id: 'menuIndex' &#125;,</span></span></span><br><span class="line"><span class="hljs-tag"><span class="hljs-string">    query: &#123; id: 'menuIndex' &#125;</span></span></span><br><span class="line"><span class="hljs-tag"><span class="hljs-string">  &#125;"</span>&gt;</span><span class="hljs-tag">&lt;<span class="hljs-name">button</span>&gt;</span>Go to Foo<span class="hljs-tag">&lt;/<span class="hljs-name">button</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">router-link</span>&gt;</span></span><br></pre></td></tr></table></figure>
-
 <h2 id="2-url地址显示"><a href="#2-url地址显示" class="headerlink" title="2. url地址显示"></a>2. url地址显示</h2><p>query更加类似于我们ajax中get传参，params则类似于post，说得简单一些，即前者在浏览器地址栏中显示参数，后者则不显示。</p>
 <p>query<br><code>http://localhost:8080/workorder/newApply?type=BOX_DEPLOY&amp;typeDesc=%E5%B0%8F%E7%99%BD%E7%9B%92%E9%83%A8%E7%BD%B2</code></p>
 <p>params<br><code>http://localhost:8080/workorder/newApply</code></p>
@@ -1128,7 +1125,23 @@ document.addEventListener('DOMContentLoaded', function () {
 </script>
 <script src="/js/insight.js" defer></script>
 <link rel="stylesheet" href="/css/search.css">
-<link rel="stylesheet" href="/css/insight.css"><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+<link rel="stylesheet" href="/css/insight.css">
     
-<script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"log":false,"pluginJsPath":"lib/","pluginModelPath":"assets/","pluginRootPath":"live2dw/","tagMode":false});</script></body>
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+        tex2jax: {
+            inlineMath: [ ["$","$"], ["\\(","\\)"] ],
+            skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code'],
+            processEscapes: true
+        }
+    });
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax();
+        for (var i = 0; i < all.length; ++i)
+            all[i].SourceElement().parentNode.className += ' has-jax';
+    });
+</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-MML-AM_CHTML"></script>
+<!--<script src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>-->
+<script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"log":false,"pluginJsPath":"lib/","pluginModelPath":"assets/","pluginRootPath":"live2dw/","tagMode":false});</script><!-- hexo-inject:begin --><!-- hexo-inject:end --></body>
 </html>

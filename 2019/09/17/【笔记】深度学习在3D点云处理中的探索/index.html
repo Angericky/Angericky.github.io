@@ -17,7 +17,7 @@
 <meta property="og:site_name" content="Jingjing&#39;s blog">
 <meta property="og:description" content="bilibili上刘永成博士的分享课的笔记记录。">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2019-10-31T14:50:25.610Z">
+<meta property="og:updated_time" content="2019-11-02T13:54:03.912Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="深度学习在3D点云处理中的探索【笔记】">
 <meta name="twitter:description" content="bilibili上刘永成博士的分享课的笔记记录。">
@@ -163,7 +163,7 @@
                 <time class="level-item has-text-grey" datetime="2019-09-17T15:21:56.000Z">2019-09-17</time>
                 
                     <i class="fas fa-calendar-check">&nbsp</i>
-                    <time class="level-item has-text-grey" datetime="2019-10-31T14:50:25.610Z">2019-10-31</time>
+                    <time class="level-item has-text-grey" datetime="2019-11-02T13:54:03.912Z">2019-11-02</time>
                 
                 
                 <i class="fas fa-book">&nbsp</i>
@@ -194,9 +194,7 @@
         
         <div class="content">
              
-            <p>bilibili上刘永成博士的分享课的笔记记录。</p>
-<a id="more"></a>
-
+            <p>bilibili上刘永成博士的分享课的笔记记录。<br><a id="more"></a></p>
 <h2 id="Introduction"><a href="#Introduction" class="headerlink" title="Introduction"></a>Introduction</h2><ol>
 <li>multi-view images + 2D CNN<br>2D CNN对多视角图像进行学习和信息综合，恢复3D shape<br>缺点：拍摄自遮挡，3D信息损失</li>
 <li>volumetric data + 3D CNN<br>CAD model进行3D Grid的划分<br>缺点：grid划分太粗，形状信息损失；划分太精细，复杂度非常高</li>
@@ -1177,7 +1175,23 @@ document.addEventListener('DOMContentLoaded', function () {
 </script>
 <script src="/js/insight.js" defer></script>
 <link rel="stylesheet" href="/css/search.css">
-<link rel="stylesheet" href="/css/insight.css"><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+<link rel="stylesheet" href="/css/insight.css">
     
-<script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"log":false,"pluginJsPath":"lib/","pluginModelPath":"assets/","pluginRootPath":"live2dw/","tagMode":false});</script></body>
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+        tex2jax: {
+            inlineMath: [ ["$","$"], ["\\(","\\)"] ],
+            skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code'],
+            processEscapes: true
+        }
+    });
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax();
+        for (var i = 0; i < all.length; ++i)
+            all[i].SourceElement().parentNode.className += ' has-jax';
+    });
+</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-MML-AM_CHTML"></script>
+<!--<script src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>-->
+<script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"log":false,"pluginJsPath":"lib/","pluginModelPath":"assets/","pluginRootPath":"live2dw/","tagMode":false});</script><!-- hexo-inject:begin --><!-- hexo-inject:end --></body>
 </html>
