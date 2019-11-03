@@ -43,3 +43,21 @@
         $('.navbar-main .catalogue').on('click', toggleToc);
     }
 })(jQuery);
+
+var clickIcon = function(){
+    $("#toc .menu-list li > i").click(function(){
+        $(this).siblings(".menu-list").slideToggle(100);
+        $(this).toggleClass("hide");
+        $(this).siblings("i").toggleClass("hide");
+    })
+}()
+
+var $itemHasChild = $("#toc .menu-list li:has(> .menu-list)");
+var $titleHasChild = $itemHasChild.children("li");
+
+
+var $tocToExpand = $("#toc .menu-list li> .fa-chevron-right");
+
+// 默认展开目录，所以隐藏掉表示“目录已展开”的图标（向下的小三角）
+var $tocToFold = $('#toc .menu-list li> .fa-chevron-down');
+$tocToExpand.addClass("hide");

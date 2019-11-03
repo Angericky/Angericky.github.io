@@ -18,9 +18,11 @@
 <meta property="og:description" content="《PU-Net: Point Cloud Upsampling Network》的论文笔记。">
 <meta property="og:locale" content="zh-CN">
 <meta property="og:image" content="http://angericky.github.io/images/PUNet_1.png">
+<meta property="og:image" content="http://angericky.github.io/images/PUNet_4.png">
+<meta property="og:image" content="http://angericky.github.io/images/PUNet_5.png">
 <meta property="og:image" content="http://angericky.github.io/images/PUNet_2.png">
 <meta property="og:image" content="http://angericky.github.io/images/PUNet_3.png">
-<meta property="og:updated_time" content="2019-11-02T16:30:10.069Z">
+<meta property="og:updated_time" content="2019-11-03T12:33:11.509Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="PU-Net点云上采样网络论文笔记">
 <meta name="twitter:description" content="《PU-Net: Point Cloud Upsampling Network》的论文笔记。">
@@ -133,6 +135,10 @@
                     
                 
                 
+                <a class="navbar-item is-hidden-tablet catalogue" title="目录" href="javascript:;">
+                    <i class="fas fa-list-ul"></i>
+                </a>
+                
                 
                 <a class="navbar-item search" title="搜索" href="javascript:;">
                     <i class="fas fa-search"></i>
@@ -150,7 +156,7 @@
     <!-- 
     <div class="card-image">
         <span  class="image is-7by1">
-            <img class="thumbnail" src="/images/penguin.jpeg" alt="PU-Net点云上采样网络论文笔记">
+            <img class="thumbnail" src="/images/penguin.jpg" alt="PU-Net点云上采样网络论文笔记">
         </span>
     </div>
      -->
@@ -167,7 +173,7 @@
                 <time class="level-item has-text-grey" datetime="2019-10-31T14:04:48.000Z">2019-10-31</time>
                 
                     <i class="fas fa-calendar-check">&nbsp</i>
-                    <time class="level-item has-text-grey" datetime="2019-11-02T16:30:10.069Z">2019-11-03</time>
+                    <time class="level-item has-text-grey" datetime="2019-11-03T12:33:11.509Z">2019-11-03</time>
                 
                 
                 <i class="fas fa-book">&nbsp</i>
@@ -214,34 +220,15 @@
 <script type="math/tex; mode=display">f^(l)(x) =\frac{ \sum_{i=1}^3 w_i(x) f^(l)
 (x_i)}{\sum_{i=1}^3w_i(x)}</script><p>其中，<script type="math/tex">w_i(x)=\frac{1}{d(x, x_i)}</script>，是距离的倒数。<script type="math/tex">x_1</script>,<script type="math/tex">x_2</script>,<script type="math/tex">x_3</script>是<script type="math/tex">x</script>在<script type="math/tex">l</script>层上最近的3个邻居。<br>然后用1x1卷积将不同级别的插值减少到相同的维度，再将各层次的特征连接到一起，作为该点的点嵌入特征<script type="math/tex">f</script>。</p>
 <h4 id="Feature-Expansion"><a href="#Feature-Expansion" class="headerlink" title="Feature Expansion"></a>Feature Expansion</h4><p>我们需要扩展特征空间中特征的个数，这可以看作是扩展点的数量，因为点和特征是可以互换的。图像相关任务中的特征上采样通常用<strong>反卷积</strong>或者<strong>插值</strong>的方法，但用在无序不规则的点云数据上并不合适。<br>因此本文提出了一种<strong>基于子像素卷积层的特征扩展</strong>方法：</p>
-<script type="math/tex; mode=display">f' = RS([C_1^2(C_1^1(f)), ..., C_r^2(C_r^1(f))])</script><p>其中，<script type="math/tex">C_i^1(·)</script>和<script type="math/tex">C_i^2(·)</script>是两个1x1卷积的集合，<script type="math/tex">RS(·)</script>是一个reshape操作。</p>
-<script type="math/tex; mode=display">N$$为输入点的数量，$$\tilde{C}$$为特征的维度，目标得到$$rN$$个特征，$$r$$为上采样率。将$$N\times \tilde{C}$$扩展到$$rN \times \tilde{C}$$，然后通过两个各点独立的$$1 \times 1$$的卷积核，得到$$rN \times \tilde{C_2}$$的张量。
-
-由于$$C_i^1(·)$$生成的点集之间相关性可能太高，会导致重建的点之间太近，我们对每个特征集合增加一个卷积层，训练网络去学习这r个不同的卷积。当然也可以用其他更加高效的组卷积方式实现（如AlexNet，ResNeXt，Shufflenet等）。
-
-#### Coordinate Reconstruction
-通过一系列全连接层将每个点扩展特征$$rN \times C_2$$重建成的点坐标$$rN \times 3$$。
-
-### 联合损失函数
-结合**重建损失Reconstruction loss**和**排斥损失Repulsion loss**建立了联合损失函数。
-#### Reconstruction loss
-为了将点放在潜在的物体表面上，我们建议使用**Earth Mover’s distance( EMD)** 作为我们的重建损失，来评估预测点云$$S_{pred} ⊆R^3$$和实际点云$$S_{groundtruth} ⊆R^3$$之间的相似性:
-![](/images/PUNet_4.png)
-其中$$f$$为映射$$S_{pred}\rightarrow S_{groundtruth}$$。
-
-实际上，**Chamfer Distance(CD)** 是评估两个点集之间相似性的另一个候选。然而，与CD相比，EMD可以更好地捕捉形状，以鼓励输出点靠近底层物体表面。因此，我们选择在重建损失中使用EMD。
-
-#### Repulsion loss
-虽然具有重建损失的训练可以在底层物体表面上生成点，但是**生成的点往往位于原始点附近**。为了更均匀地分布生成的点，我们设计了排斥损失Repulsion loss，表示为:
-![](/images/PUNet_5.png)
-其中$$\tilde N = rN$$是上采样完了以后的输出点个数，$$K(i)$$是点$$x_i$$的K近邻点，$$||\bullet ||$$代表二范数$$\eta(r)=-r$$被称为排斥项，它是一个递减的函数，如果$$x_i$$距离他的K近邻$$K(i)$$过于接近。
-inline为了使$$x_i$$只有过于接近他的K近邻点的时候才收到惩罚，我们增加了两条约束：
-i)只考虑点$$x_{i&#x27;}$$为$$x_{i}$$的K近邻时的情况；
-(ii)将快速衰减的权重函$$w(r)=e^{-r^2/h^2}$$加入排斥损失中。
-
-#### Joint Loss Function
-联合损失函数具有如下的形式：
-$$L(\theta) = L_{rec}+\alpha L_{rep} + \beta ||\theta||^2</script><p>其中<script type="math/tex">\theta</script>代表整个网络的参数，<script type="math/tex">\beta ||\theta||^2</script>为正则化惩罚项。</p>
+<script type="math/tex; mode=display">f' = RS([C_1^2(C_1^1(f)), ..., C_r^2(C_r^1(f))])</script><p>其中，<script type="math/tex">C_i^1(·)</script>和<script type="math/tex">C_i^2(·)</script>是两个1x1卷积的集合，<script type="math/tex">RS(·)</script>是一个reshape操作。<script type="math/tex">N</script>为输入点的数量，<script type="math/tex">\tilde{C}</script>为特征的维度，目标得到<script type="math/tex">rN</script>个特征，<script type="math/tex">r</script>为上采样率。将<script type="math/tex">N\times \tilde{C}</script>扩展到<script type="math/tex">rN \times \tilde{C}</script>，然后通过两个各点独立的<script type="math/tex">1 \times 1</script>的卷积核，得到<script type="math/tex">rN \times \tilde{C_2}</script>的张量。</p>
+<p>由于<script type="math/tex">C_i^1(·)</script>生成的点集之间相关性可能太高，会导致重建的点之间太近，我们对每个特征集合增加一个卷积层，训练网络去学习这r个不同的卷积。当然也可以用其他更加高效的组卷积方式实现（如AlexNet，ResNeXt，Shufflenet等）。</p>
+<h4 id="Coordinate-Reconstruction"><a href="#Coordinate-Reconstruction" class="headerlink" title="Coordinate Reconstruction"></a>Coordinate Reconstruction</h4><p>通过一系列全连接层将每个点扩展特征<script type="math/tex">rN \times C_2</script>重建成的点坐标<script type="math/tex">rN \times 3</script>。</p>
+<h3 id="联合损失函数"><a href="#联合损失函数" class="headerlink" title="联合损失函数"></a>联合损失函数</h3><p>结合<strong>重建损失Reconstruction loss</strong>和<strong>排斥损失Repulsion loss</strong>建立了联合损失函数。</p>
+<h4 id="Reconstruction-loss"><a href="#Reconstruction-loss" class="headerlink" title="Reconstruction loss"></a>Reconstruction loss</h4><p>为了将点放在潜在的物体表面上，我们建议使用<strong>Earth Mover’s distance( EMD)</strong> 作为我们的重建损失，来评估预测点云<script type="math/tex">S_{pred} ⊆R^3</script>和实际点云<script type="math/tex">S_{groundtruth} ⊆R^3</script>之间的相似性:<br><img src="/images/PUNet_4.png" alt=""><br>其中<script type="math/tex">f</script>为映射<script type="math/tex">S_{pred}\rightarrow S_{groundtruth}</script>。</p>
+<p>实际上，<strong>Chamfer Distance(CD)</strong> 是评估两个点集之间相似性的另一个候选。然而，与CD相比，EMD可以更好地捕捉形状，以鼓励输出点靠近底层物体表面。因此，我们选择在重建损失中使用EMD。</p>
+<h4 id="Repulsion-loss"><a href="#Repulsion-loss" class="headerlink" title="Repulsion loss"></a>Repulsion loss</h4><p>虽然具有重建损失的训练可以在底层物体表面上生成点，但是<strong>生成的点往往位于原始点附近</strong>。为了更均匀地分布生成的点，我们设计了排斥损失Repulsion loss，表示为:<br><img src="/images/PUNet_5.png" alt=""><br>其中<script type="math/tex">\tilde N = rN</script>是上采样完了以后的输出点个数，<script type="math/tex">K(i)</script>是点<script type="math/tex">x_i</script>的K近邻点，<script type="math/tex">||\bullet ||</script>代表二范数<script type="math/tex">\eta(r)=-r</script>被称为排斥项，它是一个递减的函数，如果<script type="math/tex">x_i</script>距离他的K近邻<script type="math/tex">K(i)</script>过于接近。<br>inline为了使<script type="math/tex">x_i</script>只有过于接近他的K近邻点的时候才收到惩罚，我们增加了两条约束：<br>i)只考虑点<script type="math/tex">x_{i&#x27;}</script>为<script type="math/tex">x_{i}</script>的K近邻时的情况；<br>(ii)将快速衰减的权重函<script type="math/tex">w(r)=e^{-r^2/h^2}</script>加入排斥损失中。</p>
+<h4 id="Joint-Loss-Function"><a href="#Joint-Loss-Function" class="headerlink" title="Joint Loss Function"></a>Joint Loss Function</h4><p>联合损失函数具有如下的形式：</p>
+<script type="math/tex; mode=display">L(\theta) = L_{rec}+\alpha L_{rep} + \beta ||\theta||^2</script><p>其中<script type="math/tex">\theta</script>代表整个网络的参数，<script type="math/tex">\beta ||\theta||^2</script>为正则化惩罚项。</p>
 <h3 id="模型比较"><a href="#模型比较" class="headerlink" title="模型比较"></a>模型比较</h3><p>为了定量评估输出点集的质量，我们制定了两个度量来测量输出点和ground truth之间的偏差，以及输出点的分布均匀性。</p>
 <ul>
 <li><strong>偏差度量</strong>：为每个预测点<script type="math/tex">x_i</script>找到网格上最近的点<script type="math/tex">\hat x_i</script>，并计算它们之间的距离。然后，我们计算所有点的平均值和标准偏差。</li>
@@ -353,7 +340,7 @@ $$L(\theta) = L_{rec}+\alpha L_{rep} + \beta ||\theta||^2</script><p>其中<scri
 
 
 
-<div class="column is-4-tablet is-4-desktop is-3-widescreen  has-order-1 column-left ">
+<div class="column is-4-tablet is-4-desktop is-3-widescreen  has-order-1 column-left is-sticky">
     
     <!-- 
         
@@ -430,7 +417,7 @@ $$L(\theta) = L_{rec}+\alpha L_{rep} + \beta ||\theta||^2</script><p>其中<scri
                 
             </a>
             
-            <a class="level-item button is-white is-marginless" target="_blank" title="Weibo" href="https://weibo.com/1995427305/profile?topnav=1&amp;wvr=6">
+            <a class="level-item button is-white is-marginless" target="_blank" title="Weibo" href="https://weibo.com/u/6286988988">
                 
                 <i class="fab fa-weibo"></i>
                 
@@ -452,6 +439,81 @@ $$L(\theta) = L_{rec}+\alpha L_{rep} + \beta ||\theta||^2</script><p>其中<scri
         <div class="column-right-shadow  ">
             
                 
+<!-- <div class="card widget" id="toc" style="max-height: 500px; overflow: auto;"> -->
+<div class="card widget" id="toc" style="overflow: auto;">
+    <div class="card-content">
+        <div class="menu" style="max-height: 500px; overflow: auto;">
+            <h3 class="menu-label">
+                目录
+            </h3>
+            <ul class="menu-list"><li>
+        <a href="#PU-Net">
+        <span class="has-mr-6">1</span>
+        <span>PU-Net</span>
+        </a>&nbsp&nbsp<i class="fa fa-chevron-down"></i>
+            <i class="fa fa-chevron-right"></i><ul class="menu-list"><li>
+        <a href="#简介">
+        <span class="has-mr-6">1.1</span>
+        <span>简介</span>
+        </a></li><li>
+        <a href="#解决问题">
+        <span class="has-mr-6">1.2</span>
+        <span>解决问题</span>
+        </a></li><li>
+        <a href="#贡献点">
+        <span class="has-mr-6">1.3</span>
+        <span>贡献点</span>
+        </a></li><li>
+        <a href="#核心思想">
+        <span class="has-mr-6">1.4</span>
+        <span>核心思想</span>
+        </a></li><li>
+        <a href="#网络设计">
+        <span class="has-mr-6">1.5</span>
+        <span>网络设计</span>
+        </a>&nbsp&nbsp<i class="fa fa-chevron-down"></i>
+            <i class="fa fa-chevron-right"></i><ul class="menu-list"><li>
+        <a href="#Patch-Extraction">
+        <span class="has-mr-6">1.5.1</span>
+        <span>Patch Extraction</span>
+        </a></li><li>
+        <a href="#Point-Feature-Embedding">
+        <span class="has-mr-6">1.5.2</span>
+        <span>Point Feature Embedding</span>
+        </a></li><li>
+        <a href="#Feature-Expansion">
+        <span class="has-mr-6">1.5.3</span>
+        <span>Feature Expansion</span>
+        </a></li><li>
+        <a href="#Coordinate-Reconstruction">
+        <span class="has-mr-6">1.5.4</span>
+        <span>Coordinate Reconstruction</span>
+        </a></li></ul></li><li>
+        <a href="#联合损失函数">
+        <span class="has-mr-6">1.6</span>
+        <span>联合损失函数</span>
+        </a>&nbsp&nbsp<i class="fa fa-chevron-down"></i>
+            <i class="fa fa-chevron-right"></i><ul class="menu-list"><li>
+        <a href="#Reconstruction-loss">
+        <span class="has-mr-6">1.6.1</span>
+        <span>Reconstruction loss</span>
+        </a></li><li>
+        <a href="#Repulsion-loss">
+        <span class="has-mr-6">1.6.2</span>
+        <span>Repulsion loss</span>
+        </a></li><li>
+        <a href="#Joint-Loss-Function">
+        <span class="has-mr-6">1.6.3</span>
+        <span>Joint Loss Function</span>
+        </a></li></ul></li><li>
+        <a href="#模型比较">
+        <span class="has-mr-6">1.7</span>
+        <span>模型比较</span>
+        </a></li></ul></li></ul>
+        </div>
+    </div>
+</div>
+
             
                 
 <div class="card widget">
@@ -464,7 +526,7 @@ $$L(\theta) = L_{rec}+\alpha L_{rep} + \beta ||\theta||^2</script><p>其中<scri
             
             <a href="/2019/10/31/PU-Net点云上采样网络论文笔记/" class="media-left">
                 <p class="image is-64x64">
-                    <img class="thumbnail" src="/images/penguin.jpeg" alt="PU-Net点云上采样网络论文笔记">
+                    <img class="thumbnail" src="/images/penguin.jpg" alt="PU-Net点云上采样网络论文笔记">
                 </p>
             </a> 
             
@@ -502,7 +564,7 @@ $$L(\theta) = L_{rec}+\alpha L_{rep} + \beta ||\theta||^2</script><p>其中<scri
             
             <a href="/2019/10/22/PointNet家族论文笔记/" class="media-left">
                 <p class="image is-64x64">
-                    <img class="thumbnail" src="/images/autumn_cat.jpg" alt="PointNet家族论文笔记">
+                    <img class="thumbnail" src="/images/autumn.png" alt="PointNet家族论文笔记">
                 </p>
             </a> 
             
@@ -540,7 +602,7 @@ $$L(\theta) = L_{rec}+\alpha L_{rep} + \beta ||\theta||^2</script><p>其中<scri
             
             <a href="/2019/05/26/给最近计算机科学毕业生的职业生涯建议/" class="media-left">
                 <p class="image is-64x64">
-                    <img class="thumbnail" src="/images/graduation.jpeg" alt="给计算机科学毕业生的职业生涯建议">
+                    <img class="thumbnail" src="/images/graduation.jpg" alt="给计算机科学毕业生的职业生涯建议">
                 </p>
             </a> 
             

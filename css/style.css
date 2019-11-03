@@ -17,7 +17,7 @@ textarea {
 .has-text-weight-normal {
   font-weight: 500 !important;
 }
-@media screen and (min-width: 1350px) {
+@media screen and (min-width: 1280px) {
   .is-1-column .container,
   .is-2-column .container {
     max-width: 1068px;
@@ -26,8 +26,8 @@ textarea {
 }
 @media screen and (min-width: 1472px) {
   .is-2-column .container {
-    max-width: 1330px;
-    width: 1330px;
+    max-width: 1260px;
+    width: 1260px;
     margin-left: auto;
     margin-right: auto;
   }
@@ -72,6 +72,13 @@ textarea {
   overflow: hidden;
   border-top-left-radius: 4px;
   border-top-right-radius: 4px;
+}
+.card .menu .tag:not(body) {
+  background-color: #649ab6;
+  color: #fff;
+}
+.card .tag:not(body).is-link {
+  background-color: #649ab6;
 }
 img.thumbnail {
   object-fit: cover;
@@ -145,17 +152,39 @@ img.thumbnail {
   margin-left: 3em;
   margin-right: 3em;
 }
+#toc li ul {
+  margin: 0;
+}
+#toc li a {
+  display: inline-block;
+  padding: 0.5em 0;
+  font-weight: bold;
+  font-size: 1rem;
+}
+#toc li a:hover {
+  text-decoration: underline;
+}
+#toc li i {
+  color: #999;
+}
+#toc li i:hover {
+  color: #000;
+}
+#toc li i.hide {
+  display: none;
+}
 .widget .media {
   border: none;
 }
 .widget .media + .media {
   margin-top: 0;
 }
-.widget .menu-list li ul {
-  margin-right: 0;
-}
-.widget .menu-list a.level {
+.widget .menu-list a {
   display: flex;
+  color: #649ab6;
+}
+.widget .menu-list a:hover {
+  text-decoration: underline;
 }
 .widget .links .menu-list a.level {
   display: inline-block;
@@ -166,6 +195,10 @@ img.thumbnail {
 .pagination .pagination-next {
   background: #fff;
   border: none;
+}
+.pagination .pagination-link.is-current {
+  background-color: #649ab6;
+  border-color: #649ab6;
 }
 .pagination .pagination-link,
 .pagination .pagination-previous,
@@ -218,8 +251,11 @@ img.thumbnail {
   padding-right: 3rem;
   padding-top: 2rem;
 }
+.article a {
+  color: #447a96;
+}
 .article a:hover {
-  color: #649ab6;
+  text-decoration: underline;
 }
 .article .title {
   border-left: #649ab6 8px solid;
@@ -234,7 +270,10 @@ img.thumbnail {
   line-height: 2;
   color: #111;
 }
-.article .content blockquote.pullquote {
+.article .content blockquote {
+  border-left-color: #649ab6;
+}
+.article .content blockquote .pullquote {
   float: right;
   max-width: 50%;
   font-size: 1.2rem;
@@ -394,6 +433,16 @@ img.thumbnail {
   .has-mt-5-mobile {
     margin-top: 1em !important;
   }
+}
+/* ---------------------------------
+ *         Comment Valine fixes
+ * --------------------------------- */
+.v .vlist .vcard .vhead .vnick {
+  color: #649ab6 !important;
+  font-weight: 600;
+}
+.v a:before {
+  background-color: #649ab6 !important;
 }
 /* ---------------------------------
  *         Font icon fixes
