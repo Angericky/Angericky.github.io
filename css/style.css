@@ -17,7 +17,7 @@ textarea {
 .has-text-weight-normal {
   font-weight: 500 !important;
 }
-@media screen and (min-width: 1280px) {
+@media screen and (min-width: 1350px) {
   .is-1-column .container,
   .is-2-column .container {
     max-width: 1068px;
@@ -26,8 +26,8 @@ textarea {
 }
 @media screen and (min-width: 1472px) {
   .is-2-column .container {
-    max-width: 1260px;
-    width: 1260px;
+    max-width: 1330px;
+    width: 1330px;
     margin-left: auto;
     margin-right: auto;
   }
