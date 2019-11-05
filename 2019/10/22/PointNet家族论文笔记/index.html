@@ -23,10 +23,11 @@
 <meta property="og:image" content="http://angericky.github.io/images/pointnet_4.jpg">
 <meta property="og:image" content="http://angericky.github.io/images/pointnet_5.jpg">
 <meta property="og:image" content="http://angericky.github.io/images/pointnet_6.jpg">
+<meta property="og:image" content="http://angericky.github.io/images/pointnet_10.jpg">
 <meta property="og:image" content="http://angericky.github.io/images/pointnet_7.png">
 <meta property="og:image" content="http://angericky.github.io/images/pointnet_8.png">
 <meta property="og:image" content="http://angericky.github.io/images/pointnet_9.png">
-<meta property="og:updated_time" content="2019-11-03T12:28:45.454Z">
+<meta property="og:updated_time" content="2019-11-05T15:17:22.834Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="PointNet家族论文笔记">
 <meta name="twitter:description" content="PointNet和PointNet++的论文笔记。">
@@ -173,14 +174,14 @@
                 <time class="level-item has-text-grey" datetime="2019-10-22T15:09:46.000Z">2019-10-22</time>
                 
                     <i class="fas fa-calendar-check">&nbsp</i>
-                    <time class="level-item has-text-grey" datetime="2019-11-03T12:28:45.454Z">2019-11-03</time>
+                    <time class="level-item has-text-grey" datetime="2019-11-05T15:17:22.834Z">2019-11-05</time>
                 
                 
                 <i class="fas fa-book">&nbsp</i>
                 <span class="level-item has-text-grey">
                     
                     
-                    20 分钟 读完 (大约 3029 个字)
+                    20 分钟 读完 (大约 3060 个字)
                 </span>
                 
             </div>
@@ -256,7 +257,7 @@
 </ol>
 <p><img src="/images/pointnet_6.jpg" alt="MSG and MRG structure"></p>
 <h4 id="分割网络"><a href="#分割网络" class="headerlink" title="分割网络"></a>分割网络</h4><p>分割网络的实现思想是将点云提取一个全局的特征之后，再通过全局的特征逐步上采样。</p>
-<p>最简单的是广播复制Broadcasting，即将每个点的附近的点的特征都变成和这个点一样，但是这样的方法会使得没有办法处理一些范围相冲突的点，或者范围没有覆盖到的点。<br>因此在论文中作者采用的是<strong>线性插值</strong>的方法，距离越远的点权重越小。</p>
+<p>最简单的是广播复制Broadcasting，即将每个点的附近的点的特征都变成和这个点一样，但是这样的方法会使得没有办法处理一些范围相冲突的点，或者范围没有覆盖到的点。<br>因此在论文中作者采用的是<strong>线性插值</strong>的方法去做特征传播，k近邻反距离加权法（inverse distance weighted average）距离越远的点权重越小。<br><img src="/images/pointnet_10.jpg" alt="interpolatingformula"><br>代码中p=2, k=3。</p>
 <h3 id="数据集"><a href="#数据集" class="headerlink" title="数据集"></a>数据集</h3><p>MNIST（2D物体）<br>ModelNet40（3D刚性物体）<br>SHREC15（3D非刚性物体）<br>ScanNet（真实3D室内场景）</p>
 <h3 id="结果-1"><a href="#结果-1" class="headerlink" title="结果"></a>结果</h3><p><img src="/images/pointnet_7.png" alt="result on ModelNet classification"><br><img src="/images/pointnet_8.png" alt="result on segmentation"><br>MRG没有MSG效果好，但是MSG计算复杂度很高<br><img src="/images/pointnet_9.png" alt="result on SHREC15"></p>
 
