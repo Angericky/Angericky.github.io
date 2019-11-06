@@ -282,6 +282,12 @@ img.thumbnail {
 .article .content ol {
   margin-top: 0em;
 }
+.article .content ul ul {
+  margin-top: 0em;
+}
+.article .content p:last-child {
+  margin-bottom: 0em;
+}
 .rtl {
   direction: rtl;
 }
