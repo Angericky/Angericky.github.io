@@ -285,7 +285,7 @@ img.thumbnail {
 .article .content ul ul {
   margin-top: 0em;
 }
-.article .content p:last-child {
+.article .content p {
   margin-bottom: 0em;
 }
 .rtl {

@@ -22,7 +22,7 @@
 <meta property="og:image" content="http://angericky.github.io/images/PUNet_5.png">
 <meta property="og:image" content="http://angericky.github.io/images/PUNet_2.png">
 <meta property="og:image" content="http://angericky.github.io/images/PUNet_3.png">
-<meta property="og:updated_time" content="2019-11-03T12:33:11.509Z">
+<meta property="og:updated_time" content="2019-11-07T12:57:56.935Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="PU-Net点云上采样网络论文笔记">
 <meta name="twitter:description" content="《PU-Net: Point Cloud Upsampling Network》的论文笔记。">
@@ -173,14 +173,14 @@
                 <time class="level-item has-text-grey" datetime="2019-10-31T14:04:48.000Z">2019-10-31</time>
                 
                     <i class="fas fa-calendar-check">&nbsp</i>
-                    <time class="level-item has-text-grey" datetime="2019-11-03T12:33:11.509Z">2019-11-03</time>
+                    <time class="level-item has-text-grey" datetime="2019-11-07T12:57:56.935Z">2019-11-07</time>
                 
                 
                 <i class="fas fa-book">&nbsp</i>
                 <span class="level-item has-text-grey">
                     
                     
-                    15 分钟 读完 (大约 2289 个字)
+                    15 分钟 读完 (大约 2299 个字)
                 </span>
                 
             </div>
@@ -206,7 +206,7 @@
              
             <p>《PU-Net: Point Cloud Upsampling Network》的论文笔记。<br><a id="more"></a></p>
 <h2 id="PU-Net"><a href="#PU-Net" class="headerlink" title="PU-Net"></a>PU-Net</h2><blockquote>
-<p>《PU-Net: Point Cloud Upsampling Network》 CVPR 2018<br><a href="https://arxiv.org/pdf/1801.06761.pdf" target="_blank" rel="noopener">点击论文地址</a><br>开源代码：<a href="https://github.com/yulequan/PU-Net" target="_blank" rel="noopener">https://github.com/yulequan/PU-Net</a></p>
+<p>《PU-Net: Point Cloud Upsampling Network》 CVPR 2018<br>Lequan Yu. et.al The Chinese University of Hong Kong<br><a href="https://arxiv.org/pdf/1801.06761.pdf" target="_blank" rel="noopener">点击论文地址</a><br>开源代码：<a href="https://github.com/yulequan/PU-Net" target="_blank" rel="noopener">https://github.com/yulequan/PU-Net</a></p>
 </blockquote>
 <h3 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h3><p>根据PointNet++和PointSetGeneration衍生而来。<br>通过多分支卷积单元去学习逐点的多级特征和扩大点集，在patch-level通过共同损失函数，在潜在的曲层表面均匀分布地上采样点。<br>采样更均匀，位置离底层表面更近。</p>
 <h3 id="解决问题"><a href="#解决问题" class="headerlink" title="解决问题"></a>解决问题</h3><p>如何上采样到能<strong>更完整地表达潜在曲面的密集点云</strong>，类似于二维中的图像超分辨率问题。<br>而在点云数据的挑战是：1. 点云没有空间顺序和规则结构 2. 生成的点云应该位于目标物体的表面来表示几何目标对象 3. 生成的点应当有信息量，而不是杂乱无章<br>生成的点云数据分布应当更加均匀，因此简单的插值方法并不适用。</p>
@@ -1226,7 +1226,7 @@ document.addEventListener('DOMContentLoaded', function () {
 </script>
 <script src="/js/insight.js" defer></script>
 <link rel="stylesheet" href="/css/search.css">
-<link rel="stylesheet" href="/css/insight.css">
+<link rel="stylesheet" href="/css/insight.css"><!-- hexo-inject:begin --><!-- hexo-inject:end -->
     
-<script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"log":false,"pluginJsPath":"lib/","pluginModelPath":"assets/","pluginRootPath":"live2dw/","tagMode":false});</script><!-- hexo-inject:begin --><!-- hexo-inject:end --></body>
+<script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"log":false,"pluginJsPath":"lib/","pluginModelPath":"assets/","pluginRootPath":"live2dw/","tagMode":false});</script></body>
 </html>
