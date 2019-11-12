@@ -16,12 +16,15 @@
 <meta property="og:site_name" content="Jingjing&#39;s blog">
 <meta property="og:description" content="计算机图形学的作业。对凸多边形窗口的线段裁剪Cyrus-Beck算法进行了拓展.">
 <meta property="og:locale" content="zh-CN">
+<meta property="og:image" content="http://angericky.github.io/images/cg/flow_chart.png">
 <meta property="og:image" content="http://angericky.github.io/images/cg/3.png">
-<meta property="og:updated_time" content="2019-11-12T15:42:10.180Z">
+<meta property="og:image" content="http://angericky.github.io/images/cg/1.png">
+<meta property="og:image" content="http://angericky.github.io/images/cg/2.png">
+<meta property="og:updated_time" content="2019-11-12T15:47:23.197Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="任意多边形窗口的线段裁剪算法">
 <meta name="twitter:description" content="计算机图形学的作业。对凸多边形窗口的线段裁剪Cyrus-Beck算法进行了拓展.">
-<meta name="twitter:image" content="http://angericky.github.io/images/cg/3.png">
+<meta name="twitter:image" content="http://angericky.github.io/images/cg/flow_chart.png">
 
 
 
@@ -162,7 +165,7 @@
                 <time class="level-item has-text-grey" datetime="2019-11-12T15:28:15.000Z">2019-11-12</time>
                 
                     <i class="fas fa-calendar-check">&nbsp</i>
-                    <time class="level-item has-text-grey" datetime="2019-11-12T15:42:10.180Z">2019-11-12</time>
+                    <time class="level-item has-text-grey" datetime="2019-11-12T15:47:23.197Z">2019-11-12</time>
                 
                 
                 <i class="fas fa-book">&nbsp</i>
@@ -185,12 +188,7 @@
              
             <p>计算机图形学的作业。对凸多边形窗口的线段裁剪Cyrus-Beck算法进行了拓展.<br><a id="more"></a></p>
 <h2 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h2><p>多边形窗口如果是凹多边形，补全为凸多边形窗口组。用每个凸多边形窗口对输入线段进行裁剪，最后线段相减得到结果。</p>
-<h2 id="程序流程图"><a href="#程序流程图" class="headerlink" title="程序流程图"></a>程序流程图</h2><center>
-
-![flow chart](/images/cg/flow_chart.png)
-
-</center>
-
+<h2 id="程序流程图"><a href="#程序流程图" class="headerlink" title="程序流程图"></a>程序流程图</h2><p><img src="/images/cg/flow_chart.png" alt="flow chart"></p>
 <h2 id="具体实现"><a href="#具体实现" class="headerlink" title="具体实现"></a>具体实现</h2><p>利用OpenGL函数库和C++实现了任意多边形窗口的线段裁剪算法。代码开发环境MacOS + Xcode。</p>
 <p>自定义数据结构类Polygon多边形，有两个成员变量Point2D数组，分别存储多边形的顶点以及法向量，还有一个成员变量_num存储边的数量。结构中的ComputeNormals()函数计算出内法向量。</p>
 <figure class="highlight c++ hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-class"><span class="hljs-keyword">struct</span> <span class="hljs-title">Polygon</span></span></span><br><span class="line"><span class="hljs-class">&#123;</span></span><br><span class="line">    <span class="hljs-keyword">int</span> _num; <span class="hljs-comment">//Num of lines, not points</span></span><br><span class="line">    Point2D* points;</span><br><span class="line">    Point2D* norms;</span><br><span class="line"></span><br><span class="line">  	<span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">Set</span><span class="hljs-params">(<span class="hljs-built_in">vector</span>&lt;Point2D&gt; p)</span></span>&#123;&#125;;	<span class="hljs-comment">// 根据输入点数组存储和计算Polygon中的成员变量</span></span><br><span class="line">  	<span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">ComputeNormals</span><span class="hljs-params">()</span></span>&#123;&#125;;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
@@ -203,13 +201,8 @@
 <h2 id="实验结果"><a href="#实验结果" class="headerlink" title="实验结果"></a>实验结果</h2><p>程序运行后，先用鼠标左键选取一系列的点，单击鼠标右键完成多边形的构建。接下来用鼠标左键选取线段的起点和终点进行裁剪。</p>
 <p><img src="/images/cg/3.png" alt="figure 1"></p>
 <center>图1  凸多边形窗口裁剪线段结果</center>
-<center class="half">
 
-![figure 2](/images/cg/1.png)
-![figure 3](/images/cg/2.png)
-
-</center>
-
+<p><img src="/images/cg/1.png" alt="figure 2"><br><img src="/images/cg/2.png" alt="figure 3"></p>
 <center>图2  凹多边形窗口裁剪线段结果</center>
         </div>
         
