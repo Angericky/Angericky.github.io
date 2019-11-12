@@ -9,18 +9,18 @@
 
 
 
-    <meta name="description" content="计算机图形学的作业。基于凸多边形窗口的线段裁剪Cyrus-Beck算法进行拓展.">
+    <meta name="description" content="计算机图形学的作业。对凸多边形窗口的线段裁剪Cyrus-Beck算法进行了拓展.">
 <meta property="og:type" content="article">
 <meta property="og:title" content="任意多边形窗口的线段裁剪算法">
 <meta property="og:url" content="http://Angericky.github.io/2019/11/12/任意多边形窗口的线段裁剪算法/index.html">
 <meta property="og:site_name" content="Jingjing&#39;s blog">
-<meta property="og:description" content="计算机图形学的作业。基于凸多边形窗口的线段裁剪Cyrus-Beck算法进行拓展.">
+<meta property="og:description" content="计算机图形学的作业。对凸多边形窗口的线段裁剪Cyrus-Beck算法进行了拓展.">
 <meta property="og:locale" content="zh-CN">
 <meta property="og:image" content="http://angericky.github.io/images/cg/3.png">
-<meta property="og:updated_time" content="2019-11-12T15:38:59.011Z">
+<meta property="og:updated_time" content="2019-11-12T15:42:10.180Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="任意多边形窗口的线段裁剪算法">
-<meta name="twitter:description" content="计算机图形学的作业。基于凸多边形窗口的线段裁剪Cyrus-Beck算法进行拓展.">
+<meta name="twitter:description" content="计算机图形学的作业。对凸多边形窗口的线段裁剪Cyrus-Beck算法进行了拓展.">
 <meta name="twitter:image" content="http://angericky.github.io/images/cg/3.png">
 
 
@@ -162,14 +162,14 @@
                 <time class="level-item has-text-grey" datetime="2019-11-12T15:28:15.000Z">2019-11-12</time>
                 
                     <i class="fas fa-calendar-check">&nbsp</i>
-                    <time class="level-item has-text-grey" datetime="2019-11-12T15:38:59.011Z">2019-11-12</time>
+                    <time class="level-item has-text-grey" datetime="2019-11-12T15:42:10.180Z">2019-11-12</time>
                 
                 
                 <i class="fas fa-book">&nbsp</i>
                 <span class="level-item has-text-grey">
                     
                     
-                    6 分钟 读完 (大约 937 个字)
+                    6 分钟 读完 (大约 968 个字)
                 </span>
                 
             </div>
@@ -183,10 +183,12 @@
         
         <div class="content">
              
-            <p>计算机图形学的作业。基于凸多边形窗口的线段裁剪Cyrus-Beck算法进行拓展.<br><a id="more"></a></p>
-<h2 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h2><p>多边形窗口如果是凹多边形，补全为凸多边形窗口。</p>
-<h3 id="程序流程图"><a href="#程序流程图" class="headerlink" title="程序流程图"></a>程序流程图</h3><center>
+            <p>计算机图形学的作业。对凸多边形窗口的线段裁剪Cyrus-Beck算法进行了拓展.<br><a id="more"></a></p>
+<h2 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h2><p>多边形窗口如果是凹多边形，补全为凸多边形窗口组。用每个凸多边形窗口对输入线段进行裁剪，最后线段相减得到结果。</p>
+<h2 id="程序流程图"><a href="#程序流程图" class="headerlink" title="程序流程图"></a>程序流程图</h2><center>
+
 ![flow chart](/images/cg/flow_chart.png)
+
 </center>
 
 <h2 id="具体实现"><a href="#具体实现" class="headerlink" title="具体实现"></a>具体实现</h2><p>利用OpenGL函数库和C++实现了任意多边形窗口的线段裁剪算法。代码开发环境MacOS + Xcode。</p>
@@ -198,12 +200,14 @@
 <figure class="highlight c++ hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">generateConvexPolygons</span><span class="hljs-params">(<span class="hljs-built_in">vector</span>&lt;Point2D&gt; points, <span class="hljs-built_in">vector</span>&lt;<span class="hljs-built_in">vector</span>&lt;Point2D&gt;&gt;&amp; convexPolygons)</span></span></span><br><span class="line"><span class="hljs-function"></span>&#123;</span><br><span class="line">    <span class="hljs-keyword">int</span> _num = points.size();</span><br><span class="line">    <span class="hljs-keyword">int</span> i = ComputeLineCross(points);</span><br><span class="line">    <span class="hljs-keyword">if</span>(i == <span class="hljs-number">-1</span>)	<span class="hljs-comment">// 根据函数返回值判断输入多边形是凸多边形还是凹多边形</span></span><br><span class="line">        <span class="hljs-built_in">cout</span> &lt;&lt; <span class="hljs-string">"The polygen is a concave polygen."</span> &lt;&lt; <span class="hljs-built_in">endl</span>;</span><br><span class="line">    <span class="hljs-keyword">else</span></span><br><span class="line">        <span class="hljs-built_in">cout</span> &lt;&lt; <span class="hljs-string">"The polygen is a convex polygen."</span> &lt;&lt; <span class="hljs-built_in">endl</span>;</span><br><span class="line">    </span><br><span class="line">    <span class="hljs-keyword">while</span>(i != <span class="hljs-number">-1</span>)	<span class="hljs-comment">// i不为-1时是凹点索引，循环查找原多边形里的凹点</span></span><br><span class="line">    &#123;	</span><br><span class="line">        <span class="hljs-keyword">int</span> pre = i - <span class="hljs-number">1</span> &lt; <span class="hljs-number">0</span> ? _num - <span class="hljs-number">1</span> : i <span class="hljs-number">-1</span>;</span><br><span class="line">        <span class="hljs-keyword">int</span> next = i + <span class="hljs-number">1</span> &lt; _num ? i + <span class="hljs-number">1</span> : <span class="hljs-number">0</span>;</span><br><span class="line">        <span class="hljs-built_in">vector</span>&lt;Point2D&gt; p&#123;points[pre], points[i], points[next]&#125;;</span><br><span class="line">        convexPolygons.push_back(p);	<span class="hljs-comment">// 生成一个新的补全凸多边形</span></span><br><span class="line">        points.erase(points.begin() + i);	<span class="hljs-comment">// 在原多边形里删除该凹点</span></span><br><span class="line">        _num --;</span><br><span class="line">        i = ComputeLineCross(points);</span><br><span class="line">    &#125;</span><br><span class="line">    convexPolygons.push_back(points);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <p>主要函数Cyrus_Beck()，用每个凸多边形窗口对原线段进行剪裁。输入需要剪裁的一条线段、一个多边形以及有效线段数组，返回值为-1时代表该线段在多边形外侧，无有效线段，无需剪裁。</p>
 <figure class="highlight c++ hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">Cyrus_Beck</span><span class="hljs-params">(Line2D&amp; src, Polygon&amp; poly)</span></span></span><br><span class="line"><span class="hljs-function"></span>&#123;</span><br><span class="line">    <span class="hljs-keyword">float</span> tin = <span class="hljs-number">0.0f</span>, tout = <span class="hljs-number">1.0f</span>;</span><br><span class="line">    Point2D&amp;&amp; vec = src.GetVector();</span><br><span class="line">    </span><br><span class="line">    <span class="hljs-keyword">for</span>(<span class="hljs-keyword">int</span> i = <span class="hljs-number">0</span>; i &lt; poly._num; ++i)</span><br><span class="line">    &#123;</span><br><span class="line">        Line2D&amp;&amp; line = poly.GetLine(i);</span><br><span class="line">        Point2D&amp;&amp; norm = poly.GetNormal(i);	<span class="hljs-comment">// 计算出法向量</span></span><br><span class="line"></span><br><span class="line">        <span class="hljs-keyword">float</span> nc = vec * norm;	<span class="hljs-comment">// 得到内法向量与线段向量的点积</span></span><br><span class="line">        </span><br><span class="line">        <span class="hljs-keyword">if</span>(nc == <span class="hljs-number">0</span>)</span><br><span class="line">            <span class="hljs-keyword">continue</span>;		<span class="hljs-comment">// 点在边上</span></span><br><span class="line">        <span class="hljs-keyword">else</span></span><br><span class="line">        &#123;</span><br><span class="line">            <span class="hljs-keyword">float</span> hit = (line._start - src._start) * norm / nc;	<span class="hljs-comment">//	计算交点的参数t</span></span><br><span class="line">            <span class="hljs-keyword">if</span>(nc &gt; <span class="hljs-number">0</span>)</span><br><span class="line">                tout = min(tout, hit);</span><br><span class="line">            <span class="hljs-keyword">else</span></span><br><span class="line">                tin = max(tin, hit);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="hljs-keyword">if</span>(tin &lt;= tout)</span><br><span class="line">    &#123;</span><br><span class="line">        Line2D dest_T;</span><br><span class="line">        dest_T._start = src._start + vec * tin;</span><br><span class="line">        dest_T._end = src._start + vec * tout;</span><br><span class="line">        dest_V.push_back(dest_T);			<span class="hljs-comment">// 加入每个凸多边形裁剪的线段数组</span></span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="hljs-keyword">return</span> tin &gt; tout;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h3 id="实验结果"><a href="#实验结果" class="headerlink" title="实验结果"></a>实验结果</h3><p>程序运行后，先用鼠标左键选取一系列的点，单击鼠标右键完成多边形的构建。接下来用鼠标左键选取线段的起点和终点进行裁剪。</p>
+<h2 id="实验结果"><a href="#实验结果" class="headerlink" title="实验结果"></a>实验结果</h2><p>程序运行后，先用鼠标左键选取一系列的点，单击鼠标右键完成多边形的构建。接下来用鼠标左键选取线段的起点和终点进行裁剪。</p>
 <p><img src="/images/cg/3.png" alt="figure 1"></p>
 <center>图1  凸多边形窗口裁剪线段结果</center>
 <center class="half">
+
 ![figure 2](/images/cg/1.png)
 ![figure 3](/images/cg/2.png)
+
 </center>
 
 <center>图2  凹多边形窗口裁剪线段结果</center>
@@ -413,21 +417,19 @@
         <a href="#思路">
         <span class="has-mr-6">1</span>
         <span>思路</span>
-        </a>&nbsp&nbsp<i class="fa fa-chevron-down"></i>
-            <i class="fa fa-chevron-right"></i><ul class="menu-list"><li>
+        </a></li><li>
         <a href="#程序流程图">
-        <span class="has-mr-6">1.1</span>
-        <span>程序流程图</span>
-        </a></li></ul></li><li>
-        <a href="#具体实现">
         <span class="has-mr-6">2</span>
+        <span>程序流程图</span>
+        </a></li><li>
+        <a href="#具体实现">
+        <span class="has-mr-6">3</span>
         <span>具体实现</span>
-        </a>&nbsp&nbsp<i class="fa fa-chevron-down"></i>
-            <i class="fa fa-chevron-right"></i><ul class="menu-list"><li>
+        </a></li><li>
         <a href="#实验结果">
-        <span class="has-mr-6">2.1</span>
+        <span class="has-mr-6">4</span>
         <span>实验结果</span>
-        </a></li></ul></li></ul>
+        </a></li></ul>
         </div>
     </div>
 </div>
