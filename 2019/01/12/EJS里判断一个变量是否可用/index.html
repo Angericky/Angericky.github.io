@@ -17,7 +17,7 @@
 <meta property="og:site_name" content="Jingjing&#39;s blog">
 <meta property="og:description" content="改博客时候遇到的问题：ejs互相传参数，怎么得知参数有没有被传呢？">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2019-11-02T13:54:03.904Z">
+<meta property="og:updated_time" content="2019-11-14T15:56:26.800Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="EJS里判断一个变量是否可用">
 <meta name="twitter:description" content="改博客时候遇到的问题：ejs互相传参数，怎么得知参数有没有被传呢？">
@@ -163,7 +163,7 @@
                 <time class="level-item has-text-grey" datetime="2019-01-12T03:35:32.000Z">2019-01-12</time>
                 
                     <i class="fas fa-calendar-check">&nbsp</i>
-                    <time class="level-item has-text-grey" datetime="2019-11-02T13:54:03.904Z">2019-11-02</time>
+                    <time class="level-item has-text-grey" datetime="2019-11-14T15:56:26.800Z">2019-11-14</time>
                 
                 
                 <i class="fas fa-book">&nbsp</i>
@@ -199,7 +199,7 @@
                     <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#问题描述"><span class="toc-number">1.</span> <span class="toc-text">问题描述</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#解决方法"><span class="toc-number">2.</span> <span class="toc-text">解决方法</span></a></li></ol>
                 </div>
              
-            <p><excerpt in="" index="" |="" 首页摘要=""><br>    改博客时候遇到的问题：ejs互相传参数，怎么得知参数有没有被传呢？<br><a id="more"></a></excerpt></p>
+            <p>改博客时候遇到的问题：ejs互相传参数，怎么得知参数有没有被传呢？<br><a id="more"></a></p>
 <h1 id="问题描述"><a href="#问题描述" class="headerlink" title="问题描述"></a>问题描述</h1><p>node代码里存在两种情况：<br><figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">res.render(&apos;home/content&apos;, &#123; detail:detail,list:list &#125; );</span><br><span class="line">res.render(&apos;home/content&apos;, &#123; detail:detail &#125; );</span><br></pre></td></tr></table></figure></p>
 <p>EJS:<br><figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&lt;%  if(list==undefined)&#123; %&gt;</span><br><span class="line">	&lt;span&gt;暂时没有内容&lt;/span&gt;</span><br><span class="line">&lt;% &#125; %&gt;</span><br></pre></td></tr></table></figure></p>
 <p>当node里不提供list的时候，页面判断list是否存在的时候报错<br><figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">ReferenceError: D:\demo\views\home\content.ejs:10</span><br><span class="line">   8| &lt;/div&gt;</span><br><span class="line">   9| &lt;/div&gt;</span><br><span class="line">&gt;&gt; 10| &lt;%</span><br><span class="line">   11| if(list==undefined)&#123;</span><br><span class="line">   12|</span><br><span class="line">   13| &#125;</span><br><span class="line">list is not defined</span><br></pre></td></tr></table></figure></p>
