@@ -4,21 +4,23 @@
 <html lang="zh">
 <head><meta name="generator" content="Hexo 3.8.0">
     <!-- hexo-inject:begin --><!-- hexo-inject:end --><meta charset="utf-8">
-<title>归档: 2019/3 - Jingjing&#39;s blog</title>
+<title>KPConv论文笔记 - Jingjing&#39;s blog</title>
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
 
 
-    <meta name="description" content="A record of technical growth and beautiful things in life.">
-<meta property="og:type" content="website">
-<meta property="og:title" content="Jingjing&#39;s blog">
-<meta property="og:url" content="http://Angericky.github.io/archives/2019/03/index.html">
+    <meta name="description" content="《KPConv: Flexible and Deformable Convolution for Point Clouds》的论文笔记。">
+<meta name="keywords" content="point cloud,note">
+<meta property="og:type" content="article">
+<meta property="og:title" content="KPConv论文笔记">
+<meta property="og:url" content="http://Angericky.github.io/2019/11/18/KPConv论文笔记/index.html">
 <meta property="og:site_name" content="Jingjing&#39;s blog">
-<meta property="og:description" content="A record of technical growth and beautiful things in life.">
+<meta property="og:description" content="《KPConv: Flexible and Deformable Convolution for Point Clouds》的论文笔记。">
 <meta property="og:locale" content="zh-CN">
+<meta property="og:updated_time" content="2019-11-18T15:40:50.957Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Jingjing&#39;s blog">
-<meta name="twitter:description" content="A record of technical growth and beautiful things in life.">
+<meta name="twitter:title" content="KPConv论文笔记">
+<meta name="twitter:description" content="《KPConv: Flexible and Deformable Convolution for Point Clouds》的论文笔记。">
 
 
 
@@ -87,13 +89,13 @@
 
 <link rel="stylesheet" href="/css/style.css"><!-- hexo-inject:begin --><!-- hexo-inject:end -->
 </head>
-<body class="is-3-column">
+<body class="is-2-column">
     <!-- hexo-inject:begin --><!-- hexo-inject:end --><nav class="navbar navbar-main">
     <div class="container">
         <div class="navbar-brand is-flex-center">
             <a class="navbar-item navbar-logo" href="/">
             
-                <img src="https://i.loli.net/2019/01/07/5c336be858b4e.jpg" alt="Jingjing&#39;s blog" height="28">
+                <img src="https://i.loli.net/2019/01/07/5c336be858b4e.jpg" alt="KPConv论文笔记" height="28">
             
             </a>
         </div>
@@ -140,147 +142,165 @@
     <section class="section">
         <div class="container">
             <div class="columns">
-                <div class="column is-10-tablet is-10-desktop is-6-widescreen has-order-2 column-main">
+                <div class="column is-8-tablet is-8-desktop is-9-widescreen has-order-2 column-main"><div class="card">
+    <!--  -->
+    <div class="card-content article ">
+        <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
+            
+                KPConv论文笔记
+            
+        </h1>
+        
+            <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto" style="margin-bottom: 0;">
+            <div class="level-left">
+                <i class="fas fa-calendar">&nbsp</i>
+                <time class="level-item has-text-grey" datetime="2019-11-18T15:38:46.000Z">2019-11-18</time>
+                
+                    <i class="fas fa-calendar-check">&nbsp</i>
+                    <time class="level-item has-text-grey" datetime="2019-11-18T15:40:50.957Z">2019-11-18</time>
+                
+                
+                <i class="fas fa-book">&nbsp</i>
+                <span class="level-item has-text-grey">
+                    
+                    
+                    2 分钟 读完 (大约 359 个字)
+                </span>
+                
+            </div>
+        </div>
+        <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
+            <div class="level-left">
+                
+                    <i class="fas fa-folder-open">&nbsp</i>
+                    <div class="level-item">
+                    <a class="has-link-grey -link" href="/categories/point-cloud/">point cloud</a>
+                    </div>
+                
+                
+                    <i class="fas fa-tags">&nbsp</i>
+                    <div class="level-item">
+                    <a class="has-link-grey -link" href="/tags/note/">note</a>&nbsp;/&nbsp;<a class="has-link-grey -link" href="/tags/point-cloud/">point cloud</a>
+                    </div>
+                
+            </div>
+        </div>
+        
+        <div class="content">
+             
+            <p>《KPConv: Flexible and Deformable Convolution for Point Clouds》的论文笔记。<br><a id="more"></a></p>
+<blockquote>
+<p>《KPConv: Flexible and Deformable Convolution for Point Clouds》 ICCV 2019<br>Author: Hugues Thomas, Charles R. Qi et.al.<br>From: Mines ParisTech, Facebook AI Research, Stanford University<br>paper地址:<a href="https://arxiv.org/pdf/1904.08889.pdf" target="_blank" rel="noopener">点击这里</a><br>源码地址：<a href="https://github.com/HuguesTHOMAS/KPConv" target="_blank" rel="noopener"><br>https://github.com/HuguesTHOMAS/KPConv</a></p>
+</blockquote>
+<p>KPConv == Kernel Point Convolution)</p>
+<h3 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h3><p>这是PointNet作者作为二作的一篇文章，超过了当前的SOTA七八个点。</p>
+<p>用输入特征、关联算式附加在卷积核点上作为卷积核权重。<br>可以用不定个数的卷积核点进行训练，因此很灵活。</p>
+<p>KPConv能比较快速地训练很深的网络结构。<br>刚性卷积在简单任务（物体分类或者小场景分割数据集）上表现更好，可变形卷积在复杂任务（大场景分割数据集）上表现更好。<br>KPConv在数量少的kernel points上显示了鲁棒性。<br>可变形kernel能更好地拟合场景对象。</p>
+<h3 id="贡献点"><a href="#贡献点" class="headerlink" title="贡献点"></a>贡献点</h3><p>是第一个提出空间可变形点卷积的工作。</p>
+<ol>
+<li>先前用MLP做点卷积的方法让卷积运算变复杂，导致网络收敛比较困难。而本文定义了一个能够直接学习权重的显式卷积核，不需要用MLP做中间表达。</li>
+</ol>
+<h3 id="思想"><a href="#思想" class="headerlink" title="思想"></a>思想</h3><h3 id="网络设计"><a href="#网络设计" class="headerlink" title="网络设计"></a>网络设计</h3><h3 id="实验结果"><a href="#实验结果" class="headerlink" title="实验结果"></a>实验结果</h3><h3 id="不足与思考"><a href="#不足与思考" class="headerlink" title="不足与思考"></a>不足与思考</h3>
+        </div>
+        
+        <div class="level is-size-7 is-uppercase">
+            <div class="level-start">
+                <div class="level-item">
+                    <span class="is-size-6 has-text-grey has-mr-7">#</span>
+                    <a class="has-link-grey -link" href="/tags/note/">note</a>, <a class="has-link-grey -link" href="/tags/point-cloud/">point cloud</a>
+                </div>
+            </div>
+        </div>
+        
+        
+        
+            <p style="padding-bottom: 1rem">
+            <span id="busuanzi_container_page_pv">
+               本文总阅读量<span id="busuanzi_value_page_pv"></span>次
+            </span>
+            </p>
+        
+        
+            <div class="social-share"></div>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/social-share.js@1.0.16/dist/css/share.min.css">
+<script src="https://cdn.jsdelivr.net/npm/social-share.js@1.0.16/dist/js/social-share.min.js"></script>
+            <!-- <div class="share-component" data-disabled="google, twitter, facebook, tencent, douban, linkedin"></div> -->
+        
+    </div>
+</div>
 
-<div class="card widget">
+
+
+<div class="card">
     <div class="card-content">
-        <h3 class="tag is-link">
-        三月 2019
-        </h3>
-        <div class="timeline">
-        
-            <article class="media">
+        <h3 class="menu-label has-text-centered">Could you buy me a coffee?</h3>
+        <div class="buttons is-centered">
+            
                 
-                <a href="/2019/03/23/关于我和3DGNN论文及源码的爱恨情仇/" class="media-left">
-                    <p class="image is-64x64">
-                        <img class="thumbnail" src="https://i.loli.net/2019/03/31/5ca0bf4ce3cac.jpg" alt="关于我和3DGNN论文及源码的爱恨情仇">
-                    </p>
-                </a>
+<a class="button is-success donate">
+    <span class="icon is-small">
+        <i class="fab fa-weixin"></i>
+    </span>
+    <span>微信</span>
+    <div class="qrcode"><img src="https://s1.ax1x.com/2018/12/30/FfHzNV.png" alt="微信"></div>
+</a>
+
                 
-                <div class="media-content">
-                    <div class="content">
-                        <time class="has-text-grey is-size-7 is-block is-uppercase" datetime="2019-03-23T14:11:05.000Z">2019-03-23</time>
-                        <a href="/2019/03/23/关于我和3DGNN论文及源码的爱恨情仇/" class="has-link-black-ter is-size-6">关于我和3DGNN论文及源码的爱恨情仇</a>
-                        <div class="level article-meta is-mobile">
-                            <div class="level-left">
-                                
-                                <div class="level-item is-size-7 is-uppercase">
-                                <a class="has-link-grey -link" href="/categories/caffe/">caffe</a>
-                                </div>
-                                
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </article>
-        
-            <article class="media">
                 
-                <a href="/2019/03/18/google-girl-hackthon-2019赛后感/" class="media-left">
-                    <p class="image is-64x64">
-                        <img class="thumbnail" src="/images/google.png" alt="Google Girl Hackathon 2019赛后感">
-                    </p>
-                </a>
+<a class="button is-info donate">
+    <span class="icon is-small">
+        <i class="fab fa-alipay"></i>
+    </span>
+    <span>支付宝</span>
+    <div class="qrcode"><img src="https://s1.ax1x.com/2018/12/30/FfbShT.jpg" alt="支付宝"></div>
+</a>
+
                 
-                <div class="media-content">
-                    <div class="content">
-                        <time class="has-text-grey is-size-7 is-block is-uppercase" datetime="2019-03-18T15:53:10.000Z">2019-03-18</time>
-                        <a href="/2019/03/18/google-girl-hackthon-2019赛后感/" class="has-link-black-ter is-size-6">Google Girl Hackathon 2019赛后感</a>
-                        <div class="level article-meta is-mobile">
-                            <div class="level-left">
-                                
-                                <div class="level-item is-size-7 is-uppercase">
-                                <a class="has-link-grey -link" href="/categories/hachathon/">hachathon</a>
-                                </div>
-                                
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </article>
-        
-            <article class="media">
-                
-                <a href="/2019/03/10/Vue学习总结/" class="media-left">
-                    <p class="image is-64x64">
-                        <img class="thumbnail" src="/images/vue-logo.png" alt="Vue学习总结">
-                    </p>
-                </a>
-                
-                <div class="media-content">
-                    <div class="content">
-                        <time class="has-text-grey is-size-7 is-block is-uppercase" datetime="2019-03-10T02:59:09.000Z">2019-03-10</time>
-                        <a href="/2019/03/10/Vue学习总结/" class="has-link-black-ter is-size-6">Vue学习总结</a>
-                        <div class="level article-meta is-mobile">
-                            <div class="level-left">
-                                
-                                <div class="level-item is-size-7 is-uppercase">
-                                <a class="has-link-grey -link" href="/categories/vue/">vue</a>
-                                </div>
-                                
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </article>
-        
-            <article class="media">
-                
-                <a href="/2019/03/05/html跳转页面的参数传递/" class="media-left">
-                    <p class="image is-64x64">
-                        <img class="thumbnail" src="/images/www.jpg" alt="网页的跳转页面及参数传递方法">
-                    </p>
-                </a>
-                
-                <div class="media-content">
-                    <div class="content">
-                        <time class="has-text-grey is-size-7 is-block is-uppercase" datetime="2019-03-05T14:42:55.000Z">2019-03-05</time>
-                        <a href="/2019/03/05/html跳转页面的参数传递/" class="has-link-black-ter is-size-6">网页的跳转页面及参数传递方法</a>
-                        <div class="level article-meta is-mobile">
-                            <div class="level-left">
-                                
-                                <div class="level-item is-size-7 is-uppercase">
-                                <a class="has-link-grey -link" href="/categories/Front-end/">Front-end</a>
-                                </div>
-                                
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </article>
-        
-            <article class="media">
-                
-                <a href="/2019/03/03/vue-router传递参数params和query的区别/" class="media-left">
-                    <p class="image is-64x64">
-                        <img class="thumbnail" src="/images/VueRouter.jpeg" alt="vue-router传递参数params和query的区别">
-                    </p>
-                </a>
-                
-                <div class="media-content">
-                    <div class="content">
-                        <time class="has-text-grey is-size-7 is-block is-uppercase" datetime="2019-03-03T05:51:13.000Z">2019-03-03</time>
-                        <a href="/2019/03/03/vue-router传递参数params和query的区别/" class="has-link-black-ter is-size-6">vue-router传递参数params和query的区别</a>
-                        <div class="level article-meta is-mobile">
-                            <div class="level-left">
-                                
-                                <div class="level-item is-size-7 is-uppercase">
-                                <a class="has-link-grey -link" href="/categories/vue/">vue</a>
-                                </div>
-                                
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </article>
-        
         </div>
     </div>
 </div>
 
 
+
+<div class="card card-transparent">
+    <div class="level post-navigation is-flex-wrap is-mobile">
+        
+        
+        <div class="level-end">
+            <a class="level level-item has-link-grey  article-nav-next" href="/2019/11/12/任意多边形窗口的线段裁剪算法/">
+                <span class="level-item">任意多边形窗口的线段裁剪算法</span>
+                <i class="level-item fas fa-chevron-right"></i>
+            </a>
+        </div>
+        
+    </div>
 </div>
-                
+
+
+
+<div class="card">
+    <div class="card-content">
+        <h3 class="title is-5 has-text-weight-normal">评论</h3>
+        
+<div id="valine-thread"></div>
+<script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+<script src="//unpkg.com/valine/dist/Valine.min.js"></script>
+<script>
+    new Valine({
+        el: '#valine-thread' ,
+        notify: false,
+        verify: false,
+        app_id: 'TDJ1Xwg60guxsxnHXWGYVzaR-gzGzoHsz',
+        app_key: 'gqw5MJGTDfaMQA0JRsBllBAG',
+        placeholder: 'ヾﾉ≧∀≦)o来啊，快活啊!'
+    });
+</script>
+
+    </div>
+</div>
+
+</div>
+                 
                     
 
 
@@ -288,8 +308,9 @@
 
 <div class="column is-4-tablet is-4-desktop is-3-widescreen  has-order-1 column-left is-sticky">
     
+    <!-- 
         
-        
+            
             
 <div class="card widget">
     <div class="card-content">
@@ -373,269 +394,19 @@
     </div>
 </div>
         
-            
-
-<div class="card widget">
-    <div class="card-content">
-        <div class="menu links">
-        <h3 class="menu-label">
-            链接
-        </h3>
-        <ul class="menu-list">
-        
-            
-                <li>
-                <a class="level is-mobile" href="http://godweiyang.com" target="_blank">
-                    <span class="level-left" style="text-decoration: underline">
-                        <span class="level-item">Godweiyang</span>
-                    </span> 
-                </a>      
-                
-        
-            
-                <a class="level is-mobile" style="float:right" href="https://qjchen.cn" target="_blank">
-                    <span class="level-right" style="text-decoration: underline">
-                        <span class="level-item">QJChen</span>
-                    </span>
-                </a>
-                </li>
-            
-        
-            
-                <li>
-                <a class="level is-mobile" href="https://miaosakurai.github.io" target="_blank">
-                    <span class="level-left" style="text-decoration: underline">
-                        <span class="level-item">樱井喵</span>
-                    </span> 
-                </a>      
-                
-        
-            
-                <a class="level is-mobile" style="float:right" href="https://subjectnoi.github.io" target="_blank">
-                    <span class="level-right" style="text-decoration: underline">
-                        <span class="level-item">Altair Liu</span>
-                    </span>
-                </a>
-                </li>
-            
-        
-            
-                <li>
-                <a class="level is-mobile" href="http://t.cn/EMpLq2K" target="_blank">
-                    <span class="level-left" style="text-decoration: underline">
-                        <span class="level-item">babyQ</span>
-                    </span> 
-                </a>      
-                
-        
-            
-                <a class="level is-mobile" style="float:right" href="https://muyuuuu.github.io/" target="_blank">
-                    <span class="level-right" style="text-decoration: underline">
-                        <span class="level-item">Lan Ling</span>
-                    </span>
-                </a>
-                </li>
-            
-        
-        </ul>
-        </div>
-    </div>
-</div>
-
-        
-            <!-- 
-<div class="card widget">
-    <div class="card-content">
-        <div class="menu">
-            <h3 class="menu-label">
-                分类
-            </h3>
-            <ul class="menu-list">
-            <li>
-        <a class="level is-marginless" href="/categories/Front-end/">
-            <span class="level-start">
-                <span class="level-item">Front-end</span>
-            </span>
-            <span class="level-end">
-                <span class="level-item tag">1</span>
-            </span>
-        </a></li><li>
-        <a class="level is-marginless" href="/categories/algorithm/">
-            <span class="level-start">
-                <span class="level-item">algorithm</span>
-            </span>
-            <span class="level-end">
-                <span class="level-item tag">2</span>
-            </span>
-        </a></li><li>
-        <a class="level is-marginless" href="/categories/caffe/">
-            <span class="level-start">
-                <span class="level-item">caffe</span>
-            </span>
-            <span class="level-end">
-                <span class="level-item tag">1</span>
-            </span>
-        </a></li><li>
-        <a class="level is-marginless" href="/categories/computer-graphics/">
-            <span class="level-start">
-                <span class="level-item">computer graphics</span>
-            </span>
-            <span class="level-end">
-                <span class="level-item tag">1</span>
-            </span>
-        </a></li><li>
-        <a class="level is-marginless" href="/categories/ejs/">
-            <span class="level-start">
-                <span class="level-item">ejs</span>
-            </span>
-            <span class="level-end">
-                <span class="level-item tag">1</span>
-            </span>
-        </a></li><li>
-        <a class="level is-marginless" href="/categories/git/">
-            <span class="level-start">
-                <span class="level-item">git</span>
-            </span>
-            <span class="level-end">
-                <span class="level-item tag">2</span>
-            </span>
-        </a></li><li>
-        <a class="level is-marginless" href="/categories/hachathon/">
-            <span class="level-start">
-                <span class="level-item">hachathon</span>
-            </span>
-            <span class="level-end">
-                <span class="level-item tag">1</span>
-            </span>
-        </a></li><li>
-        <a class="level is-marginless" href="/categories/icarus/">
-            <span class="level-start">
-                <span class="level-item">icarus</span>
-            </span>
-            <span class="level-end">
-                <span class="level-item tag">1</span>
-            </span>
-        </a></li><li>
-        <a class="level is-marginless" href="/categories/keyboard-accelerators/">
-            <span class="level-start">
-                <span class="level-item">keyboard accelerators</span>
-            </span>
-            <span class="level-end">
-                <span class="level-item tag">1</span>
-            </span>
-        </a></li><li>
-        <a class="level is-marginless" href="/categories/markdown/">
-            <span class="level-start">
-                <span class="level-item">markdown</span>
-            </span>
-            <span class="level-end">
-                <span class="level-item tag">1</span>
-            </span>
-        </a></li><li>
-        <a class="level is-marginless" href="/categories/point-cloud/">
-            <span class="level-start">
-                <span class="level-item">point cloud</span>
-            </span>
-            <span class="level-end">
-                <span class="level-item tag">5</span>
-            </span>
-        </a></li><li>
-        <a class="level is-marginless" href="/categories/presentation/">
-            <span class="level-start">
-                <span class="level-item">presentation</span>
-            </span>
-            <span class="level-end">
-                <span class="level-item tag">1</span>
-            </span>
-        </a></li><li>
-        <a class="level is-marginless" href="/categories/process/">
-            <span class="level-start">
-                <span class="level-item">process</span>
-            </span>
-            <span class="level-end">
-                <span class="level-item tag">1</span>
-            </span>
-        </a></li><li>
-        <a class="level is-marginless" href="/categories/talk/">
-            <span class="level-start">
-                <span class="level-item">talk</span>
-            </span>
-            <span class="level-end">
-                <span class="level-item tag">1</span>
-            </span>
-        </a></li><li>
-        <a class="level is-marginless" href="/categories/vue/">
-            <span class="level-start">
-                <span class="level-item">vue</span>
-            </span>
-            <span class="level-end">
-                <span class="level-item tag">2</span>
-            </span>
-        </a></li><li>
-        <a class="level is-marginless" href="/categories/前端/">
-            <span class="level-start">
-                <span class="level-item">前端</span>
-            </span>
-            <span class="level-end">
-                <span class="level-item tag">1</span>
-            </span>
-        </a></li><li>
-        <a class="level is-marginless" href="/categories/学习计划/">
-            <span class="level-start">
-                <span class="level-item">学习计划</span>
-            </span>
-            <span class="level-end">
-                <span class="level-item tag">1</span>
-            </span>
-        </a></li><li>
-        <a class="level is-marginless" href="/categories/设计模式/">
-            <span class="level-start">
-                <span class="level-item">设计模式</span>
-            </span>
-            <span class="level-end">
-                <span class="level-item tag">1</span>
-            </span>
-        </a></li>
-            </ul>
-        </div>
-    </div>
-</div> -->
-        
-            
-<div class="card widget">
-    <div class="card-content">
-        <h3 class="menu-label">
-            标签云
-        </h3>
-        <div style="overflow: auto">
-            <svg width="260" height="350"><g transform="translate(140,175)"><a href="/tags/Front-end/"><text text-anchor="middle" fill="#1f77b4" transform="translate(643,-275)rotate(0)" style="font-size:30px;font-family:Impact">Front-end</text></a><a href="/tags/algorithm/"><text text-anchor="middle" fill="#aec7e8" transform="translate(-91,81)rotate(90)" style="font-size:36px;font-family:Impact">algorithm</text></a><a href="/tags/caffe/"><text text-anchor="middle" fill="#ff7f0e" transform="translate(2,103)rotate(0)" style="font-size:30px;font-family:Impact">caffe</text></a><a href="/tags/computer graphics/"><text text-anchor="middle" fill="#ffbb78" transform="translate(678,-264)rotate(90)" style="font-size:30px;font-family:Impact">computer graphics</text></a><a href="/tags/css/"><text text-anchor="middle" fill="#2ca02c" transform="translate(562,-132)rotate(0)" style="font-size:30px;font-family:Impact">css</text></a><a href="/tags/dp/"><text text-anchor="middle" fill="#98df8a" transform="translate(-106,-128)rotate(90)" style="font-size:30px;font-family:Impact">dp</text></a><a href="/tags/ejs/"><text text-anchor="middle" fill="#d62728" transform="translate(98,113)rotate(0)" style="font-size:30px;font-family:Impact">ejs</text></a><a href="/tags/git/"><text text-anchor="middle" fill="#ff9896" transform="translate(17,-63)rotate(0)" style="font-size:36px;font-family:Impact">git</text></a><a href="/tags/google/"><text text-anchor="middle" fill="#9467bd" transform="translate(-383,-290)rotate(90)" style="font-size:30px;font-family:Impact">google</text></a><a href="/tags/hackathon/"><text text-anchor="middle" fill="#c5b0d5" transform="translate(561,-140)rotate(90)" style="font-size:30px;font-family:Impact">hackathon</text></a><a href="/tags/hexo/"><text text-anchor="middle" fill="#8c564b" transform="translate(-31,-11)rotate(0)" style="font-size:40px;font-family:Impact">hexo</text></a><a href="/tags/icarus/"><text text-anchor="middle" fill="#c49c94" transform="translate(-17,-109)rotate(0)" style="font-size:36px;font-family:Impact">icarus</text></a><a href="/tags/keyboard accelerators/"><text text-anchor="middle" fill="#e377c2" transform="translate(-389,-134)rotate(90)" style="font-size:30px;font-family:Impact">keyboard accelerators</text></a><a href="/tags/leetcode/"><text text-anchor="middle" fill="#f7b6d2" transform="translate(24,146)rotate(0)" style="font-size:30px;font-family:Impact">leetcode</text></a><a href="/tags/markdown/"><text text-anchor="middle" fill="#7f7f7f" transform="translate(664,-193)rotate(90)" style="font-size:30px;font-family:Impact">markdown</text></a><a href="/tags/matlab/"><text text-anchor="middle" fill="#c7c7c7" transform="translate(592,-301)rotate(0)" style="font-size:30px;font-family:Impact">matlab</text></a><a href="/tags/nodejs/"><text text-anchor="middle" fill="#bcbd22" transform="translate(628,-287)rotate(0)" style="font-size:30px;font-family:Impact">nodejs</text></a><a href="/tags/note/"><text text-anchor="middle" fill="#dbdb8d" transform="translate(-6,59)rotate(0)" style="font-size:45px;font-family:Impact">note</text></a><a href="/tags/point cloud/"><text text-anchor="middle" fill="#17becf" transform="translate(52,-36)rotate(90)" style="font-size:45px;font-family:Impact">point cloud</text></a><a href="/tags/pointnet/"><text text-anchor="middle" fill="#9edae5" transform="translate(-374,-228)rotate(90)" style="font-size:36px;font-family:Impact">pointnet</text></a><a href="/tags/presentation/"><text text-anchor="middle" fill="#1f77b4" transform="translate(-343,-254)rotate(0)" style="font-size:30px;font-family:Impact">presentation</text></a><a href="/tags/process/"><text text-anchor="middle" fill="#aec7e8" transform="translate(625,-193)rotate(90)" style="font-size:30px;font-family:Impact">process</text></a><a href="/tags/stylus/"><text text-anchor="middle" fill="#ff7f0e" transform="translate(556,-254)rotate(90)" style="font-size:30px;font-family:Impact">stylus</text></a><a href="/tags/talk/"><text text-anchor="middle" fill="#ffbb78" transform="translate(689,-184)rotate(90)" style="font-size:30px;font-family:Impact">talk</text></a><a href="/tags/vue/"><text text-anchor="middle" fill="#2ca02c" transform="translate(-66,-63)rotate(0)" style="font-size:36px;font-family:Impact">vue</text></a><a href="/tags/学习计划/"><text text-anchor="middle" fill="#98df8a" transform="translate(-409,-292)rotate(0)" style="font-size:30px;font-family:Impact">学习计划</text></a><a href="/tags/设计模式/"><text text-anchor="middle" fill="#d62728" transform="translate(104,-62)rotate(90)" style="font-size:30px;font-family:Impact">设计模式</text></a><a href="/tags/面向对象/"><text text-anchor="middle" fill="#ff9896" transform="translate(-407,-215)rotate(90)" style="font-size:30px;font-family:Impact">面向对象</text></a></g></svg>
-        </div>
-    </div>
-</div>
-
-        
     
-    <!-- 
-</div>
---></div>
-                    
-
-
-
-
-<div class="column is-4-tablet is-4-desktop is-3-widescreen is-hidden-touch is-hidden-desktop-only has-order-3 column-right ">
+            
     
-        
-            <div class="card widget">
-                <div class="card-content">
-                    <iframe frameborder="no" border="0" marginwidth="0" marginheight="0" style="height: 6rem; width: 20em;" src="//music.163.com/outchain/player?type=2&id=1336343124&auto=1&height=66"></iframe>
-                </div>
-            </div>
-        
-        
             
-        
+    
             
+     -->
+    
+        <div class="column-right-shadow  ">
+            
+                
+            
+                
 <div class="card widget">
     <div class="card-content">
         <h3 class="menu-label">
@@ -734,8 +505,8 @@
     </div>
 </div>
 
-        
-            <div class="card widget">
+            
+                <div class="card widget">
     <div class="card-content">
         <div class="menu">
         <h3 class="menu-label">
@@ -846,8 +617,8 @@
         </div>
     </div>
 </div>
-        
-            <!-- <div class="card widget">
+            
+                <!-- <div class="card widget">
     
     <div class="card-content">
         <div class="menu">
@@ -1168,11 +939,12 @@
         </div>
     </div>
 </div> -->
-        
+            
+        </div>
     
-    <!-- 
+    
 </div>
---></div>
+
                 
             </div>
         </div>
@@ -1186,7 +958,7 @@
             <div class="level-start has-text-centered-mobile">
                 <a class="footer-logo is-block has-mb-6" href="/">
                 
-                    <img src="https://i.loli.net/2019/01/07/5c336be858b4e.jpg" alt="Jingjing&#39;s blog" height="28">
+                    <img src="https://i.loli.net/2019/01/07/5c336be858b4e.jpg" alt="KPConv论文笔记" height="28">
                 
                 </a>
                 <p class="is-size-7" style="padding-bottom: 0.5em">
