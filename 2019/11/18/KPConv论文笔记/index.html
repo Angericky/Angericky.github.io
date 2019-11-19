@@ -4,23 +4,27 @@
 <html lang="zh">
 <head><meta name="generator" content="Hexo 3.8.0">
     <!-- hexo-inject:begin --><!-- hexo-inject:end --><meta charset="utf-8">
-<title>KPConv论文笔记 - Jingjing&#39;s blog</title>
+<title>Jingjing&#39;s blog</title>
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
 
 
-    <meta name="description" content="《KPConv: Flexible and Deformable Convolution for Point Clouds》的论文笔记。">
-<meta name="keywords" content="point cloud,note">
+    <meta name="description" content="《KPConv: Flexible and Deformable Convolution for Point Clouds》 ICCV 2019Author: Hugues Thomas, Charles R. Qi et.al.From: Mines ParisTech, Facebook AI Research, Stanford Universitypaper地址:点击这里源码地址：htt">
 <meta property="og:type" content="article">
-<meta property="og:title" content="KPConv论文笔记">
+<meta property="og:title" content="Jingjing&#39;s blog">
 <meta property="og:url" content="http://Angericky.github.io/2019/11/18/KPConv论文笔记/index.html">
 <meta property="og:site_name" content="Jingjing&#39;s blog">
-<meta property="og:description" content="《KPConv: Flexible and Deformable Convolution for Point Clouds》的论文笔记。">
+<meta property="og:description" content="《KPConv: Flexible and Deformable Convolution for Point Clouds》 ICCV 2019Author: Hugues Thomas, Charles R. Qi et.al.From: Mines ParisTech, Facebook AI Research, Stanford Universitypaper地址:点击这里源码地址：htt">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2019-11-18T15:40:50.957Z">
+<meta property="og:image" content="evernotecid://608601E7-A5EF-4DBA-89B1-6F682033831E/appyinxiangcom/11727228/ENResource/p1134">
+<meta property="og:image" content="evernotecid://608601E7-A5EF-4DBA-89B1-6F682033831E/appyinxiangcom/11727228/ENResource/p1131">
+<meta property="og:image" content="evernotecid://608601E7-A5EF-4DBA-89B1-6F682033831E/appyinxiangcom/11727228/ENResource/p1133">
+<meta property="og:image" content="evernotecid://608601E7-A5EF-4DBA-89B1-6F682033831E/appyinxiangcom/11727228/ENResource/p1132">
+<meta property="og:updated_time" content="2019-11-19T15:54:49.315Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="KPConv论文笔记">
-<meta name="twitter:description" content="《KPConv: Flexible and Deformable Convolution for Point Clouds》的论文笔记。">
+<meta name="twitter:title" content="Jingjing&#39;s blog">
+<meta name="twitter:description" content="《KPConv: Flexible and Deformable Convolution for Point Clouds》 ICCV 2019Author: Hugues Thomas, Charles R. Qi et.al.From: Mines ParisTech, Facebook AI Research, Stanford Universitypaper地址:点击这里源码地址：htt">
+<meta name="twitter:image" content="evernotecid://608601E7-A5EF-4DBA-89B1-6F682033831E/appyinxiangcom/11727228/ENResource/p1134">
 
 
 
@@ -95,7 +99,7 @@
         <div class="navbar-brand is-flex-center">
             <a class="navbar-item navbar-logo" href="/">
             
-                <img src="https://i.loli.net/2019/01/07/5c336be858b4e.jpg" alt="KPConv论文笔记" height="28">
+                <img src="https://i.loli.net/2019/01/07/5c336be858b4e.jpg" alt="" height="28">
             
             </a>
         </div>
@@ -147,24 +151,24 @@
     <div class="card-content article ">
         <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
             
-                KPConv论文笔记
+                
             
         </h1>
         
             <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto" style="margin-bottom: 0;">
             <div class="level-left">
                 <i class="fas fa-calendar">&nbsp</i>
-                <time class="level-item has-text-grey" datetime="2019-11-18T15:38:46.000Z">2019-11-18</time>
+                <time class="level-item has-text-grey" datetime="2019-11-18T15:38:46.185Z">2019-11-18</time>
                 
                     <i class="fas fa-calendar-check">&nbsp</i>
-                    <time class="level-item has-text-grey" datetime="2019-11-18T15:40:50.957Z">2019-11-18</time>
+                    <time class="level-item has-text-grey" datetime="2019-11-19T15:54:49.315Z">2019-11-19</time>
                 
                 
                 <i class="fas fa-book">&nbsp</i>
                 <span class="level-item has-text-grey">
                     
                     
-                    2 分钟 读完 (大约 359 个字)
+                    8 分钟 读完 (大约 1223 个字)
                 </span>
                 
             </div>
@@ -172,44 +176,56 @@
         <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
             <div class="level-left">
                 
-                    <i class="fas fa-folder-open">&nbsp</i>
-                    <div class="level-item">
-                    <a class="has-link-grey -link" href="/categories/point-cloud/">point cloud</a>
-                    </div>
-                
-                
-                    <i class="fas fa-tags">&nbsp</i>
-                    <div class="level-item">
-                    <a class="has-link-grey -link" href="/tags/note/">note</a>&nbsp;/&nbsp;<a class="has-link-grey -link" href="/tags/point-cloud/">point cloud</a>
-                    </div>
                 
             </div>
         </div>
         
         <div class="content">
              
-            <p>《KPConv: Flexible and Deformable Convolution for Point Clouds》的论文笔记。<br><a id="more"></a></p>
-<blockquote>
+            <blockquote>
 <p>《KPConv: Flexible and Deformable Convolution for Point Clouds》 ICCV 2019<br>Author: Hugues Thomas, Charles R. Qi et.al.<br>From: Mines ParisTech, Facebook AI Research, Stanford University<br>paper地址:<a href="https://arxiv.org/pdf/1904.08889.pdf" target="_blank" rel="noopener">点击这里</a><br>源码地址：<a href="https://github.com/HuguesTHOMAS/KPConv" target="_blank" rel="noopener"><br>https://github.com/HuguesTHOMAS/KPConv</a></p>
 </blockquote>
 <p>KPConv == Kernel Point Convolution)</p>
 <h3 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h3><p>这是PointNet作者作为二作的一篇文章，超过了当前的SOTA七八个点。</p>
-<p>用输入特征、关联算式附加在卷积核点上作为卷积核权重。<br>可以用不定个数的卷积核点进行训练，因此很灵活。</p>
-<p>KPConv能比较快速地训练很深的网络结构。<br>刚性卷积在简单任务（物体分类或者小场景分割数据集）上表现更好，可变形卷积在复杂任务（大场景分割数据集）上表现更好。<br>KPConv在数量少的kernel points上显示了鲁棒性。<br>可变形kernel能更好地拟合场景对象。</p>
+<p>提出了新的卷积方式：</p>
+<ol>
+<li>用输入特征、关联算式附加在卷积核点上作为卷积核权重。</li>
+<li>可以用不定个数的卷积核点进行训练，因此很灵活。</li>
+</ol>
+<p>KPConv能比较快速地训练很深的网络结构。</p>
+<p>刚性卷积在简单任务（物体分类或者小场景分割数据集）上表现更好，可变形卷积在复杂任务（大场景分割数据集）上表现更好。</p>
+<p>KPConv在数量少的kernel points上显示了鲁棒性。</p>
+<p>可变形kernel能更好地拟合场景对象。</p>
 <h3 id="贡献点"><a href="#贡献点" class="headerlink" title="贡献点"></a>贡献点</h3><p>是第一个提出空间可变形点卷积的工作。</p>
 <ol>
 <li>先前用MLP做点卷积的方法让卷积运算变复杂，导致网络收敛比较困难。而本文定义了一个能够直接学习权重的显式卷积核，不需要用MLP做中间表达。</li>
 </ol>
-<h3 id="思想"><a href="#思想" class="headerlink" title="思想"></a>思想</h3><h3 id="网络设计"><a href="#网络设计" class="headerlink" title="网络设计"></a>网络设计</h3><h3 id="实验结果"><a href="#实验结果" class="headerlink" title="实验结果"></a>实验结果</h3><h3 id="不足与思考"><a href="#不足与思考" class="headerlink" title="不足与思考"></a>不足与思考</h3>
-        </div>
-        
-        <div class="level is-size-7 is-uppercase">
-            <div class="level-start">
-                <div class="level-item">
-                    <span class="is-size-6 has-text-grey has-mr-7">#</span>
-                    <a class="has-link-grey -link" href="/tags/note/">note</a>, <a class="has-link-grey -link" href="/tags/point-cloud/">point cloud</a>
-                </div>
-            </div>
+<h3 id="思想"><a href="#思想" class="headerlink" title="思想"></a>思想</h3><h4 id="rigid-or-deformable-kernel"><a href="#rigid-or-deformable-kernel" class="headerlink" title="rigid or deformable kernel"></a>rigid or deformable kernel</h4><p>作者先通过求解优化来放置不同数量的Kernel Points，希望K个Kernel Points在球面上离得足够远，又离球心不要太远。<br>其中每个点对其他点施加一个斥力。这些点被限制在具有引力的球面上，限制其中一点为中心点。最终，周围的点被限制在平均半径1.5σ内，以确保每个Kernel Points之间的影响有小幅度的重叠。</p>
+<p>用优化求出的K个kernel点位置：<br><img src="evernotecid://608601E7-A5EF-4DBA-89B1-6F682033831E/appyinxiangcom/11727228/ENResource/p1134" alt="61876d218a07d12ec2436c4394dbd58e.png"><br>有足够多K覆盖g的球形区域的时候，刚性kernel尤其有效。</p>
+<p>如果kernel points的位置不是固定的而是学习到的，表达能力会更强。<br>（？作者考虑到对每个卷积层学习一个全局的kernel points集合，但是这种不会比固定位置的kernel points更有表达力。）<br>因此提出可变形卷积，让网络对每个卷积层的所有点位置学习一个有K个局部位移向量的集合，去适应点云结构。<br><img src="evernotecid://608601E7-A5EF-4DBA-89B1-6F682033831E/appyinxiangcom/11727228/ENResource/p1131" alt="a969654d0982537e081cba7011207017.png"></p>
+<p>对可变形卷积加了两个正则化损失项：</p>
+<ol>
+<li>拟合正则化损失，惩罚内核点和最近的邻居点。</li>
+<li>对覆盖区域重复的kernel points加了一个排斥正则化项。<br><img src="evernotecid://608601E7-A5EF-4DBA-89B1-6F682033831E/appyinxiangcom/11727228/ENResource/p1133" alt="59398c17a2333eafe1b3d065766d3d47.png"></li>
+</ol>
+<h4 id="Kernel-Point-Network-Layers"><a href="#Kernel-Point-Network-Layers" class="headerlink" title="Kernel Point Network Layers"></a>Kernel Point Network Layers</h4><p>为了保证点采样位置的空间一致性，用网格下采样方法进行下采样。<br>选择每一层的支撑点作为原始输入点云的中心，让这些点携带特征位置。</p>
+<ol>
+<li><p>Pooling layer<br>每层pooing都加倍cell的大小，每个新位置的池化用最大池化或者KPConv实现。KPConv的池化被叫做strided KPConv，类似于二维图像的strided convolution（是为了去除冗余信息，取代pooling层。pooling可以看作2x2的核以步长为2进行跨步）。</p>
+</li>
+<li><p>KPConv layer<br>强制邻域有$n_(max)$维，多余的shadow neighbors在计算时被忽略。</p>
+</li>
+<li><p>网络参数<br>kernel point影响度量设为：$\sigma_j = \sum \times dl_j$ .<br>对于第$j$层网络，单元大小为$dl_j$。<br>对于刚性kernel，卷积半径是$2.5\sigma_j$，平均kernel point半径是是$1.5\sigma_j$。<br>对于可变形kernel，卷积半径为$r_j = \rho \times dl_j$。<br>对于所有的实验，$K = 15$， $\sum = 1.0$， $\rho = 5.0$。<br>$dl_0$由输入的数据集大小决定，降采样$dl_(j+1) = 2 * dl_j$ </p>
+</li>
+</ol>
+<h3 id="网络设计"><a href="#网络设计" class="headerlink" title="网络设计"></a>网络设计</h3><p><img src="evernotecid://608601E7-A5EF-4DBA-89B1-6F682033831E/appyinxiangcom/11727228/ENResource/p1132" alt="b119d218c27bfb36871bc2cce9320aa6.png"><br>分类网络 KP-CNN：<br>五层网络，每层都有两个卷积block，除了第一层都用strided。<br>最后通过一个全局平均池化，一个全连接层，一个softmax层进行分类。<br>可变形卷积只对最后5个KPConv block用可变形卷积。</p>
+<p>分割网络 KP-FCNN：<br>用skip links传递中间层特征，用最近邻上采样策略去得到最终的点向特征。将特征与上采样结果级联，再用一元卷积进行处理。</p>
+<h3 id="实验结果"><a href="#实验结果" class="headerlink" title="实验结果"></a>实验结果</h3><ol>
+<li>简单任务（分类+部件分割）</li>
+</ol>
+<ol>
+<li>复杂任务（真实场景分割）</li>
+</ol>
+
         </div>
         
         
@@ -417,10 +433,10 @@
             
             <div class="media-content">
                 <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-11-18T15:38:46.000Z">2019-11-18</time></div>
-                    <a href="/2019/11/18/KPConv论文笔记/" class="has-link-black-ter is-size-6">KPConv论文笔记</a>
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-11-18T15:38:46.185Z">2019-11-18</time></div>
+                    <a href="/2019/11/18/KPConv论文笔记/" class="has-link-black-ter is-size-6"></a>
                     <p class="is-size-7 is-uppercase">
-                        <a class="has-link-grey -link" href="/categories/point-cloud/">point cloud</a>
+                        
                     </p>
                 </div>
             </div>
@@ -820,7 +836,7 @@
                             <span class="level-item">note</span>
                         </span>
                         <span class="level-end">
-                            <span class="level-item tag">5</span>
+                            <span class="level-item tag">4</span>
                         </span>
                     </a>
                 </li>
@@ -831,7 +847,7 @@
                             <span class="level-item">point cloud</span>
                         </span>
                         <span class="level-end">
-                            <span class="level-item tag">5</span>
+                            <span class="level-item tag">4</span>
                         </span>
                     </a>
                 </li>
@@ -958,7 +974,7 @@
             <div class="level-start has-text-centered-mobile">
                 <a class="footer-logo is-block has-mb-6" href="/">
                 
-                    <img src="https://i.loli.net/2019/01/07/5c336be858b4e.jpg" alt="KPConv论文笔记" height="28">
+                    <img src="https://i.loli.net/2019/01/07/5c336be858b4e.jpg" alt="" height="28">
                 
                 </a>
                 <p class="is-size-7" style="padding-bottom: 0.5em">
