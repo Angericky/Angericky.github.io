@@ -16,15 +16,16 @@
 <meta property="og:site_name" content="Jingjing&#39;s blog">
 <meta property="og:description" content="《KPConv: Flexible and Deformable Convolution for Point Clouds》 ICCV 2019Author: Hugues Thomas, Charles R. Qi et.al.From: Mines ParisTech, Facebook AI Research, Stanford Universitypaper地址:点击这里源码地址：htt">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:image" content="evernotecid://608601E7-A5EF-4DBA-89B1-6F682033831E/appyinxiangcom/11727228/ENResource/p1134">
+<meta property="og:image" content="http://angericky.github.io/images/KPConv/KP_8.png">
+<meta property="og:image" content="evernotecid://608601E7-A5EF-4DBA-89B1-6F682033831E/appyinxiangcom/11727228/ENResource/p1170">
 <meta property="og:image" content="evernotecid://608601E7-A5EF-4DBA-89B1-6F682033831E/appyinxiangcom/11727228/ENResource/p1131">
 <meta property="og:image" content="evernotecid://608601E7-A5EF-4DBA-89B1-6F682033831E/appyinxiangcom/11727228/ENResource/p1133">
-<meta property="og:image" content="evernotecid://608601E7-A5EF-4DBA-89B1-6F682033831E/appyinxiangcom/11727228/ENResource/p1132">
-<meta property="og:updated_time" content="2019-11-19T15:54:49.315Z">
+<meta property="og:image" content="http://angericky.github.io/images/KPConv/KP_3.png">
+<meta property="og:updated_time" content="2019-11-20T15:56:56.060Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Jingjing&#39;s blog">
 <meta name="twitter:description" content="《KPConv: Flexible and Deformable Convolution for Point Clouds》 ICCV 2019Author: Hugues Thomas, Charles R. Qi et.al.From: Mines ParisTech, Facebook AI Research, Stanford Universitypaper地址:点击这里源码地址：htt">
-<meta name="twitter:image" content="evernotecid://608601E7-A5EF-4DBA-89B1-6F682033831E/appyinxiangcom/11727228/ENResource/p1134">
+<meta name="twitter:image" content="http://angericky.github.io/images/KPConv/KP_8.png">
 
 
 
@@ -161,14 +162,14 @@
                 <time class="level-item has-text-grey" datetime="2019-11-18T15:38:46.185Z">2019-11-18</time>
                 
                     <i class="fas fa-calendar-check">&nbsp</i>
-                    <time class="level-item has-text-grey" datetime="2019-11-19T15:54:49.315Z">2019-11-19</time>
+                    <time class="level-item has-text-grey" datetime="2019-11-20T15:56:56.060Z">2019-11-20</time>
                 
                 
                 <i class="fas fa-book">&nbsp</i>
                 <span class="level-item has-text-grey">
                     
                     
-                    8 分钟 读完 (大约 1223 个字)
+                    9 分钟 读完 (大约 1418 个字)
                 </span>
                 
             </div>
@@ -196,17 +197,21 @@
 <p>刚性卷积在简单任务（物体分类或者小场景分割数据集）上表现更好，可变形卷积在复杂任务（大场景分割数据集）上表现更好。</p>
 <p>KPConv在数量少的kernel points上显示了鲁棒性。</p>
 <p>可变形kernel能更好地拟合场景对象。</p>
-<h3 id="贡献点"><a href="#贡献点" class="headerlink" title="贡献点"></a>贡献点</h3><p>是第一个提出空间可变形点卷积的工作。</p>
+<h3 id="贡献点"><a href="#贡献点" class="headerlink" title="贡献点"></a>贡献点</h3><p>是第一个提出空间可变形点卷积的工作。<br>先前用MLP做点卷积的方法让卷积运算变复杂，导致网络收敛比较困难。而本文定义了一个能够直接学习权重的显式卷积核，不需要用MLP做中间表达。</p>
+<h3 id="思想"><a href="#思想" class="headerlink" title="思想"></a>思想</h3><p>总结一下核心点卷积的大概思路：</p>
 <ol>
-<li>先前用MLP做点卷积的方法让卷积运算变复杂，导致网络收敛比较困难。而本文定义了一个能够直接学习权重的显式卷积核，不需要用MLP做中间表达。</li>
+<li>以点x为球心确定一个球体；</li>
+<li>内确定若干个核心点，每个核心点带一个权重矩阵；</li>
+<li>在球体范围内的任意点，用核函数，计算出该点的权重矩阵，用该矩阵对这个点的feature进行变换；4. 在球体内的每个点，都用上一步的方法，得出一个新的feature，最后将feature累加起来，作为点x的feature。</li>
 </ol>
-<h3 id="思想"><a href="#思想" class="headerlink" title="思想"></a>思想</h3><h4 id="rigid-or-deformable-kernel"><a href="#rigid-or-deformable-kernel" class="headerlink" title="rigid or deformable kernel"></a>rigid or deformable kernel</h4><p>作者先通过求解优化来放置不同数量的Kernel Points，希望K个Kernel Points在球面上离得足够远，又离球心不要太远。<br>其中每个点对其他点施加一个斥力。这些点被限制在具有引力的球面上，限制其中一点为中心点。最终，周围的点被限制在平均半径1.5σ内，以确保每个Kernel Points之间的影响有小幅度的重叠。</p>
-<p>用优化求出的K个kernel点位置：<br><img src="evernotecid://608601E7-A5EF-4DBA-89B1-6F682033831E/appyinxiangcom/11727228/ENResource/p1134" alt="61876d218a07d12ec2436c4394dbd58e.png"><br>有足够多K覆盖g的球形区域的时候，刚性kernel尤其有效。</p>
+<h4 id="rigid-kernel-points的位置"><a href="#rigid-kernel-points的位置" class="headerlink" title="rigid kernel points的位置"></a>rigid kernel points的位置</h4><p>作者先通过求解优化来放置不同数量的Kernel Points，希望K个Kernel Points在球面上离得足够远，又离球心不要太远。<br>限制其中一点为中心点，每个点对其他点有一定的斥力。球心对其他点有一定的引力。最终，周围的点被限制在平均半径1.5σ内，以确保每个Kernel Points之间的影响有小幅度的重叠。</p>
+<p>用优化求出的K个kernel点位置：<br><img src="/images/KPConv/KP_8.png" alt="求出的kernel points位置"><br>有足够多K覆盖g的球形区域的时候，刚性kernel尤其有效。</p>
+<h4 id="Deformable-Kernel-Point-Convolution"><a href="#Deformable-Kernel-Point-Convolution" class="headerlink" title="Deformable Kernel Point Convolution"></a>Deformable Kernel Point Convolution</h4><p>借鉴了微软亚研ICCV 2017的《Deformable convolutional networks》的思想。<br><img src="evernotecid://608601E7-A5EF-4DBA-89B1-6F682033831E/appyinxiangcom/11727228/ENResource/p1170" alt="22bfccf14b4a06530a2b3fa0905f3994.png"></p>
 <p>如果kernel points的位置不是固定的而是学习到的，表达能力会更强。<br>（？作者考虑到对每个卷积层学习一个全局的kernel points集合，但是这种不会比固定位置的kernel points更有表达力。）<br>因此提出可变形卷积，让网络对每个卷积层的所有点位置学习一个有K个局部位移向量的集合，去适应点云结构。<br><img src="evernotecid://608601E7-A5EF-4DBA-89B1-6F682033831E/appyinxiangcom/11727228/ENResource/p1131" alt="a969654d0982537e081cba7011207017.png"></p>
-<p>对可变形卷积加了两个正则化损失项：</p>
+<p>直接引入deformable效果并不好，因此还对可变形卷积加了两个正则化损失项：</p>
 <ol>
-<li>拟合正则化损失，惩罚内核点和最近的邻居点。</li>
-<li>对覆盖区域重复的kernel points加了一个排斥正则化项。<br><img src="evernotecid://608601E7-A5EF-4DBA-89B1-6F682033831E/appyinxiangcom/11727228/ENResource/p1133" alt="59398c17a2333eafe1b3d065766d3d47.png"></li>
+<li>引入一个拟合正则化损失，让任何一个kernel point和最近的输入点距离不能太大。</li>
+<li>对覆盖区域重复的kernel points加了一个排斥正则化项，令kernel points彼此之间的距离不能太小。<br><img src="evernotecid://608601E7-A5EF-4DBA-89B1-6F682033831E/appyinxiangcom/11727228/ENResource/p1133" alt="59398c17a2333eafe1b3d065766d3d47.png"></li>
 </ol>
 <h4 id="Kernel-Point-Network-Layers"><a href="#Kernel-Point-Network-Layers" class="headerlink" title="Kernel Point Network Layers"></a>Kernel Point Network Layers</h4><p>为了保证点采样位置的空间一致性，用网格下采样方法进行下采样。<br>选择每一层的支撑点作为原始输入点云的中心，让这些点携带特征位置。</p>
 <ol>
@@ -217,7 +222,7 @@
 <li><p>网络参数<br>kernel point影响度量设为：$\sigma_j = \sum \times dl_j$ .<br>对于第$j$层网络，单元大小为$dl_j$。<br>对于刚性kernel，卷积半径是$2.5\sigma_j$，平均kernel point半径是是$1.5\sigma_j$。<br>对于可变形kernel，卷积半径为$r_j = \rho \times dl_j$。<br>对于所有的实验，$K = 15$， $\sum = 1.0$， $\rho = 5.0$。<br>$dl_0$由输入的数据集大小决定，降采样$dl_(j+1) = 2 * dl_j$ </p>
 </li>
 </ol>
-<h3 id="网络设计"><a href="#网络设计" class="headerlink" title="网络设计"></a>网络设计</h3><p><img src="evernotecid://608601E7-A5EF-4DBA-89B1-6F682033831E/appyinxiangcom/11727228/ENResource/p1132" alt="b119d218c27bfb36871bc2cce9320aa6.png"><br>分类网络 KP-CNN：<br>五层网络，每层都有两个卷积block，除了第一层都用strided。<br>最后通过一个全局平均池化，一个全连接层，一个softmax层进行分类。<br>可变形卷积只对最后5个KPConv block用可变形卷积。</p>
+<h3 id="网络设计"><a href="#网络设计" class="headerlink" title="网络设计"></a>网络设计</h3><p><img src="/images/KPConv/KP_3.png" alt="网络设计"><br>分类网络 KP-CNN：<br>五层网络，每层都有两个卷积block，除了第一层都用strided。<br>最后通过一个全局平均池化，一个全连接层，一个softmax层进行分类。<br>可变形卷积只对最后5个KPConv block用可变形卷积。</p>
 <p>分割网络 KP-FCNN：<br>用skip links传递中间层特征，用最近邻上采样策略去得到最终的点向特征。将特征与上采样结果级联，再用一元卷积进行处理。</p>
 <h3 id="实验结果"><a href="#实验结果" class="headerlink" title="实验结果"></a>实验结果</h3><ol>
 <li>简单任务（分类+部件分割）</li>
