@@ -17,18 +17,17 @@
 <meta property="og:site_name" content="Jingjing&#39;s blog">
 <meta property="og:description" content="《KPConv: Flexible and Deformable Convolution for Point Clouds》的论文笔记。">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:image" content="http://angericky.github.io/images/KPConv/KP_1.png">
 <meta property="og:image" content="http://angericky.github.io/images/KPConv/KP_8.png">
 <meta property="og:image" content="http://angericky.github.io/images/KPConv/KP_2.png">
 <meta property="og:image" content="http://angericky.github.io/images/KPConv/KP_7.png">
 <meta property="og:image" content="http://angericky.github.io/images/KPConv/KP_3.png">
 <meta property="og:image" content="http://angericky.github.io/images/KPConv/KP_9.png">
 <meta property="og:image" content="http://angericky.github.io/images/KPConv/KP_10.png">
-<meta property="og:updated_time" content="2019-11-21T06:54:09.896Z">
+<meta property="og:updated_time" content="2019-11-22T15:21:11.162Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="KPConv论文笔记">
 <meta name="twitter:description" content="《KPConv: Flexible and Deformable Convolution for Point Clouds》的论文笔记。">
-<meta name="twitter:image" content="http://angericky.github.io/images/KPConv/KP_1.png">
+<meta name="twitter:image" content="http://angericky.github.io/images/KPConv/KP_8.png">
 
 
 
@@ -171,14 +170,14 @@
                 <time class="level-item has-text-grey" datetime="2019-11-18T15:38:46.000Z">2019-11-18</time>
                 
                     <i class="fas fa-calendar-check">&nbsp</i>
-                    <time class="level-item has-text-grey" datetime="2019-11-21T06:54:09.896Z">2019-11-21</time>
+                    <time class="level-item has-text-grey" datetime="2019-11-22T15:21:11.162Z">2019-11-22</time>
                 
                 
                 <i class="fas fa-book">&nbsp</i>
                 <span class="level-item has-text-grey">
                     
                     
-                    9 分钟 读完 (大约 1415 个字)
+                    10 分钟 读完 (大约 1433 个字)
                 </span>
                 
             </div>
@@ -218,13 +217,14 @@
 <p>KPConv在数量少的kernel points上显示了鲁棒性。</p>
 <p>可变形kernel能更好地拟合场景对象。</p>
 <h3 id="贡献点"><a href="#贡献点" class="headerlink" title="贡献点"></a>贡献点</h3><p>是第一个提出空间可变形点卷积的工作。<br>先前用MLP做点卷积的方法让卷积运算变复杂，导致网络收敛比较困难。而本文定义了一个能够直接学习权重的显式卷积核，不需要用MLP做中间表达。</p>
-<h3 id="思想"><a href="#思想" class="headerlink" title="思想"></a>思想</h3><p><img src="/images/KPConv/KP_1.png" alt="卷积方式"><br>总结一下核心点卷积的大概思路：</p>
+<h3 id="思想"><a href="#思想" class="headerlink" title="思想"></a>思想</h3><h4 id="rigid-kernel-points的位置"><a href="#rigid-kernel-points的位置" class="headerlink" title="rigid kernel points的位置"></a>rigid kernel points的位置</h4><p>作者先通过求解优化来放置不同数量的Kernel Points，希望K个Kernel Points在球面上离得足够远，又离球心不要太远。<br>限制其中一点为中心点，每个点对其他点有一定的斥力。球心对其他点有一定的引力。最终，周围的点被限制在平均半径1.5σ内，以确保每个Kernel Points之间的影响有小幅度的重叠。（<script type="math/tex">\sigma</script>是kernel points的影响距离，由输入密度决定，<script type="math/tex">\sigma_j = \sum \times dl_j</script>）</p>
+<p>总结一下核心点卷积的大概思路：</p>
 <ol>
 <li>以点x为球心确定一个球体；</li>
 <li>内确定若干个核心点，每个核心点带一个权重矩阵；</li>
-<li>在球体范围内的任意点，用核函数，计算出该点的权重矩阵，用该矩阵对这个点的feature进行变换；4. 在球体内的每个点，都用上一步的方法，得出一个新的feature，最后将feature累加起来，作为点x的feature。</li>
+<li>在球体范围内的任意点，用核函数，计算出该点的权重矩阵，用该矩阵对这个点的feature进行变换；</li>
+<li>在球体内的每个点，都用上一步的方法，得出一个新的feature，最后将feature累加起来，作为点x的feature。</li>
 </ol>
-<h4 id="rigid-kernel-points的位置"><a href="#rigid-kernel-points的位置" class="headerlink" title="rigid kernel points的位置"></a>rigid kernel points的位置</h4><p>作者先通过求解优化来放置不同数量的Kernel Points，希望K个Kernel Points在球面上离得足够远，又离球心不要太远。<br>限制其中一点为中心点，每个点对其他点有一定的斥力。球心对其他点有一定的引力。最终，周围的点被限制在平均半径1.5σ内，以确保每个Kernel Points之间的影响有小幅度的重叠。</p>
 <p>用优化求出的K个kernel点位置：<br><img src="/images/KPConv/KP_8.png" alt="求出的kernel points位置"><br>有足够多K覆盖g的球形区域的时候，刚性kernel尤其有效。</p>
 <h4 id="Deformable-Kernel-Point-Convolution"><a href="#Deformable-Kernel-Point-Convolution" class="headerlink" title="Deformable Kernel Point Convolution"></a>Deformable Kernel Point Convolution</h4><p>借鉴了微软亚研ICCV 2017的《Deformable convolutional networks》的思想。</p>
 <p>如果kernel points的位置不是固定的而是学习到的，表达能力会更强。<br>（？作者考虑到对每个卷积层学习一个全局的kernel points集合，但是这种不会比固定位置的kernel points更有表达力。）<br>因此提出可变形卷积，让网络对每个卷积层的所有点位置学习一个有K个局部位移向量的集合，去适应点云结构。<br><img src="/images/KPConv/KP_2.png" alt="deformable conv示意图"></p>
@@ -237,10 +237,10 @@
 <ol>
 <li><p>Pooling layer<br>每层pooing都加倍cell的大小，每个新位置的池化用最大池化或者KPConv实现。KPConv的池化被叫做strided KPConv，类似于二维图像的strided convolution（是为了去除冗余信息，取代pooling层。pooling可以看作2x2的核以步长为2进行跨步）。</p>
 </li>
-<li><p>KPConv layer<br>强制邻域有$n_(max)$维，多余的shadow neighbors在计算时被忽略。</p>
+<li><p>KPConv layer<br>强制邻域有<script type="math/tex">n_(max)</script>维，多余的shadow neighbors在计算时被忽略。</p>
 </li>
-<li><p>网络参数<br>kernel point影响度量设为：$\sigma_j = \sum \times dl_j$ .<br>对于第$j$层网络，单元大小为$dl_j$。<br>对于刚性kernel，卷积半径是$2.5\sigma_j$，平均kernel point半径是是$1.5\sigma_j$。<br>对于可变形kernel，卷积半径为$r_j = \rho \times dl_j$。<br>对于所有的实验，$K = 15$， $\sum = 1.0$， $\rho = 5.0$。<br>$dl_0$由输入的数据集大小决定，降采样$dl_(j+1) = 2 * dl_j$ </p>
-</li>
+<li><p>网络参数<br>kernel point影响度量设为：<script type="math/tex">\sigma_j = \sum \times dl_j</script> .<br>对于第<script type="math/tex">j</script>层网络，单元大小为<script type="math/tex">dl_j</script>。<br>对于刚性kernel，卷积半径是<script type="math/tex">2.5\sigma_j</script>，平均kernel point半径是是<script type="math/tex">1.5\sigma_j</script>。<br>对于可变形kernel，卷积半径为<script type="math/tex">r_j = \rho \times dl_j</script>。<br>对于所有的实验，<script type="math/tex">K = 15</script>， <script type="math/tex">\sum = 1.0</script>， <script type="math/tex">\rho = 5.0</script>。</p>
+<script type="math/tex; mode=display">dl_0$$由输入的数据集大小决定，降采样$$dl_(j+1) = 2 * dl_j</script></li>
 </ol>
 <h3 id="网络设计"><a href="#网络设计" class="headerlink" title="网络设计"></a>网络设计</h3><p><img src="/images/KPConv/KP_3.png" alt="网络设计"><br>分类网络 KP-CNN：<br>五层网络，每层都有两个卷积block，除了第一层都用strided。<br>最后通过一个全局平均池化，一个全连接层，一个softmax层进行分类。<br>可变形卷积只对最后5个KPConv block用可变形卷积。</p>
 <p>分割网络 KP-FCNN：<br>用skip links传递中间层特征，用最近邻上采样策略去得到最终的点向特征。将特征与上采样结果级联，再用一元卷积进行处理。</p>
