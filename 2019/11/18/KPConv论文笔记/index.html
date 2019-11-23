@@ -23,7 +23,7 @@
 <meta property="og:image" content="http://angericky.github.io/images/KPConv/KP_3.png">
 <meta property="og:image" content="http://angericky.github.io/images/KPConv/KP_9.png">
 <meta property="og:image" content="http://angericky.github.io/images/KPConv/KP_10.png">
-<meta property="og:updated_time" content="2019-11-22T15:21:11.162Z">
+<meta property="og:updated_time" content="2019-11-23T14:26:00.764Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="KPConv论文笔记">
 <meta name="twitter:description" content="《KPConv: Flexible and Deformable Convolution for Point Clouds》的论文笔记。">
@@ -170,14 +170,14 @@
                 <time class="level-item has-text-grey" datetime="2019-11-18T15:38:46.000Z">2019-11-18</time>
                 
                     <i class="fas fa-calendar-check">&nbsp</i>
-                    <time class="level-item has-text-grey" datetime="2019-11-22T15:21:11.162Z">2019-11-22</time>
+                    <time class="level-item has-text-grey" datetime="2019-11-23T14:26:00.764Z">2019-11-23</time>
                 
                 
                 <i class="fas fa-book">&nbsp</i>
                 <span class="level-item has-text-grey">
                     
                     
-                    10 分钟 读完 (大约 1433 个字)
+                    10 分钟 读完 (大约 1463 个字)
                 </span>
                 
             </div>
@@ -242,7 +242,7 @@
 <li><p>网络参数<br>kernel point影响度量设为：<script type="math/tex">\sigma_j = \sum \times dl_j</script> .<br>对于第<script type="math/tex">j</script>层网络，单元大小为<script type="math/tex">dl_j</script>。<br>对于刚性kernel，卷积半径是<script type="math/tex">2.5\sigma_j</script>，平均kernel point半径是是<script type="math/tex">1.5\sigma_j</script>。<br>对于可变形kernel，卷积半径为<script type="math/tex">r_j = \rho \times dl_j</script>。<br>对于所有的实验，<script type="math/tex">K = 15</script>， <script type="math/tex">\sum = 1.0</script>， <script type="math/tex">\rho = 5.0</script>。</p>
 <script type="math/tex; mode=display">dl_0$$由输入的数据集大小决定，降采样$$dl_(j+1) = 2 * dl_j</script></li>
 </ol>
-<h3 id="网络设计"><a href="#网络设计" class="headerlink" title="网络设计"></a>网络设计</h3><p><img src="/images/KPConv/KP_3.png" alt="网络设计"><br>分类网络 KP-CNN：<br>五层网络，每层都有两个卷积block，除了第一层都用strided。<br>最后通过一个全局平均池化，一个全连接层，一个softmax层进行分类。<br>可变形卷积只对最后5个KPConv block用可变形卷积。</p>
+<h3 id="网络设计"><a href="#网络设计" class="headerlink" title="网络设计"></a>网络设计</h3><p><img src="/images/KPConv/KP_3.png" alt="网络设计"><br>分类网络 KP-CNN：<br>有五层网络，每层都有两个卷积block，除了第一层都用一个KPConv加一个strided KPConv（用pool而非neighbors，这样就类比于2维图像里的strided conv？）。<br>最后通过一个全局平均池化，一个全连接层，一个softmax层进行分类。<br>可变形卷积只对最后5个KPConv block用可变形卷积。</p>
 <p>分割网络 KP-FCNN：<br>用skip links传递中间层特征，用最近邻上采样策略去得到最终的点向特征。将特征与上采样结果级联，再用一元卷积进行处理。</p>
 <h3 id="实验结果"><a href="#实验结果" class="headerlink" title="实验结果"></a>实验结果</h3><ol>
 <li><p>简单任务（分类+部件分割）<br><img src="/images/KPConv/KP_9.png" alt="result 1"></p>
