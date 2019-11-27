@@ -19,11 +19,11 @@
 <meta property="og:locale" content="zh-CN">
 <meta property="og:image" content="http://angericky.github.io/images/PU-GAN/PUGAN_1.jpg">
 <meta property="og:image" content="http://angericky.github.io/images/PU-GAN/PUGAN_2.jpg">
-<meta property="og:image" content="http://angericky.github.io/images/PU-GAN/PUGAN_3.jpg">
+<meta property="og:image" content="evernotecid://608601E7-A5EF-4DBA-89B1-6F682033831E/appyinxiangcom/11727228/ENResource/p1215">
 <meta property="og:image" content="http://angericky.github.io/images/PU-GAN/PUGAN_4.png">
 <meta property="og:image" content="http://angericky.github.io/images/PU-GAN/PUGAN_5.png">
 <meta property="og:image" content="http://angericky.github.io/images/PU-GAN/PUGAN_6.png">
-<meta property="og:updated_time" content="2019-11-25T13:42:46.482Z">
+<meta property="og:updated_time" content="2019-11-27T04:08:46.011Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="PU-GAN论文笔记">
 <meta name="twitter:description" content="《PU-GAN: a Point Cloud Upsampling Adversarial Network》 ICCV 2019 的论文笔记。">
@@ -168,14 +168,14 @@
                 <time class="level-item has-text-grey" datetime="2019-11-25T13:30:23.000Z">2019-11-25</time>
                 
                     <i class="fas fa-calendar-check">&nbsp</i>
-                    <time class="level-item has-text-grey" datetime="2019-11-25T13:42:46.482Z">2019-11-25</time>
+                    <time class="level-item has-text-grey" datetime="2019-11-27T04:08:46.011Z">2019-11-27</time>
                 
                 
                 <i class="fas fa-book">&nbsp</i>
                 <span class="level-item has-text-grey">
                     
                     
-                    6 分钟 读完 (大约 939 个字)
+                    7 分钟 读完 (大约 1078 个字)
                 </span>
                 
             </div>
@@ -213,7 +213,8 @@
 <h2 id="思想"><a href="#思想" class="headerlink" title="思想"></a>思想</h2><h3 id="网络结构"><a href="#网络结构" class="headerlink" title="网络结构"></a>网络结构</h3><p><img src="/images/PU-GAN/PUGAN_1.jpg" alt="network structure"></p>
 <h4 id="Generator部分："><a href="#Generator部分：" class="headerlink" title="Generator部分："></a>Generator部分：</h4><p>分成特征提取、特征扩展、点集生成三部分。<br>特征扩展部分里为了生成更多种点分布，用了Up-down-up扩展单元。<br>点集生成部分用了最远采样法去保留<strong>特征扩展</strong>里最有意义的<script type="math/tex">rN</script>个点，所以<script type="math/tex">F_{up}</script>里生成<script type="math/tex">(r+2)N</script>。<br><img src="/images/PU-GAN/PUGAN_2.jpg" alt="Up-down-up unit"><br>Up-down-up单元中，先上采样点特征，再把它下采样回去，计算F1和F2的差异，得到<script type="math/tex">\triangle</script>，将<script type="math/tex">\triangle</script>上采样得到<script type="math/tex">\triangle_{up}</script>，拼接<script type="math/tex">F_{up}'</script>特征，即为最终输出。</p>
 <p><strong>UP-feature：</strong><br>为了增加拷贝特征多样性做上采样，用到FoldingNet里的方法，去对每个feature-map生成独特的2D拷贝，能够让新生成的点离开输入点一定距离；然后用了self-attention单元，以及一系列MLP。<br><strong>Down-feature：</strong><br>用了一系列MLP回归点特征。<br><br></p>
-<h4 id="Discriminator部分："><a href="#Discriminator部分：" class="headerlink" title="Discriminator部分："></a>Discriminator部分：</h4><p>增加了self-attention单元，相比于基本的MLP，提高了特征整合的效果，同时提高了后续特征提取的能力。<br><img src="/images/PU-GAN/PUGAN_3.jpg" alt="self-attention unit"><br>Self-attention单元用了ICML 2019 SAGAN的self-attention方法。<br>将输入点用几个MLP转换到特征集合G和H，根据G和H生成注意力权重W。用另一个MLP生成特征集合K，与W相乘<script type="math/tex">W^TK</script>，再加上输入特征得到输出特征。</p>
+<h4 id="Discriminator部分："><a href="#Discriminator部分：" class="headerlink" title="Discriminator部分："></a>Discriminator部分：</h4><p>Discriminator里增加了self-attention单元，相比于基本的MLP，提高了特征整合的效果，同时提高了后续特征提取的能力。<br><img src="evernotecid://608601E7-A5EF-4DBA-89B1-6F682033831E/appyinxiangcom/11727228/ENResource/p1215" alt="78903655c1cb4a4858c22cd0c21ff34e.jpeg"><br>Self-attention单元用了ICML 2019 SAGAN的self-attention方法。<strong>Self-Attention能够通过直接计算图像中任意两个像素点之间的关系，一步到位地获取图像的全局几何特征。</strong></p>
+<p>self-attention的具体做法是，将输入点用几个MLP转换到特征集合G和H，根据G和H生成注意力权重W。用另一个MLP生成特征集合K，与W的转置相乘$W^TK$，再加上输入特征得到输出特征。<br>self attention因此可以看成是feature map和它自身的转置相乘，让任意两个位置的像素直接发生关系，这样就可以学习到任意两个像素之间的依赖关系，从而得到全局特征了。</p>
 <h3 id="Loss设计"><a href="#Loss设计" class="headerlink" title="Loss设计"></a>Loss设计</h3><p>值得注意的是Uniform Loss，比PU-Net中多考虑了局部分布均匀性。</p>
 <script type="math/tex; mode=display">L_{uni} = \Sigma_{j=1}^M U_{imbalance} \cdot U_{clutter}</script><p><script type="math/tex">U_{imbalance}</script>评估全局均匀点分布，S是通过ball query裁剪的近邻点子集，期望上采样后得到的点数是<script type="math/tex">\hat{n}</script>。<br><img src="/images/PU-GAN/PUGAN_4.png" alt=""></p>
 <p><script type="math/tex">U_{clutter}</script>评估局部均匀点分布，点j是<script type="math/tex">S_j</script>中的任意一点，<script type="math/tex">d_{j,k}</script>是该点与它第k个近邻的距离，<script type="math/tex">\hat{d}</script>是期望距离。<br><img src="/images/PU-GAN/PUGAN_5.png" alt=""></p>
