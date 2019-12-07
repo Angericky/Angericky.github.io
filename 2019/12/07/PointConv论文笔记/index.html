@@ -9,17 +9,26 @@
 
 
 
-    <meta name="description" content="A record of technical growth and beautiful things in life.">
+    <meta name="description" content="PointConv的论文笔记。提出了新的核卷积方式。">
+<meta name="keywords" content="point cloud,pointnet,note">
 <meta property="og:type" content="article">
 <meta property="og:title" content="PointConv论文笔记">
 <meta property="og:url" content="http://Angericky.github.io/2019/12/07/PointConv论文笔记/index.html">
 <meta property="og:site_name" content="Jingjing&#39;s blog">
-<meta property="og:description" content="A record of technical growth and beautiful things in life.">
+<meta property="og:description" content="PointConv的论文笔记。提出了新的核卷积方式。">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2019-12-07T01:57:19.604Z">
+<meta property="og:image" content="http://angericky.github.io/images/PointConv/PC_1.png">
+<meta property="og:image" content="http://angericky.github.io/images/PointConv/PC_2.png">
+<meta property="og:image" content="http://angericky.github.io/images/PointConv/PC_3.png">
+<meta property="og:image" content="http://angericky.github.io/images/PointConv/PC_4.png">
+<meta property="og:image" content="http://angericky.github.io/images/PointConv/PC_5.png">
+<meta property="og:image" content="http://angericky.github.io/images/PointConv/PC_6.png">
+<meta property="og:image" content="http://angericky.github.io/images/PointConv/PC_7.png">
+<meta property="og:updated_time" content="2019-12-07T16:33:53.285Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="PointConv论文笔记">
-<meta name="twitter:description" content="A record of technical growth and beautiful things in life.">
+<meta name="twitter:description" content="PointConv的论文笔记。提出了新的核卷积方式。">
+<meta name="twitter:image" content="http://angericky.github.io/images/PointConv/PC_1.png">
 
 
 
@@ -142,7 +151,13 @@
         <div class="container">
             <div class="columns">
                 <div class="column is-8-tablet is-8-desktop is-9-widescreen has-order-2 column-main"><div class="card">
-    <!--  -->
+    <!-- 
+    <div class="card-image">
+        <span  class="image is-7by1">
+            <img class="thumbnail" src="/images/PointConv/PC_0.png" alt="PointConv论文笔记">
+        </span>
+    </div>
+     -->
     <div class="card-content article ">
         <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
             
@@ -156,14 +171,14 @@
                 <time class="level-item has-text-grey" datetime="2019-12-07T01:57:19.000Z">2019-12-07</time>
                 
                     <i class="fas fa-calendar-check">&nbsp</i>
-                    <time class="level-item has-text-grey" datetime="2019-12-07T01:57:19.604Z">2019-12-07</time>
+                    <time class="level-item has-text-grey" datetime="2019-12-07T16:33:53.285Z">2019-12-08</time>
                 
                 
                 <i class="fas fa-book">&nbsp</i>
                 <span class="level-item has-text-grey">
                     
                     
-                    几秒 读完 (大约 0 个字)
+                    6 分钟 读完 (大约 948 个字)
                 </span>
                 
             </div>
@@ -171,13 +186,54 @@
         <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
             <div class="level-left">
                 
+                    <i class="fas fa-folder-open">&nbsp</i>
+                    <div class="level-item">
+                    <a class="has-link-grey -link" href="/categories/point-cloud/">point cloud</a>
+                    </div>
+                
+                
+                    <i class="fas fa-tags">&nbsp</i>
+                    <div class="level-item">
+                    <a class="has-link-grey -link" href="/tags/note/">note</a>&nbsp;/&nbsp;<a class="has-link-grey -link" href="/tags/point-cloud/">point cloud</a>&nbsp;/&nbsp;<a class="has-link-grey -link" href="/tags/pointnet/">pointnet</a>
+                    </div>
                 
             </div>
         </div>
         
         <div class="content">
              
-            
+            <p>PointConv的论文笔记。提出了新的核卷积方式。<br><a id="more"></a></p>
+<blockquote>
+<p>《PointConv: Deep Convolutional Networks on 3D Point Clouds》 CVPR 2019<br>Author: Wenxuan Wu, Zhongang Qi, Li Fuxin<br>From: CORIS Institute, Oregon State University<br>paper地址：<a href="https://arxiv.org/pdf/1811.07246.pdf" target="_blank" rel="noopener"><br>https://arxiv.org/pdf/1811.07246.pdf</a><br>源码地址：<a href="https://github.com/DylanWusee/pointconv" target="_blank" rel="noopener">tensorflow版本</a>  <a href="https://github.com/DylanWusee/pointconv_pytorch" target="_blank" rel="noopener">pytorch版本</a></p>
+</blockquote>
+<h2 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h2><p>提出一种应用在点云上的卷积方式PointConv，让给定点的权重通过MLP网络和核密度估计函数进行学习。并且同时给出了PointConv的反卷积版本，在数据集ModelNet40，ShapeNet和Scannet进行实验表明，PointConv在点云分类、点云语义分割任务上都达到了与SOTA相当的效果，ModelNet-40分类任务上同CVPR 2019的RSCNN精度更高93.6% vs 92.5%（PointConv）。<br>将CIFAR-10数据集转换成点云，用PointConv做分类能与二维方法取得的效果近似。</p>
+<h2 id="贡献点"><a href="#贡献点" class="headerlink" title="贡献点"></a>贡献点</h2><ul>
+<li>提出一个用局部邻域点坐标学权重和密度函数的非线性函数的卷积核，能够模拟3D连续卷积。</li>
+<li>用求和技术提出了高效计算权重函数的网络，能够扩展到深的网络以提高性能。</li>
+<li>根据PointConv做了一个反卷积版本PointDeconv，以得到更好的分割结果。</li>
+</ul>
+<h2 id="网络"><a href="#网络" class="headerlink" title="网络"></a>网络</h2><h3 id="整体网络结构"><a href="#整体网络结构" class="headerlink" title="整体网络结构"></a>整体网络结构</h3><p><img src="/images/PointConv/PC_1.png" alt="网络结构"></p>
+<p>和PointNet++类似，是一个多次层的叠加结构，每一个模块由 sampling layer, grouping layer and PointConv组成，也就是说，先选择一些中心点，然后把使用这些中心点把点云分成一个个小的区域，然后对每一个区域进行特征提取，输出特征向量。</p>
+<p>在特征提取的时候，PointNet++用的是PointNet，而本文用的是PointConv。</p>
+<h3 id="PointConv层设计"><a href="#PointConv层设计" class="headerlink" title="PointConv层设计"></a>PointConv层设计</h3><p><img src="/images/PointConv/PC_2.png" alt="PointConv层的细节"><br>输入position vector(x, y, z)和feature(color, surface normal等)</p>
+<p>主要增加了反密度函数（蓝色部分）和weight（红色部分）。</p>
+<p>用蒙特卡罗近似去算密度函数，然后1/本身让它变成反密度函数，然后用一个MLP做非线性变换，再与feature点乘。<br>函数W的输入是以(x,y,z)为中心的3D邻域的点的相对坐标，输出是每个点对应的特征F的权重。</p>
+<p>蒙特卡罗近似的方法是SIGGRAPH Asia论文《<br>Monte Carlo Convolution for Learning on Non-Uniformly Sampled Point Clouds》提出的，用Monte Carlo对不均匀3D点云做卷积学习分布。</p>
+<p>点云上的3D卷积：<br><img src="/images/PointConv/PC_3.png" alt="传统3D点云卷积"><br>PointConv提出的3D卷积：<br><img src="/images/PointConv/PC_4.png" alt="PointConv卷积"><br>S表示反密度系数函数。<br>权重函数W可以用多层感知机MLP近似。</p>
+<h3 id="Feature-Propagation-Using-Deconvolution"><a href="#Feature-Propagation-Using-Deconvolution" class="headerlink" title="Feature Propagation Using Deconvolution"></a>Feature Propagation Using Deconvolution</h3><p>PointNet++里用的是distance-based插值方法，没有考虑到局部点云稀疏性的问题。因此作者提出了PointDeconv网络层作为反卷积操作。<br>PointConv主要由两部分组成：插值和PointConv。<br>首先通过前一层的3个最近的点，线性插值feature，与用skip link得到的卷积层里相同分辨率的feature相加。<br>然后把PointConv用到相加后的feature去得到高精度的特征值。<br><img src="/images/PointConv/PC_5.png" alt="25421a18f1a112a880ef9a0f5dd73400.jpeg"></p>
+<h3 id="Efficient-PointConv"><a href="#Efficient-PointConv" class="headerlink" title="Efficient PointConv"></a>Efficient PointConv</h3><p><img src="/images/PointConv/PC_6.png" alt="Efficient PointConv版本"></p>
+<h3 id="Ablation-study"><a href="#Ablation-study" class="headerlink" title="Ablation study"></a>Ablation study</h3><p>在ShapeNet上的分割实验，可以看到使用反密度函数基本上只提升了一个百分点。<br>这说明PointConv层里学习p的权重W，与特征concatenation再summation的部分比单纯的max pooling的提升很多。</p>
+<p><img src="/images/PointConv/PC_7.png" alt="对比实验结果"></p>
+
+        </div>
+        
+        <div class="level is-size-7 is-uppercase">
+            <div class="level-start">
+                <div class="level-item">
+                    <span class="is-size-6 has-text-grey has-mr-7">#</span>
+                    <a class="has-link-grey -link" href="/tags/note/">note</a>, <a class="has-link-grey -link" href="/tags/point-cloud/">point cloud</a>, <a class="has-link-grey -link" href="/tags/pointnet/">pointnet</a>
+                </div>
+            </div>
         </div>
         
         
@@ -383,12 +439,18 @@
         
         <article class="media">
             
+            <a href="/2019/12/07/PointConv论文笔记/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="/images/PointConv/PC_0.png" alt="PointConv论文笔记">
+                </p>
+            </a> 
+            
             <div class="media-content">
                 <div class="content">
                     <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-12-07T01:57:19.000Z">2019-12-07</time></div>
                     <a href="/2019/12/07/PointConv论文笔记/" class="has-link-black-ter is-size-6">PointConv论文笔记</a>
                     <p class="is-size-7 is-uppercase">
-                        
+                        <a class="has-link-grey -link" href="/categories/point-cloud/">point cloud</a>
                     </p>
                 </div>
             </div>
@@ -798,7 +860,7 @@
                             <span class="level-item">note</span>
                         </span>
                         <span class="level-end">
-                            <span class="level-item tag">6</span>
+                            <span class="level-item tag">7</span>
                         </span>
                     </a>
                 </li>
@@ -809,7 +871,7 @@
                             <span class="level-item">point cloud</span>
                         </span>
                         <span class="level-end">
-                            <span class="level-item tag">6</span>
+                            <span class="level-item tag">7</span>
                         </span>
                     </a>
                 </li>
@@ -820,7 +882,7 @@
                             <span class="level-item">pointnet</span>
                         </span>
                         <span class="level-end">
-                            <span class="level-item tag">3</span>
+                            <span class="level-item tag">4</span>
                         </span>
                     </a>
                 </li>
