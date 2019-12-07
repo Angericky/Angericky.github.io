@@ -24,7 +24,7 @@
 <meta property="og:image" content="http://angericky.github.io/images/PointConv/PC_5.png">
 <meta property="og:image" content="http://angericky.github.io/images/PointConv/PC_6.png">
 <meta property="og:image" content="http://angericky.github.io/images/PointConv/PC_7.png">
-<meta property="og:updated_time" content="2019-12-07T16:33:53.285Z">
+<meta property="og:updated_time" content="2019-12-07T16:52:50.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="PointConv论文笔记">
 <meta name="twitter:description" content="PointConv的论文笔记。提出了新的核卷积方式。">
@@ -171,14 +171,14 @@
                 <time class="level-item has-text-grey" datetime="2019-12-07T01:57:19.000Z">2019-12-07</time>
                 
                     <i class="fas fa-calendar-check">&nbsp</i>
-                    <time class="level-item has-text-grey" datetime="2019-12-07T16:33:53.285Z">2019-12-08</time>
+                    <time class="level-item has-text-grey" datetime="2019-12-07T16:52:50.000Z">2019-12-08</time>
                 
                 
                 <i class="fas fa-book">&nbsp</i>
                 <span class="level-item has-text-grey">
                     
                     
-                    6 分钟 读完 (大约 948 个字)
+                    6 分钟 读完 (大约 940 个字)
                 </span>
                 
             </div>
@@ -220,7 +220,7 @@
 <p>用蒙特卡罗近似去算密度函数，然后1/本身让它变成反密度函数，然后用一个MLP做非线性变换，再与feature点乘。<br>函数W的输入是以(x,y,z)为中心的3D邻域的点的相对坐标，输出是每个点对应的特征F的权重。</p>
 <p>蒙特卡罗近似的方法是SIGGRAPH Asia论文《<br>Monte Carlo Convolution for Learning on Non-Uniformly Sampled Point Clouds》提出的，用Monte Carlo对不均匀3D点云做卷积学习分布。</p>
 <p>点云上的3D卷积：<br><img src="/images/PointConv/PC_3.png" alt="传统3D点云卷积"><br>PointConv提出的3D卷积：<br><img src="/images/PointConv/PC_4.png" alt="PointConv卷积"><br>S表示反密度系数函数。<br>权重函数W可以用多层感知机MLP近似。</p>
-<h3 id="Feature-Propagation-Using-Deconvolution"><a href="#Feature-Propagation-Using-Deconvolution" class="headerlink" title="Feature Propagation Using Deconvolution"></a>Feature Propagation Using Deconvolution</h3><p>PointNet++里用的是distance-based插值方法，没有考虑到局部点云稀疏性的问题。因此作者提出了PointDeconv网络层作为反卷积操作。<br>PointConv主要由两部分组成：插值和PointConv。<br>首先通过前一层的3个最近的点，线性插值feature，与用skip link得到的卷积层里相同分辨率的feature相加。<br>然后把PointConv用到相加后的feature去得到高精度的特征值。<br><img src="/images/PointConv/PC_5.png" alt="25421a18f1a112a880ef9a0f5dd73400.jpeg"></p>
+<h3 id="Feature-Propagation-Using-Deconvolution"><a href="#Feature-Propagation-Using-Deconvolution" class="headerlink" title="Feature Propagation Using Deconvolution"></a>Feature Propagation Using Deconvolution</h3><p>PointNet++里用的是distance-based插值方法，没有考虑到局部点云稀疏性的问题。因此作者提出了PointDeconv网络层作为反卷积操作。<br>PointConv主要由两部分组成：插值和PointConv。<br>首先通过前一层的3个最近的点，线性插值feature，与用skip link得到的卷积层里相同分辨率的feature相加。<br>然后把PointConv用到相加后的feature去得到高精度的特征值。<br><img src="/images/PointConv/PC_5.png" alt="network"></p>
 <h3 id="Efficient-PointConv"><a href="#Efficient-PointConv" class="headerlink" title="Efficient PointConv"></a>Efficient PointConv</h3><p><img src="/images/PointConv/PC_6.png" alt="Efficient PointConv版本"></p>
 <h3 id="Ablation-study"><a href="#Ablation-study" class="headerlink" title="Ablation study"></a>Ablation study</h3><p>在ShapeNet上的分割实验，可以看到使用反密度函数基本上只提升了一个百分点。<br>这说明PointConv层里学习p的权重W，与特征concatenation再summation的部分比单纯的max pooling的提升很多。</p>
 <p><img src="/images/PointConv/PC_7.png" alt="对比实验结果"></p>
@@ -292,7 +292,7 @@
         
         <div class="level-end">
             <a class="level level-item has-link-grey  article-nav-next" href="/2019/12/02/AAP图算法论文笔记/">
-                <span class="level-item">《Adaptive Asynchronous Parallelization of Graph Algorithms》论文笔记</span>
+                <span class="level-item">AAP for Graph Algorithms论文笔记</span>
                 <i class="level-item fas fa-chevron-right"></i>
             </a>
         </div>
@@ -461,7 +461,7 @@
             <div class="media-content">
                 <div class="content">
                     <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-12-02T15:37:01.000Z">2019-12-02</time></div>
-                    <a href="/2019/12/02/AAP图算法论文笔记/" class="has-link-black-ter is-size-6">《Adaptive Asynchronous Parallelization of Graph Algorithms》论文笔记</a>
+                    <a href="/2019/12/02/AAP图算法论文笔记/" class="has-link-black-ter is-size-6">AAP for Graph Algorithms论文笔记</a>
                     <p class="is-size-7 is-uppercase">
                         <a class="has-link-grey -link" href="/categories/graph-computation/">graph computation</a>
                     </p>

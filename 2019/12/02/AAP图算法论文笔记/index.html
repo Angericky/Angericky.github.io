@@ -4,26 +4,26 @@
 <html lang="zh">
 <head><meta name="generator" content="Hexo 3.8.0">
     <!-- hexo-inject:begin --><!-- hexo-inject:end --><meta charset="utf-8">
-<title>《Adaptive Asynchronous Parallelization of Graph Algorithms》论文笔记 - Jingjing&#39;s blog</title>
+<title>AAP for Graph Algorithms论文笔记 - Jingjing&#39;s blog</title>
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
 
 
-    <meta name="description" content="数据库课上要讲的图数据论文。提出了一种新的图系统的并行模型并进行了验证。">
+    <meta name="description" content="数据库课上要讲的图数据论文《Adaptive Asynchronous Parallelization of Graph Algorithms》。提出了一种新的图系统的并行模型AAP，并进行了实验验证。">
 <meta name="keywords" content="graph computation">
 <meta property="og:type" content="article">
-<meta property="og:title" content="《Adaptive Asynchronous Parallelization of Graph Algorithms》论文笔记">
+<meta property="og:title" content="AAP for Graph Algorithms论文笔记">
 <meta property="og:url" content="http://Angericky.github.io/2019/12/02/AAP图算法论文笔记/index.html">
 <meta property="og:site_name" content="Jingjing&#39;s blog">
-<meta property="og:description" content="数据库课上要讲的图数据论文。提出了一种新的图系统的并行模型并进行了验证。">
+<meta property="og:description" content="数据库课上要讲的图数据论文《Adaptive Asynchronous Parallelization of Graph Algorithms》。提出了一种新的图系统的并行模型AAP，并进行了实验验证。">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:image" content="evernotecid://608601E7-A5EF-4DBA-89B1-6F682033831E/appyinxiangcom/11727228/ENResource/p1354">
-<meta property="og:image" content="evernotecid://608601E7-A5EF-4DBA-89B1-6F682033831E/appyinxiangcom/11727228/ENResource/p1355">
-<meta property="og:updated_time" content="2019-12-02T15:45:24.053Z">
+<meta property="og:image" content="http://angericky.github.io/images/AAP/AAP_1.png">
+<meta property="og:image" content="http://angericky.github.io/images/AAP/AAP_2.png">
+<meta property="og:updated_time" content="2019-12-07T17:08:18.748Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="《Adaptive Asynchronous Parallelization of Graph Algorithms》论文笔记">
-<meta name="twitter:description" content="数据库课上要讲的图数据论文。提出了一种新的图系统的并行模型并进行了验证。">
-<meta name="twitter:image" content="evernotecid://608601E7-A5EF-4DBA-89B1-6F682033831E/appyinxiangcom/11727228/ENResource/p1354">
+<meta name="twitter:title" content="AAP for Graph Algorithms论文笔记">
+<meta name="twitter:description" content="数据库课上要讲的图数据论文《Adaptive Asynchronous Parallelization of Graph Algorithms》。提出了一种新的图系统的并行模型AAP，并进行了实验验证。">
+<meta name="twitter:image" content="http://angericky.github.io/images/AAP/AAP_1.png">
 
 
 
@@ -98,7 +98,7 @@
         <div class="navbar-brand is-flex-center">
             <a class="navbar-item navbar-logo" href="/">
             
-                <img src="https://i.loli.net/2019/01/07/5c336be858b4e.jpg" alt="《Adaptive Asynchronous Parallelization of Graph Algorithms》论文笔记" height="28">
+                <img src="https://i.loli.net/2019/01/07/5c336be858b4e.jpg" alt="AAP for Graph Algorithms论文笔记" height="28">
             
             </a>
         </div>
@@ -150,7 +150,7 @@
     <div class="card-content article ">
         <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
             
-                《Adaptive Asynchronous Parallelization of Graph Algorithms》论文笔记
+                AAP for Graph Algorithms论文笔记
             
         </h1>
         
@@ -160,14 +160,14 @@
                 <time class="level-item has-text-grey" datetime="2019-12-02T15:37:01.000Z">2019-12-02</time>
                 
                     <i class="fas fa-calendar-check">&nbsp</i>
-                    <time class="level-item has-text-grey" datetime="2019-12-02T15:45:24.053Z">2019-12-02</time>
+                    <time class="level-item has-text-grey" datetime="2019-12-07T17:08:18.748Z">2019-12-08</time>
                 
                 
                 <i class="fas fa-book">&nbsp</i>
                 <span class="level-item has-text-grey">
                     
                     
-                    8 分钟 读完 (大约 1182 个字)
+                    10 分钟 读完 (大约 1455 个字)
                 </span>
                 
             </div>
@@ -191,12 +191,12 @@
         
         <div class="content">
              
-            <p>数据库课上要讲的图数据论文。提出了一种新的图系统的并行模型并进行了验证。<br><a id="more"></a></p>
+            <p>数据库课上要讲的图数据论文《Adaptive Asynchronous Parallelization of Graph Algorithms》。提出了一种新的图系统的并行模型AAP，并进行了实验验证。<br><a id="more"></a></p>
 <blockquote>
 <p>《Adaptive Asynchronous Parallelization of Graph Algorithms》 SIGMOD’18<br>To: Wenfei Fan, Ping Lu, et. al.<br>From: University of Edinburgh</p>
 </blockquote>
 <h2 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h2><p>本文对图计算任务提出了AAP(自适应异步并行)模型。<br>相比于BSP(Bulk Synchronous Parallel整体同步并行)模型和AP(Asynchronous Parallel异步并行)模型，AAP模型通过动态调整工作进程worker的相对进度，减少了很多杂乱无章的计算。<br>BSP, AP和SSP(Stale Synchronous Parallel过时异步并行)模块都是AAP的特殊案例。更好的是，AAP模块能在单次执行的不同阶段中自适应地在这些模型间切换，优化并行处理。<br>并且，通过采用GRAPE的编程模型，AAP目的是基于定点计算以及部分评估和增量评估来并行化现有的顺序算法。在单调条件下，如果顺序算法正确，则AAP能保证收敛于正确答案。<br>此外，作者证明了AAP能够最佳模拟MapReduce，PRAM，BSP，AP和SSP。<br>通过在真实场景图和合成图上的实验，验证了AAP在各种图形计算方面地性能均优于BSP，AP和SSP。</p>
-<h2 id="相关工作和对比分析"><a href="#相关工作和对比分析" class="headerlink" title="相关工作和对比分析"></a>相关工作和对比分析</h2><h3 id="参数同步模式"><a href="#参数同步模式" class="headerlink" title="参数同步模式"></a>参数同步模式</h3><p><strong>参数同步有BSP、ASP、SSP三种模式。</strong><br>BSP模型用在一些图系统里，比如Prefel和GRAPE。<br>BSP模型的迭代计算由一系列串行的超步组成，只有下一个超步才能访问这个超步得到的信息。<br><img src="evernotecid://608601E7-A5EF-4DBA-89B1-6F682033831E/appyinxiangcom/11727228/ENResource/p1354" alt="991b07f57b46753e24999f1d34d4b201.png"><br>每一个超步中，分为3个阶段</p>
+<h2 id="相关工作和对比分析"><a href="#相关工作和对比分析" class="headerlink" title="相关工作和对比分析"></a>相关工作和对比分析</h2><h3 id="参数同步模式"><a href="#参数同步模式" class="headerlink" title="参数同步模式"></a>参数同步模式</h3><p><strong>参数同步有BSP、ASP、SSP三种模式。</strong><br>BSP模型用在一些图系统里，比如Prefel和GRAPE。<br>BSP模型的迭代计算由一系列串行的超步组成，只有下一个超步才能访问这个超步得到的信息。<br><img src="/images/AAP/AAP_1.png" alt="BSP模型"><br>每一个超步中，分为3个阶段</p>
 <ol>
 <li>本地计算阶段：在本地的计算</li>
 <li>全局通信阶段 ：每个worker之间的数据的交流，即每个worker拿到不在本地的数据的阶段</li>
@@ -205,9 +205,23 @@
 <p>这种方法优势在于每一个worker下次开始都能拿到最新的全局参数，意味着同步迭代质量很高。 但是，它的global synchronization barrier会导致Straggler问题，也就是说如果有某个worker比其他worker计算得慢很多，每个超步的速度都会被限制为最慢的worker的速度。 </p>
 <p>为了解决Straggler问题，GraphLab和Maiter等图系统采用了异步并行（AP）模型。AP模型中没有同步，因此快的worker无需等待其他worker就能继续执行。这种情况可能导致过时计算问题。比如图a中(2)的P1和P2迭代完5次，只能拿到P3的迭代第2次的信息。<br>过时计算通常增加了不必要的计算和通信成本。而且如果异构性很强，计算可能会不收敛。</p>
 <p>对于很多图算法，为了优化性能，单次执行的不同阶段需要不同的模型。因此提出了SSP和Hsynv。<br>SSP优势在BSP和ASP之间进行折中，一定程度上兼顾了迭代质量和迭代速度，只让最快的worker比最慢的worker快一个固定的步数。SSP因此减少了straggler问题，但是会导致多余的过时计算。<br>Hsync在AP和BSP之间切换，但是需要预测切换点，会造成预测开销和切换开销。</p>
-<p><img src="evernotecid://608601E7-A5EF-4DBA-89B1-6F682033831E/appyinxiangcom/11727228/ENResource/p1355" alt="68daf56b58cb00bc8e8706116e2d1298.png"></p>
+<p><img src="/images/AAP/AAP_2.png" alt="性能对比"></p>
 <h2 id="贡献点"><a href="#贡献点" class="headerlink" title="贡献点"></a>贡献点</h2><p>能不能有一个简单的并行模型来继承BSP和AP的优点，并减少散乱和过时的计算，而无需在两者之间进行明确切换？ 因此作者提出了AAP，同时保留BSP编程，确保一致性并能保证正确的收敛？</p>
-<p>由于没有全局同步障碍，AAP本质上是异步的。<br>与BSP和AP不同，AAP的每个worker都有两个测量参数：<br>(a)相对于其他worker的进度<br>(b)过时消息的积累<br>每个worker都可以立即访问传入的消息，并根据自己的参数决定是否启动下一轮计算。与SSP相比，每个worker能根据自己的相对进度和消息滞后性动态调整自己的参数，而不需要一个固定约束，</p>
+<p>由于没有全局同步障碍，AAP本质上是异步的。<br>与BSP和AP不同，AAP的每个worker都有两个测量参数：<br>(a)相对于其他worker的进度<br>(b)过时消息的积累<br>每个worker都可以立即访问传入的消息，并根据自己的参数决定是否启动下一轮计算。与SSP相比，每个worker能根据自己的相对进度和消息滞后性动态调整自己的参数，而不需要一个固定约束.</p>
+<h2 id="大纲"><a href="#大纲" class="headerlink" title="大纲"></a>大纲</h2><ol>
+<li><p>Programming model。介绍GRAPE编程模型</p>
+</li>
+<li><p>AAP。<br>证明了BSP, AP和SSP(Stale Synchronous Parallel过时异步并行)模块都是AAP的特殊案例。不仅如此，AAP模块能在单次执行的不同阶段中自适应地在这些模型间切换，优化并行处理。</p>
+</li>
+<li><p>Foundation<br>本文将AAP建模为具有部分评估和增量计算的同步定点计算（第4节）。我们提供条件让AAP能保证收敛和Church-Rosser属性。我们还表明，AAP可以最佳模拟MapReduce，PRAM，BSP，AP和SSP。</p>
+</li>
+<li><p>AAP Programming<br>展示了可以通过AAP轻松进行各种图形计算（第5节）。这些包括最短路径（SSSP），连接的组件（CC），协作过滤（CF）和PageRank（PageRank）。</p>
+</li>
+<li><p>Implementation<br>我们通过将GRAPE [23]从BSP扩展到AAP（第6节）来开发GRAPE +.</p>
+</li>
+<li><p>Experiments<br>与表1中列出的最新图形系统以及SSP下的参数服务器Petuum相比，我们使用现实生活中的综合图来评估GRAPE +（第7节）的性能。</p>
+</li>
+</ol>
 
         </div>
         
@@ -452,7 +466,7 @@
             <div class="media-content">
                 <div class="content">
                     <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-12-02T15:37:01.000Z">2019-12-02</time></div>
-                    <a href="/2019/12/02/AAP图算法论文笔记/" class="has-link-black-ter is-size-6">《Adaptive Asynchronous Parallelization of Graph Algorithms》论文笔记</a>
+                    <a href="/2019/12/02/AAP图算法论文笔记/" class="has-link-black-ter is-size-6">AAP for Graph Algorithms论文笔记</a>
                     <p class="is-size-7 is-uppercase">
                         <a class="has-link-grey -link" href="/categories/graph-computation/">graph computation</a>
                     </p>
@@ -989,7 +1003,7 @@
             <div class="level-start has-text-centered-mobile">
                 <a class="footer-logo is-block has-mb-6" href="/">
                 
-                    <img src="https://i.loli.net/2019/01/07/5c336be858b4e.jpg" alt="《Adaptive Asynchronous Parallelization of Graph Algorithms》论文笔记" height="28">
+                    <img src="https://i.loli.net/2019/01/07/5c336be858b4e.jpg" alt="AAP for Graph Algorithms论文笔记" height="28">
                 
                 </a>
                 <p class="is-size-7" style="padding-bottom: 0.5em">
