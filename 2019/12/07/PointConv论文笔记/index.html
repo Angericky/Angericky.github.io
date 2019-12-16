@@ -17,7 +17,7 @@
 <meta property="og:site_name" content="Jingjing&#39;s blog">
 <meta property="og:description" content="PointConv的论文笔记。提出了新的核卷积方式。">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:image" content="http://angericky.github.io/images/PointConv/PC_1.png">
+<meta property="og:image" content="http://angericky.github.io/images/PointConv/PC_1.jpg">
 <meta property="og:image" content="http://angericky.github.io/images/PointConv/PC_2.png">
 <meta property="og:image" content="http://angericky.github.io/images/PointConv/PC_3.png">
 <meta property="og:image" content="http://angericky.github.io/images/PointConv/PC_4.png">
@@ -25,11 +25,11 @@
 <meta property="og:image" content="http://angericky.github.io/images/PointConv/PC_8.jpeg">
 <meta property="og:image" content="http://angericky.github.io/images/PointConv/PC_6.png">
 <meta property="og:image" content="http://angericky.github.io/images/PointConv/PC_7.png">
-<meta property="og:updated_time" content="2019-12-07T17:53:40.745Z">
+<meta property="og:updated_time" content="2019-12-16T13:15:38.801Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="PointConv论文笔记">
 <meta name="twitter:description" content="PointConv的论文笔记。提出了新的核卷积方式。">
-<meta name="twitter:image" content="http://angericky.github.io/images/PointConv/PC_1.png">
+<meta name="twitter:image" content="http://angericky.github.io/images/PointConv/PC_1.jpg">
 
 
 
@@ -172,14 +172,14 @@
                 <time class="level-item has-text-grey" datetime="2019-12-07T01:57:19.000Z">2019-12-07</time>
                 
                     <i class="fas fa-calendar-check">&nbsp</i>
-                    <time class="level-item has-text-grey" datetime="2019-12-07T17:53:40.745Z">2019-12-08</time>
+                    <time class="level-item has-text-grey" datetime="2019-12-16T13:15:38.801Z">2019-12-16</time>
                 
                 
                 <i class="fas fa-book">&nbsp</i>
                 <span class="level-item has-text-grey">
                     
                     
-                    9 分钟 读完 (大约 1419 个字)
+                    9 分钟 读完 (大约 1422 个字)
                 </span>
                 
             </div>
@@ -213,15 +213,15 @@
 <li>用求和技术提出了高效计算权重函数的网络，能够扩展到深的网络以提高性能。</li>
 <li>根据PointConv做了一个反卷积版本PointDeconv，以得到更好的分割结果。</li>
 </ul>
-<h2 id="网络"><a href="#网络" class="headerlink" title="网络"></a>网络</h2><h3 id="整体网络结构"><a href="#整体网络结构" class="headerlink" title="整体网络结构"></a>整体网络结构</h3><p><img src="/images/PointConv/PC_1.png" alt="网络结构"></p>
+<h2 id="网络"><a href="#网络" class="headerlink" title="网络"></a>网络</h2><h3 id="整体网络结构"><a href="#整体网络结构" class="headerlink" title="整体网络结构"></a>整体网络结构</h3><p><img src="/images/PointConv/PC_1.jpg" alt="网络结构"></p>
 <p>和PointNet++类似，是一个多次层的叠加结构，每一个模块由 sampling layer, grouping layer and PointConv组成，也就是说，先选择一些中心点，然后把使用这些中心点把点云分成一个个小的区域，然后对每一个区域进行特征提取，输出特征向量。</p>
 <p>在特征提取的时候，PointNet++用的是PointNet，而本文用的是PointConv。</p>
 <h3 id="PointConv层设计"><a href="#PointConv层设计" class="headerlink" title="PointConv层设计"></a>PointConv层设计</h3><p><img src="/images/PointConv/PC_2.png" alt="PointConv层的细节"><br>输入position vector(x, y, z)和feature(color, surface normal等)</p>
 <p>主要增加了反密度函数（蓝色部分）和权重极端（红色部分）。</p>
 <p>用蒙特卡罗近似去算密度函数，然后1/本身让它变成反密度函数，然后用一个MLP做非线性变换，再与feature点乘。</p>
-<p>蒙特卡罗近似的方法是SIGGRAPH Asia论文《<br>Monte Carlo Convolution for Learning on Non-Uniformly Sampled Point Clouds》提出的，用Monte Carlo对不均匀3D点云做卷积学习分布。</p>
+<p>蒙特卡罗近似的方法是SIGGRAPH Asia论文《 Monte Carlo Convolution for Learning on Non-Uniformly Sampled Point Clouds》提出的，用Monte Carlo对不均匀3D点云做卷积学习分布。</p>
 <p>函数W的输入是以(x,y,z)为中心的3D邻域的点的相对坐标，输出是每个点对应的特征F的权重。对于点云，每个局部区域共享相同的权重函数，这些可以通过MLP学习得到。但不同点处的权重函数计算出的权重是不同的。</p>
-<p>点云上的3D卷积：<br><img src="/images/PointConv/PC_3.png" alt="传统3D点云卷积"><br>PointConv提出的3D卷积：<br><img src="/images/PointConv/PC_4.png" alt="PointConv卷积"><br>S表示反密度系数函数。<br>权重函数W可以用多层感知机MLP近似。</p>
+<p>点云上的3D卷积：<br><img src="/images/PointConv/PC_3.png" alt="传统3D点云卷积"><br>PointConv提出的3D卷积：<br><img src="/images/PointConv/PC_4.png" alt="PointConv卷积"><br>这里的S表示反密度系数函数，权重函数W可以用多层感知机MLP近似。</p>
 <h3 id="反卷积的特征传播"><a href="#反卷积的特征传播" class="headerlink" title="反卷积的特征传播"></a>反卷积的特征传播</h3><p>PointNet++里用的是distance-based插值方法，没有考虑到局部点云稀疏性的问题。因此作者提出了PointDeconv网络层作为反卷积操作。<br>PointConv主要由两部分组成：插值和PointConv。<br>首先通过前一层的3个最近的点，线性插值feature，与用skip link得到的卷积层里相同分辨率的feature相加。<br>然后把PointConv用到相加后的feature去得到高精度的特征值。<br><img src="/images/PointConv/PC_5.png" alt="network"></p>
 <h3 id="高效PointConv"><a href="#高效PointConv" class="headerlink" title="高效PointConv"></a>高效PointConv</h3><p>最初版本的PointConv内存消耗大，效率低。<br>为了解决这些问题，我们提出了一种新型重构方法，将 PointConv简化为两个标准操作：矩阵乘法和2D卷积。这个新技巧不仅利用了GPU的并行计算优势，还可以通过主流深度学习框架轻松实现。由于逆密度尺度没有这样的内存问题，所以下面的讨论主要集中在权重函数W上。</p>
 <p>内存问题产生的原因：<br>令B为训练阶段的mini-batch大小，N为点云中的点数，K为每个局部区域的点数，C_in为输入通道数，C_out为输出通道数。<br>由 MLP 生成的权重参数张量的尺寸B×N×K×(C_in×C_out)。假设B = 32，N = 512，K = 32，C_in = 64，C_out = 64，并且权重参数以单精度存储，一层网络则需要 8GB 的内存。如此高的内存消耗将使网络很难训练。</p>
